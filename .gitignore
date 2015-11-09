@@ -1,0 +1,10 @@
+/.idea
+bower_components/
+node_modules/
+npm-debug.log
+/docs
+/certificate.pem
+/privatekey.pem
+/certrequest.csr
+/node_modules.zip
+/bower_components.zip
