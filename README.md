@@ -3,7 +3,7 @@
 
 # 快速允许
 
-+ 软件安装, 参见 [install.md]
++ 软件安装, 参见 [install.md](install.md)
 
 + 运行命令
     
