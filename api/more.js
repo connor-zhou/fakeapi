@@ -54,15 +54,13 @@ router.all('/more/loan', function (req, res, next) {
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data: [
- * 	  {
+ *  data: [{
  *  	imageUrl:"{string} 	图片URL（绝对路径）",
  *  	title:"{string} 标题",
  *  	type:"{int} 类型（1--活动，点击后打开url；2--项目，点击后跳到项目详情",
  *  	target:"{string} 目标参数",
  *  	activity_period:"{string} 活动周期"
- *     }
- * 	]
+ *  }]
  * }
  */
 router.all('/more/activityPageList', function (req, res, next) {
