@@ -64,8 +64,6 @@ router.all('/more/loan', function (req, res, next) {
  *     }
  * 	]
  * }
- * 
- *
  */
 router.all('/more/activityPageList', function (req, res, next) {
     var activities = [];
