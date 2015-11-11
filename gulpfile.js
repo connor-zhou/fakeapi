@@ -71,7 +71,6 @@ gulp.task('fakedocs', function(done){
         .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath+'/fakedocs'}, fakeServerSshConfig)));
 });
 
-
 /*====================================
  =            fake server remote     =
  ====================================*/
