@@ -16,7 +16,7 @@
 + 运行 `gulp`
 + 上传文档和api接口到远程 `gulp fakeapi`
 
-# 测试服务器
+# 测试服务器s
 
 + 地址 fakeapi.fdjf.net `/home/wechat/www/fakeapi`
 + 启动命令
