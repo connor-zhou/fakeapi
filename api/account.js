@@ -619,7 +619,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 还款日历
+ * @fakedoc 回款日历
  *
  * @name account.repaymentCalendar
  * @href /account/repaymentCalendar
@@ -629,23 +629,27 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  * @input.post {string} year 			年
  * @input.post {string} month 			月
  *
- * @output {json} 还款日历
+ * @output {json} 回款日历
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:[{
- *  	day:"{int} 天",
- *  	amount:"{number} 还款额",
- *  	status:"{int} 状态(0-未还，1--已还)",
- *  	recordList:[{
- *      	projectName:"{string} 项目名称",
- *      	planDate:"{string} 还款日期",
- *  		planMoney:"{string} 还款金额",
- *  		principal:"{string} 应还本金",
- *  		interest:"{string} 应还利息",
- *  		remainingPrincipal:"{string} 剩余应还本金",
- * 		}]
- *  }]
+ *     code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *     text:"{String} 状态描述",
+ *     data: {
+ *         sumRepaymentAmout:"{number} 本月应回款(元)",
+ *         repaymentAmout:"{number} 本月已回款(元)",
+ *         dayList:[{
+ *  			day:"{int} 天",
+ *  			amount:"{number} 还款额",
+ *  			status:"{int} 状态(0-未还，1--已还，2--逾期)",
+ *  			recordList:[{
+ *      			projectName:"{string} 项目名称",
+ *      			planDate:"{string} 还款日期",
+ *  				planMoney:"{string} 还款金额",
+ *  				principal:"{string} 应还本金",
+ *  				interest:"{string} 应还利息",
+ *  				remainingPrincipal:"{string} 剩余应还本金"
+ * 				}]
+ *  	   }]
+ *     }
  * }
  *
  * @needAuth
@@ -684,14 +688,17 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: [
-    	   {day:5,amount:3500,status:1,recordList:records},
-    	   {day:8,amount:500,status:1,recordList:records},
-    	   {day:12,amount:100,status:1,recordList:records},
-    	   {day:15,amount:10200,status:0,recordList:records},
-    	   {day:25,amount:3500,status:0,recordList:records},
-    	   
-       ]
+    	data: {
+    		sumRepaymentAmout:30000,
+    		repaymentAmout:2000,
+    		dayList:[
+      	   		{day:5,amount:3500,status:1,recordList:records},
+      	   		{day:8,amount:500,status:1,recordList:records},
+      	   		{day:12,amount:100,status:1,recordList:records},
+      	   		{day:15,amount:10200,status:0,recordList:records},
+      	   		{day:25,amount:3500,status:0,recordList:records},
+      	   	]
+    	}
     }
     res.json(resultValue);
 });
