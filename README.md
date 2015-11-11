@@ -22,7 +22,7 @@
 # 测试服务器s
 
 + 地址 fakeapi.fdjf.net `/home/wechat/www/fakeapi`
-+ 启动命令
++ 启动命令:
 
     ```
     cd /home/wechat/www/fakeapi
