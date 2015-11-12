@@ -32,6 +32,7 @@ app.use('/', fakeMore);
 app.use('/', fakeMall);
 app.use('/', fakeCommon);
 app.use('/', fakeWechat);
+
 //livereload
 if(app.get('env') == 'development'){
     app.use(require('connect-livereload')());
