@@ -629,9 +629,9 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/account/repaymentPlan?client=asdfaqerq1werqwe&accountId=1
+ * https://localhost:3000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
  * 
- * https://fakeapi.fdjf.net:3000/account/repaymentPlan?client=asdfaqerq1werqwe&accountId=1
+ * https://fakeapi.fdjf.net:3000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
  *
  * @output {json} 还款计划
  * {
