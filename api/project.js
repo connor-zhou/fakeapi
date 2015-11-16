@@ -99,8 +99,6 @@ router.all('/project/pageList', function (req, res, next) {
  *
  * @description 
  * 
- * 一次性返回所有首页推荐项目的简略信息。
- *
  * https://localhost:3000/project/recommend?client=2435234523451
  * 
  * https://fakeapi.fdjf.net:3000/project/recommend?client=2435234523451
@@ -122,8 +120,6 @@ router.all('/project/recommend', function (req, res, next) {
  * @input.post {int} projectId 		项目Id
  *
  * @description 
- * 
- * 得到指定项目的详情信息
  * 
  * https://localhost:3000/project/detail?client=asdfaqerq1werqwe&projectId=1
  * 
@@ -221,8 +217,6 @@ router.all('/project/detail', function (req, res, next) {
  * @input.post {int} projectId 		项目Id
  *
  * @description 
- * 
- * 得到指定项目的还款计划
  * 
  * https://localhost:3000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
  * 

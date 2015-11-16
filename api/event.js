@@ -51,7 +51,7 @@ router.all('/event/carousel', function (req, res, next) {
 });
 
 /**
- * @fakedoc Check自动更新接口
+ * @fakedoc App自动更新检查接口
  *
  * @name event.checkUpdate
  * @href /event/checkUpdate
@@ -64,13 +64,13 @@ router.all('/event/carousel', function (req, res, next) {
  * 
  * https://fakeapi.fdjf.net:3000/event/checkUpdate?client=asfdaqwerqe
  * 
- * @output {json} Check自动更新接口
+ * @output {json} App自动更新检查接口
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  * 		needUpdate:"{String} 	是否强制更新（0是，其它不是）",
- *  	url:"{string} 			待更新的apk文件URL",
+ *  	url:"{string} 			待更新的apk文件url（android）或AppStore下载链接（iOS）",
  *  	version:"{String} 		待更新App版本",
  *  	versionInfo:"{string} 	待更新App版本说明"
  *    }

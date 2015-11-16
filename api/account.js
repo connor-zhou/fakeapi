@@ -619,6 +619,61 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 });
 
 /**
+ * @fakedoc 得到指定投资记录的还款计划
+ *
+ * @name account.repaymentPlan
+ * @href /account/repaymentPlan
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} recordId 		投资记录Id
+ *
+ * @description 
+ * 
+ * https://localhost:3000/account/repaymentPlan?client=asdfaqerq1werqwe&accountId=1
+ * 
+ * https://fakeapi.fdjf.net:3000/account/repaymentPlan?client=asdfaqerq1werqwe&accountId=1
+ *
+ * @output {json} 还款计划
+ * {
+ *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: [{
+ *  	planDate:"{string} 还款日期",
+ *  	planMoney:"{string} 还款金额",
+ *  	principal:"{string} 应还本金",
+ *  	interest:"{string} 应还利息",
+ *  	remainingPrincipal:"{string} 剩余应还本金",
+ *  	status:"{string} 状态",
+ *  	statusName:"{String} 状态名称"
+ *  }]
+ * }
+ */
+router.all('/account/repaymentPlan', function (req, res, next) {
+    var moment = require('moment');
+
+    var records = [];
+    var limit = 10;
+    while (limit-- > 0) {
+        var dt = moment().add(10 - limit - 1, 'M');
+        records.push({
+            planDate: dt.format('YYYY-MM-DD'),
+            planMoney: 100,
+            principal: 90,
+            interest: 10,
+            remainingPrincipal: 1000,
+            status: Math.floor(Math.random() * 4),
+            statusName: "还款中"
+        });
+    }
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: records
+    }
+    res.json(resultValue);
+});
+
+/**
  * @fakedoc 回款日历
  *
  * @name account.repaymentCalendar
