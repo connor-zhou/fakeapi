@@ -1263,7 +1263,9 @@ router.all('/account/myEarningTicketPageList', function (req, res, next) {
  *  data:[{
  *  	opDt:"{date} 操作日期时间",
  *  	changeReason:"{String} 变更原因",
- *  	changeVal:"{String} 变更值"
+ *  	changeVal:"{String} 变更值",
+ *  	type:"{String} 类型（1收，2兑）",
+ *  	typeName:"{String} 类型名称"
  *   }]
  * }
  */
@@ -1274,11 +1276,11 @@ router.all('/account/myIntegralPageList', function (req, res, next) {
     	code: code,
     	text: text,
     	data: [
-    	   {opDt:'2015-10-19 11:01:01',changeReason:'推荐好友投资返利',changeVal:'+10000'},
-    	   {opDt:'2015-10-12 11:01:01',changeReason:'首次充值送现金',changeVal:'-500'},
-    	   {opDt:'2015-10-09 11:01:01',changeReason:'首次充值送现金',changeVal:'+10'},
-    	   {opDt:'2015-10-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-100'},
-    	   {opDt:'2015-09-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-2'}
+    	   {opDt:'2015-10-19 11:01:01',changeReason:'推荐好友投资返利',changeVal:'+10000',type:'1',typeName:'收'},
+    	   {opDt:'2015-10-12 11:01:01',changeReason:'首次充值送现金',changeVal:'-500',type:'2',typeName:'兑'},
+    	   {opDt:'2015-10-09 11:01:01',changeReason:'首次充值送现金',changeVal:'+10',type:'1',typeName:'收'},
+    	   {opDt:'2015-10-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-100',type:'1',typeName:'收'},
+    	   {opDt:'2015-09-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-2',type:'1',typeName:'收'}
        ]
     }
     res.json(resultValue);
