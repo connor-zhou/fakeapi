@@ -40,7 +40,8 @@ var router = express.Router();
  *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
  *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
  *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）"
+ *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
+ *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
  * 	  }
  * 	]
  * }
@@ -76,7 +77,8 @@ router.all('/project/pageList', function (req, res, next) {
             isNewUser:['0','1'][start % 2],
             isRecommend:['0','1'][start % 2],
             isUseTicket:['0','1'][start % 2],
-            isCanAssign:['0','1'][start % 2]
+            isCanAssign:['0','1'][start % 2],
+            terminalCodes:'0,2'
         });
         start++;
         limit--;
@@ -156,7 +158,8 @@ router.all('/project/recommend', function (req, res, next) {
  *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
  *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
  *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）"
+ *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
+ *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
  *   }
  * }
  *
@@ -197,7 +200,8 @@ router.all('/project/detail', function (req, res, next) {
         isNewUser:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
         isRecommend:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
         isUseTicket:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-        isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1'
+        isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+        terminalCodes:'0,2'
     };
     var resultValue = {
         code: 0,
