@@ -64,7 +64,7 @@ router.all('/event/carousel', function (req, res, next) {
  * 
  * https://fakeapi.fdjf.net:3000/event/checkUpdate?client=asfdaqwerqe
  * 
- * @output {json} App自动更新检查接口
+ * @output {json} App自动更新检查
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
@@ -86,6 +86,44 @@ router.all('/event/checkUpdate', function (req, res, next) {
     		url:"http://www.fdjf.net/client/fdjf_hsbank-1.0.1-fdjf-FDJF-release-aligned-com.fdjf.hsbank.apk",
     		version:"1.0.1",
     		versionInfo:"测试功能"
+    	}
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 服务端状态检查接口
+ *
+ * @name event.checkServerStatus
+ * @href /event/checkServerStatus
+ * 
+ * @input.post {string} client 		客户端统计参数（common/client）
+ *
+ * @description
+ * 
+ * https://localhost:3000/event/checkServerStatus?client=asfdaqwerqe
+ * 
+ * https://fakeapi.fdjf.net:3000/event/checkServerStatus?client=asfdaqwerqe
+ * 
+ * @output {json} 服务端状态检查
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ * 		statusCode:"{String} 		服务端是否正常工作（0是，其它不是）",
+ *  	statusText:"{string} 		服务端状态说明"
+ *    }
+ * }
+ *
+ */
+router.all('/event/checkServerStatus', function (req, res, next) {
+	var i = Math.floor(Math.random() * 3);
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: {
+    		statusCode:i == 1 ? "1" : "0",
+    		statusText:i == 1 ? "维护中，请稍候再试" : "ok"
     	}
     }
     res.json(resultValue);
