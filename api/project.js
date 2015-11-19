@@ -350,14 +350,14 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{number} 收益"
+ *  data:"{String} 收益"
  * }
  */
 router.all('/project/interestCalculation', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok',
-    	data: 100
+    	data: '100'
     }
     res.json(resultValue);
 });
