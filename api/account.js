@@ -323,7 +323,8 @@ router.all('/account/logout', function (req, res, next) {
  *      hasRemindOfReward:"{String} 是否有积分提醒（true 或 false)",
  *      hasOpenThirdAccount:"{String} 是否开通第三方账号（0：未开通；1：已开通）",
  *      hasBindBankCard:"{String} 是否绑定银行卡（0：未绑卡；1：已绑卡）",
- *      isNewUser:"{String} 是否新手（0是，其它不是）"
+ *      isNewUser:"{String} 是否新手（0是，其它不是）",
+ *      hasRecharged:"{String} 是否充过值（0是，其它不是）"
  *  }
  * }
  *
@@ -364,7 +365,8 @@ router.all('/account/my', function (req, res, next) {
     		mobile: '13566667777',
     		email:'34523452@ww.com',
     		bankCardNo:'622223334545667',
-    		isNewUser:"0"
+    		isNewUser:"0",
+    		hasRecharged:"1"
     	}
     }
     res.json(resultValue);
