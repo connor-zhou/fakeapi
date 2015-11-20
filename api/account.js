@@ -83,6 +83,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @input.post {string} password 		密码
  * @input.post {string} smsCode 		短信验证码
  * @input.post {string} inviteCode 	邀请码(选填)
+ * @input.post {string} channel 		注册渠道(选填)
  *
  * @output {json} 注册结果
  * {
@@ -95,9 +96,9 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000
+ * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
  *
- * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000
+ * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
  */
 router.all('/account/register', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -819,6 +820,7 @@ router.all('/account/transactionRecord', function (req, res, next) {
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
  * @input.post {string} avatar			头像(base64)
+ * @input.post {string} avatarUrl		头像Url(微信)
  * 
  * @output {json} 保存头像
  * {
@@ -831,9 +833,9 @@ router.all('/account/transactionRecord', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234
+ * https://localhost:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234&avatarUrl=
  * 
- * https://fakeapi.fdjf.net:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234
+ * https://fakeapi.fdjf.net:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234&avatarUrl=
  */
 router.all('/account/saveAvatar', function (req, res, next) {
 	var code = 0;
