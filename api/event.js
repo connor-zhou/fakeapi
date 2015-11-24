@@ -191,9 +191,9 @@ router.all('/event/newUserTask', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data: {
  *  	rotate:"{string} 	旋转角度",
- *  	results:"{String}   返回信息",
+ *  	result:"{String}   返回信息",
  *  	token:"{String}     奖品token",
- * 		status:"{String} 	0 状态代码（0表示未抽中，1表示虚拟物品，2表示实物）"
+ * 		imgUrl:"{String}    奖品logo"
  *    }
  * }
  *
@@ -204,9 +204,9 @@ router.all('/event/lottery', function (req, res, next) {
 		text: 'ok',
 		data: {
 			rotate:"240",
-			results:"恭喜您，获得了现金奖励1.88元",
+			result:"恭喜您，获得了现金奖励1.88元",
 			token:'token',
-			status:"1"
+			imgUrl:"https://www.hsbank360.com/upload_files/avatar/20151112170848_538.png"
 		}
 	}
 	res.json(resultValue);
