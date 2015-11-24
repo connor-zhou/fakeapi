@@ -84,6 +84,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @input.post {string} smsCode 		短信验证码
  * @input.post {string} inviteCode 	邀请码(选填)
  * @input.post {string} channel 		注册渠道(选填)
+ * @input.post {string} lotteryToken 	奖品token(选填)
  *
  * @output {json} 注册结果
  * {
