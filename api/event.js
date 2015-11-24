@@ -7,13 +7,13 @@ var _ = require('lodash');
  *
  * @name event.carousel
  * @href /event/carousel
- * 
+ *
  * @input.post {string} client 		客户端统计参数（common/client）
  *
  * @description
- * 
+ *
  * https://localhost:3000/event/carousel?client=asdfaqerq1werqwe
- * 
+ *
  * https://fakeapi.fdjf.net:3000/event/carousel?client=asdfaqerq1werqwe
  *
  * @output {json} 首页轮播列表
@@ -29,15 +29,15 @@ var _ = require('lodash');
  *     }
  * 	]
  * }
- * 
+ *
  *
  */
 router.all('/event/carousel', function (req, res, next) {
     var events = [];
     _.forEach([2,3,4,5,6,7], function (i) {
     	events.push({
-    		imageUrl:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg', 
-        	title: 'slide'+i, 
+    		imageUrl:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
+        	title: 'slide'+i,
         	type: [1,2][i % 2],
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1"
         });
@@ -55,15 +55,15 @@ router.all('/event/carousel', function (req, res, next) {
  *
  * @name event.checkUpdate
  * @href /event/checkUpdate
- * 
+ *
  * @input.post {string} client 		客户端统计参数（common/client）
  *
  * @description
- * 
+ *
  * https://localhost:3000/event/checkUpdate?client=asfdaqwerqe
- * 
+ *
  * https://fakeapi.fdjf.net:3000/event/checkUpdate?client=asfdaqwerqe
- * 
+ *
  * @output {json} App自动更新检查
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
@@ -96,15 +96,15 @@ router.all('/event/checkUpdate', function (req, res, next) {
  *
  * @name event.checkServerStatus
  * @href /event/checkServerStatus
- * 
+ *
  * @input.post {string} client 		客户端统计参数（common/client）
  *
  * @description
- * 
+ *
  * https://localhost:3000/event/checkServerStatus?client=asfdaqwerqe
- * 
+ *
  * https://fakeapi.fdjf.net:3000/event/checkServerStatus?client=asfdaqwerqe
- * 
+ *
  * @output {json} 服务端状态检查
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
@@ -134,15 +134,15 @@ router.all('/event/checkServerStatus', function (req, res, next) {
  *
  * @name event.newUserTask
  * @href /event/newUserTask
- * 
+ *
  * @input.post {string} client 		客户端统计参数（common/client）
  *
  * @description
- * 
+ *
  * https://localhost:3000/event/newUserTask?client=asfdaqwerqe
- * 
+ *
  * https://fakeapi.fdjf.net:3000/event/newUserTask?client=asfdaqwerqe
- * 
+ *
  * @output {json} 新手任务接口
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
@@ -168,6 +168,46 @@ router.all('/event/newUserTask', function (req, res, next) {
     	}
     }
     res.json(resultValue);
+});
+
+
+/**
+ * @fakedoc 抽奖
+ *
+ * @name event.lottery
+ * @href /event/lottery
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ *
+ * @description
+ *
+ * https://localhost:3000/event/lottery?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/event/lottery?client=asfdaqwerqe
+ *
+ * @output {json} 抽奖接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ *  	rotate:"{string} 	旋转角度",
+ *  	results:"{String}   返回信息",
+ * 		status:"{String} 	0 状态代码（0表示未抽中，1表示虚拟物品，2表示实物）"
+ *    }
+ * }
+ *
+ */
+router.all('/event/lottery', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			rotate:"240",
+			results:"恭喜您，获得了现金奖励1.88元",
+			status:"1"
+		}
+	}
+	res.json(resultValue);
 });
 
 module.exports = router;
