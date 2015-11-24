@@ -212,4 +212,50 @@ router.all('/event/lottery', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc 中奖榜单
+ *
+ * @name event.lotteryPrizeList
+ * @href /event/lotteryPrizeList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ *
+ * @description
+ *
+ * https://localhost:3000/event/lotteryPrizeList?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/event/lotteryPrizeList?client=asfdaqwerqe
+ *
+ * @output {json} 中奖榜单接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: [{
+ *  	mobile:"{String} 	手机号码",
+ *  	prize:"{String}   奖品"
+ *  }]
+ * }
+ *
+ */
+router.all('/event/lotteryPrizeList', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: [
+			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
+			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"iPad mini3"},
+			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"50元投资券"},
+			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"iPhone 6s"},
+			{mobile:'158****4609',result:"20元投资券"}
+		]
+	}
+	res.json(resultValue);
+});
+
+
 module.exports = router;
