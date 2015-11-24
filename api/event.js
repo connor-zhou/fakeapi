@@ -192,6 +192,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  *  data: {
  *  	rotate:"{string} 	旋转角度",
  *  	results:"{String}   返回信息",
+ *  	token:"{String}     奖品token",
  * 		status:"{String} 	0 状态代码（0表示未抽中，1表示虚拟物品，2表示实物）"
  *    }
  * }
@@ -204,6 +205,7 @@ router.all('/event/lottery', function (req, res, next) {
 		data: {
 			rotate:"240",
 			results:"恭喜您，获得了现金奖励1.88元",
+			token:'token',
 			status:"1"
 		}
 	}
