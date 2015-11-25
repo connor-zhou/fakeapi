@@ -190,7 +190,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	rotate:"{int} 	旋转角度",
+ *  	angle:"{int} 	旋转角度",
  *  	result:"{String}   返回信息",
  *  	token:"{String}     奖品token",
  * 		imgUrl:"{String}    奖品logo"
@@ -203,7 +203,7 @@ router.all('/event/lottery', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			rotate:240,
+			angle:240,
 			result:"恭喜您，获得了现金奖励1.88元",
 			token:'token',
 			imgUrl:"https://www.hsbank360.com/upload_files/avatar/20151112170848_538.png"
