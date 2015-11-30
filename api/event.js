@@ -264,6 +264,7 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
  * @href /event/investmentList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
  * @input.post {string} type 			类型（week:周排行；month:月排行）
  * @input.post {string} year 			年份
  * @input.post {string} month 			月份
@@ -271,19 +272,23 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/event/investmentList?client=asfdaqwerqe&type=month&year=2015&month=12&week=2
+ * https://localhost:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
  *
- * https://fakeapi.fdjf.net:3000/event/investmentList?client=asfdaqwerqe&type=month&year=2015&month=12&week=2
+ * https://fakeapi.fdjf.net:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
  *
  * @output {json} 投资排行接口
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data: [{
- *  	ranking:"{String} 	名次",
- *  	mobile:"{String}    手机号码（要预处理，显示成如下格式：136****5555）",
- *  	amount:"{String}    周期内的投资金额（元）"
- *  }]
+ *  data: {
+ *  	myRanking:"{String} 	当前用户的名次（如果未登录，则为0）",
+ *  	myAmount:"{String}    	当前用户的周期内的投资金额（元）(如果未登录，则为0)",
+ *  	recordList:[{
+ *  		ranking:"{String} 	名次",
+ *  		mobile:"{String}    手机号码（要预处理，显示成如下格式：136****5555）",
+ *  		amount:"{String}    周期内的投资金额（元）"
+ *  	}]
+ *    }
  * }
  *
  */
@@ -291,28 +296,31 @@ router.all('/event/investmentList', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data: [
-			{ranking:'1',mobile:'158****4609',amount:"100000"},
-			{ranking:'2',mobile:'158****4609',amount:"100000"},
-			{ranking:'3',mobile:'158****4609',amount:"100000"},
-			{ranking:'4',mobile:'158****4609',amount:"100000"},
-			{ranking:'5',mobile:'158****4609',amount:"100000"},
-			{ranking:'6',mobile:'158****4609',amount:"100000"},
-			{ranking:'7',mobile:'158****4609',amount:"100000"},
-			{ranking:'8',mobile:'158****4609',amount:"100000"},
-			{ranking:'9',mobile:'158****4609',amount:"100000"},
-			{ranking:'10',mobile:'158****4609',amount:"100000"},
-			{ranking:'11',mobile:'158****4609',amount:"100000"},
-			{ranking:'12',mobile:'158****4609',amount:"100000"},
-			{ranking:'13',mobile:'158****4609',amount:"100000"},
-			{ranking:'14',mobile:'158****4609',amount:"100000"},
-			{ranking:'15',mobile:'158****4609',amount:"100000"},
-			{ranking:'16',mobile:'158****4609',amount:"100000"},
-			{ranking:'17',mobile:'158****4609',amount:"100000"},
-			{ranking:'18',mobile:'158****4609',amount:"100000"},
-			{ranking:'19',mobile:'158****4609',amount:"100000"},
-			{ranking:'20',mobile:'158****4609',amount:"100000"},
-		]
+		data: {
+			myRanking:100,
+			myAmount:23456,
+			recordList:[{ranking:'1',mobile:'158****4609',amount:"100000"},
+				{ranking:'2',mobile:'158****4609',amount:"100000"},
+				{ranking:'3',mobile:'158****4609',amount:"100000"},
+				{ranking:'4',mobile:'158****4609',amount:"100000"},
+				{ranking:'5',mobile:'158****4609',amount:"100000"},
+				{ranking:'6',mobile:'158****4609',amount:"100000"},
+				{ranking:'7',mobile:'158****4609',amount:"100000"},
+				{ranking:'8',mobile:'158****4609',amount:"100000"},
+				{ranking:'9',mobile:'158****4609',amount:"100000"},
+				{ranking:'10',mobile:'158****4609',amount:"100000"},
+				{ranking:'11',mobile:'158****4609',amount:"100000"},
+				{ranking:'12',mobile:'158****4609',amount:"100000"},
+				{ranking:'13',mobile:'158****4609',amount:"100000"},
+				{ranking:'14',mobile:'158****4609',amount:"100000"},
+				{ranking:'15',mobile:'158****4609',amount:"100000"},
+				{ranking:'16',mobile:'158****4609',amount:"100000"},
+				{ranking:'17',mobile:'158****4609',amount:"100000"},
+				{ranking:'18',mobile:'158****4609',amount:"100000"},
+				{ranking:'19',mobile:'158****4609',amount:"100000"},
+				{ranking:'20',mobile:'158****4609',amount:"100000"}
+			]
+		}
 	}
 	res.json(resultValue);
 });
