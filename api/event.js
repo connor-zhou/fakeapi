@@ -69,10 +69,11 @@ router.all('/event/carousel', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- * 		needUpdate:"{String} 	是否强制更新（0是，其它不是）",
- *  	url:"{string} 			待更新的apk文件url（android）或AppStore下载链接（iOS）",
- *  	version:"{String} 		待更新App版本",
- *  	versionInfo:"{string} 	待更新App版本说明"
+ * 		needUpdate:"{String} 		是否强制更新（0是，其它不是）",
+ *  	url:"{string} 				待更新的apk文件url（android）或AppStore下载链接（iOS）",
+ *  	version:"{String} 			待更新App版本",
+ *  	versionInfo:"{string} 		待更新App版本说明",
+ *  	androidAppSize:"{string} 	待更新App文件大小（byte）"
  *    }
  * }
  *
@@ -85,7 +86,8 @@ router.all('/event/checkUpdate', function (req, res, next) {
     		needUpdate:"1",
     		url:"http://www.fdjf.net/client/fdjf_hsbank-1.0.1-fdjf-FDJF-release-aligned-com.fdjf.hsbank.apk",
     		version:"1.0.1",
-    		versionInfo:"测试功能"
+    		versionInfo:"测试功能",
+    		androidAppSize:"134123"
     	}
     }
     res.json(resultValue);
