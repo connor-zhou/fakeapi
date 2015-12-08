@@ -85,6 +85,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @input.post {string} inviteCode 	邀请码(选填)
  * @input.post {string} channel 		注册渠道(选填)
  * @input.post {string} lotteryToken 	奖品token(选填)
+ * @input.post {string} subid			最终客户在渠道商处的编码， 由渠道商生成，花生金服负责记录(选填)
  *
  * @output {json} 注册结果
  * {
@@ -97,9 +98,9 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
+ * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  *
- * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
+ * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  */
 router.all('/account/register', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
