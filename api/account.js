@@ -311,7 +311,16 @@ router.all('/account/logout', function (req, res, next) {
  *  	certNum:"{String} 身份证号码（后台做模糊处理）",
  *  	mobile:"{String} 手机号码",
  *  	email:"{String} 电子邮箱",
- *  	bankCardNo:"{String} 银行卡",
+ *  	bankCard: {
+ *  		cardNo:"{String} 银行卡",
+ *  		status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  		statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  		bankCode:"{String} 银行卡所属银行",
+ *  		bankName:"{String} 银行卡所属银行名称",
+ *      	bankLogo:"{String} 银行Logo的URL",
+ *  		amount:"{number} 可提现金额",
+ *      	ticketCount:"{int} 提现券张数"
+ *  	},
  *  	netAssets:"{number} 账户资产",
  *  	goldBalance:"{number} 账户余额",
  *  	congealVal:"{number} 冻结金额", 
@@ -367,7 +376,15 @@ router.all('/account/my', function (req, res, next) {
     		certNum: '234567198878763526',
     		mobile: '13566667777',
     		email:'34523452@ww.com',
-    		bankCardNo:'622223334545667',
+    		bankCard:{
+    			cardNo:"23452134523463456",
+        		cardStatusCode:"VERIFIED",
+        		bankCode:"NJYH",
+        		bankName:"东亚银行",
+        		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
+        		amount:1345,
+        		ticketCount:5
+    		},
     		isNewUser:"0",
     		hasRecharged:"1"
     	}
@@ -476,6 +493,8 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	annualizedRate:"{number} 年化利率",
  *      	rate:"{number} 已投百分比，不要加(%)",
  *      	remainingDays:"{int} 剩余天数",
+ *      	opDt:"{String} 投资日期",
+ *      	lastRepaymentDate:"{String} 到期日期（取的是后台的【项目最后还款日期】）",
  *      	isNewUser:"{String} 是否新手项目（0是，其它不是）",
  *			isRecommend:"{String} 是否重点推荐（0是，其它不是）"
  * 		}]
@@ -522,6 +541,8 @@ router.all('/account/myInvestment', function (req, res, next) {
             annualizedRate: Math.floor(Math.random() * 20) * 0.01,
             rate:Math.floor(Math.random() * 100) * 0.01,
             remainingDays:55,
+            opDt:"2015-12-01",
+            lastRepaymentDate:"2016-12-01",
             isNewUser:['0','1'][start % 2],
             isRecommend:['0','1'][start % 2]
         });
@@ -953,7 +974,10 @@ router.all('/account/saveEmail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 提现前置接口
+ * 
+ * @Deprecated
+ * 
+ * @fakedoc 提现前置接口 （已过期，改调 'account/my'接口）
  *
  * @name account.beforeWithdraw
  * @href /account/beforeWithdraw
@@ -1119,9 +1143,12 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	registerCount:"{int} 注册人数",
- *      nameAuthCount:"{int} 实名人数",
- *      investAccount:"{int} 投资人数",
+ *  	registerCount:"{int} 好友注册人数",
+ *      nameAuthCount:"{int} 好友实名人数",
+ *      investCount:"{int} 好友投资人数",
+ *      registerAmount:"{number} 好友注册得现金券额度",
+ *      nameAuthAmount:"{number} 好友实名得现金券额度",
+ *      investAmount:"{number} 好友投资得现金券额度",
  *      earningAmount:"{number} 奖励金额",
  *      earningTicketAmount:"{number} 奖励投资券额度"
  *  }
@@ -1134,9 +1161,12 @@ router.all('/account/myInvitationStat', function (req, res, next) {
     	data: {
     		registerCount:100,
     		nameAuthCount:80,
-    		investAccount:50,
+    		investCount:50,
+    		registerAmount:1000,
+    		nameAuthAmount:800,
+    		investAmount:500,
     		earningAmount:300,
-    		earningTicketAmount:300
+    		earningTicketAmount:3000
     	}
     }
     res.json(resultValue);
