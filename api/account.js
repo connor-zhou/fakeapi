@@ -318,8 +318,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		bankCode:"{String} 银行卡所属银行",
  *  		bankName:"{String} 银行卡所属银行名称",
  *      	bankLogo:"{String} 银行Logo的URL",
- *      	dayQuota:"{number} 日限额",
- *          monthQuota:"{number} 月限额",
+ *      	quota:"{number} 每次限额",
+ *          dayQuota:"{number} 日限额",
  *  		amount:"{number} 可提现金额",
  *      	ticketCount:"{int} 提现券张数"
  *  	},
@@ -384,8 +384,8 @@ router.all('/account/my', function (req, res, next) {
         		bankCode:"NJYH",
         		bankName:"东亚银行",
         		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
-        		dayQuota:5000,
-        		monthQuota:100000,
+        		quota:5000,
+        		dayQuota:100000,
         		amount:1345,
         		ticketCount:5
     		},
