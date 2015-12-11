@@ -154,7 +154,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      annualizedRateAdd:"{number} 活动加息年化利率",
  *      activityRemark:"{string} 活动说明（新手专享加息+8%，App专享加息+xx%，平台贴息+xx%，金刚花生保存障计划项目）",
  *      borrowersUser:"{string} 借款人",
- *      projectDuration:"{int} 借款期限，单位 *月份*",
+ *      projectDuration:"{int} 项目期限，单位 *月份*",
  *      startingAmount:"{number} 起投金额",
  *      biddingDeadline:"{date} 投资截止日期",
  *      projectIntroduce:"{string} 项目简介",
