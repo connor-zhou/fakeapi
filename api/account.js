@@ -1093,8 +1093,8 @@ router.all('/account/sign', function (req, res, next) {
  * 	  {
  *      name:"{String} 姓名",
  *      account:"{String} 帐号",
- *      status:"{int} 状态",
- *      statusName:"{String} 状态名称",
+ *      status:"{int} 状态(0:已注册、1：已投资、2：已充值、3：已开通第三方账号、4：已成交)",
+ *      statusName:"{String} 状态名称(已注册、已投资、已充值、已开通第三方账号、已成交)",
  *		registerDt:"{String} 注册时间"
  * 	  }
  * 	]
