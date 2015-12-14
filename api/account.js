@@ -510,9 +510,9 @@ router.all('/account/myTickets', function (req, res, next) {
  * 
  * @description
  * 
- * flag=1(投标中)：对应status=3(投标中)
+ * flag=1(投标中)：对应status=3(投标中)、对应status=4(投标结束)
  * 
- * flag=2(持有中)：对应status=4(投标结束)、status=5(还款中)
+ * flag=2(持有中)：status=5(还款中)
  * 
  * flag=3(已结束)：对应status=6(还款结束)、status=7(清算结束)
  *
