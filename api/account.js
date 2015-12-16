@@ -1516,13 +1516,70 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
- * 
- *
  */
 router.all('/account/confirmOrder', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok'
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 兑换记录分页列表
+ *
+ * @name account.orderPageList
+ * @href /account/orderPageList
+ * 
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ * @input.post {interger=} [pageSize=10] 		页容量
+ * @input.post {interger=} [pageNumber=1] 		页码
+ *
+ * @description
+ * 
+ * https://localhost:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * 
+ * https://fakeapi.fdjf.net:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ *
+ * @output {json} 分页列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: [{
+ * 		orderCode:"{String} 订单编号",
+ * 		productId:"{String} 商品Id",
+ * 		productName:"{String} 商品名称",
+ * 		productCount:"{String} 商品数量",
+ *      logoMin:"{String} 商品图片",
+ * 		price:"{number} 花生豆",
+ *  	createDt:"{String} 交易时间",
+ *  	status:"{int} 状态",
+ *      statusName:"{String} 状态名称"
+ *   }]
+ * }
+ * 
+ *
+ */
+router.all('/account/orderPageList', function (req, res, next) {
+    var activities = [];
+    _.forEach([1,2,3,4,5,6,7], function (i) {
+    	activities.push({
+    		orderCode: i + "", 
+    		productId:i + "",
+    		productName: '商品名称'+i, 
+    		productCount: "1",
+    		logoMin:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+    		price:"20000",
+    		createDt:'2015-10-20 11:11:11',
+        	status:1,
+        	statusName:'状态名称',
+        });
+    });
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: activities
     }
     res.json(resultValue);
 });
