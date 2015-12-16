@@ -1496,8 +1496,8 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
 /**
  * @fakedoc 提交订单
  *
- * @name account.confirmOrder
- * @href /account/confirmOrder
+ * @name account.orderConfirm
+ * @href /account/orderConfirm
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
@@ -1507,9 +1507,9 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://localhost:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  * 
- * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://fakeapi.fdjf.net:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  *
  * @output {json} 操作结果
  * {
@@ -1517,7 +1517,7 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  *  text:"{String} 状态描述",
  * }
  */
-router.all('/account/confirmOrder', function (req, res, next) {
+router.all('/account/orderConfirm', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok'
