@@ -119,7 +119,7 @@ router.all('/event/checkUpdate', function (req, res, next) {
  *
  */
 router.all('/event/checkServerStatus', function (req, res, next) {
-	var i = Math.floor(Math.random() * 3);
+	var i = Math.floor(Math.random() * 1);
     var resultValue = {
     	code: 0,
     	text: 'ok',
