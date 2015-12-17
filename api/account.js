@@ -1482,7 +1482,7 @@ router.all('/account/customerAddressEdit', function (req, res, next) {
  * @output {json} 操作结果
  * {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{String} 状态描述"
  * }
  */
 router.all('/account/customerAddressDelete', function (req, res, next) {
@@ -1515,12 +1515,20 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  * {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
+ *  data: {
+ * 		orderCode:"{String} 订单编号",
+ *  	createDt:"{String} 交易时间"
+ *   }
  * }
  */
 router.all('/account/orderConfirm', function (req, res, next) {
     var resultValue = {
     	code: 0,
-    	text: 'ok'
+    	text: 'ok',
+    	data: {
+    		orderCode:'43234234',
+    		createDt:'2015-10-20 11:11:11'
+    	}
     }
     res.json(resultValue);
 });
