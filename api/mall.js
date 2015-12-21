@@ -122,6 +122,7 @@ router.all('/mall/productDetail', function (req, res, next) {
         	typeId: [1,2][i % 2],
         	typeName:"商品类别名称",
         	logoNormal:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+        	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
         	price:1000,
         	showPrice:800,
         	upDt:'2015-10-20 11:11:11',
