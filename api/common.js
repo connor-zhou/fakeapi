@@ -10,7 +10,7 @@ var _ = require('lodash');
  *
  * @description
  * 
- * 使用方式：http://www.xxxxx.com?client=Base64.encode(json);
+ * 使用方式：http://www.xxxxx.com?client=Base64.encode(json)
  * 
  * <pre>
  *{
