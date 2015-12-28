@@ -49,6 +49,10 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  *
  * @description
  * 
+ * http://localhost:3000/wechat/getVersion
+ *
+ * https://fakeapi.fdjf.net:3000/wechat/getVersion
+ * 
  * 使用方式：
  * 
  * 1. App调微信端，得到微信版花生金服的版本号
@@ -59,6 +63,15 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  * 
  * 当微版微信版花生金服的版本升级时，app请求的url会自动更新到新版，而不是取本地缓存
  */
+router.all('/wechat/getVersion', function (req, res, next) {
+    res.json({
+        code:0,
+        text:'ok',
+        data:{
+            version: '1.1.2.0'
+        }
+    });
+});
 
 /**
  * @fakedoc （微信端-->App）活动分享
@@ -80,9 +93,9 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  */
 
 /**
- * @fakedoc （微信端-->App）立即投资（已过期，改调 'window.hsbank.invest'接口）
+ * @fakedoc （微信端-->App）立即投资（已过期，改调 'wechat.invest'接口）
  * 
- * @name window.hsbank.investProject
+ * @name wechat.investProject
  *
  * @description
  * 
@@ -96,7 +109,7 @@ router.all('/wechat/jsSignature', function (req, res, next) {
 /**
  * @fakedoc （微信端-->App）立即投资
  * 
- * @name window.hsbank.invest
+ * @name wechat.invest
  * 
  * @input.post {string} projectId 项目Id（为空时，跳转到项目列表，否则跳转指定项目的详情页）
  *
@@ -110,9 +123,9 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  */
 
 /**
- * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'window.hsbank.hasLogin'接口）
+ * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'wechat.hasLogin'接口）
  * 
- * @name window.hsbank.userIsHasLogin
+ * @name wechat.userIsHasLogin
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -126,9 +139,9 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  */
 
 /**
- * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'window.hsbank.hasLogin'接口）
+ * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'wechat.hasLogin'接口）
  * 
- * @name window.hsbank.hasLogin
+ * @name wechat.hasLogin
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -142,9 +155,9 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  */
 
 /**
- * @fakedoc （微信端-->App）跳转到App首页（已过期，改调 'window.hsbank.gotoView'接口）
+ * @fakedoc （微信端-->App）跳转到App首页（已过期，改调 'wechat.gotoView'接口）
  * 
- * @name window.hsbank.toAppHome
+ * @name wechat.toAppHome
  *
  * @description
  * 
@@ -156,9 +169,9 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  */
 
 /**
- * @fakedoc （微信端-->App）跳转到App登录页（已过期，改调 'window.hsbank.gotoView'接口）
+ * @fakedoc （微信端-->App）跳转到App登录页（已过期，改调 'wechat.gotoView'接口）
  * 
- * @name window.hsbank.toLoginVC
+ * @name wechat.toLoginVC
  * 
  * @description
  * 
@@ -172,7 +185,7 @@ router.all('/wechat/jsSignature', function (req, res, next) {
 /**
  * @fakedoc （微信端-->App）跳转到App指定页
  * 
- * @name window.hsbank.gotoView
+ * @name wechat.gotoView
  * 
  * @input.post {string} pageId 页面Id，如首页(home)、登录页(login)、帮助中心(help)。App和微信端商量确定，系统内唯一即可。
  *
