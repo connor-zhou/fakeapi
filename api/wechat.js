@@ -211,7 +211,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * <a href="#" onclick="window.hsbank.popupView();" class="btn-mt btn-zc">返回到App页面</a>
  * 
- * 具体返回的页面，由App在调用微信端页面前，存入本地缓存中。
+ * 具体返回的页面，有：帮助中心、安全保障。
  */
 
 module.exports = router;
