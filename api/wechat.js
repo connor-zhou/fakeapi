@@ -198,4 +198,20 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * <a href="#" onclick="window.hsbank.gotoView('more');" class="btn-mt btn-zc">跳转到App登录页</a>
  */
 
+/**
+ * @fakedoc （微信端-->App）返回到App页面
+ * 
+ * @name wechat.popupView
+ *
+ * @description
+ * 
+ * 使用方式：
+ * 
+ * 在微信页面端可以按如下方式调用
+ * 
+ * <a href="#" onclick="window.hsbank.popupView();" class="btn-mt btn-zc">返回到App页面</a>
+ * 
+ * 具体返回的页面，由App在调用微信端页面前，存入本地缓存中。
+ */
+
 module.exports = router;
