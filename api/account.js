@@ -1082,6 +1082,7 @@ router.all('/account/sign', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
+ * @input.post {string} status			状态（如果为空，则取全部）
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  *
@@ -1095,6 +1096,7 @@ router.all('/account/sign', function (req, res, next) {
  *      account:"{String} 帐号",
  *      status:"{int} 状态(0:已注册、1：已投资、2：已充值、3：已开通第三方账号、4：已成交)",
  *      statusName:"{String} 状态名称(已注册、已投资、已充值、已开通第三方账号、已成交)",
+ *      registerChannel:"{String} 注册渠道",
  *		registerDt:"{String} 注册时间"
  * 	  }
  * 	]
@@ -1116,6 +1118,7 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
             account: 'abcd-' + start,
             status: [1, 2, 3][start % 3],
             statusName: ["已注册","已充值","已投资"][start % 3],
+            registerChannel: "通过微信邀请注册",
             registerDt: "2015-10-20"
         });
         start++;
