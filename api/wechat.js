@@ -58,6 +58,8 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  * 1. App调微信端，得到微信版花生金服的版本号
  * 
  * 2. App调微信端url时，带上微信版花生金服的版本号，如：http://www.xxxxx.com?v=1.1.1.0
+ *
+ * 3. 微信端GET参数说明参见 http://code.fdjf.net/git/wenqiang/wechat/blob/master/README.md#全局参数列表
  * 
  * 设计目的：
  * 
