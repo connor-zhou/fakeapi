@@ -12,6 +12,7 @@ var fakeMore  = require('./api/more');
 var fakeMall  = require('./api/mall');
 var fakeCommon  = require('./api/common');
 var fakeWechat  = require('./api/wechat');
+var fakeAgreement  = require('./api/agreement');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/', fakeMore);
 app.use('/', fakeMall);
 app.use('/', fakeCommon);
 app.use('/', fakeWechat);
+app.use('/', fakeAgreement);
 
 //livereload
 if(app.get('env') == 'development'){
