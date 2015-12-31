@@ -60,6 +60,10 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  * 2. App调微信端url时，带上微信版花生金服的版本号，如：http://www.xxxxx.com?v=1.1.1.0
  *
  * 3. 微信端GET参数说明参见 http://code.fdjf.net/git/wenqiang/wechat/blob/master/README.md#全局参数列表
+ *
+ * 4. 正式环境的地址是 http://m.hsbank360.com/info.json
+ *
+ * 5. 测试环境的地址是 http://fakeapi.fdjf.net/info.json
  * 
  * 设计目的：
  * 
