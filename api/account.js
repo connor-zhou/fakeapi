@@ -1601,6 +1601,8 @@ router.all('/account/orderPageList', function (req, res, next) {
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
  *
+ * @needAuth
+ *
  * @description
  *
  * https://localhost:3000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
@@ -1630,6 +1632,8 @@ router.all('/account/hasGetNewYearGiftMoney', function (req, res, next) {
  *
  * @name account.getNewYearGiftMoney
  * @href /account/getNewYearGiftMoney
+ *
+ * @needAuth
  *
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
