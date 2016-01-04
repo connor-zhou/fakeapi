@@ -95,7 +95,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.activityShare('邀请好友','邀请的好友可获得现金2.88元/人', 'http://xxxx/activity?id=200', 'http://xxxx/image.jpg');" class="btn-mt btn-zc">活动分享</a>
+ * `<a href="#" onclick="window.hsbank.activityShare('邀请好友','邀请的好友可获得现金2.88元/人', 'http://xxxx/activity?id=200', 'http://xxxx/image.jpg');" class="btn-mt btn-zc">活动分享</a>`
  */
 
 /**
@@ -109,7 +109,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.investProject();" class="btn-mt btn-zc">立即投资</a>
+ * `<a href="#" onclick="window.hsbank.investProject();" class="btn-mt btn-zc">立即投资</a>`
  */
 
 /**
@@ -125,7 +125,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.invest('');" class="btn-mt btn-zc">立即投资</a>
+ * `<a href="#" onclick="window.hsbank.invest('');" class="btn-mt btn-zc">立即投资</a>`
  */
 
 /**
@@ -141,7 +141,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.userIsHasLogin();" class="btn-mt btn-zc">用户是否已登录</a>
+ * `<a href="#" onclick="window.hsbank.userIsHasLogin();" class="btn-mt btn-zc">用户是否已登录</a>`
  */
 
 /**
@@ -157,7 +157,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.hasLogin();" class="btn-mt btn-zc">用户是否已登录</a>
+ * `<a href="#" onclick="window.hsbank.hasLogin();" class="btn-mt btn-zc">用户是否已登录</a>`
  */
 
 /**
@@ -171,7 +171,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.toAppHome();" class="btn-mt btn-zc">跳转到App首页</a>
+ * `<a href="#" onclick="window.hsbank.toAppHome();" class="btn-mt btn-zc">跳转到App首页</a>`
  */
 
 /**
@@ -185,7 +185,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.toLoginVC();" class="btn-mt btn-zc">跳转到App登录页</a>
+ * `<a href="#" onclick="window.hsbank.toLoginVC();" class="btn-mt btn-zc">跳转到App登录页</a>`
  */
 
 /**
@@ -201,7 +201,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.gotoView('more');" class="btn-mt btn-zc">跳转到App登录页</a>
+ * `<a href="#" onclick="window.hsbank.gotoView('more');" class="btn-mt btn-zc">跳转到App登录页</a>`
  */
 
 /**
@@ -215,7 +215,7 @@ router.all('/wechat/getVersion', function (req, res, next) {
  * 
  * 在微信页面端可以按如下方式调用
  * 
- * <a href="#" onclick="window.hsbank.popupView();" class="btn-mt btn-zc">返回到App页面</a>
+ * `<a href="#" onclick="window.hsbank.popupView();" class="btn-mt btn-zc">返回到App页面</a>`
  * 
  * 具体返回的页面，有：帮助中心、安全保障。
  */
