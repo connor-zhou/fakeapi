@@ -273,6 +273,7 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
  * @input.post {string} year 			年份
  * @input.post {string} month 			月份
  * @input.post {string} week 			当月第N周
+ * @input.post {string} genre 			类型2（1:投资排行[default],2,年化排行）
  *
  * @description
  *
