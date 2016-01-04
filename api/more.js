@@ -59,7 +59,9 @@ router.all('/more/loan', function (req, res, next) {
  *  	title:"{string} 标题",
  *  	type:"{int} 类型（1--活动，点击后打开url；2--项目，点击后跳到项目详情",
  *  	target:"{string} 目标参数",
- *  	activity_period:"{string} 活动周期"
+ *  	activity_period:"{string} 活动周期",
+ *  	status:"{string} 状态(0:进行中、1：已结束)",
+ *  	statusName:"{string} 状态名称(进行中、已结束)"
  *  }]
  * }
  */
@@ -71,7 +73,9 @@ router.all('/more/activityPageList', function (req, res, next) {
         	title: 'slide'+i, 
         	type: [1,2][i % 2],
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1",
-        	activity_period:'2015-11-09至2015-12-09'
+        	activity_period:'2015-11-09至2015-12-09',
+        	status:'1',
+        	statusName:'已结束'
         });
     });
     var resultValue = {

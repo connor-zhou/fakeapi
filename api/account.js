@@ -85,6 +85,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @input.post {string} inviteCode 	邀请码(选填)
  * @input.post {string} channel 		注册渠道(选填)
  * @input.post {string} lotteryToken 	奖品token(选填)
+ * @input.post {string} subid			最终客户在渠道商处的编码， 由渠道商生成，花生金服负责记录(选填)
  *
  * @output {json} 注册结果
  * {
@@ -97,9 +98,9 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
+ * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  *
- * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd
+ * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  */
 router.all('/account/register', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -310,7 +311,18 @@ router.all('/account/logout', function (req, res, next) {
  *  	certNum:"{String} 身份证号码（后台做模糊处理）",
  *  	mobile:"{String} 手机号码",
  *  	email:"{String} 电子邮箱",
- *  	bankCardNo:"{String} 银行卡",
+ *  	bankCard: {
+ *  		cardNo:"{String} 银行卡",
+ *  		status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  		statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  		bankCode:"{String} 银行卡所属银行",
+ *  		bankName:"{String} 银行卡所属银行名称",
+ *      	bankLogo:"{String} 银行Logo的URL",
+ *      	quota:"{number} 每次限额",
+ *          dayQuota:"{number} 日限额",
+ *  		amount:"{number} 可提现金额",
+ *      	ticketCount:"{int} 提现券张数"
+ *  	},
  *  	netAssets:"{number} 账户资产",
  *  	goldBalance:"{number} 账户余额",
  *  	congealVal:"{number} 冻结金额", 
@@ -366,7 +378,17 @@ router.all('/account/my', function (req, res, next) {
     		certNum: '234567198878763526',
     		mobile: '13566667777',
     		email:'34523452@ww.com',
-    		bankCardNo:'622223334545667',
+    		bankCard:{
+    			cardNo:"23452134523463456",
+        		cardStatusCode:"VERIFIED",
+        		bankCode:"NJYH",
+        		bankName:"东亚银行",
+        		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
+        		quota:5000,
+        		dayQuota:100000,
+        		amount:1345,
+        		ticketCount:5
+    		},
     		isNewUser:"0",
     		hasRecharged:"1"
     	}
@@ -465,6 +487,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	projectName:"{string} 项目名称",
  *      	projectType:"{int} 项目类型",
  *      	projectTypeName:"{string} 项目类型名称",
+ *      	projectDuration:"{int} 项目期限，单位 *月份*",
  *     		repaymentMode:"{int} 还款方式",
  *      	repaymentModeName:"{String} 还款方式名称",
  *      	amount:"{number} 投资金额",
@@ -475,6 +498,8 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	annualizedRate:"{number} 年化利率",
  *      	rate:"{number} 已投百分比，不要加(%)",
  *      	remainingDays:"{int} 剩余天数",
+ *      	opDt:"{String} 投资日期",
+ *      	lastRepaymentDate:"{String} 到期日期（取的是后台的【项目最后还款日期】）",
  *      	isNewUser:"{String} 是否新手项目（0是，其它不是）",
  *			isRecommend:"{String} 是否重点推荐（0是，其它不是）"
  * 		}]
@@ -485,9 +510,9 @@ router.all('/account/myTickets', function (req, res, next) {
  * 
  * @description
  * 
- * flag=1(投标中)：对应status=3(投标中)
+ * flag=1(投标中)：对应status=3(投标中)、对应status=4(投标结束)
  * 
- * flag=2(持有中)：对应status=4(投标结束)、status=5(还款中)
+ * flag=2(持有中)：status=5(还款中)
  * 
  * flag=3(已结束)：对应status=6(还款结束)、status=7(清算结束)
  *
@@ -511,6 +536,7 @@ router.all('/account/myInvestment', function (req, res, next) {
             projectName: types[type] + '-' + start,
             projectType: type,
             projectTypeName: types[type],
+            projectDuration:12,
             repaymentMode: 1,
             repaymentModeName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
             amount: 1000000,
@@ -521,6 +547,8 @@ router.all('/account/myInvestment', function (req, res, next) {
             annualizedRate: Math.floor(Math.random() * 20) * 0.01,
             rate:Math.floor(Math.random() * 100) * 0.01,
             remainingDays:55,
+            opDt:"2015-12-01",
+            lastRepaymentDate:"2016-12-01",
             isNewUser:['0','1'][start % 2],
             isRecommend:['0','1'][start % 2]
         });
@@ -952,7 +980,10 @@ router.all('/account/saveEmail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 提现前置接口
+ * 
+ * @Deprecated
+ * 
+ * @fakedoc 提现前置接口 （已过期，改调 'account/my'接口）
  *
  * @name account.beforeWithdraw
  * @href /account/beforeWithdraw
@@ -1062,8 +1093,8 @@ router.all('/account/sign', function (req, res, next) {
  * 	  {
  *      name:"{String} 姓名",
  *      account:"{String} 帐号",
- *      status:"{int} 状态",
- *      statusName:"{String} 状态名称",
+ *      status:"{int} 状态(0:已注册、1：已投资、2：已充值、3：已开通第三方账号、4：已成交)",
+ *      statusName:"{String} 状态名称(已注册、已投资、已充值、已开通第三方账号、已成交)",
  *		registerDt:"{String} 注册时间"
  * 	  }
  * 	]
@@ -1118,9 +1149,13 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	registerCount:"{int} 注册人数",
- *      nameAuthCount:"{int} 实名人数",
- *      investAccount:"{int} 投资人数",
+ *  	registerCount:"{int} 好友注册人数",
+ *      nameAuthCount:"{int} 好友实名人数",
+ *      investCount:"{int} 好友投资人数",
+ *      investAccount:"{int} 好友投资人数(字段拼错，建议在1.1.1.0版本之后废弃)",
+ *      registerAmount:"{number} 好友注册得现金券额度",
+ *      nameAuthAmount:"{number} 好友实名得现金券额度",
+ *      investAmount:"{number} 好友投资得现金券额度",
  *      earningAmount:"{number} 奖励金额",
  *      earningTicketAmount:"{number} 奖励投资券额度"
  *  }
@@ -1133,9 +1168,13 @@ router.all('/account/myInvitationStat', function (req, res, next) {
     	data: {
     		registerCount:100,
     		nameAuthCount:80,
+    		investCount:50,
     		investAccount:50,
+    		registerAmount:1000,
+    		nameAuthAmount:800,
+    		investAmount:500,
     		earningAmount:300,
-    		earningTicketAmount:300
+    		earningTicketAmount:3000
     	}
     }
     res.json(resultValue);
@@ -1443,7 +1482,7 @@ router.all('/account/customerAddressEdit', function (req, res, next) {
  * @output {json} 操作结果
  * {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{String} 状态描述"
  * }
  */
 router.all('/account/customerAddressDelete', function (req, res, next) {
@@ -1457,8 +1496,8 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
 /**
  * @fakedoc 提交订单
  *
- * @name account.confirmOrder
- * @href /account/confirmOrder
+ * @name account.orderConfirm
+ * @href /account/orderConfirm
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
@@ -1468,22 +1507,87 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://localhost:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  * 
- * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://fakeapi.fdjf.net:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  *
  * @output {json} 操作结果
  * {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
+ *  data: {
+ * 		orderCode:"{String} 订单编号",
+ *  	createDt:"{String} 交易时间"
+ *   }
+ * }
+ */
+router.all('/account/orderConfirm', function (req, res, next) {
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: {
+    		orderCode:'43234234',
+    		createDt:'2015-10-20 11:11:11'
+    	}
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 兑换记录分页列表
+ *
+ * @name account.orderPageList
+ * @href /account/orderPageList
+ * 
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ * @input.post {interger=} [pageSize=10] 		页容量
+ * @input.post {interger=} [pageNumber=1] 		页码
+ *
+ * @description
+ * 
+ * https://localhost:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * 
+ * https://fakeapi.fdjf.net:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ *
+ * @output {json} 分页列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: [{
+ * 		orderCode:"{String} 订单编号",
+ * 		productId:"{String} 商品Id",
+ * 		productName:"{String} 商品名称",
+ * 		productCount:"{String} 商品数量",
+ *      logoMin:"{String} 商品图片",
+ * 		price:"{number} 花生豆",
+ *  	createDt:"{String} 交易时间",
+ *  	status:"{int} 状态",
+ *      statusName:"{String} 状态名称"
+ *   }]
  * }
  * 
  *
  */
-router.all('/account/confirmOrder', function (req, res, next) {
+router.all('/account/orderPageList', function (req, res, next) {
+    var activities = [];
+    _.forEach([1,2,3,4,5,6,7], function (i) {
+    	activities.push({
+    		orderCode: i + "", 
+    		productId:i + "",
+    		productName: '商品名称'+i, 
+    		productCount: "1",
+    		logoMin:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+    		price:"20000",
+    		createDt:'2015-10-20 11:11:11',
+        	status:1,
+        	statusName:'状态名称',
+        });
+    });
     var resultValue = {
     	code: 0,
-    	text: 'ok'
+    	text: 'ok',
+    	data: activities
     }
     res.json(resultValue);
 });

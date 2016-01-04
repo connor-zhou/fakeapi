@@ -69,10 +69,12 @@ router.all('/event/carousel', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- * 		needUpdate:"{String} 	是否强制更新（0是，其它不是）",
- *  	url:"{string} 			待更新的apk文件url（android）或AppStore下载链接（iOS）",
- *  	version:"{String} 		待更新App版本",
- *  	versionInfo:"{string} 	待更新App版本说明"
+ * 		needUpdate:"{String} 		是否有更新（0是，其它不是）",
+ * 		needForcedUpdate:"{String} 	是否需要强制更新（0是，其它不是）",
+ *  	url:"{string} 				待更新的apk文件url（android）或AppStore下载链接（iOS）",
+ *  	version:"{String} 			待更新App版本",
+ *  	versionInfo:"{string} 		待更新App版本说明",
+ *  	androidAppSize:"{string} 	待更新App文件大小（byte）"
  *    }
  * }
  *
@@ -83,9 +85,11 @@ router.all('/event/checkUpdate', function (req, res, next) {
     	text: 'ok',
     	data: {
     		needUpdate:"1",
+    		needForcedUpdate:"1",
     		url:"http://www.fdjf.net/client/fdjf_hsbank-1.0.1-fdjf-FDJF-release-aligned-com.fdjf.hsbank.apk",
     		version:"1.0.1",
-    		versionInfo:"测试功能"
+    		versionInfo:"测试功能",
+    		androidAppSize:"134123"
     	}
     }
     res.json(resultValue);
@@ -117,7 +121,7 @@ router.all('/event/checkUpdate', function (req, res, next) {
  *
  */
 router.all('/event/checkServerStatus', function (req, res, next) {
-	var i = Math.floor(Math.random() * 3);
+	var i = Math.floor(Math.random() * 1);
     var resultValue = {
     	code: 0,
     	text: 'ok',
@@ -253,6 +257,74 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 			{mobile:'158****4609',result:"iPhone 6s"},
 			{mobile:'158****4609',result:"20元投资券"}
 		]
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc 投资排行
+ *
+ * @name event.investmentList
+ * @href /event/investmentList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} type 			类型（week:周排行；month:月排行）
+ * @input.post {string} year 			年份
+ * @input.post {string} month 			月份
+ * @input.post {string} week 			当月第N周
+ *
+ * @description
+ *
+ * https://localhost:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
+ *
+ * https://fakeapi.fdjf.net:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
+ *
+ * @output {json} 投资排行接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ *  	myRanking:"{String} 	当前用户的名次（如果未登录，则为0）",
+ *  	myAmount:"{String}    	当前用户的周期内的投资金额（元）(如果未登录，则为0)",
+ *  	recordList:[{
+ *  		ranking:"{String} 	名次",
+ *  		mobile:"{String}    手机号码（要预处理，显示成如下格式：136****5555）",
+ *  		amount:"{String}    周期内的投资金额（元）"
+ *  	}]
+ *    }
+ * }
+ *
+ */
+router.all('/event/investmentList', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			myRanking:100,
+			myAmount:23456,
+			recordList:[{ranking:'1',mobile:'158****4609',amount:"100000"},
+				{ranking:'2',mobile:'158****4609',amount:"100000"},
+				{ranking:'3',mobile:'158****4609',amount:"100000"},
+				{ranking:'4',mobile:'158****4609',amount:"100000"},
+				{ranking:'5',mobile:'158****4609',amount:"100000"},
+				{ranking:'6',mobile:'158****4609',amount:"100000"},
+				{ranking:'7',mobile:'158****4609',amount:"100000"},
+				{ranking:'8',mobile:'158****4609',amount:"100000"},
+				{ranking:'9',mobile:'158****4609',amount:"100000"},
+				{ranking:'10',mobile:'158****4609',amount:"100000"},
+				{ranking:'11',mobile:'158****4609',amount:"100000"},
+				{ranking:'12',mobile:'158****4609',amount:"100000"},
+				{ranking:'13',mobile:'158****4609',amount:"100000"},
+				{ranking:'14',mobile:'158****4609',amount:"100000"},
+				{ranking:'15',mobile:'158****4609',amount:"100000"},
+				{ranking:'16',mobile:'158****4609',amount:"100000"},
+				{ranking:'17',mobile:'158****4609',amount:"100000"},
+				{ranking:'18',mobile:'158****4609',amount:"100000"},
+				{ranking:'19',mobile:'158****4609',amount:"100000"},
+				{ranking:'20',mobile:'158****4609',amount:"100000"}
+			]
+		}
 	}
 	res.json(resultValue);
 });
