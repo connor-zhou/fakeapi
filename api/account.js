@@ -1593,19 +1593,19 @@ router.all('/account/orderPageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 新年红包
+ * @fakedoc 是否领取新年红包
  *
- * @name account.newYearGiftMoney
- * @href /account/newYearGiftMoney
+ * @name account.hasGetNewYearGiftMoney
+ * @href /account/hasGetNewYearGiftMoney
  *
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
  *
  * @description
  *
- * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://localhost:3000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
- * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://fakeapi.fdjf.net:3000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
  * @output {json} 操作结果
  * {
@@ -1615,14 +1615,46 @@ router.all('/account/orderPageList', function (req, res, next) {
  *
  *
  */
-router.all('/account/newYearGiftMoney', function (req, res, next) {
+router.all('/account/hasGetNewYearGiftMoney', function (req, res, next) {
+	var resultValue = {
+		code: 2,
+		text: '未领取'
+	}
+	res.json(resultValue);
+});
+
+
+
+/**
+ * @fakedoc 获取新年红包
+ *
+ * @name account.getNewYearGiftMoney
+ * @href /account/getNewYearGiftMoney
+ *
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ *
+ * @description
+ *
+ * https://localhost:3000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ *
+ * https://fakeapi.fdjf.net:3000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ *
+ * @output {json} 操作结果
+ * {
+ * 	code:"{int}    状态代码（0表示领取成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ * }
+ *
+ *
+ */
+router.all('/account/getNewYearGiftMoney', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: '恭喜你获得5元现金券'
 	}
 	res.json(resultValue);
 });
-
 
 
 module.exports = router;
