@@ -1488,4 +1488,37 @@ router.all('/account/confirmOrder', function (req, res, next) {
     res.json(resultValue);
 });
 
+/**
+ * @fakedoc 新年红包
+ *
+ * @name account.newYearGiftMoney
+ * @href /account/newYearGiftMoney
+ *
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ *
+ * @description
+ *
+ * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ *
+ * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ *
+ * @output {json} 操作结果
+ * {
+ * 	code:"{int}    状态代码（0表示领取成功，1表示token无效，2表示未领取，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ * }
+ *
+ *
+ */
+router.all('/account/newYearGiftMoney', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: '恭喜你获得5元现金券'
+	}
+	res.json(resultValue);
+});
+
+
+
 module.exports = router;
