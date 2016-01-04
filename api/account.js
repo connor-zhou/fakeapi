@@ -1603,9 +1603,9 @@ router.all('/account/orderPageList', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://localhost:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234
  *
- * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://fakeapi.fdjf.net:3000/account/confirmOrder?client=asdfaqerq1werqwe&token=adfasdf234
  *
  * @output {json} 操作结果
  * {
