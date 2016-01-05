@@ -43,20 +43,20 @@ router.all('/wechat/jsSignature', function (req, res, next) {
 
 /**
  * @fakedoc （App-->微信端）得到微信版花生金服的版本号，用于app请求微信端页面时使用
- * 
- * @name wechat.getVersion
- * @href /wechat/getVersion
+ *
+ * @name wechat.getWechatVersion
+ * @href /wechat/getWechatVersion
  *
  * @description
- * 
- * http://localhost:3000/wechat/getVersion
  *
- * https://fakeapi.fdjf.net:3000/wechat/getVersion
- * 
+ * http://localhost:3000/wechat/getWechatVersion
+ *
+ * https://fakeapi.fdjf.net:3000/wechat/getWechatVersion
+ *
  * 使用方式：
- * 
+ *
  * 1. App调微信端，得到微信版花生金服的版本号
- * 
+ *
  * 2. App调微信端url时，带上微信版花生金服的版本号，如：http://www.xxxxx.com?v=1.1.1.0
  *
  * 3. 微信端GET参数说明参见 http://code.fdjf.net/git/wenqiang/wechat/blob/master/README.md#全局参数列表
@@ -64,12 +64,12 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  * 4. 正式环境的地址是 http://m.hsbank360.com/info.json
  *
  * 5. 测试环境的地址是 http://fakeapi.fdjf.net/info.json
- * 
+ *
  * 设计目的：
- * 
+ *
  * 当微版微信版花生金服的版本升级时，app请求的url会自动更新到新版，而不是取本地缓存
  */
-router.all('/wechat/getVersion', function (req, res, next) {
+router.all('/wechat/getWechatVersion', function (req, res, next) {
     res.json({
         code:0,
         text:'ok',
@@ -78,6 +78,34 @@ router.all('/wechat/getVersion', function (req, res, next) {
         }
     });
 });
+
+/**
+ * @fakedoc （微信端-->APP）得到花生金服APP的版本号
+ *
+ * @name wechat.getAppVersion
+ * @href /wechat/getAppVersion
+ *
+ * @output {string} '1.1.1.0' 返回APP版本号
+ *
+ * @description
+ *
+ * http://localhost:3000/wechat/getAppVersion
+ *
+ * https://fakeapi.fdjf.net:3000/wechat/getAppVersion
+ *
+ * 设计目的：
+ *
+ * 不同的APP版本曝光出来的js函数会有区别，微信端需要加以区别
+ *
+ * 在微信页面端可以按如下方式调用
+ *
+ *@example
+ * ```
+ *      <script>
+ *          alert(window.hsbank.getAppVersion());
+ *      </script>
+ * ```
+ */
 
 /**
  * @fakedoc （微信端-->App）活动分享
