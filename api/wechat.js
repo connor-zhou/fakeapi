@@ -134,7 +134,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.0.0
  * @android.since 1.0.0.0
  * @ios.delete 1.5.0
- * @androi.delete 1.5.0.0
+ * @android.delete 1.5.0.0
  *
  * @description
  * 
@@ -172,7 +172,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.0.0
  * @android.since 1.0.0.0
  * @ios.delete 1.5.0
- * @androi.delete 1.5.0.0
+ * @android.delete 1.5.0.0
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -194,7 +194,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.0.0
  * @android.since 1.0.0.0
  * @ios.delete 1.5.0
- * @androi.delete 1.5.0.0
+ * @android.delete 1.5.0.0
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -216,7 +216,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.0.0
  * @android.since 1.0.0.0
  * @ios.delete 1.5.0
- * @androi.delete 1.5.0.0
+ * @android.delete 1.5.0.0
  *
  * @description
  * 
@@ -236,7 +236,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.0.0
  * @android.since 1.0.0.0
  * @ios.delete 1.5.0
- * @androi.delete 1.5.0.0
+ * @android.delete 1.5.0.0
  * 
  * @description
  * 
