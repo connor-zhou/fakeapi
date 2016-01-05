@@ -83,15 +83,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->APP）得到花生金服APP的版本号
  *
  * @name wechat.getAppVersion
- * @href /wechat/getAppVersion
+ * @ios.since 1.2.0
+ * @android.since 1.3.0.0
  *
  * @output {string} '1.1.1.0' 返回APP版本号
  *
  * @description
- *
- * http://localhost:3000/wechat/getAppVersion
- *
- * https://fakeapi.fdjf.net:3000/wechat/getAppVersion
  *
  * 设计目的：
  *
@@ -111,6 +108,8 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）活动分享
  * 
  * @name wechat.activityShare
+ * @ios.since 1.2.0
+ * @android.since 1.3.0.0
  * 
  * @input.post {string} title 活动名称
  * @input.post {string} desc  活动描述
@@ -130,6 +129,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）立即投资（已过期，改调 'wechat.invest'接口）
  * 
  * @name wechat.investProject
+ * @ios.deprecated 1.2.0
+ * @android.deprecated 1.3.0.0
+ * @ios.since 1.0.0
+ * @android.since 1.0.0.0
+ * @ios.delete 1.5.0
+ * @androi.delete 1.5.0.0
  *
  * @description
  * 
@@ -144,6 +149,8 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）立即投资
  * 
  * @name wechat.invest
+ * @ios.since 1.2.0
+ * @android.since 1.3.0.0
  * 
  * @input.post {string} projectId 项目Id（为空时，跳转到项目列表，否则跳转指定项目的详情页）
  *
@@ -160,6 +167,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'wechat.hasLogin'接口）
  * 
  * @name wechat.userIsHasLogin
+ * @ios.deprecated 1.2.0
+ * @android.deprecated 1.3.0.0
+ * @ios.since 1.0.0
+ * @android.since 1.0.0.0
+ * @ios.delete 1.5.0
+ * @androi.delete 1.5.0.0
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -176,6 +189,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）用户是否已登录（已过期，改调 'wechat.hasLogin'接口）
  * 
  * @name wechat.hasLogin
+ * @ios.deprecated 1.2.0
+ * @android.deprecated 1.3.0.0
+ * @ios.since 1.0.0
+ * @android.since 1.0.0.0
+ * @ios.delete 1.5.0
+ * @androi.delete 1.5.0.0
  * 
  * @output	{String} 未登录，返回""；已登录，返回token
  *
@@ -192,6 +211,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）跳转到App首页（已过期，改调 'wechat.gotoView'接口）
  * 
  * @name wechat.toAppHome
+ * @ios.deprecated 1.2.0
+ * @android.deprecated 1.3.0.0
+ * @ios.since 1.0.0
+ * @android.since 1.0.0.0
+ * @ios.delete 1.5.0
+ * @androi.delete 1.5.0.0
  *
  * @description
  * 
@@ -206,6 +231,12 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）跳转到App登录页（已过期，改调 'wechat.gotoView'接口）
  * 
  * @name wechat.toLoginVC
+ * @ios.deprecated 1.2.0
+ * @android.deprecated 1.3.0.0
+ * @ios.since 1.0.0
+ * @android.since 1.0.0.0
+ * @ios.delete 1.5.0
+ * @androi.delete 1.5.0.0
  * 
  * @description
  * 
@@ -220,6 +251,8 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）跳转到App指定页
  * 
  * @name wechat.gotoView
+ * @ios.since 1.2.0
+ * @android.since 1.3.0.0
  * 
  * @input.post {string} pageId 页面Id，如首页(home)、登录页(login)、帮助中心(help)。App和微信端商量确定，系统内唯一即可。
  *
@@ -236,6 +269,8 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @fakedoc （微信端-->App）返回到App页面
  * 
  * @name wechat.popupView
+ * @ios.since 1.2.0
+ * @android.since 1.3.0.0
  *
  * @description
  * 
