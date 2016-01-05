@@ -68,6 +68,14 @@ router.all('/wechat/jsSignature', function (req, res, next) {
  * 设计目的：
  *
  * 当微版微信版花生金服的版本升级时，app请求的url会自动更新到新版，而不是取本地缓存
+ *
+ * @output {json} H5网站基本信息
+ * {
+        code:"{int} 0表示成功，始终返回0",
+        data:{
+            version: '{string} 1.1.2.0 四位版本号'
+        }
+    }
  */
 router.all('/wechat/getWechatVersion', function (req, res, next) {
     res.json({
