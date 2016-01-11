@@ -40,10 +40,6 @@ var router = express.Router();
  *      annualizedRateAdd:"{number} 活动加息年化利率",
  *      interestOf10000Yuan:"{String} 每万元日收益",
  *      activityRemark:"{string} 活动说明（一元起投，灵活存取）",
- *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
- *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
  *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
  * 	  }
  * 	]
@@ -80,10 +76,6 @@ router.all('/current/pageList', function (req, res, next) {
             annualizedRateAdd: Math.floor(Math.random() * 5) * 0.01,
             interestOf10000Yuan: "2.00元",
             activityRemark: '一元起投，灵活存取',
-            isNewUser:['0','1'][start % 2],
-            isRecommend:['0','1'][start % 2],
-            isUseTicket:['0','1'][start % 2],
-            isCanAssign:['0','1'][start % 2],
             terminalCodes:'0,2'
         });
         start++;
@@ -146,10 +138,6 @@ router.all('/current/pageList', function (req, res, next) {
  *      hasFinancedMoney:"{number} 累计投资总额",
  *      buyCount:"{int} 成功购买次数",
  *      hasRepaidMoney:"{int} 累计已赚收益",
- *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
- *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
  *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
  *   }
  * }
@@ -190,10 +178,6 @@ router.all('/current/detail', function (req, res, next) {
         hasFinancedMoney:123456,
         buyCount:55,
         hasRepaidMoney: 100,
-        isNewUser:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-        isRecommend:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-        isUseTicket:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-        isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
         terminalCodes:'0,2'
     };
     var resultValue = {

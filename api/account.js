@@ -1628,8 +1628,6 @@ router.all('/account/hasGetNewYearGiftMoney', function (req, res, next) {
 	res.json(resultValue);
 });
 
-
-
 /**
  * @fakedoc 获取新年红包
  *
