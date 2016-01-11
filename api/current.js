@@ -2,7 +2,7 @@
 var router = express.Router();
 
 /**
- * @fakedoc 项目分页列表
+ * @fakedoc 活期项目分页列表
  * @name current.pageList
  * @href /current/pageList
  *
@@ -98,7 +98,7 @@ router.all('/current/pageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到指定项目的详情信息
+ * @fakedoc 得到指定活期项目的详情信息
  *
  * @name current.detail
  * @href /current/detail
@@ -205,7 +205,7 @@ router.all('/current/detail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到指定项目的投资记录列表
+ * @fakedoc 得到指定活期项目的投资记录列表
  *
  * @name current.investmentRecords
  * @href /current/investmentRecords
@@ -269,7 +269,7 @@ router.all('/current/investmentRecords', function (req, res, next) {
 });
 
 /**
- * @fakedoc 收益计算
+ * @fakedoc 活期收益计算
  *
  * @name current.interestCalculation
  * @href /current/interestCalculation

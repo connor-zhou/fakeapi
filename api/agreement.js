@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 投资_协议（投资时使用）
+ * @fakedoc 定期投资_协议（投资时使用）
  *
  * @name agreement.investment
  * @href /agreement/investment
@@ -84,6 +84,48 @@ router.all('/agreement/investment', function (req, res, next) {
 	 		theYear:"2015",
 	 		theMonth:"12",
 	 		theDay:"11"
+    	}
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 活期投资_协议（投资时使用）
+ *
+ * @name agreement.current
+ * @href /agreement/current
+ * 
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ * @input.post {String} projectId	 			项目Id
+ *
+ * @description
+ * 
+ * https://localhost:3000/agreement/current?client=asdfaqerq1werqwe&token=adfasdf234&projectId=22
+ * 
+ * https://fakeapi.fdjf.net:3000/agreement/current?client=asdfaqerq1werqwe&token=adfasdf234&projectId=22
+ *
+ * @output {json} 操作结果
+ * {
+ * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ * 		aCustomerName:"{String} 甲方（出借人）",
+ *  	aAddress:"{String} 甲方（通讯地址）",
+ *  	bCustomerName:"{String} 乙方（借款人）",
+ *  	bAccountName:"{String} 乙方（花生金服用户名）"
+ *   }
+ * }
+ */
+router.all('/agreement/current', function (req, res, next) {
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: {
+    		aCustomerName:"甲方（出借人）",
+    	  	aAddress:"甲方（通讯地址）",
+    	  	bCustomerName:"乙方（借款人）",
+    	  	bAccountName:"乙方（花生金服用户名）"
     	}
     }
     res.json(resultValue);
