@@ -147,7 +147,6 @@ router.all('/yeepay/toWithdraw', function (req, res, next) {
         res.json(resultValue);
 });
 
-
 /**
  * @fakedoc 得到易宝平台投资(直投或债权转让)的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
@@ -170,7 +169,7 @@ router.all('/yeepay/toWithdraw', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台提现的URL"
+ *  data:"{string} 易宝平台投资的URL"
  * }
  * 
  * @needAuth
@@ -188,6 +187,45 @@ router.all('/yeepay/toInvest', function (req, res, next) {
     	code: code,
     	text: text,
     	data: '/yeepay/callback/toInvest'
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 得到易宝平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ *
+ * @name yeepay.toCurrentInvest
+ * @href /yeepay/toCurrentInvest
+ * 
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token					Token
+ * @input.post {string} projectId				项目Id
+ * @input.post {string} amount					投资金额
+ * @input.post {string} platformAmount			平台垫付金额
+ * @input.post {string} token					Token
+ * 
+ * @output {json} 活期投资的URL
+ * {
+ *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:"{string} 易宝平台提现的活期投资URL"
+ * }
+ * 
+ * @needAuth
+ * 
+ * @description
+ *
+ * https://localhost:3000/yeepay/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ * 
+ * https://fakeapi.fdjf.net:3000/yeepay/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ */
+router.all('/yeepay/toCurrentInvest', function (req, res, next) {
+	var code = 0;
+	var text = "ok";
+	var resultValue = {
+    	code: code,
+    	text: text,
+    	data: '/yeepay/callback/toCurrentInvest'
     }
     res.json(resultValue);
 });

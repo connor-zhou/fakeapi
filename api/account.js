@@ -301,45 +301,49 @@ router.all('/account/logout', function (req, res, next) {
  *
  * @output {json} 我的信息
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:{
- *  	accountId:"{String} 会员账号Id",
- *  	avatar:"{String} 头像URL",
- *  	nickname:"{String} 昵称",
- *  	customerName:"{String} 真实姓名",
- *  	certNum:"{String} 身份证号码（后台做模糊处理）",
- *  	mobile:"{String} 手机号码",
- *  	email:"{String} 电子邮箱",
- *  	bankCard: {
- *  		cardNo:"{String} 银行卡",
- *  		status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
- *  		statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
- *  		bankCode:"{String} 银行卡所属银行",
- *  		bankName:"{String} 银行卡所属银行名称",
- *      	bankLogo:"{String} 银行Logo的URL",
- *      	quota:"{number} 每次限额",
- *          dayQuota:"{number} 日限额",
- *  		amount:"{number} 可提现金额",
- *      	ticketCount:"{int} 提现券张数"
- *  	},
- *  	netAssets:"{number} 账户资产",
- *  	goldBalance:"{number} 账户余额",
- *  	congealVal:"{number} 冻结金额", 
- *  	sumProfit:"{number} 累计收益",
- *  	willProfit:"{number} 待收收益",
- *  	willPrincipal:"{number} 待收本金",
- *  	availableBalance:"{number} 可用余额",
- *  	availableIntegral:"{number} 可用花生豆余额",
- *      hasSigned:"{String} 是否签到（true 或 false)",
- *      hasRemindOfMsg:"{String} 是否有未读消息（true 或 false)",
- *      hasRemindOfTicket:"{String} 是否有可用投资券（true 或 false)",
- *      hasRemindOfReward:"{String} 是否有积分提醒（true 或 false)",
- *      hasOpenThirdAccount:"{String} 是否开通第三方账号（0：未开通；1：已开通）",
- *      hasBindBankCard:"{String} 是否绑定银行卡（0：未绑卡；1：已绑卡）",
- *      isNewUser:"{String} 是否新手（0是，其它不是）",
- *      hasRecharged:"{String} 是否充过值（0是，其它不是）"
- *  }
+ *  	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  	text:"{String} 状态描述",
+ *  	data:{
+ *  		accountId:"{String} 会员账号Id",
+ *  		avatar:"{String} 头像URL",
+ *  		nickname:"{String} 昵称",
+ *  		customerName:"{String} 真实姓名",
+ *  		certNum:"{String} 身份证号码（后台做模糊处理）",
+ *  		mobile:"{String} 手机号码",
+ *  		email:"{String} 电子邮箱",
+ *  		bankCard: {
+ *  			cardNo:"{String} 银行卡",
+ *  			status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  			statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  			bankCode:"{String} 银行卡所属银行",
+ *  			bankName:"{String} 银行卡所属银行名称",
+ *      		bankLogo:"{String} 银行Logo的URL",
+ *      		quota:"{number} 每次限额",
+ *          	dayQuota:"{number} 日限额",
+ *  			amount:"{number} 可提现金额",
+ *      		ticketCount:"{int} 提现券张数"
+ *  		},
+ *  		current: {
+ *				amount:"{number} 当前用户持有的活期金额",
+ *				availableAmount: "{number} 当前用户剩余可购买活期额度"
+ *			},
+ *  		netAssets:"{number} 账户资产",
+ *  		goldBalance:"{number} 账户余额",
+ *  		congealVal:"{number} 冻结金额", 
+ *  		sumProfit:"{number} 累计收益",
+ *  		willProfit:"{number} 待收收益",
+ *  		willPrincipal:"{number} 待收本金",
+ *  		availableBalance:"{number} 可用余额",
+ *  		availableIntegral:"{number} 可用花生豆余额",
+ *     	 	hasSigned:"{String} 是否签到（true 或 false)",
+ *      	hasRemindOfMsg:"{String} 是否有未读消息（true 或 false)",
+ *      	hasRemindOfTicket:"{String} 是否有可用投资券（true 或 false)",
+ *      	hasRemindOfReward:"{String} 是否有积分提醒（true 或 false)",
+ *      	hasOpenThirdAccount:"{String} 是否开通第三方账号（0：未开通；1：已开通）",
+ *      	hasBindBankCard:"{String} 是否绑定银行卡（0：未绑卡；1：已绑卡）",
+ *      	isNewUser:"{String} 是否新手（0是，其它不是）",
+ *      	hasRecharged:"{String} 是否充过值（0是，其它不是）"
+ *  	}
  * }
  *
  * @needAuth
@@ -388,6 +392,10 @@ router.all('/account/my', function (req, res, next) {
         		dayQuota:100000,
         		amount:1345,
         		ticketCount:5
+    		},
+    		current: {
+    			amount:2000,
+    			availableAmount: 100000
     		},
     		isNewUser:"0",
     		hasRecharged:"1"
