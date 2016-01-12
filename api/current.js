@@ -501,4 +501,90 @@ router.all('/current/myCurrentInterestPageList', function (req, res, next) {
     res.json(resultValue);
 });
 
+/**
+ * @fakedoc 提取收益
+ *
+ * @name current.redeemInterest
+ * @href /current/redeemInterest
+ * 
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} projectId 		项目Id
+ * @input.post {string} amount 		提取收益金额
+ *
+ * @output {json} 提取收益
+ * {
+ *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	resultCode:"{String} 结果（0：成功；1：失败）",
+ *  	resultText:"{String} 结果描述"
+ *   }
+ * }
+ *
+ * @needAuth
+ * 
+ * @description
+ *
+ * https://localhost:3000/current/redeemInterest?client=asdfaqerq1werqwe&token=2435135345623413projectId=1&amount=11
+ * 
+ * https://fakeapi.fdjf.net:3000/current/redeemInterest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=11
+ */
+router.all('/current/redeemInterest', function (req, res, next) {
+	var code = 0;
+	var text = "ok";
+	var resultValue = {
+    	code: code,
+    	text: text,
+    	data: {
+    		resultCode:0,
+    		resultText:"提取收益成功"
+    	}
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 赎回本金
+ *
+ * @name current.redeemPrincipal
+ * @href /current/redeemPrincipal
+ * 
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} projectId 		项目Id
+ * @input.post {string} amount 		赎回金额
+ *
+ * @output {json} 赎回本金
+ * {
+ *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	resultCode:"{String} 结果（0：成功；1：失败）",
+ *  	resultText:"{String} 结果描述"
+ *   }
+ * }
+ *
+ * @needAuth
+ * 
+ * @description
+ *
+ * https://localhost:3000/current/redeemPrincipal?client=asdfaqerq1werqwe&token=2435135345623413projectId=1&amount=11
+ * 
+ * https://fakeapi.fdjf.net:3000/current/redeemPrincipal?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=11
+ */
+router.all('/current/redeemPrincipal', function (req, res, next) {
+	var code = 0;
+	var text = "ok";
+	var resultValue = {
+    	code: code,
+    	text: text,
+    	data: {
+    		resultCode:0,
+    		resultText:"赎回本金成功"
+    	}
+    }
+    res.json(resultValue);
+});
+
 module.exports = router;
