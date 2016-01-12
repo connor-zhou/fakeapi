@@ -233,13 +233,11 @@ router.all('/current/interestCalculation', function (req, res, next) {
  *  	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	data:[{
- *  		recordId:"{string} 记录Id",
  *      	projectId:"{string} 项目Id",
  *      	projectName:"{string} 项目名称",
  *      	amount:"{number} 投资金额",
  *      	receivedProfit:"{number} 累计收益",
- *      	annualizedRate:"{number} 年化利率",
- *      	opDt:"{String} 投资日期"
+ *      	annualizedRate:"{number} 年化利率"
  *    	}]
  * }
  *
@@ -261,13 +259,11 @@ router.all('/current/myCurrent', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         projects.push({
-        	recordId: start,
             projectId: start,
             projectName: '活花生-' + start,
             amount: 1000000,
             receivedProfit: 36000,
-            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
-            opDt:"2015-12-01"
+            annualizedRate: Math.floor(Math.random() * 20) * 0.01
         });
         start++;
         limit--;
@@ -361,7 +357,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     			 recordId:1,
     			 principal:22222,
     			 interest:22,
-    			 totalProfit:10",
+    			 totalProfit:10,
     			 yesterdayProfit:2
     		},
     		project: {
