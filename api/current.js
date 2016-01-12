@@ -414,7 +414,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
  * @input.post {string} projectId 		项目Id
  * @input.post {string} changeType 	变化类型（投资：0；赎回：1；空则取全部）
  *
- * @output {json} 交易记录分页列表
+ * @output {json} 分页列表
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
@@ -422,7 +422,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
  *  	opDt:"{date} 操作日期时间",
  *  	changeType:"{String} 变更类型",
  *  	changeTypeName:"{String} 变更类型名称",
- *  	changeVal:"{String} 变更值""
+ *  	changeVal:"{String} 变更值"
  *   }]
  * }
  *
@@ -472,7 +472,7 @@ router.all('/current/myCurrentPrincipalPageList', function (req, res, next) {
  *  	opDt:"{date} 操作日期时间",
  *  	changeType:"{String} 变更类型",
  *  	changeTypeName:"{String} 变更类型名称",
- *  	changeVal:"{String} 变更值""
+ *  	changeVal:"{String} 变更值"
  *   }]
  * }
  *
