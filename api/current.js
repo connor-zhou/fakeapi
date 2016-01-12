@@ -354,14 +354,13 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     	text: 'ok',
     	data: {
     		account: {
-    			 recordId:1,
     			 principal:22222,
     			 interest:22,
     			 totalProfit:10,
     			 yesterdayProfit:2
     		},
     		project: {
-    			projectId: projectId,
+    			projectId: start,
     	        projectName: '活花生-' + projectId,
     	        projectType: "",
     	        projectTypeName: "",
