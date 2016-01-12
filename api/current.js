@@ -361,7 +361,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     		},
     		project: {
     			projectId: start,
-    	        projectName: '活花生-' + projectId,
+    	        projectName: '活花生-' + start,
     	        projectType: "",
     	        projectTypeName: "",
     	        repaymentMode:"按日计息",
@@ -369,7 +369,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     	        netWorth:1.2,
     	        amount: 360000,
     	        rate: 65,
-    	        status: [3, 5, 7][projectId % 3],
+    	        status: [3, 5, 7][start % 3],
     	        statusName: Math.floor(Math.random() * 3) == 1 ?  "立即投资":"还款中",
     	        annualizedRate: Math.floor(Math.random() * 20) * 0.01,
     	        annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
