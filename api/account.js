@@ -991,7 +991,7 @@ router.all('/account/saveEmail', function (req, res, next) {
  * 
  * @Deprecated
  * 
- * @fakedoc 提现前置接口 （已过期，改调 'account/my'接口）
+ * @fakedoc 提现前置接口
  *
  * @name account.beforeWithdraw
  * @href /account/beforeWithdraw
@@ -1013,10 +1013,13 @@ router.all('/account/saveEmail', function (req, res, next) {
  *      ticketCount:"{int} 提现券张数"
  *   }
  * }
+ * @deprecated 1.2.0.0
  *
  * @needAuth
  * 
  * @description
+ *
+ * 已过期，改调 'account/my'接口
  *
  * https://localhost:3000/account/beforeWithdraw?client=asdfaqerq1werqwe&token=2435135345623413
  * 

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /**
- * @fakedoc 得到易宝平台注册新用户的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台注册新用户的URL
  *
  * @name yeepay.toRegister
  * @href /yeepay/toRegister
@@ -14,6 +14,7 @@ var router = express.Router();
  * @input.post {string} mobile 		手机号码
  *
  * @description
+ * 得到易宝平台注册新用户的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
  * https://localhost:3000/yeepay/toRegister?client=asdfaqerq1werqwe&token=134252345234&realName=温强&idCardNo=1225234523451&mobile=13564335614
  * 
@@ -40,7 +41,7 @@ router.all('/yeepay/toRegister', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到易宝平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台绑定银行卡的URL
  *
  * @name yeepay.toBindBankCard
  * @href /yeepay/toBindBankCard
@@ -49,6 +50,8 @@ router.all('/yeepay/toRegister', function (req, res, next) {
  * @input.post {string} token 			Token
  *
  * @description
+ *
+ * 得到易宝平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
  * https://localhost:3000/yeepay/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  * 
@@ -75,7 +78,7 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到易宝平台充值的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台充值的URL
  *
  * @name yeepay.toRecharge
  * @href /yeepay/toRecharge
@@ -85,6 +88,8 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
  * @input.post {string} amount 		充值金额
  *
  * @description
+ *
+ * 得到易宝平台充值的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
  * https://localhost:3000/yeepay/toRecharge?client=asdfaqerq1werqwe&token=134252345234&amount=1000
  * 
@@ -111,7 +116,7 @@ router.all('/yeepay/toRecharge', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到易宝平台提现的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台提现的URL
  *
  * @name yeepay.toWithdraw
  * @href /yeepay/toWithdraw
@@ -122,6 +127,8 @@ router.all('/yeepay/toRecharge', function (req, res, next) {
  * @input.post {String} useTicket		是否用提现券（true 是，false 否）"
  *
  * @description
+ *
+ * 得到易宝平台提现的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
  * https://localhost:3000/yeepay/toWithdraw?client=asdfaqerq1werqwe&token=134252345234&amout=1000&useTicket=true
  * 
@@ -148,7 +155,7 @@ router.all('/yeepay/toWithdraw', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到易宝平台投资(直投或债权转让)的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台投资的URL
  *
  * @name yeepay.toInvest
  * @href /yeepay/toInvest
@@ -176,6 +183,8 @@ router.all('/yeepay/toWithdraw', function (req, res, next) {
  * 
  * @description
  *
+ * 得到易宝平台投资(直投或债权转让)的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ *
  * https://localhost:3000/yeepay/toInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&transferProjectId=2&amount=1000&ticketIds=1,2&ticketAmount=20&platformAmount=0&type=1
  * 
  * https://fakeapi.fdjf.net:3000/yeepay/toInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&transferProjectId=2&amount=1000&ticketIds=1,2&ticketAmount=20&platformAmount=0&type=1
@@ -192,7 +201,7 @@ router.all('/yeepay/toInvest', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到易宝平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * @fakedoc 得到易宝平台活期投资的URL
  *
  * @name yeepay.toCurrentInvest
  * @href /yeepay/toCurrentInvest
@@ -214,6 +223,8 @@ router.all('/yeepay/toInvest', function (req, res, next) {
  * @needAuth
  * 
  * @description
+ *
+ * 得到易宝平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
  * https://localhost:3000/yeepay/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
  * 
