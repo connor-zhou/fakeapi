@@ -235,7 +235,7 @@ router.all('/current/interestCalculation', function (req, res, next) {
  *  	data:[{
  *      	projectId:"{string} 项目Id",
  *      	projectName:"{string} 项目名称",
- *      	amount:"{number} 投资金额",
+ *      	amount:"{number} 投资金额(持有本金)",
  *      	receivedProfit:"{number} 累计收益",
  *      	annualizedRate:"{number} 年化利率"
  *    	}]
@@ -310,7 +310,7 @@ router.all('/current/myCurrent', function (req, res, next) {
  *      	netWorth:"{number} 单位净值",
  *      	amount:"{number} 可投金额",
  *      	rate:"{number} 已投百分比(%)",
- *      	status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
+ *      	status:"{int} 状态(3-投标中，4--投标结束，5-已清盘)",
  *      	statusName:"{String} 状态名称",
  *      	annualizedRate:"{number} 年化利率",
  *      	annualizedRateNormal:"{number} 正常年化利率",
@@ -369,7 +369,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     	        netWorth:1.2,
     	        amount: 360000,
     	        rate: 65,
-    	        status: [3, 5, 7][start % 3],
+    	        status: [3, 4, 5][start % 3],
     	        statusName: Math.floor(Math.random() * 3) == 1 ?  "立即投资":"还款中",
     	        annualizedRate: Math.floor(Math.random() * 20) * 0.01,
     	        annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
@@ -414,7 +414,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{date} 操作日期时间",
+ *  	opDt:"{String} 操作日期时间",
  *  	changeType:"{String} 变更类型",
  *  	changeTypeName:"{String} 变更类型名称",
  *  	changeVal:"{String} 变更值"
@@ -464,7 +464,7 @@ router.all('/current/myCurrentPrincipalPageList', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{date} 操作日期时间",
+ *  	opDt:"{String} 操作日期时间",
  *  	changeType:"{String} 变更类型",
  *  	changeTypeName:"{String} 变更类型名称",
  *  	changeVal:"{String} 变更值"

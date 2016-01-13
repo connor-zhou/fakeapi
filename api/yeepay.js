@@ -210,8 +210,6 @@ router.all('/yeepay/toInvest', function (req, res, next) {
  * @input.post {string} token					Token
  * @input.post {string} projectId				项目Id
  * @input.post {string} amount					投资金额
- * @input.post {string} platformAmount			平台垫付金额
- * @input.post {string} token					Token
  * 
  * @output {json} 活期投资的URL
  * {

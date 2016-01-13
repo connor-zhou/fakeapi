@@ -816,7 +816,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{date} 操作日期时间",
+ *  	opDt:"{String} 操作日期时间",
  *  	changeType:"{String} 变更类型（B2B网银:NET_B2B，B2C网银:NET_B2C，一键支付:A_PAY，代充值:WH_NO_CARD，快捷充值:SWIFT，正常提现，T+1 天到账:NORMAL，加急提现，T+0 当日到账:URGENT，投资冻结:1，投资冻结取消:2，投资确认:3，还款:4，充值获取抵用额:5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
  *  	changeTypeName:"{String} 变更类型名称",
  *  	changeVal:"{String} 变更值"
@@ -1216,7 +1216,7 @@ router.all('/account/myInvitationStat', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{date} 操作日期时间",
+ *  	opDt:"{String} 操作日期时间",
  *  	changeType:"{String} 变更类型（5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
  *  	changeTypeName:"{String} 变更类型名称",
  *  	changeVal:"{String} 变更值"
@@ -1319,7 +1319,7 @@ router.all('/account/myEarningTicketPageList', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{date} 操作日期时间",
+ *  	opDt:"{String} 操作日期时间",
  *  	changeReason:"{String} 变更原因",
  *  	changeVal:"{String} 变更值",
  *  	type:"{String} 类型（1收，2兑）",
