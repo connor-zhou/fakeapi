@@ -43,7 +43,7 @@ router.all('/wechat/jsSignature', function (req, res, next) {
 });
 
 /**
- * @fakedoc （App->H5）得到微信版花生金服的版本号
+ * @fakedoc [H5.JS]得到微信版花生金服的版本号
  *
  * @name wechat.getWechatVersion
  * @href /wechat/getWechatVersion
@@ -91,7 +91,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
 });
 
 /**
- * @fakedoc （H5-->APP）得到花生金服APP的版本号
+ * @fakedoc [APP.JS]得到花生金服APP的版本号
  *
  * @name wechat.getAppVersion
  * @ios.since 1.2.0
@@ -116,7 +116,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）活动分享
+ * @fakedoc [APP.JS]活动分享
  * 
  * @name wechat.activityShare
  * @ios.since 1.2.0
@@ -137,7 +137,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）立即投资（已过期，改调 'wechat.invest'接口）
+ * @fakedoc [APP.JS]立即投资
  * 
  * @name wechat.investProject
  * @ios.deprecated 1.2.0
@@ -148,7 +148,8 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @android.delete 1.5.0.0
  *
  * @description
- * 
+ * 已过期，改调 [wechat.invest](#/api/wechat.invest) 接口
+ *
  * 使用方式：
  * 
  * 在微信页面端可以按如下方式调用
@@ -157,7 +158,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）立即投资
+ * @fakedoc [APP.JS]立即投资
  * 
  * @name wechat.invest
  * @ios.since 1.2.0
@@ -175,7 +176,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）用户是否已登录
+ * @fakedoc [APP.JS]用户是否已登录
  * 
  * @name wechat.userIsHasLogin
  * @ios.deprecated 1.2.0
@@ -189,7 +190,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  *
  * @description
  *
- * 已过期，改调 'wechat.hasLogin' 接口
+ * 已过期，改调  [wechat.hasLogin](#/api/wechat.hasLogin)  接口
  * 
  * 使用方式：
  * 
@@ -199,7 +200,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）用户是否已登录
+ * @fakedoc [APP.JS]用户是否已登录
  * 
  * @name wechat.hasLogin
  * @ios.since 1.0.0
@@ -217,7 +218,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）跳转到App首页
+ * @fakedoc [APP.JS]跳转到App首页
  * 
  * @name wechat.toAppHome
  * @ios.deprecated 1.2.0
@@ -229,7 +230,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  *
  * @description
  *
- * 已过期，改调 'wechat.gotoView'接口
+ * 已过期，改调 [wechat.gotoView](#/api/wechat.toAppHome) 接口
  *
  * 使用方式：
  * 
@@ -239,7 +240,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）跳转到App登录页
+ * @fakedoc [APP.JS]跳转到App登录页
  * 
  * @name wechat.toLoginVC
  * @ios.deprecated 1.2.0
@@ -251,7 +252,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * 
  * @description
  *
- * 已过期，改调 'wechat.gotoView'接口
+ * 已过期，改调 [wechat.gotoView](#/api/wechat.toAppHome) 接口
  *
  * 使用方式：
  * 
@@ -261,7 +262,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）跳转到App指定页
+ * @fakedoc [APP.JS]跳转到App指定页
  * 
  * @name wechat.gotoView
  * @ios.since 1.2.0
@@ -279,7 +280,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  */
 
 /**
- * @fakedoc （H5-->App）返回到App页面
+ * @fakedoc [APP.JS]返回到App页面
  * 
  * @name wechat.popupView
  * @ios.since 1.2.0
