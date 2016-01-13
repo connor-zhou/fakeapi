@@ -230,7 +230,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  *
  * @description
  *
- * 已过期，改调 [wechat.gotoView](#/api/wechat.toAppHome) 接口
+ * 已过期，改调 [wechat.gotoView](#/api/wechat.gotoView) 接口
  *
  * 使用方式：
  * 
@@ -252,7 +252,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * 
  * @description
  *
- * 已过期，改调 [wechat.gotoView](#/api/wechat.toAppHome) 接口
+ * 已过期，改调 [wechat.gotoView](#/api/wechat.gotoView) 接口
  *
  * 使用方式：
  * 
