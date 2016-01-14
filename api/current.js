@@ -296,9 +296,10 @@ router.all('/current/myCurrent', function (req, res, next) {
  *  data:{
  *  	account: {
  *  		principal:"{number} 持有本金（元）",
- *  		interest:"{number} 持有利息，即可提取收益（元）",
- *  		totalProfit:"{number} 累计收益（元）",
- *  		yesterdayProfit:"{number} 昨日收益（元）"
+ *  		canRedeemPrincipal:"{number} 可赎回本金（元）",
+ *  		interest:"{number} 可提取收益（元）",
+ *  		totalInterest:"{number} 累计收益（元）",
+ *  		interestOfYesterday:"{number} 昨日收益（元）"
  *  	},
  *  	project:{
  *  		projectId:"{int} 项目ID",
