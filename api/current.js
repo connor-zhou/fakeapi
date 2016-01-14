@@ -357,9 +357,11 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
     	data: {
     		account: {
     			 principal:22222,
+    			 redeemingPrincipal:20000,
+    			 canRedeemPrincipal:2222,
     			 interest:22,
-    			 totalProfit:10,
-    			 yesterdayProfit:2
+    			 totalInterest:10,
+    			 interestOfYesterday:2
     		},
     		project: {
     			projectId: start,
