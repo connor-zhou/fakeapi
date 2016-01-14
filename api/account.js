@@ -325,7 +325,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		},
  *  		current: {
  *				amount:"{number} 当前用户持有的活期金额",
- *				availableAmount: "{number} 当前用户剩余可购买活期额度"
+ *				availableAmount: "{number} 当前用户剩余可购买活期额度",
+ *				interestOfYesterday: "{number} 昨日收益"
  *			},
  *  		netAssets:"{number} 账户资产",
  *  		goldBalance:"{number} 账户余额",
@@ -395,7 +396,8 @@ router.all('/account/my', function (req, res, next) {
     		},
     		current: {
     			amount:2000,
-    			availableAmount: 100000
+    			availableAmount: 100000,
+    			interestOfYesterday:2.01
     		},
     		isNewUser:"0",
     		hasRecharged:"1"
