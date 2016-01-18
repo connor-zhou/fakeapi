@@ -313,8 +313,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		email:"{String} 电子邮箱",
  *  		bankCard: {
  *  			cardNo:"{String} 银行卡",
- *  			status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
- *  			statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
+ *  			status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
+ *  			statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
  *  			bankCode:"{String} 银行卡所属银行",
  *  			bankName:"{String} 银行卡所属银行名称",
  *      		bankLogo:"{String} 银行Logo的URL",
