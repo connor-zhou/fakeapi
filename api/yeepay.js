@@ -78,6 +78,45 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
 });
 
 /**
+ * @fakedoc 得到易宝平台解绑银行卡的URL
+ *
+ * @name yeepay.toUnBindBankCard
+ * @href /yeepay/toUnBindBankCard
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @description
+ *
+ * 得到易宝平台解绑银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ *
+ * https://localhost:3000/yeepay/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ *
+ * https://fakeapi.fdjf.net:3000/yeepay/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ *
+ * @output {json} 绑定银行卡的URL
+ * {
+ *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:"{string} 易宝平台绑定银行卡的URL"
+ * }
+ */
+router.all('/yeepay/toUnBindBankCard', function (req, res, next) {
+    var realName, idCardNo, url, mobile;
+    realName = req.query.realName ? req.query.realName :req.body.realName;
+    idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
+    mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data: '/yeepay/callback/toUnBindBankCard'
+    }
+    res.json(resultValue);
+});
+
+
+
+/**
  * @fakedoc 得到易宝平台充值的URL
  *
  * @name yeepay.toRecharge
