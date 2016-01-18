@@ -73,7 +73,7 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
         	code: 0,
         	text: 'ok',
         	data: '/yeepay/callback/toBindBankCard'
-        }
+        };
         res.json(resultValue);
 });
 
@@ -102,15 +102,10 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
  * }
  */
 router.all('/yeepay/toUnBindBankCard', function (req, res, next) {
-    var realName, idCardNo, url, mobile;
-    realName = req.query.realName ? req.query.realName :req.body.realName;
-    idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
-    mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
     var resultValue = {
         code: 0,
-        text: 'ok',
-        data: '/yeepay/callback/toUnBindBankCard'
-    }
+        text: 'ok'
+    };
     res.json(resultValue);
 });
 
