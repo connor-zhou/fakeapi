@@ -61,6 +61,7 @@ router.all('/yeepay/toRegister', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
+ *  data:"{string} 易宝平台绑定银行卡的URL"
  * }
  */
 router.all('/yeepay/toBindBankCard', function (req, res, next) {
@@ -97,7 +98,6 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台绑定银行卡的URL"
  * }
  */
 router.all('/yeepay/toUnBindBankCard', function (req, res, next) {
