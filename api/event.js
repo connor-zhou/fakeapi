@@ -194,10 +194,11 @@ router.all('/event/newUserTask', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
+ *  	count:"{int} 	剩余抽奖次数",
+ *  	used:"{int} 	已使用抽奖次数",
+ *  	over:"{int} 	还剩余抽奖次数",
  *  	angle:"{int} 	旋转角度",
  *  	result:"{String}   返回信息",
- *  	token:"{String}     奖品token",
- * 		imgUrl:"{String}    奖品logo"
  *    }
  * }
  *
@@ -207,10 +208,11 @@ router.all('/event/lottery', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			angle:240,
-			result:"恭喜您，获得了现金奖励1.88元",
-			token:'token',
-			imgUrl:"https://www.hsbank360.com/upload_files/avatar/20151112170848_538.png"
+			count:2,
+			used:2,
+			over:0,
+			angle:40,
+			result:'返回信息',
 		}
 	}
 	res.json(resultValue);
@@ -246,14 +248,14 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: [
-			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"10元现金券"},
 			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
-			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"10元现金券"},
 			{mobile:'158****4609',result:"iPad mini3"},
-			{mobile:'158****4609',result:"10元投资券"},
-			{mobile:'158****4609',result:"10元投资券"},
-			{mobile:'158****4609',result:"50元投资券"},
-			{mobile:'158****4609',result:"10元投资券"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"50元现金券"},
+			{mobile:'158****4609',result:"10元现金券"},
 			{mobile:'158****4609',result:"iPhone 6s"},
 			{mobile:'158****4609',result:"20元投资券"}
 		]
