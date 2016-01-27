@@ -190,7 +190,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  *
  * https://fakeapi.fdjf.net:3000/event/lotteryInfo?client=asfdaqwerqe
  *
- * @output {json} 抽奖接口
+ * @output {json} 我的抽奖信息
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
