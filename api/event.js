@@ -176,6 +176,47 @@ router.all('/event/newUserTask', function (req, res, next) {
 
 
 /**
+ * @fakedoc 抽奖信息
+ *
+ * @name event.lotteryInfo
+ * @href /event/lotteryInfo
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 		token
+ * @needAuth
+ * @description
+ *
+ * https://localhost:3000/event/lotteryInfo?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/event/lotteryInfo?client=asfdaqwerqe
+ *
+ * @output {json} 抽奖接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ *  	count:"{int} 	抽奖机会",（已使用抽奖次数+剩余抽奖次数）
+ *  	used:"{int} 	已使用抽奖次数",
+ *  	over:"{int} 	剩余抽奖次数",
+ *    }
+ * }
+ *
+ */
+router.all('/event/lotteryInfo', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			count:2,
+			used:2,
+			over:0
+		}
+	}
+	res.json(resultValue);
+});
+
+
+/**
  * @fakedoc 抽奖
  *
  * @name event.lottery
@@ -195,9 +236,6 @@ router.all('/event/newUserTask', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	count:"{int} 	抽奖机会",
- *  	used:"{int} 	已使用抽奖次数",
- *  	over:"{int} 	剩余抽奖次数",
  *  	angle:"{int} 	旋转角度",
  *  	result:"{String}   返回信息",
  *    }
@@ -209,9 +247,6 @@ router.all('/event/lottery', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			count:2,
-			used:2,
-			over:0,
 			angle:40,
 			result:'返回信息',
 		}
