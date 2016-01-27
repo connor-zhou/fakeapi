@@ -195,7 +195,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	count:"{int} 	抽奖机会",（已使用抽奖次数+剩余抽奖次数）
+ *  	count:"{int} 	抽奖机会（已使用抽奖次数+剩余抽奖次数）",
  *  	used:"{int} 	已使用抽奖次数",
  *  	over:"{int} 	剩余抽奖次数",
  *    }
@@ -248,7 +248,7 @@ router.all('/event/lottery', function (req, res, next) {
 		text: 'ok',
 		data: {
 			angle:40,
-			result:'返回信息',
+			result:'返回信息'
 		}
 	}
 	res.json(resultValue);
