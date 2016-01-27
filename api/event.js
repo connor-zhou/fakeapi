@@ -176,7 +176,7 @@ router.all('/event/newUserTask', function (req, res, next) {
 
 
 /**
- * @fakedoc 抽奖信息
+ * @fakedoc 我的抽奖信息
  *
  * @name event.lotteryInfo
  * @href /event/lotteryInfo
