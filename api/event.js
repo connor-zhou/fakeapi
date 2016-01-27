@@ -182,7 +182,8 @@ router.all('/event/newUserTask', function (req, res, next) {
  * @href /event/lottery
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- *
+ * @input.post {string} token 		token
+ * @needAuth
  * @description
  *
  * https://localhost:3000/event/lottery?client=asfdaqwerqe
