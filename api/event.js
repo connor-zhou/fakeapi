@@ -195,9 +195,9 @@ router.all('/event/newUserTask', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	count:"{int} 	剩余抽奖次数",
+ *  	count:"{int} 	抽奖机会",
  *  	used:"{int} 	已使用抽奖次数",
- *  	over:"{int} 	还剩余抽奖次数",
+ *  	over:"{int} 	剩余抽奖次数",
  *  	angle:"{int} 	旋转角度",
  *  	result:"{String}   返回信息",
  *    }
