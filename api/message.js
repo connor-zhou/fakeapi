@@ -53,7 +53,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
         	messageChannel: "0",
         	title: "您有一笔回款",
         	content:"尊敬的用户，您于2016年02月14日回款22154.0元。关注花生金服官方微信，查详情、抢标的，让您随时随地赚不停！",
-        	status:[0,2][start % 2],,
+        	status:[0,2][start % 2],
             statusName: ["已读","未读"][start % 2],
             createDt: "2015-10-20"
         });
@@ -119,7 +119,7 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
         	messageChannel: "0",
         	title: "您有一条系统消息",
         	content:"活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动！",
-        	status:[0,2][start % 2],,
+        	status:[0,2][start % 2],
             statusName: ["已读","未读"][start % 2],
             createDt: "2015-10-20"
         });
