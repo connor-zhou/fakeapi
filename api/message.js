@@ -16,7 +16,6 @@ var _ = require('lodash');
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
- * @input.post {string} status			状态（如果为空，则取全部）
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  *
@@ -82,7 +81,6 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
- * @input.post {string} status			状态（如果为空，则取全部）
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  *
