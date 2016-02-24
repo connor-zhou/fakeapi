@@ -183,6 +183,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 		token
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
  * @needAuth
  * @description
  *
@@ -211,7 +212,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
 			used:2,
 			over:0
 		}
-	}
+	};
 	res.json(resultValue);
 });
 
@@ -224,6 +225,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 		token
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
  * @needAuth
  * @description
  *
@@ -236,7 +238,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	angle:"{int} 	旋转角度",
+ *  	angle:"{int} 	旋转角度（适用于转盘）",
  *  	result:"{String}   返回信息",
  *    }
  * }
@@ -255,12 +257,86 @@ router.all('/event/lottery', function (req, res, next) {
 });
 
 /**
+ * @fakedoc 我的中奖信息
+ * @name event.myPrizeList
+ * @href /event/myPrizeList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 		token
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @needAuth
+ * @description
+ *
+ * https://localhost:3000/event/myPrizeList?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/event/myPrizeList?client=asfdaqwerqe
+ *
+ * @output {json} 我的中奖信息
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: [{
+ *  	mobile:"{String} 	手机号码",
+ *  	prize:"{String}   奖品"
+ *  }]
+ * }
+ *
+ */
+router.all('/event/myPrizeList', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: [
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"iPad mini3"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"50元现金券"},
+			{mobile:'158****4609',result:"10元现金券"},
+			{mobile:'158****4609',result:"iPhone 6s"},
+			{mobile:'158****4609',result:"20元投资券"}
+		]
+	};
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc 活动分享成功
+ * @name event.shareSuccess
+ * @href /event/shareSuccess
+ *
+ * @input.post {string} client 	客户端统计参数（common/client）
+ * @input.post {string} token 		token
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @needAuth
+ * @description
+ * https://localhost:3000/event/shareSuccess?client=asfdaqwerqe
+ * https://fakeapi.fdjf.net:3000/event/shareSuccess?client=asfdaqwerqe
+ *
+ * @output {json} 分享成功
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ * }
+ */
+router.all('/event/shareSuccess', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	};
+	res.json(resultValue);
+});
+
+/**
  * @fakedoc 中奖榜单
  *
  * @name event.lotteryPrizeList
  * @href /event/lotteryPrizeList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
  *
  * @description
  *
@@ -295,7 +371,7 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 			{mobile:'158****4609',result:"iPhone 6s"},
 			{mobile:'158****4609',result:"20元投资券"}
 		]
-	}
+	};
 	res.json(resultValue);
 });
 
