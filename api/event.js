@@ -174,7 +174,6 @@ router.all('/event/newUserTask', function (req, res, next) {
     res.json(resultValue);
 });
 
-
 /**
  * @fakedoc 我的抽奖信息
  *
@@ -215,7 +214,6 @@ router.all('/event/lotteryInfo', function (req, res, next) {
 	};
 	res.json(resultValue);
 });
-
 
 /**
  * @fakedoc 抽奖
@@ -444,5 +442,34 @@ router.all('/event/investmentList', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc 活动分享成功后的回调接口
+ *
+ * @name event.shareSucessCallback
+ * @href /event/shareSucessCallback
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 		token
+ * @needAuth
+ * @description
+ *
+ * https://localhost:3000/event/shareSucessCallback?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/event/shareSucessCallback?client=asfdaqwerqe
+ *
+ * @output {json} 活动分享成功后的回调接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ */
+router.all('/event/shareSucessCallback', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+	res.json(resultValue);
+});
 
 module.exports = router;

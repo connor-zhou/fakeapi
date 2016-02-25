@@ -1675,4 +1675,35 @@ router.all('/account/getNewYearGiftMoney', function (req, res, next) {
 });
 
 
+/**
+ * @fakedoc 保存用户是否接收push消息的标识
+ *
+ * @name account.savePushSwitch
+ * @href /account/savePushSwitch
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			token
+ * @input.post {string} pushSwitch 	(true or false)
+ * @needAuth
+ * @description
+ *
+ * https://localhost:3000/account/savePushSwitch?client=asfdaqwerqe
+ *
+ * https://fakeapi.fdjf.net:3000/account/savePushSwitch?client=asfdaqwerqe
+ *
+ * @output {json} 用户是否接收push消息的标识
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ */
+router.all('/account/savePushSwitch', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+	res.json(resultValue);
+});
+
 module.exports = router;
