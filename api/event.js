@@ -183,7 +183,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 		token
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树,,1011 :女神升值季】)
  * @needAuth
  * @description
  *
@@ -225,7 +225,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 		token
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树,1011 :女神升值季】)
  * @needAuth
  * @description
  *
