@@ -427,7 +427,7 @@ router.all('/account/my', function (req, res, next) {
  *      	useLimit:"{number} 使用限制",
  *      	amount:"{number} 面值",
  *      	status:"{int} 状态(0, 1, 2)",
- *      	statusName:"{String} 状态名称(正常,已使用,过期)",
+ *      	statusName:"{String} 状态名称(正常,已使用,已过期)",
  *     		invalidDt:"{String} 失效时间",
  *     		getRemark:"{String} 来源备注"
  *    }]
