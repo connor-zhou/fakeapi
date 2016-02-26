@@ -297,4 +297,25 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * 具体返回的页面，有：帮助中心、安全保障。
  */
 
+/**
+ * @fakedoc [APP.JS]设置app页面参数
+ *
+ * @name wechat.setAppParams
+ *
+ * @description
+ *
+ * 使用方式：
+ * 在微信页面端可以按如下方式调用(传输方式为string,需要转换为JSON)
+ * @output {json} 参数
+ * {
+ *       code:"{string} 【1009:春节活动 ,1010:摇钱树,1011 :女神升值季】"
+ *  }
+ *@example
+ * ```
+ *      <script>
+ *          window.hsbank.setAppParams(JSON.stringify({code:'1009'}))
+ *      </script>
+ * ```
+ */
+
 module.exports = router;
