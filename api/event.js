@@ -262,6 +262,8 @@ router.all('/event/lottery', function (req, res, next) {
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 		token
  * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @input.post {int=} [pageSize=10] 	页容量
+ * @input.post {int=} [pageNumber=1] 	页码
  * @needAuth
  * @description
  *
