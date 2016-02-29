@@ -275,10 +275,13 @@ router.all('/event/lottery', function (req, res, next) {
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data: [{
+ *   data: {
+ *   count : 10,
+ *   data : [{
  *  	mobile:"{String} 	手机号码",
  *  	prize:"{String}   奖品"
- *  }]
+ *   }]
+ *  }
  * }
  *
  */
@@ -286,18 +289,21 @@ router.all('/event/myPrizeList', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data: [
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPad mini3"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"50元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPhone 6s"},
-			{mobile:'158****4609',result:"20元投资券"}
-		]
+		data: {
+			count: 10,
+			data :[
+			{mobile: '158****4609', result: "10元现金券"},
+			{mobile: '158****4609', result: "迪士尼米奇玩偶"},
+			{mobile: '158****4609', result: "10元现金券"},
+			{mobile: '158****4609', result: "iPad mini3"},
+			{mobile: '158****4609', result: "10元现金券"},
+			{mobile: '158****4609', result: "10元现金券"},
+			{mobile: '158****4609', result: "50元现金券"},
+			{mobile: '158****4609', result: "10元现金券"},
+			{mobile: '158****4609', result: "iPhone 6s"},
+			{mobile: '158****4609', result: "20元投资券"}
+			]
+		}
 	};
 	res.json(resultValue);
 });
