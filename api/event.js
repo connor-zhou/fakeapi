@@ -278,8 +278,8 @@ router.all('/event/lottery', function (req, res, next) {
  *   data: {
  *   count : "{int} 	奖品数量",
  *   data : [{
- *  	mobile:"{String} 	手机号码",
- *  	prize:"{String}   奖品"
+ *  	prize:"{String}   奖品",
+ *  	date:"{String} 	中奖时间"
  *   }]
  *  }
  * }
@@ -292,16 +292,16 @@ router.all('/event/myPrizeList', function (req, res, next) {
 		data: {
 			count: 10,
 			data :[
-			{mobile: '158****4609', result: "10元现金券"},
-			{mobile: '158****4609', result: "迪士尼米奇玩偶"},
-			{mobile: '158****4609', result: "10元现金券"},
-			{mobile: '158****4609', result: "iPad mini3"},
-			{mobile: '158****4609', result: "10元现金券"},
-			{mobile: '158****4609', result: "10元现金券"},
-			{mobile: '158****4609', result: "50元现金券"},
-			{mobile: '158****4609', result: "10元现金券"},
-			{mobile: '158****4609', result: "iPhone 6s"},
-			{mobile: '158****4609', result: "20元投资券"}
+			{date: '2016.3.1 10:02', result: "10元现金券"},
+			{date: '2016.3.1 10:02', result: "迪士尼米奇玩偶"},
+			{date: '2016.3.1 10:02', result: "10元现金券"},
+			{date: '2016.3.1 10:02', result: "iPad mini3"},
+			{date: '2016.3.1 10:02', result: "10元现金券"},
+			{date: '2016.3.1 10:02', result: "10元现金券"},
+			{date: '2016.3.1 10:02', result: "50元现金券"},
+			{date: '2016.3.1 10:02', result: "10元现金券"},
+			{date: '2016.3.1 10:02', result: "iPhone 6s"},
+			{date: '2016.3.1 10:02', result: "20元投资券"}
 			]
 		}
 	};
