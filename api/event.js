@@ -276,7 +276,7 @@ router.all('/event/lottery', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *   data: {
- *   count : 10,
+ *   count : "{int} 	奖品数量",
  *   data : [{
  *  	mobile:"{String} 	手机号码",
  *  	prize:"{String}   奖品"
