@@ -268,7 +268,7 @@ router.all('/wechat/getWechatVersion', function (req, res, next) {
  * @ios.since 1.2.0
  * @android.since 1.3.0.0
  * 
- * @input.post {string} pageId 页面Id，如首页(home)、登录页(login)、帮助中心(help)。App和微信端商量确定，系统内唯一即可。
+ * @input.post {string} pageId 页面Id，如首页(home)、登录页(login)、帮助中心(help)、我的（my）。App和微信端商量确定，系统内唯一即可。
  *
  * @description
  * 
