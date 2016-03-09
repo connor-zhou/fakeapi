@@ -67,8 +67,8 @@ gulp.task('fakedocs', function(done){
 
     return gulp.src(['api/*.js'])
         .pipe(fakeDocs.process(options))
-        .pipe(gulp.dest('./fakedocs'))
-        .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath+'/fakedocs'}, fakeServerSshConfig)));
+        .pipe(gulp.dest('./fakedocs'));
+        //.pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath+'/fakedocs'}, fakeServerSshConfig)));
 });
 
 /*====================================
