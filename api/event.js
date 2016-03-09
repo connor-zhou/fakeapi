@@ -34,7 +34,7 @@ var _ = require('lodash');
  */
 router.all('/event/carousel', function (req, res, next) {
     var events = [];
-    _.forEach([2,3,4,5,6,7], function (i) {
+    _.forEach([2,3,4,5,6,8], function (i) {
     	events.push({
     		imageUrl:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
         	title: 'slide'+i,

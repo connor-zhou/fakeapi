@@ -49,6 +49,53 @@ var router = express.Router();
  * 	]
  * }
  */
+//router.all('/project/pageList', function (req, res, next) {
+//    var start = req.body.start || 0;
+//    var limit = req.body.limit || 10;
+//    var order = req.body.order;
+//    var type = req.body.type;
+//
+//    var projects = [];
+//
+//    var max = 35;
+//    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+//    while (start < max && limit > 0) {
+//        var type = Math.floor(Math.random() * 4);
+//        projects.push({
+//            projectId: start,
+//            projectName: types[type] + '-' + start,
+//            projectType: type,
+//            projectTypeName: types[type],
+//            repaymentMode: 1,
+//            repaymentModeName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
+//            startingAmount:100,
+//            amount: 1000000,
+//            rate: 36,
+//            status: [3, 5, 7][start % 3],
+//            statusName: ["立即投资","还款中","已结束"][start % 3],
+//            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
+//            annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
+//            annualizedRateAdd: Math.floor(Math.random() * 5) * 0.01,
+//            activityRemark: 'app专享加息+2.4%',
+//            projectDuration: 5,
+//            safeguardMode:2,
+//            safeguardModeName: "本息保障",
+//            isNewUser:['0','1'][start % 2],
+//            isRecommend:['0','1'][start % 2],
+//            isUseTicket:['0','1'][start % 2],
+//            isCanAssign:['0','1'][start % 2],
+//            terminalCodes:'0,2'
+//        });
+//        start++;
+//        limit--;
+//    }
+//    var resultValue = {
+//    	code: 0,
+//    	text: 'ok',
+//    	data: projects
+//    }
+//    res.json(resultValue);
+//});
 router.all('/project/pageList', function (req, res, next) {
     var start = req.body.start || 0;
     var limit = req.body.limit || 10;
@@ -56,47 +103,46 @@ router.all('/project/pageList', function (req, res, next) {
     var type = req.body.type;
 
     var projects = [];
-
     var max = 35;
-    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 4);
+        var type = Math.floor(Math.random() * 7);
         projects.push({
-            projectId: start,
-            projectName: types[type] + '-' + start,
-            projectType: type,
-            projectTypeName: types[type],
-            repaymentMode: 1,
-            repaymentModeName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
-            startingAmount:100,
-            amount: 1000000,
-            rate: 36,
-            status: [3, 5, 7][start % 3],
-            statusName: ["立即投资","还款中","已结束"][start % 3],
-            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
-            annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
-            annualizedRateAdd: Math.floor(Math.random() * 5) * 0.01,
-            activityRemark: 'app专享加息+2.4%',
-            projectDuration: 5,
-            safeguardMode:2,
-            safeguardModeName: "本息保障",
-            isNewUser:['0','1'][start % 2],
+            id: start,
+            title: types[type] + '**' + start,
+            category: type,
+            categoryName: types[type],
+            methods: 1,
+            methodsName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
+            minInvest:2000,
+            haveMoney: 1000000,
+            planAmount:5000000,
+            schedule: 10,
+            projectStatus: [3, 5, 7][start % 3],
+            projectStatusName: ["未满在投","企业还款中","企业已还款"][start % 3],
+            revenue: Math.floor(Math.random() * 20) * 0.01,
+            revenueAward: Math.floor(Math.random() * 5) * 0.01,
+            revenueDisplay: 'app专享加息+1.4%',
+            duration: 5,
+            safety:2,
+            safetyName: "本息保障",
+            isNewUser:['0','0'][start % 2],
             isRecommend:['0','1'][start % 2],
             isUseTicket:['0','1'][start % 2],
             isCanAssign:['0','1'][start % 2],
-            terminalCodes:'0,2'
+            terminalCodes:'0,2',
+
         });
         start++;
         limit--;
     }
     var resultValue = {
-    	code: 0,
-    	text: 'ok',
-    	data: projects
+        code: 0,
+        text: 'ok',
+        data: projects
     }
     res.json(resultValue);
 });
-
 /**
  * @fakedoc 推荐项目列表
  * 
@@ -173,37 +219,85 @@ router.all('/project/recommend', function (req, res, next) {
  * }
  *
  */
+//router.all('/project/detail', function (req, res, next) {
+//    var projectId = req.body.projectId || 1;
+//    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+//    var type = Math.floor(Math.random() * 4);
+//    var duration = Math.floor(Math.random() * 20 + 2);
+//    var project = {
+//        projectId: projectId,
+//        projectName: '个人信用贷款-' + projectId,
+//        projectType: type,
+//        projectTypeName: types[type],
+//        repaymentMode: 1,
+//        repaymentModeName: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
+//        planAmount: 1000000,
+//        amount: 360000,
+//        rate: 65,
+//        status: [3, 5, 7][projectId % 3],
+//        statusName: Math.floor(Math.random() * 3) == 1 ?  "立即投资":"还款中",
+//        annualizedRate: Math.floor(Math.random() * 20) * 0.01,
+//        annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
+//        annualizedRateAdd: Math.floor(Math.random() * 5) * 0.01,
+//        activityRemark: 'app专享加息+2.4%',
+//        borrowersUser: 'D*s*d*s',
+//        projectDuration: duration,
+//        startingAmount: [100, 1000][Math.floor(Math.random() * 2)],
+//        biddingDeadline: '2015-09-05',
+//        projectIntroduce: 'some text一些介绍',
+//        useMethod: '资金周转',
+//        transferCode: 3,
+//        transferConstraint: '投资后3天可转让',
+//        riskInfo: '<h2>项目风险保障方案</h2><p>专业尽调团队对核心企业和必要的融资项目进行360度实地尽职调查，调查报告的数据包括实地调查数据、人民银行征信系统数</p>',
+//        aboutFiles: (function () {
+//            var i = 0, f = [];
+//            while (i++ < 9)f.push('/images/example/about-file-' + i + '.png');
+//            return f;
+//        })(),
+//        investmentCount: 100,
+//        isNewUser:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+//        isRecommend:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+//        isUseTicket:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+//        isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+//        terminalCodes:'0,2'
+//    };
+//    var resultValue = {
+//        code: 0,
+//    	text: 'ok',
+//    	data: project
+//    }
+//    res.json(resultValue);
+//});
 router.all('/project/detail', function (req, res, next) {
     var projectId = req.body.projectId || 1;
-    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
-    var type = Math.floor(Math.random() * 4);
+    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
+    var type = Math.floor(Math.random() * 7);
     var duration = Math.floor(Math.random() * 20 + 2);
     var project = {
-        projectId: projectId,
-        projectName: '个人信用贷款-' + projectId,
-        projectType: type,
-        projectTypeName: types[type],
-        repaymentMode: 1,
-        repaymentModeName: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
-        planAmount: 1000000,
-        amount: 360000,
-        rate: 65,
-        status: [3, 5, 7][projectId % 3],
-        statusName: Math.floor(Math.random() * 3) == 1 ?  "立即投资":"还款中",
-        annualizedRate: Math.floor(Math.random() * 20) * 0.01,
-        annualizedRateNormal: Math.floor(Math.random() * 20) * 0.01,
-        annualizedRateAdd: Math.floor(Math.random() * 5) * 0.01,
-        activityRemark: 'app专享加息+2.4%',
-        borrowersUser: 'D*s*d*s',
-        projectDuration: duration,
-        startingAmount: [100, 1000][Math.floor(Math.random() * 2)],
-        biddingDeadline: '2015-09-05',
-        projectIntroduce: 'some text一些介绍',
-        useMethod: '资金周转',
-        transferCode: 3,
-        transferConstraint: '投资后3天可转让',
-        riskInfo: '<h2>项目风险保障方案</h2><p>专业尽调团队对核心企业和必要的融资项目进行360度实地尽职调查，调查报告的数据包括实地调查数据、人民银行征信系统数</p>',
-        aboutFiles: (function () {
+        id: projectId,
+        title: '个人信用贷款' + projectId,
+        category: type,
+        categoryName: types[type],
+        methods: 1,
+        methodsName: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
+        money: 200000000,
+        haveMoney:100000,
+        schedule: 35,
+        projectStatus: [3, 5, 7][projectId % 3],
+        projectStatusName: Math.floor(Math.random() * 3) == 1 ?  "未满在投":"还款中",
+        revenue: Math.floor(Math.random() * 20) * 0.01,
+        revenueAward: Math.floor(Math.random() * 5) * 0.01,
+        revenueDisplay: 'app专享加息+2.4%',
+        borrower: 'D*s*d*s',
+        duration: duration,
+        minInvest: [2000, 1000][Math.floor(Math.random() * 2)],
+        expireTime: '2016-09-05',
+        intro: 'some text一些介绍',
+        description: '资金周转',
+        revolveCode: 3,
+        revolve: '投资后3天可转让',
+        control: '<h2>项目风险保障方案</h2><p>专业尽调团队对核心企业和必要的融资项目进行360度实地尽职调查，调查报告的数据包括实地调查数据、人民银行征信系统数</p>',
+        attachment: (function () {
             var i = 0, f = [];
             while (i++ < 9)f.push('/images/example/about-file-' + i + '.png');
             return f;
@@ -213,12 +307,12 @@ router.all('/project/detail', function (req, res, next) {
         isRecommend:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
         isUseTicket:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
         isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-        terminalCodes:'0,2'
+        //terminalCodes:'0,2'
     };
     var resultValue = {
         code: 0,
-    	text: 'ok',
-    	data: project
+        text: 'ok',
+        data: project
     }
     res.json(resultValue);
 });
