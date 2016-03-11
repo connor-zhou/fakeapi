@@ -210,7 +210,7 @@ router.all('/account/changePassword', function (req, res, next) {
 });
 
 /**
- * @fakedoc 登录
+ * @fakedoc xtz.登录
  *
  * @name account.login
  * @href /account/login
@@ -258,7 +258,7 @@ router.all('/account/login', function (req, res, next) {
 });
 
 /**
- * @fakedoc 登出   
+ * @fakedoc xtz.登出
  *
  * @name account.logout
  * @href /account/logout
@@ -291,7 +291,7 @@ router.all('/account/logout', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的信息
+ * @fakedoc xtz.我的信息
  *
  * @name account.my
  * @href /account/my
@@ -359,55 +359,39 @@ router.all('/account/my', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
 	var resultValue = {
-    	code: code,
-    	text: text,
-    	data: {
-    		avatar:"https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg",
-    		netAssets:189000,
-    		goldBalance:1000,
-    		congealVal:19000,
-    		sumProfit:38000,
-    		willProfit:2324,
-    		willPrincipal:25434,
-    		availableBalance:10000,
-    		availableIntegral:20000,
-    		hasSigned:Math.floor(Math.random() * 2) == 1 ? "true" : "false",
-    		hasRemindOfMsg:Math.floor(Math.random() * 2) == 1 ? "true" : "false",
-    		hasRemindOfTicket:Math.floor(Math.random() * 2) == 1 ? "true" : "false",
-    		hasRemindOfReward:Math.floor(Math.random() * 2) == 1 ? "true" : "false",
-    		hasOpenThirdAccount:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-    		hasBindBankCard:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
+		code: code,
+		text: text,
+		data: {
+			photo:"https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg",
+			zichan:189000,
+			money:1000,
+			revenuec:38000,
+			award:2324,
+			revenueWill:25434,
+			moneyWill:5000,
+			integral:20000,
 			accountId: 5,
-    		nickname: '小二hahaha',
-    		customerName: '王小二',
-    		certNum: '234567198878763526',
-    		mobile: '13566667777',
-    		email:'34523452@ww.com',
-    		bankCard:{
-    			cardNo:"23452134523463456",
-        		cardStatusCode:"VERIFIED",
-        		bankCode:"NJYH",
-        		bankName:"东亚银行",
-        		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
-        		quota:5000,
-        		dayQuota:100000,
-        		amount:1345,
-        		ticketCount:5
-    		},
-    		current: {
-    			amount:2000,
-    			availableAmount: 100000,
-    			interestOfYesterday:2.01
-    		},
-    		isNewUser:"0",
-    		hasRecharged:"1"
-    	}
-    }
-    res.json(resultValue);
+			nickName: '小二hahaha',
+			chinaId:'622742199102053562',
+			realName: '王小二',
+			cardId: '234567198878763526',
+			phone: '13566667777',
+			email:'34523452@ww.com',
+			bankCard:{
+				cardId:"23452134523463456",
+				check:"VERIFIED",
+				code:"NJYH",
+				bank:"东亚银行",
+				bankName:"东亚银行星湖支行",
+				money:1345,
+			}
+		}
+	}
+	res.json(resultValue);
 });
 
 /**
- * @fakedoc 我的投资券
+ * @fakedoc xtz.我的投资券
  *
  * @name account.myTickets
  * @href /account/myTickets
@@ -451,16 +435,16 @@ router.all('/account/myTickets', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         tickets.push({
-        	ticketId: start,
-            type: [0, 1, 2, 3, 4, 5][start % 5],
-            typeName: '投资券',
-            useInfo: '满1000元可用',
-            useLimit: Math.floor(Math.random() * 1000),
-            amount: 10,
+        	id: start,
+            category: [0, 1, 2, 3, 4, 5][start % 5],
+            award: '投资券',
+            useRule: '满1000元可用',
+            useRuleType: Math.floor(Math.random() * 1000),
+            money: 10,
             status: [0, 1, 2][start % 3],
             statusName: ["正常","已使用","过期"][start % 3],
-            invalidDt:"2015-10-22",
-            getRemark:"推荐好友奖励"
+            expiryTime:"2015-10-22",
+            note:"推荐好友奖励"
         });
         start++;
         limit--;
@@ -474,7 +458,7 @@ router.all('/account/myTickets', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的投资
+ * @fakedoc xtz.我的投资
  *
  * @name account.myInvestment
  * @href /account/myInvestment
@@ -537,30 +521,27 @@ router.all('/account/myInvestment', function (req, res, next) {
     var type = req.body.type;
 	var projects = [];
     var max = 35;
-    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 4);
+        var type = Math.floor(Math.random() * 7);
         projects.push({
-        	recordId: start,
-            projectId: start,
-            projectName: types[type] + '-' + start,
-            projectType: type,
-            projectTypeName: types[type],
-            projectDuration:12,
-            repaymentMode: 1,
-            repaymentModeName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
-            amount: 1000000,
-            receivedProfit: 36000,
-            willProfit: 64000,
+        	id: start,
+            pId: start,
+            title: types[type] + '-' + start,
+            category: type,
+            categoryName: types[type],
+            duration:12,
+            methods: 1,
+            methodsName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
+            money: 1000000,
+            revenue: 36000,
+            revenueWill: 64000,
             status: [3, 5, 7][start % 3],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
-            statusName: ["立即投资","还款中","已结束"][start % 3],
-            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
-            rate:Math.floor(Math.random() * 100) * 0.01,
-            remainingDays:55,
-            opDt:"2015-12-01",
-            lastRepaymentDate:"2016-12-01",
-            isNewUser:['0','1'][start % 2],
-            isRecommend:['0','1'][start % 2]
+            statusName: ["投标中","持有中","已结束"][start % 3],
+            interest: Math.floor(Math.random() * 20) * 0.01,
+            schedule: Math.floor(Math.random() * 100) * 0.01,
+            expireTime :"2016-12-01",
+            recommend:['0','1'][start % 2]
         });
         start++;
         limit--;
@@ -573,9 +554,9 @@ router.all('/account/myInvestment', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		totalInvestment:87800,
-    		receiveMoney:988,
-    		tipMsg:'距下期收款还有2天, 金额10.22元',
+    		investmentc:87800,
+    		money:988,
+    		note:'距下期收款还有2天, 金额10.22元',
     		projectList:projects
     	}
     }
@@ -583,7 +564,7 @@ router.all('/account/myInvestment', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的投资--项目详情
+ * @fakedoc xtz.我的投资--项目详情
  *
  * @name account.myInvestmentDetail
  * @href /account/myInvestmentDetail
@@ -637,33 +618,29 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		recordId: 1,
-    		projectId: 1,
-    		projectCode: "4352345234523",
-            projectName: '花生贷' + '-' + 1,
-            projectTypeName: '典当融资租赁',
-            projectType: 1,
-            repaymentMode: 1,
-            repaymentModeName:  ["等额本息","先息后本","一次性还本付息"][Math.floor(Math.random() * 3) % 3],
-            amount: 1000000,
-            receivedProfit: 36000,
-            willProfit: 64000,
+    		id: 1,
+    		pId: 1,
+    		orderId: "4352345234523",
+            pName: '花生贷' + '-' + 1,
+            categoryName: '典当融资租赁',
+            category: 1,
+            methods: 1,
+            methodsName:  ["等额本息","先息后本","一次性还本付息"][Math.floor(Math.random() * 3) % 3],
+            investment: 1000000,
+            revenue: 36000,
+			revenueWill: 64000,
             status: [3, 5, 7][1 % 3],
             statusName: ["立即投资","还款中","已结束"][Math.floor(Math.random() * 3) % 3],
-            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
-            rate:Math.floor(Math.random() * 100) * 0.01,
-            investmentPeriod:"2015-10-20 至 2016-06-10",
-            remaindAndTotalMonth:"2/12",
-            isNewUser:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-            isRecommend:Math.floor(Math.random() * 2) == 1 ? '0' : '1',
-            isCanAssign:Math.floor(Math.random() * 2) == 1 ? '0' : '1'
+            interest: Math.floor(Math.random() * 20) * 0.01,
+            schedule:Math.floor(Math.random() * 100) * 0.01,
+            timeline : '2015-12-1',
     	}
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到指定投资记录的还款计划
+ * @fakedoc xtz.得到指定投资记录的还款计划
  *
  * @name account.repaymentPlan
  * @href /account/repaymentPlan
@@ -700,11 +677,11 @@ router.all('/account/repaymentPlan', function (req, res, next) {
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            planDate: dt.format('YYYY-MM-DD'),
-            planMoney: 100,
-            principal: 90,
+            timeline: dt.format('YYYY-MM-DD'),
+            repaymentc: 100,
+            money: 90,
             interest: 10,
-            remainingPrincipal: 1000,
+            moneyWill: 1000,
             status: Math.floor(Math.random() * 4),
             statusName: "还款中"
         });
@@ -718,7 +695,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
 });
 
 /**
- * @fakedoc 回款日历
+ * @fakedoc xtz.回款日历
  *
  * @name account.repaymentCalendar
  * @href /account/repaymentCalendar
@@ -764,16 +741,16 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 	var limit = req.body.limit || 10;
 	var records = [];
     var max = 5;
-    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         records.push({
             projectName: types[type] + '-' + start,
-            planDate: '2015-11-06',
-            planMoney: 100,
-            principal: 90,
+            planTime: '2015-11-06',
+            repaymentc: 100,
+            money: 90,
             interest: 10,
-            remainingPrincipal: 1000
+            moneyWill: 1000
         });
         start++;
         limit--;
@@ -788,14 +765,14 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
     	code: code,
     	text: text,
     	data: {
-    		sumRepaymentAmout:30000,
-    		repaymentAmout:2000,
+    		repaymentc:30000,
+    		repayment:2000,
     		dayList:[
-      	   		{day:5,amount:3500,status:1,recordList:records},
-      	   		{day:8,amount:500,status:1,recordList:records},
-      	   		{day:12,amount:100,status:1,recordList:records},
-      	   		{day:15,amount:10200,status:0,recordList:records},
-      	   		{day:25,amount:3500,status:0,recordList:records},
+      	   		{day:5,money:3500,status:1,recordList:records},
+      	   		{day:8,money:500,status:1,recordList:records},
+      	   		{day:12,money:100,status:1,recordList:records},
+      	   		{day:15,money:10200,status:0,recordList:records},
+      	   		{day:25,money:3500,status:0,recordList:records},
       	   	]
     	}
     }
@@ -803,7 +780,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 });
 
 /**
- * @fakedoc 交易记录分页列表
+ * @fakedoc xtz.交易记录分页列表
  *
  * @name account.transactionRecord
  * @href /account/transactionRecord
@@ -840,11 +817,11 @@ router.all('/account/transactionRecord', function (req, res, next) {
     	code: code,
     	text: text,
     	data: [
-    	   {opDt:'2015-10-19 11:01:01',changeType:1,changeTypeName:'充值',changeVal:'+10000'},
-    	   {opDt:'2015-10-12 11:01:01',changeType:2,changeTypeName:'投资',changeVal:'-500'},
-    	   {opDt:'2015-10-09 11:01:01',changeType:3,changeTypeName:'收益',changeVal:'+10'},
-    	   {opDt:'2015-10-09 11:01:01',changeType:4,changeTypeName:'提现',changeVal:'-100'},
-    	   {opDt:'2015-09-09 11:01:01',changeType:5,changeTypeName:'提现手续费',changeVal:'-2'}
+    	   {timeline:'2015-10-19 11:01:01',category:1,categoryName:'充值',note:'+10000'},
+    	   {timeline:'2015-10-12 11:01:01',category:2,categoryName:'投资',note:'-500'},
+    	   {timeline:'2015-10-09 11:01:01',category:3,categoryName:'收益',note:'+10'},
+    	   {timeline:'2015-10-09 11:01:01',category:4,categoryName:'提现',note:'-100'},
+    	   {timeline:'2015-09-09 11:01:01',category:5,categoryName:'提现手续费',note:'-2'}
        ]
     }
     res.json(resultValue);
@@ -1039,8 +1016,8 @@ router.all('/account/beforeWithdraw', function (req, res, next) {
     		bankCode:"NJYH",
     		bankName:"东亚银行",
     		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
-    		amount:1345,
-    		ticketCount:5
+    		money:1345,
+    		award:5
     	}
     }
     res.json(resultValue);

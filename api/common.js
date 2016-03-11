@@ -36,7 +36,7 @@ var _ = require('lodash');
  */
  
 /**
- * @fakedoc 手机号码是否正确
+ * @fakedoc xtz.手机号码是否正确
  *
  * @name common.isMobile
  * @href /common/isMobile
@@ -59,9 +59,9 @@ var _ = require('lodash');
  *
  */
 router.all('/common/isMobile', function (req, res, next) {
-	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
+	var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13577778888');
     var resultValue = {
-    	code: mobile == '13566667777' ? 0 : 1,
+    	code: phone == '13577778888' ? 0 : 1,
     	text: 'ok',
     }
     res.json(resultValue);

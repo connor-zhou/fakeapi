@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 首页轮播列表
+ * @fakedoc xtz.首页轮播列表
  *
  * @name event.carousel
  * @href /event/carousel
@@ -36,7 +36,7 @@ router.all('/event/carousel', function (req, res, next) {
     var events = [];
     _.forEach([2,3,4,5,6,8], function (i) {
     	events.push({
-    		imageUrl:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
+    		photo:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
         	title: 'slide'+i,
         	type: [1,2][i % 2],
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1"
@@ -336,7 +336,7 @@ router.all('/event/shareSuccess', function (req, res, next) {
 });
 
 /**
- * @fakedoc 中奖榜单
+ * @fakedoc xtz.中奖榜单
  *
  * @name event.lotteryPrizeList
  * @href /event/lotteryPrizeList
@@ -366,16 +366,16 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: [
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPad mini3"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"50元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPhone 6s"},
-			{mobile:'158****4609',result:"20元投资券"}
+			{phone:'158****4609',result:"10元现金券"},
+			{phone:'158****4609',result:"迪士尼米奇玩偶"},
+			{phone:'158****4609',result:"10元现金券"},
+			{phone:'158****4609',result:"iPad mini3"},
+			{phone:'158****4609',result:"10元现金券"},
+			{phone:'158****4609',result:"10元现金券"},
+			{phone:'158****4609',result:"50元现金券"},
+			{phone:'158****4609',result:"10元现金券"},
+			{phone:'158****4609',result:"iPhone 6s"},
+			{phone:'158****4609',result:"20元投资券"}
 		]
 	};
 	res.json(resultValue);

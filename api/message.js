@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 我的消息-账户消息
+ * @fakedoc xtz.我的消息-账户消息
  * 
  * @name message.accountMessagePageList
  * @href /message/accountMessagePageList
@@ -48,13 +48,13 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         pageList.push({
-        	messageId: "" + start,
-        	messageChannel: "0",
+        	msgsId: "" + start,
+        	proxy: "0",
         	title: "您有一笔回款",
         	content:"尊敬的用户，您于2016年02月14日回款22154.0元。关注花生金服官方微信，查详情、抢标的，让您随时随地赚不停！",
-        	status:[0,2][start % 2],
-            statusName: ["已读","未读"][start % 2],
-            createDt: "2015-10-20"
+        	markRead:[0,2][start % 2],
+            markReadName: ["已读","未读"][start % 2],
+            timeline: "2015-10-20"
         });
         start++;
         limit--;
@@ -68,7 +68,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的消息-系统消息
+ * @fakedoc xtz.我的消息-系统消息
  * 
  * @name message.systemMessagePageList
  * @href /message/systemMessagePageList
@@ -113,13 +113,13 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         pageList.push({
-        	messageId: "" + start,
-        	messageChannel: "0",
+        	msgsId: "" + start,
+        	proxy: "0",
         	title: "您有一条系统消息",
         	content:"活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动！",
-        	status:[0,2][start % 2],
-            statusName: ["已读","未读"][start % 2],
-            createDt: "2015-10-20"
+        	markRead:[0,2][start % 2],
+            markReadName: ["已读","未读"][start % 2],
+            timeline: "2015-10-20"
         });
         start++;
         limit--;
@@ -133,7 +133,7 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 标记为已读
+ * @fakedoc xtz.标记为已读
  *
  * @name message.read
  * @href /message/read
