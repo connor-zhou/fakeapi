@@ -325,7 +325,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		revenueWill:"{number} 待收收益",
  *  		moneyWill:"{number} 待收本金",
 			integral:"{number} 可用积分",
-			award:"{string}投资券"
+			award:"{string} 投资券"
  *  	}
  * }
  *
