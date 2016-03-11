@@ -301,49 +301,31 @@ router.all('/account/logout', function (req, res, next) {
  *
  * @output {json} 我的信息
  * {
- *  	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  	code:"{int} 状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	data:{
  *  		accountId:"{String} 会员账号Id",
- *  		avatar:"{String} 头像URL",
+ *  		photo:"{String} 头像URL",
  *  		nickname:"{String} 昵称",
- *  		customerName:"{String} 真实姓名",
- *  		certNum:"{String} 身份证号码（后台做模糊处理）",
- *  		mobile:"{String} 手机号码",
+ *  		realName:"{String} 真实姓名",
+ *  		chinaId:"{String} 身份证号码（后台做模糊处理）",
+ *  		phone:"{String} 手机号码",
  *  		email:"{String} 电子邮箱",
  *  		bankCard: {
- *  			cardNo:"{String} 银行卡",
- *  			status:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
- *  			statusName:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
- *  			bankCode:"{String} 银行卡所属银行",
- *  			bankName:"{String} 银行卡所属银行名称",
- *      		bankLogo:"{String} 银行Logo的URL",
- *      		quota:"{number} 每次限额",
- *          	dayQuota:"{number} 日限额",
- *  			amount:"{number} 可提现金额",
- *      		ticketCount:"{int} 提现券张数"
+ *  			cardId:"{String} 银行卡",
+ *  			check:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
+ *  			code:"{String} 银行编号",
+ *  			bank:"{String} 银行名称",
+ *  			bankName:"{String} 银行分支具体名称"，
+ *  			money:"{number} 可提现金额"
  *  		},
- *  		current: {
- *				amount:"{number} 当前用户持有的活期金额",
- *				availableAmount: "{number} 当前用户剩余可购买活期额度",
- *				interestOfYesterday: "{number} 昨日收益"
- *			},
- *  		netAssets:"{number} 账户资产",
- *  		goldBalance:"{number} 账户余额",
- *  		congealVal:"{number} 冻结金额", 
- *  		sumProfit:"{number} 累计收益",
- *  		willProfit:"{number} 待收收益",
- *  		willPrincipal:"{number} 待收本金",
- *  		availableBalance:"{number} 可用余额",
- *  		availableIntegral:"{number} 可用花生豆余额",
- *     	 	hasSigned:"{String} 是否签到（true 或 false)",
- *      	hasRemindOfMsg:"{String} 是否有未读消息（true 或 false)",
- *      	hasRemindOfTicket:"{String} 是否有可用投资券（true 或 false)",
- *      	hasRemindOfReward:"{String} 是否有积分提醒（true 或 false)",
- *      	hasOpenThirdAccount:"{String} 是否开通第三方账号（0：未开通；1：已开通）",
- *      	hasBindBankCard:"{String} 是否绑定银行卡（0：未绑卡；1：已绑卡）",
- *      	isNewUser:"{String} 是否新手（0是，其它不是）",
- *      	hasRecharged:"{String} 是否充过值（0是，其它不是）"
+ *  		zichan:"{number} 账户资产",
+ *  		money:"{number} 账户余额",
+ *  		revenuec:"{number} 累计收益",
+ *  		revenueWill:"{number} 待收收益",
+ *  		moneyWill:"{number} 待收本金",
+			integral:"{number} 可用积分"，
+			award:"{string}投资券"
  *  	}
  * }
  *
@@ -404,16 +386,16 @@ router.all('/account/my', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *      	ticketId:"{int} 投资券Id",
- *      	type:"{int} 类型(1：5元，2：10元，3：20元，4：50元，5：100元)",
- *      	typeName:"{string} 类型名称",
- *      	useInfo:"{string} 使用条件",
- *      	useLimit:"{number} 使用限制",
- *      	amount:"{number} 面值",
+ *      	id:"{int} 投资券Id",
+ *      	category:"{int} 类型(1：5元，2：10元，3：20元，4：50元，5：100元)",
+ *      	categoryName:"{string} 类型名称",
+ *      	useRule:"{string} 使用条件",
+ *      	useRuleType:"{number} 使用限制",
+ *      	money:"{number} 面值",
  *      	status:"{int} 状态(0, 1, 2)",
  *      	statusName:"{String} 状态名称(正常,已使用,已过期)",
- *     		invalidDt:"{String} 失效时间",
- *     		getRemark:"{String} 来源备注"
+ *     		expireTime:"{String} 失效时间",
+ *     		note:"{String} 来源备注（推荐好友奖励）"
  *    }]
  * }
  *
@@ -472,30 +454,28 @@ router.all('/account/myTickets', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	totalInvestment:"{number} 投资总额",
- *  	receiveMoney:"{number} 收款总额",
- *  	tipMsg:"{String} 收款提示信息",
+ *  	investmentc:"{number} 投资总额",
+ *  	money:"{number} 收款总额",
+ *  	note:"{String} 收款提示信息",
  *  	projectList:[{
- *  		recordId:"{string} 记录Id",
- *      	projectId:"{string} 项目Id",
- *      	projectName:"{string} 项目名称",
- *      	projectType:"{int} 项目类型",
- *      	projectTypeName:"{string} 项目类型名称",
- *      	projectDuration:"{int} 项目期限，单位 *月份*",
- *     		repaymentMode:"{int} 还款方式",
- *      	repaymentModeName:"{String} 还款方式名称",
- *      	amount:"{number} 投资金额",
- *      	receivedProfit:"{number} 已收收益",
- *      	willProfit:"{number} 待收收益",
+ *  		id:"{string} 记录Id",
+ *      	pId:"{string} 项目Id",
+ *      	title:"{string} 项目名称",
+ *      	category:"{int} 项目类型",
+ *      	categoryName:"{string} 项目类型名称",
+ *      	duration:"{int} 项目期限，单位 *月份*",
+ *     		methods:"{int} 还款方式",
+ *      	methodsName:"{String} 还款方式名称",
+ *      	investment:"{number} 投资金额",
+ *      	revenue:"{number} 已收收益",
+ *      	revenueWill:"{number} 待收收益",
  *      	status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
  *      	statusName:"{String} 状态名称",
- *      	annualizedRate:"{number} 年化利率",
- *      	rate:"{number} 已投百分比，不要加(%)",
- *      	remainingDays:"{int} 剩余天数",
- *      	opDt:"{String} 投资日期",
- *      	lastRepaymentDate:"{String} 到期日期（取的是后台的【项目最后还款日期】）",
- *      	isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *			isRecommend:"{String} 是否重点推荐（0是，其它不是）"
+ *      	interest:"{number} 年化利率",
+ *      	schedule:"{number} 已投百分比，不要加(%)",
+ *      	timeline:"{String} 投资时间",
+			expiretime:"{String} 到期时间"
+ *			recommend:"{String} 是否重点推荐（0是，其它不是）"
  * 		}]
  *    }
  * }
@@ -578,26 +558,22 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	recordId:"{string} 记录Id",
- *      projectId:"{int} 项目Id",
- *      projectCode:"{String} 项目编号",
- *      projectName:"{string} 项目名称",
- *      projectType:"{int} 项目类型",
- *      projectTypeName:"{string} 项目类型名称",
- *      repaymentMode:"{int} 还款方式",
- *      repaymentModeName:"{String} 还款方式名称",
- *      amount:"{number} 投资金额",
- *      receivedProfit:"{number} 已收收益",
- *      willProfit:"{number} 待收收益",
+ *  	id:"{string} 记录Id",
+ *      pId:"{int} 项目Id",
+ *      orderId:"{String} 项目编号",
+ *      title:"{string} 项目名称",
+ *      category:"{int} 项目类型",
+ *      categoryName:"{string} 项目类型名称",
+ *      methods:"{int} 还款方式",
+ *      methodsName:"{String} 还款方式名称",
+ *      investment:"{number} 投资金额",
+ *      revenue:"{number} 已收收益",
+ *      revenueWill:"{number} 待收收益",
  *      status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
  *      statusName:"{String} 状态名称",
- *      annualizedRate:"{number} 年化利率",
- *      rate:"{number} 已投百分比，不要加(%)",
- *		investmentPeriod:"{String} 收款区间",
- *		remaindAndTotalMonth:"{String} 剩余期数/总期数",
- *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）"
+ *      interest:"{number} 年化利率",
+ *      schedule:"{number} 已投百分比，不要加(%)",
+ *		timeline:"{String} 时间线",
  *    }
  * }
  *
@@ -621,7 +597,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     		id: 1,
     		pId: 1,
     		orderId: "4352345234523",
-            pName: '花生贷' + '-' + 1,
+            title: '花生贷' + '-' + 1,
             categoryName: '典当融资租赁',
             category: 1,
             methods: 1,
@@ -659,11 +635,11 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
- *  	planDate:"{string} 还款日期",
- *  	planMoney:"{string} 还款金额",
- *  	principal:"{string} 应还本金",
+ *  	planTime:"{string} 还款日期",
+ *  	repaymentc:"{string} 应还总计",
+ *  	money:"{string} 应还本金",
  *  	interest:"{string} 应还利息",
- *  	remainingPrincipal:"{string} 剩余应还本金",
+ *  	moneyWill:"{string} 剩余应还本金",
  *  	status:"{string} 状态",
  *  	statusName:"{String} 状态名称"
  *  }]
@@ -677,7 +653,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            timeline: dt.format('YYYY-MM-DD'),
+            planTime: dt.format('YYYY-MM-DD'),
             repaymentc: 100,
             money: 90,
             interest: 10,
@@ -710,19 +686,19 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *     code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *     text:"{String} 状态描述",
  *     data: {
- *         sumRepaymentAmout:"{number} 本月应回款(元)",
- *         repaymentAmout:"{number} 本月已回款(元)",
+ *         repayment:"{number} 本月应回款(元)",
+ *         repaymentYet:"{number} 本月已回款(元)",
  *         dayList:[{
  *  			day:"{int} 天",
- *  			amount:"{number} 还款额",
+ *  			money:"{number} 还款额",
  *  			status:"{int} 状态(0-未还，1--已还，2--逾期)",
  *  			recordList:[{
- *      			projectName:"{string} 项目名称",
- *      			planDate:"{string} 还款日期",
- *  				planMoney:"{string} 还款金额",
- *  				principal:"{string} 应还本金",
+ *      			title:"{string} 项目名称",
+ *      			planTime:"{string} 还款日期",
+ *  				repaymentc:"{string} 还款金额",
+ *  				money:"{string} 应还本金",
  *  				interest:"{string} 应还利息",
- *  				remainingPrincipal:"{string} 剩余应还本金"
+ *  				moneyWill:"{string} 剩余应还本金"
  * 				}]
  *  	   }]
  *     }
@@ -745,7 +721,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         records.push({
-            projectName: types[type] + '-' + start,
+            title: types[type] + '-' + start,
             planTime: '2015-11-06',
             repaymentc: 100,
             money: 90,
@@ -765,8 +741,8 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
     	code: code,
     	text: text,
     	data: {
-    		repaymentc:30000,
-    		repayment:2000,
+    		repayment:30000,
+    		repaymentYet:2000,
     		dayList:[
       	   		{day:5,money:3500,status:1,recordList:records},
       	   		{day:8,money:500,status:1,recordList:records},
@@ -795,10 +771,10 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	opDt:"{String} 操作日期时间",
- *  	changeType:"{String} 变更类型（B2B网银:NET_B2B，B2C网银:NET_B2C，一键支付:A_PAY，代充值:WH_NO_CARD，快捷充值:SWIFT，正常提现，T+1 天到账:NORMAL，加急提现，T+0 当日到账:URGENT，投资冻结:1，投资冻结取消:2，投资确认:3，还款:4，充值获取抵用额:5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
- *  	changeTypeName:"{String} 变更类型名称",
- *  	changeVal:"{String} 变更值"
+ *  	timeline:"{String} 操作日期时间",
+ *  	category:"{String} 变更类型（B2B网银:NET_B2B，B2C网银:NET_B2C，一键支付:A_PAY，代充值:WH_NO_CARD，快捷充值:SWIFT，正常提现，T+1 天到账:NORMAL，加急提现，T+0 当日到账:URGENT，投资冻结:1，投资冻结取消:2，投资确认:3，还款:4，充值获取抵用额:5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
+ *  	categoryName:"{String} 变更类型名称",
+ *  	note:"{String} 变更值"
  *   }]
  * }
  *

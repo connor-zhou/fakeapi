@@ -25,13 +25,13 @@ var _ = require('lodash');
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *      messageId:"{String} 消息编号",
- *      messageChannel:"{String} 发送渠道：web(0)、微信(1)、android(2)、ios(3)、短信(4)、邮件(5)",
+ *      msgsId:"{String} 消息编号",
+ *      proxy:"{String} 发送渠道：web(0)、微信(1)、android(2)、ios(3)、短信(4)、邮件(5)",
  *      title:"{String} 标题",
  *		content:"{String} 内容",
- *		status:"{int} 状态(2:已读、其它：未读)",
- *      statusName:"{String} 状态名称(已读、未读)",
- *      createDt:"{String} 创建时间"
+ *		markRead:"{int} 状态(2:已读、其它：未读)",
+ *      markReadName:"{String} 状态名称(已读、未读)",
+ *      timeline:"{String} 创建时间"
  * 	  }
  * 	]
  * }
@@ -90,13 +90,13 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *      messageId:"{String} 消息编号",
- *      messageChannel:"{String} 发送渠道：web(0)、微信(1)、android(2)、ios(3)、短信(4)、邮件(5)",
+ *      msgsId:"{String} 消息编号",
+ *      proxy:"{String} 发送渠道：web(0)、微信(1)、android(2)、ios(3)、短信(4)、邮件(5)",
  *      title:"{String} 标题",
  *		content:"{String} 内容",
- *		status:"{int} 状态(2:已读、其它：未读)",
- *      statusName:"{String} 状态名称(已读、未读)",
- *      createDt:"{String} 创建时间"
+ *		markRead:"{int} 状态(2:已读、其它：未读)",
+ *      markReadName:"{String} 状态名称(已读、未读)",
+ *      timeline:"{String} 创建时间"
  * 	  }
  * 	]
  * }

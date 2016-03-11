@@ -22,29 +22,22 @@ var router = express.Router();
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *      projectId:"{int} 项目ID",
- *      projectName:"{String} 项目名称",
- *      projectType:"{int} 项目类型",
- *      projectTypeName:"{string} 项目类型名称",
- *      repaymentMode:"{int} 还款方式",
- *      repaymentModeName:"{String} 还款方式名称",
- *      startingAmount:"{number} 起投金额",
- *      amount:"{number} 可投金额",
- *      rate:"{number} 已投百分比，不要加(%)",
- *      status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
- *      statusName:"{String} 状态名称",
- *      annualizedRate:"{number} 年化利率",
- *      annualizedRateNormal:"{number} 正常年化利率",
- *      annualizedRateAdd:"{number} 活动加息年化利率",
- *      activityRemark:"{string} 活动说明（新手专享加息+8%，App专享加息+xx%，平台贴息+xx%，金刚花生保存障计划项目）",
- *      projectDuration:"{int} 借款期限，单位 *月份*",
- *      safeguardMode:"{int} 保障方式",
- *      safeguardModeName:"{String} 保障方式名称",
- *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
- *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
- *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
+ *      id:"{int} 项目ID",
+ *      title:"{String} 项目名称",
+ *      category:"{int} 项目类型",
+ *      categoryName:"{string} 项目类型名称",
+ *      methods:"{int} 还款方式",
+ *      methodsName:"{String} 还款方式名称",
+ *      minInvest:"{number} 起投金额",
+ *      haveMoney:"{number} 已投金额",
+ *      schedule:"{number} 已投百分比，不要加(%)",
+ *      projectStatus:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
+ *      projectStatusName:"{String} 状态名称",
+ *      revenue:"{number} 年化利率",
+ *      revenueAward:"{number} 活动加息年化利率",
+ *      revenueDisplay:"{string} 活动说明（新手专享加息+8%，App专享加息+xx%，平台贴息+xx%，金刚花生保存障计划项目）",
+ *      duration:"{int} 借款期限，单位 *月份*",
+ *      safety:"{int} 保障方式",
  * 	  }
  * 	]
  * }
@@ -90,7 +83,7 @@ router.all('/project/pageList', function (req, res, next) {
     res.json(resultValue);
 });
 /**
- * @fakedoc 推荐项目列表
+ * @fakedoc xtz.推荐项目列表
  * 
  * @name project.recommend
  * @href /project/recommend
@@ -130,37 +123,29 @@ router.all('/project/recommend', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *      projectId:"{int} 项目ID",
- *      projectName:"{string} 项目名称",
- *      projectType:"{int} 项目类型",
- *      projectTypeName:"{string} 项目类型名称",
- *      repaymentMode:"{int} 还款方式",
- *      repaymentModeName:"{String} 还款方式名称",
- *      planAmount:"{number} 融资金额",
- *      amount:"{number} 可投金额",
- *      rate:"{number} 已投百分比(%)",
- *      status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
- *      statusName:"{String} 状态名称",
- *      annualizedRate:"{number} 年化利率",
- *      annualizedRateNormal:"{number} 正常年化利率",
- *      annualizedRateAdd:"{number} 活动加息年化利率",
- *      activityRemark:"{string} 活动说明（新手专享加息+8%，App专享加息+xx%，平台贴息+xx%，金刚花生保存障计划项目）",
- *      borrowersUser:"{string} 借款人",
- *      projectDuration:"{int} 项目期限，单位 *月份*",
- *      startingAmount:"{number} 起投金额",
- *      biddingDeadline:"{date} 投资截止日期",
- *      projectIntroduce:"{string} 项目简介",
- *      useMethod:"{string} 用途",
- *      transferCode:"{string} 转让天数限制",
- *      transferConstraint:"{string} 转让限制描述",
- *      riskInfo:"{html} 风险信息",
- *      aboutFiles:["{string} 文件链接"],
- *      investmentCount:"{int} 投资人数",
- *      isNewUser:"{String} 是否新手项目（0是，其它不是）",
- *		isRecommend:"{String} 是否重点推荐（0是，其它不是）",
- *		isUseTicket:"{String} 是否可用券（0是，其它不是）",
- *		isCanAssign:"{String} 是否可转让（0是，其它不是）",
- *		terminalCodes:"{String} 适用终端编号，多个用逗号间隔(0：PC，1：Android，2：iOS，3：weixin)"
+ *      id:"{int} 项目ID",
+ *      title:"{string} 项目名称",
+ *      category:"{int} 项目类型",
+ *      categoryName:"{string} 项目类型名称",
+ *      methods:"{int} 还款方式",
+ *      methodsName:"{String} 还款方式名称",
+ *      money:"{number} 融资金额",
+ *      haveMoney:"{number} 已投金额",
+ *      schedule:"{number} 已投百分比(%)",
+ *      projectStatus:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
+ *      projectStatusName:"{String} 状态名称",
+ *      revenue:"{number} 年化利率",
+ *      revenueAward:"{number} 活动加息年化利率",
+ *      revenueDisplay:"{string} 活动说明（新手专享加息+8%，App专享加息+xx%，平台贴息+xx%，金刚花生保存障计划项目）",
+ *      borrower:"{string} 借款人",
+ *      duration:"{int} 项目期限，单位 *月份*",
+ *      minInvest:"{number} 起投金额",
+ *      expireTime:"{date} 投资截止日期",
+ *      intro:"{string} 项目简介",
+ *      description:"{string} 项目用途说明",
+ *      revolve:"{string} 转让限制描述",
+ *      control:"{html} 风险控制",
+ *      attachment:["{string} 文件链接"],
  *   }
  * }
  *
@@ -208,7 +193,7 @@ router.all('/project/detail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到指定项目的还款计划
+ * @fakedoc xtz.得到指定项目的还款计划
  *
  * @name project.repaymentPlan
  * @href /project/repaymentPlan
@@ -227,11 +212,9 @@ router.all('/project/detail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
- *  	planDate:"{string} 还款日期",
- *  	planMoney:"{string} 还款金额",
- *  	principal:"{string} 应还本金",
+ *  	planTime:"{string} 还款日期",
+ *  	money:"{string} 还款金额",
  *  	interest:"{string} 应还利息",
- *  	remainingPrincipal:"{string} 剩余应还本金",
  *  	status:"{string} 状态",
  *  	statusName:"{String} 状态名称"
  *  }]
@@ -245,7 +228,7 @@ router.all('/project/repaymentPlan', function (req, res, next) {
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            repaymentTime: dt.format('YYYY-MM-DD'),
+            planTime: dt.format('YYYY-MM-DD'),
             money: 100,
             interest: 10,
             status: Math.floor(Math.random() * 4),
@@ -282,10 +265,9 @@ router.all('/project/repaymentPlan', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
- *  	investmentUser:"{string} 投资人",
- *  	opTerm:"{string} 操作终端",
- *  	opDt:"{string} 操作日期",
- *  	amount:"{string} 投资金额"
+ *  	uname:"{string} 投资人",
+ *  	timeline:"{string} 操作日期",
+ *  	money:"{string} 投资金额"
  *  }]
  * }
  */
