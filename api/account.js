@@ -316,7 +316,7 @@ router.all('/account/logout', function (req, res, next) {
  *  			check:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
  *  			code:"{String} 银行编号",
  *  			bank:"{String} 银行名称",
- *  			bankName:"{String} 银行分支具体名称"，
+ *  			bankName:"{String} 银行分支具体名称",
  *  			money:"{number} 可提现金额"
  *  		},
  *  		zichan:"{number} 账户资产",
@@ -324,7 +324,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		revenuec:"{number} 累计收益",
  *  		revenueWill:"{number} 待收收益",
  *  		moneyWill:"{number} 待收本金",
-			integral:"{number} 可用积分"，
+			integral:"{number} 可用积分",
 			award:"{string}投资券"
  *  	}
  * }
@@ -474,7 +474,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	interest:"{number} 年化利率",
  *      	schedule:"{number} 已投百分比，不要加(%)",
  *      	timeline:"{String} 投资时间",
-			expiretime:"{String} 到期时间"
+			expireTime:"{String} 到期时间",
  *			recommend:"{String} 是否重点推荐（0是，其它不是）"
  * 		}]
  *    }

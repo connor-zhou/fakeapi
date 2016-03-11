@@ -149,7 +149,7 @@ router.all('/event/checkServerStatus', function (req, res, next) {
  *
  * @output {json} 新手任务接口
  * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ * 	code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  * 		step1:"{String} 	注册奖励",
@@ -158,8 +158,7 @@ router.all('/event/checkServerStatus', function (req, res, next) {
  *  	step4:"{string} 	首次投资奖励 "
  *    }
  * }
- *
- */
+*/
 router.all('/event/newUserTask', function (req, res, next) {
     var resultValue = {
     	code: 0,

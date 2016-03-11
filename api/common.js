@@ -4,14 +4,14 @@ var _ = require('lodash');
 
 /**
  * @fakedoc 客户端统计参数
- * 
+ *
  * @name common.client
  * @href /common/client
  *
  * @description
- * 
+ *
  * 使用方式：http://www.xxxxx.com?client=Base64.encode(json)
- * 
+ *
  * <pre>
  *{
  *	android:{						//Android参数
@@ -34,7 +34,7 @@ var _ = require('lodash');
  *}
  * </pre>
  */
- 
+
 /**
  * @fakedoc xtz.手机号码是否正确
  *
