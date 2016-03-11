@@ -41,17 +41,17 @@
 + Execute Shell:
 
     ```
-        # 如果文件夹不存在，先安装这个程序
-        if [ ! -d "node_modules"]; then 
-        cnpm install
-        fi
-        \cp -f /home/jenkins/privatekey.pem ${WORKSPACE}/
-        \cp -f /home/jenkins/certificate.pem ${WORKSPACE}/
-        #jenkins 对于daemon进程，会在编译结束的时候kill掉
-        #加一个BUILD_ID的环境变量可以避免这一点
-        #参见 https://wiki.jenkins-ci.org/display/JENKINS/ProcessTreeKiller
-        export BUILD_ID=dontKillMe
-        forever stop ${WORKSPACE}/bin/www
-        forever --spinSleepTime 1000 --minUptime 1000 -a -l /var/log/jenkins/forever.log  -o /var/log/jenkins/forever.out.log  -e /var/log/jenkins/forever.error.log start ${WORKSPACE}/bin/www
-        gulp fakedocs
+    # 如果文件夹不存在，先安装这个程序
+    if [ ! -d "node_modules"]; then 
+    cnpm install
+    fi
+    \cp -f /home/jenkins/privatekey.pem ${WORKSPACE}/
+    \cp -f /home/jenkins/certificate.pem ${WORKSPACE}/
+    # jenkins 对于daemon进程，会在编译结束的时候kill掉
+    # 加一个BUILD_ID的环境变量可以避免这一点
+    # 参见 https://wiki.jenkins-ci.org/display/JENKINS/ProcessTreeKiller
+    export BUILD_ID=dontKillMe
+    forever stop ${WORKSPACE}/bin/www
+    forever --spinSleepTime 1000 --minUptime 1000 -a -l /var/log/jenkins/forever.log  -o /var/log/jenkins/forever.out.log  -e /var/log/jenkins/forever.error.log start ${WORKSPACE}/bin/www
+    gulp fakedocs
     ```
