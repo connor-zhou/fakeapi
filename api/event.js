@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 首页轮播列表
+ * @fakedoc xtz.首页轮播列表
  *
  * @name event.carousel
  * @href /event/carousel
@@ -22,7 +22,7 @@ var _ = require('lodash');
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *  	imageUrl:"{string} 	图片URL（绝对路径）",
+ *  	photo:"{string} 	图片URL（绝对路径）",
  *  	title:"{string} 标题",
  *  	type:"{int} 类型（1--活动，点击后打开url；2--项目，点击后跳到项目详情",
  *  	target:"{string} 目标参数"
@@ -36,7 +36,7 @@ router.all('/event/carousel', function (req, res, next) {
     var events = [];
     _.forEach([2,3,4,5,6,8], function (i) {
     	events.push({
-    		imageUrl:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
+    		photo:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
         	title: 'slide'+i,
         	type: [1,2][i % 2],
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1"
@@ -149,7 +149,7 @@ router.all('/event/checkServerStatus', function (req, res, next) {
  *
  * @output {json} 新手任务接口
  * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ * 	code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  * 		step1:"{String} 	注册奖励",
@@ -158,8 +158,7 @@ router.all('/event/checkServerStatus', function (req, res, next) {
  *  	step4:"{string} 	首次投资奖励 "
  *    }
  * }
- *
- */
+*/
 router.all('/event/newUserTask', function (req, res, next) {
     var resultValue = {
     	code: 0,
@@ -336,7 +335,7 @@ router.all('/event/shareSuccess', function (req, res, next) {
 });
 
 /**
- * @fakedoc 中奖榜单
+ * @fakedoc xtz.中奖榜单
  *
  * @name event.lotteryPrizeList
  * @href /event/lotteryPrizeList
@@ -355,7 +354,7 @@ router.all('/event/shareSuccess', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
- *  	mobile:"{String} 	手机号码",
+ *  	phone:"{String} 	手机号码",
  *  	prize:"{String}   奖品"
  *  }]
  * }
@@ -366,16 +365,16 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: [
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"迪士尼米奇玩偶"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPad mini3"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"50元现金券"},
-			{mobile:'158****4609',result:"10元现金券"},
-			{mobile:'158****4609',result:"iPhone 6s"},
-			{mobile:'158****4609',result:"20元投资券"}
+			{phone:'158****4609',prize:"10元现金券"},
+			{phone:'158****4609',prize:"迪士尼米奇玩偶"},
+			{phone:'158****4609',prize:"10元现金券"},
+			{phone:'158****4609',prize:"iPad mini3"},
+			{phone:'158****4609',prize:"10元现金券"},
+			{phone:'158****4609',prize:"10元现金券"},
+			{phone:'158****4609',prize:"50元现金券"},
+			{phone:'158****4609',prize:"10元现金券"},
+			{phone:'158****4609',prize:"iPhone 6s"},
+			{phone:'158****4609',prize:"20元投资券"}
 		]
 	};
 	res.json(resultValue);
