@@ -58,15 +58,15 @@ router.all('/current/pageList', function (req, res, next) {
         var type = Math.floor(Math.random() * 4);
         projects.push({
             projectId: start,
-            projectName: '活花生-' + start,
+            projectName: '小李子-' + start,
             projectType: type,
             projectTypeName: "",
             repaymentMode: "按日计息",
-            financeMoney:999999,
+            financeMoney:9999999,
             netWorth:1.2,
             startingAmount:100,
             maxAmount:10000,
-            amount: 1000000,
+            amount: 1043,
             rate: 36,
             status: [3, 5, 7][start % 3],
             statusName: ["立即投资","还款中","已结束"][start % 3],
@@ -144,19 +144,19 @@ router.all('/current/pageList', function (req, res, next) {
  */
 router.all('/current/detail', function (req, res, next) {
     var projectId = req.body.projectId || 1;
-    var types = ['商圈贷', '车辆抵押', '个人信用贷', '典当融资租赁'];
+    var types = ['mj', '车辆抵押', '个人信用贷', '典当融资租赁'];
     var type = Math.floor(Math.random() * 4);
     var duration = Math.floor(Math.random() * 20 + 2);
     var project = {
         projectId: projectId,
-        projectName: '活花生-' + projectId,
+        projectName:types[type] +'-' + projectId,
         projectType: type,
         projectTypeName: types[type],
         repaymentMode:"按日计息",
-        financeMoney:999999,
+        financeMoney:999,
         netWorth:1.2,
-        amount: 360000,
-        rate: 65,
+        amount: 3600,
+        rate: 55,
         status: [3, 5, 7][projectId % 3],
         statusName: Math.floor(Math.random() * 3) == 1 ?  "立即投资":"还款中",
         annualizedRate: Math.floor(Math.random() * 20) * 0.01,
