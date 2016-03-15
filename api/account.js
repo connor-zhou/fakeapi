@@ -215,10 +215,10 @@ router.all('/account/changePassword', function (req, res, next) {
  * @name account.login
  * @href /account/login
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} mobile 		手机号码
- * @input.post {string} password 		密码
- * @input.post {string} smsCode 		短信验证码
+ * @input.post {string} client 			客户端统计参数（common/client）
+ * @input.post {string} phoneOrUname 		手机号码或者用户名
+ * @input.post {string} password 			密码
+ * @input.post {string} smsCode 			短信验证码
  *
  * @output {json} 登录结果
  * {
@@ -231,7 +231,7 @@ router.all('/account/changePassword', function (req, res, next) {
  * 
  * @description
  * 
- * 用户可以用mobile + password登录，也可以用mobile + smsCode登录
+ * 用户可以用mobile或uname + password登录，也可以用mobile + smsCode登录
  *
  * https://localhost:3000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
  * 
@@ -309,7 +309,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		nickname:"{String} 昵称",
  *  		realName:"{String} 真实姓名",
  *  		chinaId:"{String} 身份证号码（后台做模糊处理）",
- *  		phoneOrUname:"{String} 手机号码或者登陆账号",
+ *  		phone:"{String} 手机号码",
+ *  		uname:"{String}  用户名",
  *  		email:"{String} 电子邮箱",
  *  		capitalTotal:"{number} 账户资产",
  *  		money:"{number} 账户余额",
@@ -343,7 +344,8 @@ router.all('/account/my', function (req, res, next) {
 			nickname: '小二hahaha',
 			chinaId:'622742199102053562',
 			realName: '王小二',
-			phoneOrUname: '13566667777',
+			phone: '13566667777',
+			uname:'小王',
 			email:'34523452@ww.com',
 			award:'投资券'
 		}
