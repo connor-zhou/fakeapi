@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 定期投资_协议（投资时使用）
+ * @fakedoc xtz.定期投资_协议（投资时使用）
  *
  * @name agreement.investment
  * @href /agreement/investment
@@ -19,74 +19,45 @@ var _ = require('lodash');
  * 
  * https://fakeapi.fdjf.net:3000/agreement/investment?client=asdfaqerq1werqwe&token=adfasdf234&projectId=22&amount=10000
  *
+ *html输出格式：
+ <pre>
+		 甲方（出借人）:张三
+		 星投资用户名（甲方）:xingtouzi
+		 身份证号码（甲方）:62275968612151245
+		 电话（甲方）:15623561235
+		 通讯地址:上海市浦东新区达尔文路88号
+		 乙方(借款人):李四
+  		 星投资用户名(乙方):lisi
+		 身份证号码（乙方）:62275968454545454
+		 电话（乙方）:15623556897
+		 通讯地址(乙方):上海市浦东新区金海路
+		 借款金额:5000000
+		 借款金额大写:伍佰万元整
+		 借款时间:2015-12-5
+		 还款时间;2018-12-5
+		 借款期限:3年
+		 借款年利率:3
+		 担保方式:星投资担保
+ </pre>
+ *
  * @output {json} 操作结果
  * {
  * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- * 		aCustomerName:"{String} 甲方（出借人）",
- *  	aAccountName:"{String} 甲方（花生金服用户名）",
- *  	aCertNum:"{String} 甲方（身份证号码）",
- *  	aAddress:"{String} 甲方（通讯地址）",
- *  	aMobile:"{String} 甲方（联系电话）",
- *  	bCustomerName:"{String} 乙方（借款人）",
- *  	bAccountName:"{String} 乙方（花生金服用户名）",
- *  	bCertNum:"{String} 乙方（身份证号码）",
- *  	bAddress:"{String} 乙方（通讯地址）",
- *  	bMobile:"{String} 乙方（联系电话）",
- * 		loanAmount:"{String} 借款金额",
- * 		startYear:"{String} 借款期限（起始日期：年）",
- * 		startMonth:"{String} 借款期限（起始日期：月）",
- * 		startDay:"{String} 借款期限（起始日期：日）",
- * 		endYear:"{String} 借款期限（截止日期：年）",
- * 		endMonth:"{String} 借款期限（截止日期：月）",
- * 		endDay:"{String} 借款期限（截止日期：日）",
- * 		rate:"{String} 借款年利率",
- * 		useType:"{String} 借款用途",
- * 		repaymentMode:"{String} 还款方式",
- * 		repayDay:"{String} 还款日",
- * 		safeguardMode:"{String} 担保方式",
- * 		upperLoanAmount:"{String} 借款金额（大写）",
- * 		theYear:"{String} 日期(年)",
- * 		theMonth:"{String} 日期(月)",
- * 		theDay:"{String} 日期(日)"
+ * 		html:"{string} 投资协议html"
  *   }
  * }
- */
-router.all('/agreement/investment', function (req, res, next) {
-    var resultValue = {
-    	code: 0,
+*/
+ router.all('/agreement/investment', function (req, res, next) {
+ 	 var resultValue = {
+   		code: 0,
     	text: 'ok',
-    	data: {
-    		aCustomerName:"甲方（出借人）",
-    	  	aAccountName:"甲方（花生金服用户名）",
-    	  	aCertNum:"甲方（身份证号码）",
-    	  	aAddress:"甲方（通讯地址）",
-    	  	aMobile:"甲方（联系电话）",
-    	  	bCustomerName:"乙方（借款人）",
-    	  	bAccountName:"乙方（花生金服用户名）",
-    	  	bCertNum:"乙方（身份证号码）",
-    	  	bAddress:"乙方（通讯地址）",
-    	  	bMobile:"乙方（联系电话）",
-	 		loanAmount:"2000",
-	 		startYear:"2005",
-	 		startMonth:"12",
-	 		startDay:"04",
-	 		endYear:"2017",
-	 		endMonth:"10",
-	 		endDay:"5",
-	 		rate:"12",
-	 		useType:"借款用途",
-	 		repaymentMode:"还款方式",
-	 		repayDay:"还款日",
-	 		safeguardMode:"担保方式",
-	 		upperLoanAmount:"借款金额（大写）",
-	 		theYear:"2015",
-	 		theMonth:"12",
-	 		theDay:"11"
+   		data: {
+   			html:'<p>甲方（出借人）:张三</p><p>星投资用户名:xingtouzi</p><p>身份证号码（甲方）:62275968612151245</p><p>电话（甲方）:15623561235</p><p>通讯地址:上海市浦东新区达尔文路88号</p><p>乙方(借款人):李四</p><p>星投资用户名:lisi</p><p>身份证号码（乙方）:62275968454545454</p><p>电话（乙方）:15623556897</p><p>通讯地址（乙方）:上海市浦东新区金海路</p><p>借款金额:5000000</p><p>借款金额大写:伍佰万元整</p> <p>借款时间:2015-12-5</p> <p>还款时间;2018-12-5</p> <p>借款期限:3年</p> <p>借款年利率:3</p> <p> 担保方式:星投资担保</p>'
     	}
     }
-    res.json(resultValue);
+   res.json(resultValue);
 });
 
 /**

@@ -304,27 +304,17 @@ router.all('/account/logout', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	data:{
- *  		accountId:"{String} 会员账号Id",
+ *  		aid:"{String} 会员账号Id",
  *  		photo:"{String} 头像URL",
  *  		nickname:"{String} 昵称",
  *  		realName:"{String} 真实姓名",
  *  		chinaId:"{String} 身份证号码（后台做模糊处理）",
- *  		phone:"{String} 手机号码",
+ *  		phoneOrUname:"{String} 手机号码或者登陆账号",
  *  		email:"{String} 电子邮箱",
- *  		bankCard: {
- *  			cardId:"{String} 银行卡",
- *  			check:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证),UNBIND(预约解绑中)】",
- *  			code:"{String} 银行编号",
- *  			bank:"{String} 银行名称",
- *  			bankName:"{String} 银行分支具体名称",
- *  			money:"{number} 可提现金额"
- *  		},
- *  		zichan:"{number} 账户资产",
+ *  		capitalTotal:"{number} 账户资产",
  *  		money:"{number} 账户余额",
- *  		revenuec:"{number} 累计收益",
- *  		revenueWill:"{number} 待收收益",
- *  		moneyWill:"{number} 待收本金",
-			integral:"{number} 可用积分",
+ *  		interestWill:"{number} 待收收息",
+ *  		capitalWill:"{number} 待收本金",
 			award:"{string} 投资券"
  *  	}
  * }
@@ -345,28 +335,17 @@ router.all('/account/my', function (req, res, next) {
 		text: text,
 		data: {
 			photo:"https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg",
-			zichan:189000,
+			capitalTotal:189000,
 			money:1000,
-			revenuec:38000,
-			award:2324,
-			revenueWill:25434,
-			moneyWill:5000,
-			integral:20000,
-			accountId: 5,
-			nickName: '小二hahaha',
+			interestWill:25434,
+			capitalWill:5000,
+			aid: 5,
+			nickname: '小二hahaha',
 			chinaId:'622742199102053562',
 			realName: '王小二',
-			cardId: '234567198878763526',
-			phone: '13566667777',
+			phoneOrUname: '13566667777',
 			email:'34523452@ww.com',
-			bankCard:{
-				cardId:"23452134523463456",
-				check:"VERIFIED",
-				code:"NJYH",
-				bank:"东亚银行",
-				bankName:"东亚银行星湖支行",
-				money:1345,
-			}
+			award:'投资券'
 		}
 	}
 	res.json(resultValue);
@@ -386,16 +365,11 @@ router.all('/account/my', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *      	id:"{int} 投资券Id",
- *      	category:"{int} 类型(1：5元，2：10元，3：20元，4：50元，5：100元)",
- *      	categoryName:"{string} 类型名称",
- *      	useRule:"{string} 使用条件",
- *      	useRuleType:"{number} 使用限制",
- *      	money:"{number} 面值",
- *      	status:"{int} 状态(0, 1, 2)",
- *      	statusName:"{String} 状态名称(正常,已使用,已过期)",
- *     		expireTime:"{String} 失效时间",
- *     		note:"{String} 来源备注（推荐好友奖励）"
+ *      	award:"{number} 金额",
+ *      	useRule:"{string} 使用规则",
+ *     		expiryTime:"{String} 过期时间",
+ *     		note:"{String} 备注",
+ *     		usedTime:"{String} 使用时间"
  *    }]
  * }
  *
@@ -417,16 +391,11 @@ router.all('/account/myTickets', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         tickets.push({
-        	id: start,
-            category: [0, 1, 2, 3, 4, 5][start % 5],
-            award: '投资券',
-            useRule: '满1000元可用',
-            useRuleType: Math.floor(Math.random() * 1000),
-            money: 10,
-            status: [0, 1, 2][start % 3],
-            statusName: ["正常","已使用","过期"][start % 3],
+            award: 10,
             expiryTime:"2015-10-22",
-            note:"推荐好友奖励"
+            note:"推荐好友奖励",
+			usedTime:"2015-1-2",
+			useRule: '满1000元可用'
         });
         start++;
         limit--;
@@ -447,7 +416,7 @@ router.all('/account/myTickets', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} flag 			标识（1--投标中，2--持有中，3--已结束）
+ * @input.post {string} flag 			标识（1--持有中，2--已结束）
  *
  * @output {json} 我的投资
  * {
@@ -458,24 +427,20 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	money:"{number} 收款总额",
  *  	note:"{String} 收款提示信息",
  *  	projectList:[{
- *  		id:"{string} 记录Id",
- *      	pId:"{string} 项目Id",
+ *  		iid:"{string} 记录Id",
+ *      	pid:"{string} 项目Id",
  *      	title:"{string} 项目名称",
  *      	category:"{int} 项目类型",
  *      	categoryName:"{string} 项目类型名称",
- *      	duration:"{int} 项目期限，单位 *月份*",
- *     		methods:"{int} 还款方式",
- *      	methodsName:"{String} 还款方式名称",
- *      	investment:"{number} 投资金额",
- *      	revenue:"{number} 已收收益",
- *      	revenueWill:"{number} 待收收益",
- *      	status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
- *      	statusName:"{String} 状态名称",
- *      	interest:"{number} 年化利率",
- *      	schedule:"{number} 已投百分比，不要加(%)",
+ *      	duration:"{int} 还剩n天",
+ *      	money:"{number} 投资金额",
+ *      	interestYet:"{number} 累计收益",
+ *      	interestWill:"{number} 待收收益",
+ *      	status:"{int} 状态(1--持有中，0--已结束)",
+ *      	statusName:"{String} 状态说明",
  *      	timeline:"{String} 投资时间",
 			expireTime:"{String} 到期时间",
- *			recommend:"{String} 是否重点推荐（0是，其它不是）"
+			repaymentTime:"{String} 还款日期"
  * 		}]
  *    }
  * }
@@ -483,12 +448,7 @@ router.all('/account/myTickets', function (req, res, next) {
  * @needAuth
  * 
  * @description
- * 
- * flag=1(投标中)：对应status=3(投标中)、对应status=4(投标结束)
- * 
- * flag=2(持有中)：status=5(还款中)
- * 
- * flag=3(已结束)：对应status=6(还款结束)、status=7(清算结束)
+ *
  *
  * https://localhost:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
  * 
@@ -505,23 +465,19 @@ router.all('/account/myInvestment', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 7);
         projects.push({
-        	id: start,
-            pId: start,
+        	iid: start,
+            pid: start,
             title: types[type] + '-' + start,
             category: type,
             categoryName: types[type],
             duration:12,
-            methods: 1,
-            methodsName:  ["等额本息","先息后本","一次性还本付息"][start % 3],
             money: 1000000,
-            revenue: 36000,
-            revenueWill: 64000,
-            status: [3, 5, 7][start % 3],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
-            statusName: ["投标中","持有中","已结束"][start % 3],
-            interest: Math.floor(Math.random() * 20) * 0.01,
-            schedule: Math.floor(Math.random() * 100) * 0.01,
+            interestYet: 36000,
+            interestWill: 64000,
+            status: [0,1][start % 2],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
+            statusName: ["持有中","已结束"][start % 2],
             expireTime :"2016-12-01",
-            recommend:['0','1'][start % 2]
+            repaymentTime:"2016-5-20"
         });
         start++;
         limit--;
@@ -544,7 +500,7 @@ router.all('/account/myInvestment', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.我的投资--项目详情
+ * @fakedoc xtz.我的投资--投资详情
  *
  * @name account.myInvestmentDetail
  * @href /account/myInvestmentDetail
@@ -553,26 +509,27 @@ router.all('/account/myInvestment', function (req, res, next) {
  * @input.post {string} token 			Token
  * @input.post {string} recordId 		投资记录Id
  *
- * @output {json} 我的投资--项目详情
+ * @output {json} 我的投资--投资详情
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	id:"{string} 记录Id",
- *      pId:"{int} 项目Id",
+ *  	iid:"{string} 记录Id",
+ *      pid:"{int} 项目Id",
  *      orderId:"{String} 项目编号",
  *      title:"{string} 项目名称",
  *      category:"{int} 项目类型",
  *      categoryName:"{string} 项目类型名称",
  *      methods:"{int} 还款方式",
  *      methodsName:"{String} 还款方式名称",
- *      investment:"{number} 投资金额",
- *      revenue:"{number} 已收收益",
- *      revenueWill:"{number} 待收收益",
+ *      money:"{number} 投资金额",
+ *      interestYet:"{number} 已收收益",
+ *      interestWill:"{number} 待收收益",
  *      status:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
  *      statusName:"{String} 状态名称",
- *      interest:"{number} 年化利率",
- *      schedule:"{number} 已投百分比，不要加(%)",
+ *      schedule:"{number} 融资进度，不要加(%)",
+ *      revenue: "{number} 年化收益率",
+ *      remaindAndTotalMonth:"{int} 剩余/总期数",
  *		timeline:"{String} 时间线",
  *    }
  * }
@@ -594,21 +551,20 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		id: 1,
-    		pId: 1,
+    		iid: 1,
+    		pid: 1,
     		orderId: "4352345234523",
-            title: '花生贷' + '-' + 1,
-            categoryName: '典当融资租赁',
+            title: '星投资' + '-' + 1,
+            categoryName: '星保理',
             category: 1,
-            methods: 1,
-            methodsName:  ["等额本息","先息后本","一次性还本付息"][Math.floor(Math.random() * 3) % 3],
-            investment: 1000000,
-            revenue: 36000,
-			revenueWill: 64000,
-            status: [3, 5, 7][1 % 3],
-            statusName: ["立即投资","还款中","已结束"][Math.floor(Math.random() * 3) % 3],
-            interest: Math.floor(Math.random() * 20) * 0.01,
-            schedule:Math.floor(Math.random() * 100) * 0.01,
+            money: 1000000,
+            interestYet: 36000,
+			interestWill: 64000,
+            status: 0,
+            statusName: ["持有中","已结束"][Math.floor(Math.random() * 2) % 2],
+            schedule:65,
+			revenue:15,
+			remaindAndTotalMonth : 20,
             timeline : '2015-12-1',
     	}
     }
@@ -637,9 +593,8 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *  data: [{
  *  	planTime:"{string} 还款日期",
  *  	repaymentc:"{string} 应还总计",
- *  	money:"{string} 应还本金",
- *  	interest:"{string} 应还利息",
- *  	moneyWill:"{string} 剩余应还本金",
+ *  	interestWill:"{string} 应还利息",
+ *  	capitalWill:"{string} 剩余应还本金",
  *  	status:"{string} 状态",
  *  	statusName:"{String} 状态名称"
  *  }]
@@ -655,9 +610,8 @@ router.all('/account/repaymentPlan', function (req, res, next) {
         records.push({
             planTime: dt.format('YYYY-MM-DD'),
             repaymentc: 100,
-            money: 90,
-            interest: 10,
-            moneyWill: 1000,
+            interestWill: 10,
+            capitalWill: 1000,
             status: Math.floor(Math.random() * 4),
             statusName: "还款中"
         });
@@ -698,7 +652,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *  				repaymentc:"{string} 还款金额",
  *  				money:"{string} 应还本金",
  *  				interest:"{string} 应还利息",
- *  				moneyWill:"{string} 剩余应还本金"
+ *  				capitalWill:"{string} 剩余应还本金"
  * 				}]
  *  	   }]
  *     }
@@ -726,7 +680,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
             repaymentc: 100,
             money: 90,
             interest: 10,
-            moneyWill: 1000
+            capitalWill: 1000
         });
         start++;
         limit--;
@@ -774,7 +728,8 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *  	timeline:"{String} 操作日期时间",
  *  	category:"{String} 变更类型（B2B网银:NET_B2B，B2C网银:NET_B2C，一键支付:A_PAY，代充值:WH_NO_CARD，快捷充值:SWIFT，正常提现，T+1 天到账:NORMAL，加急提现，T+0 当日到账:URGENT，投资冻结:1，投资冻结取消:2，投资确认:3，还款:4，充值获取抵用额:5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
  *  	categoryName:"{String} 变更类型名称",
- *  	note:"{String} 变更值"
+ *  	note:"{String} 备注",
+ *  	money: "{number} 金额"
  *   }]
  * }
  *
@@ -793,11 +748,11 @@ router.all('/account/transactionRecord', function (req, res, next) {
     	code: code,
     	text: text,
     	data: [
-    	   {timeline:'2015-10-19 11:01:01',category:1,categoryName:'充值',note:'+10000'},
-    	   {timeline:'2015-10-12 11:01:01',category:2,categoryName:'投资',note:'-500'},
-    	   {timeline:'2015-10-09 11:01:01',category:3,categoryName:'收益',note:'+10'},
-    	   {timeline:'2015-10-09 11:01:01',category:4,categoryName:'提现',note:'-100'},
-    	   {timeline:'2015-09-09 11:01:01',category:5,categoryName:'提现手续费',note:'-2'}
+    	   {timeline:'2015-10-19 11:01:01',category:1,categoryName:'充值',money:"10000",note:'+10000'},
+    	   {timeline:'2015-10-12 11:01:01',category:2,categoryName:'投资',money:"500",note:'-500'},
+    	   {timeline:'2015-10-09 11:01:01',category:3,categoryName:'收益',money:"10",note:'+10'},
+    	   {timeline:'2015-10-09 11:01:01',category:4,categoryName:'提现',money:"-100",note:'-100'},
+    	   {timeline:'2015-09-09 11:01:01',category:5,categoryName:'提现手续费',money:"-2",note:'-2'}
        ]
     }
     res.json(resultValue);
@@ -1340,7 +1295,7 @@ router.all('/account/customerAddressPageList', function (req, res, next) {
     var activities = [];
     _.forEach([1,2,3,4,5,6,7], function (i) {
     	activities.push({
-    		accountId: i + "", 
+    		aId: i + "",
     		addressId:i + "",
     		showName: '收件人名称'+i, 
     		mobile: "13567899876",
