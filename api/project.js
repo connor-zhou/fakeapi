@@ -180,7 +180,7 @@ router.all('/project/detail', function (req, res, next) {
         minInvest: [2000, 1000][Math.floor(Math.random() * 2)],
         expireTime: '2016-09-05',
         repaymentTime:"2016-08-05",
-        infomation: 'some text一些介绍',
+        information: 'some text一些介绍',
         description: '资金周转',
         revolve: '投资后3天可转让',
         market:"星投资",
