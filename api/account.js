@@ -394,7 +394,7 @@ router.all('/account/myTickets', function (req, res, next) {
         var type = Math.floor(Math.random() * 4);
         tickets.push({
             award: 10,
-            expiryTime:"2015-10-22",
+            expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
             note:"推荐好友奖励",
 			usedTime:"2015-1-2",
 			useRule: '满1000元可用'
