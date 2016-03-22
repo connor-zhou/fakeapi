@@ -316,7 +316,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		money:"{number} 账户余额",
  *  		interestWill:"{number} 待收收息",
  *  		capitalWill:"{number} 待收本金",
-			award:"{string} 投资券"
+			award:"{number} 投资券"
  *  	}
  * }
  *
@@ -347,7 +347,7 @@ router.all('/account/my', function (req, res, next) {
 			phone: '13566667777',
 			uname:'小王',
 			email:'34523452@ww.com',
-			award:'投资券'
+			award:6
 		}
 	}
 	res.json(resultValue);
