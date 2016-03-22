@@ -476,8 +476,9 @@ router.all('/account/myInvestment', function (req, res, next) {
             money: 1000000,
             interestYet: 36000,
             interestWill: 64000,
-            status: [0,1][start % 2],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
-            statusName: ["持有中","已结束"][start % 2],
+            status: [0,1,2][start % 3],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
+            statusName: ["投资中","持有中","已结束"][start % 3],
+			timeline:'2015-10-20',
             expireTime :"2016-12-01",
             repaymentTime:"2016-5-20"
         });
