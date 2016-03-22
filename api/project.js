@@ -8,7 +8,7 @@ var router = express.Router();
  *
  * @description
  * 
- * https://localhost:3000/project/pageList?client=2435234523451&pageSize=10&pageNumber=1
+ * https://localhost:5000/project/pageList?client=2435234523451&pageSize=10&pageNumber=1
  * 
  * https://fakeapi.fdjf.net:3000/project/pageList?client=2435234523451&pageSize=10&pageNumber=1
  *
@@ -99,7 +99,7 @@ router.all('/project/pageList', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/project/recommend?client=2435234523451
+ * https://localhost:5000/project/recommend?client=2435234523451
  * 
  * https://fakeapi.fdjf.net:3000/project/recommend?client=2435234523451
  *
@@ -119,7 +119,7 @@ router.all('/project/recommend', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/project/detail?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/detail?client=asdfaqerq1werqwe&projectId=1
  * 
  * https://fakeapi.fdjf.net:3000/project/detail?client=asdfaqerq1werqwe&projectId=1
  *
@@ -168,7 +168,7 @@ router.all('/project/detail', function (req, res, next) {
         category: type,
         categoryName: types[type],
         methods: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
-        money: 200000000,
+        money: 200000,
         haveMoney:100000,
         schedule: 35,
         projectStatus: [3, 5, 7][pid % 3],
@@ -208,7 +208,7 @@ router.all('/project/detail', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
  * 
  * https://fakeapi.fdjf.net:3000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
  *
@@ -258,7 +258,7 @@ router.all('/project/repaymentPlan', function (req, res, next) {
  * 
  * 得到投资记录列表
  * 
- * https://localhost:3000/project/investmentRecords?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/investmentRecords?client=asdfaqerq1werqwe&projectId=1
  * 
  * https://fakeapi.fdjf.net:3000/project/investmentRecords?client=asdfaqerq1werqwe&projectId=1
  *
@@ -319,7 +319,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/project/interestCalculation?client=asdfaqerq1werqwe&projectId=1&amount=10000
+ * https://localhost:5000/project/interestCalculation?client=asdfaqerq1werqwe&projectId=1&amount=10000
  * 
  * https://fakeapi.fdjf.net:3000/project/interestCalculation?client=asdfaqerq1werqwe&projectId=1&amount=10000
  *

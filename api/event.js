@@ -12,7 +12,7 @@ var _ = require('lodash');
  *
  * @description
  *
- * https://localhost:3000/event/carousel?client=asdfaqerq1werqwe
+ * https://localhost:5000/event/carousel?client=asdfaqerq1werqwe
  *
  * https://fakeapi.fdjf.net:3000/event/carousel?client=asdfaqerq1werqwe
  *
@@ -345,7 +345,7 @@ router.all('/event/shareSuccess', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/event/lotteryPrizeList?client=asfdaqwerqe
+ * https://localhost:5000/event/lotteryPrizeList?client=asfdaqwerqe
  *
  * https://fakeapi.fdjf.net:3000/event/lotteryPrizeList?client=asfdaqwerqe
  *

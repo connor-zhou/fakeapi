@@ -10,7 +10,7 @@ var _ = require('lodash');
  *
  * @description
  * 
- * https://localhost:3000/message/accountMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/message/accountMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  * 
  * https://fakeapi.fdjf.net:3000/message/accountMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  *
@@ -75,7 +75,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/message/systemMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/message/systemMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  * 
  * https://fakeapi.fdjf.net:3000/message/systemMessagePageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  *
@@ -152,7 +152,7 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/message/read?client=asdfaqerq1werqwe&token=2435135345623413&messageIds=2,3,52
+ * https://localhost:5000/message/read?client=asdfaqerq1werqwe&token=2435135345623413&messageIds=2,3,52
  * 
  * https://fakeapi.fdjf.net:3000/message/read?client=asdfaqerq1werqwe&token=2435135345623413&messageIds=2,3,52
  */

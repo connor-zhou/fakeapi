@@ -21,7 +21,7 @@ var _ = require('lodash');
  *
  * 手机号码如果是 13577778888 表示已经注册过，否则都表示未注册过
  *
- * https://localhost:3000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13577778888
+ * https://localhost:5000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13577778888
  * 
  * https://fakeapi.fdjf.net:3000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13577778888
  */
@@ -60,7 +60,7 @@ router.all('/account/hasRegistered', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/sendSmsCode?client=asdfaqerq1werqwe&mobile=13566667777 
+ * https://localhost:5000/account/sendSmsCode?client=asdfaqerq1werqwe&mobile=13566667777
  * 
  * https://fakeapi.fdjf.net:3000/account/sendSmsCode?client=asdfaqerq1werqwe&mobile=13566667777
  */
@@ -98,7 +98,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ * https://localhost:5000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  *
  * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  */
@@ -140,7 +140,7 @@ router.all('/account/register', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/resetPassword?client=asdfaqerq1werqwe&mobile=13566667777&newPassword=111111smsCode=000000
+ * https://localhost:5000/account/resetPassword?client=asdfaqerq1werqwe&mobile=13566667777&newPassword=111111smsCode=000000
  *
  * https://fakeapi.fdjf.net:3000/account/resetPassword?client=asdfaqerq1werqwe&mobile=13566667777&newPassword=111111smsCode=000000
  */
@@ -233,7 +233,7 @@ router.all('/account/changePassword', function (req, res, next) {
  * 
  * 用户可以用mobile或uname + password登录，也可以用mobile + smsCode登录
  *
- * https://localhost:3000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
+ * https://localhost:5000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
  * 
  * https://fakeapi.fdjf.net:3000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
  */
@@ -276,7 +276,7 @@ router.all('/account/login', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/logout?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/logout?client=asdfaqerq1werqwe&token=2435135345623413
  * 
  * https://fakeapi.fdjf.net:3000/account/logout?client=asdfaqerq1werqwe&token=2435135345623413
  */
@@ -324,7 +324,7 @@ router.all('/account/logout', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/my?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/my?client=asdfaqerq1werqwe&token=2435135345623413
  * 
  * https://fakeapi.fdjf.net:3000/account/my?client=asdfaqerq1werqwe&token=2435135345623413
  */
@@ -379,7 +379,7 @@ router.all('/account/my', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/myTickets?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/myTickets?client=asdfaqerq1werqwe&token=2435135345623413
  * 
  * https://fakeapi.fdjf.net:3000/account/myTickets?client=asdfaqerq1werqwe&token=2435135345623413
  */
@@ -452,7 +452,7 @@ router.all('/account/myTickets', function (req, res, next) {
  * @description
  *
  *
- * https://localhost:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
+ * https://localhost:5000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
  * 
  * https://fakeapi.fdjf.net:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
  */
@@ -540,7 +540,7 @@ router.all('/account/myInvestment', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/myInvestmentDetail?client=asdfaqerq1werqwe&token=4324523452345&recordId=2435135345623413
+ * https://localhost:5000/account/myInvestmentDetail?client=asdfaqerq1werqwe&token=4324523452345&recordId=2435135345623413
  * 
  * https://fakeapi.fdjf.net:3000/account/myInvestmentDetail?client=asdfaqerq1werqwe&token=4324523452345&recordId=2435135345623413
  */
@@ -584,7 +584,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:3000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
+ * https://localhost:5000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
  * 
  * https://fakeapi.fdjf.net:3000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
  *
@@ -664,7 +664,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/repaymentCalendar?client=asdfaqerq1werqwe&token=2435135345623413&year=2015&month=10
+ * https://localhost:5000/account/repaymentCalendar?client=asdfaqerq1werqwe&token=2435135345623413&year=2015&month=10
  * 
  * https://fakeapi.fdjf.net:3000/account/repaymentCalendar?client=asdfaqerq1werqwe&token=2435135345623413&year=2015&month=10
  */
@@ -739,7 +739,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/transactionRecord?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/transactionRecord?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  * 
  * https://fakeapi.fdjf.net:3000/account/transactionRecord?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  */
