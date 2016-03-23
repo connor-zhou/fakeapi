@@ -552,6 +552,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     var limit = req.body.limit || 10;
     var order = req.body.order;
     var type = req.body.type;
+	var random = Math.floor(Math.random() * 3) % 2;
     var resultValue = {
     	code: 0,
     	text: 'ok',
@@ -565,11 +566,11 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
             money: 1000000,
             interestYet: 36000,
 			interestWill: 64000,
-            status: 0,
-            statusName: ["持有中","已结束"][Math.floor(Math.random() * 2) % 2],
+            status: [0,1,2][random],
+            statusName: ["投标中","持有中","已结束"][random],
             schedule:65,
 			revenue:15,
-			remaindAndTotalMonth : 20,
+			remaindAndTotalMonth : "20/100",
             timeline : '2015-12-1',
     	}
     }
