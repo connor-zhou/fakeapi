@@ -534,7 +534,7 @@ router.all('/account/myInvestment', function (req, res, next) {
  *      statusName:"{String} 状态名称",
  *      schedule:"{number} 融资进度，不要加(%)",
  *      revenue: "{number} 年化收益率",
- *      remaindAndTotalMonth:"{int} 剩余/总期数",
+ *      remaindAndTotalMonth:"{String} 剩余/总期数",
  *		timeline:"{String} 时间线",
  *    }
  * }
@@ -563,6 +563,8 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
             title: '星投资' + '-' + 1,
             categoryName: '星保理',
             category: 1,
+			methods: [0,1,2][random],
+			methodsName: ["按日计息，按月付息，到期还本","一次性返还本息","按年返还本息"][random],
             money: 1000000,
             interestYet: 36000,
 			interestWill: 64000,
