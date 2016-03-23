@@ -552,7 +552,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     var limit = req.body.limit || 10;
     var order = req.body.order;
     var type = req.body.type;
-	var random = Math.floor(Math.random() * 3) % 2;
+	var random = Math.floor(Math.random() * 3) % 3;
     var resultValue = {
     	code: 0,
     	text: 'ok',
