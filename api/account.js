@@ -436,6 +436,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	categoryName:"{string} 项目类型名称",
  *      	duration:"{int} 还剩n天",
  *      	money:"{number} 投资金额",
+ *          revenue:"{number} 年化收益率",
  *      	interestYet:"{number} 累计收益",
  *      	interestWill:"{number} 待收收益",
  *      	status:"{int} 状态(1--持有中，0--已结束)",
@@ -474,6 +475,7 @@ router.all('/account/myInvestment', function (req, res, next) {
             categoryName: types[type],
             duration:12,
             money: 1000000,
+			revenue:15,
             interestYet: 36000,
             interestWill: 64000,
             status: [0,1,2][start % 3],//project status constant:3-PROJECT_STATUS_INVESTMENT,5-PROJECT_STATUS_REPAYMENTING,7-PROJECT_STATUS_END
