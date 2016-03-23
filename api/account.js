@@ -551,18 +551,19 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 	var start = req.body.start || 0;
     var limit = req.body.limit || 10;
     var order = req.body.order;
-    var type = req.body.type;
+    var type = req.body.recordId;
+	var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
 	var random = Math.floor(Math.random() * 3) % 3;
     var resultValue = {
     	code: 0,
     	text: 'ok',
     	data: {
-    		iid: 1,
+    		iid: 2,
     		pid: 1,
     		orderId: "4352345234523",
-            title: '星投资' + '-' + 1,
-            categoryName: '星保理',
-            category: 1,
+            title: types[type] + '-' + type,
+            categoryName:types[type],
+            category: type,
 			methods: [0,1,2][random],
 			methodsName: ["按日计息，按月付息，到期还本","一次性返还本息","按年返还本息"][random],
             money: 1000000,
