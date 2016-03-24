@@ -393,7 +393,7 @@ router.all('/account/myTickets', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         tickets.push({
-            award: 10,
+            award: [10,20,50][start%3],
             expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
             note:"推荐好友奖励",
 			usedTime:"2015-1-2",
@@ -418,7 +418,7 @@ router.all('/account/myTickets', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} flag 			标识（1--持有中，2--已结束）
+ * @input.post {string} flag 			标识（2--持有中，1--投标中，0--已结束）
  *
  * @output {json} 我的投资
  * {
@@ -450,9 +450,9 @@ router.all('/account/myTickets', function (req, res, next) {
  * @description
  *
  *
- * https://localhost:5000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
+ * https://localhost:5000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=0
  * 
- * https://fakeapi.fdjf.net:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=3
+ * https://fakeapi.fdjf.net:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=0
  */
 router.all('/account/myInvestment', function (req, res, next) {
 	var start = req.body.start || 0;
