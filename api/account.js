@@ -436,7 +436,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *      	interestWill:"{number} 待收收益",
  *  	    status:"{int} 投资状态（0--已结束 1--投标中 2--持有中）",
  *  	    statusName:"{String} 投资状态名称",
- *  		project:{,
+ *  		project:{
  *      		title:"{string} 项目名称",
  *          	revenue:"{number} 年化收益率",
  *          	repaymentTime:"{String} 还款时间"
@@ -471,10 +471,9 @@ router.all('/account/myInvestment', function (req, res, next) {
 			money: 1000000,
 			interestYet: 36000,
 			interestWill: 1000000 * random,
-			status: [0,1,2][start % 3],
-			statusName: ["已结束","投标中","持有中"][start % 3],
-			project:{
-				title: types[type] + '-' + start,
+			status:[0,1,2][start % 3],
+			statusName:["已结束","投标中","持有中"][start % 3],
+			project:{title:types[type] + '-' + start,
 				revenue:random,
 				repaymentTime:'2016-12-21'
 			}
@@ -557,7 +556,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 			pid: 1,
 			project:{
 				title: types[type] + '-' + type,
-				methods: "按日计息，按月付息，到期还本",
+				methods: "按日计息,按月付息,到期还本",
 				schedule:65,
 				revenue:random,
 				repaymentTime:'2016-12-20',
