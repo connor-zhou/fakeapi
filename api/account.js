@@ -430,24 +430,16 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	note:"{String} 收款提示信息",
  *  	projectList:[{
  *  		iid:"{string} 记录Id",
- *  	    timeline:"{String} 投资时间",
- *  	    status:"{int} 投资状态（0--已结束 1--投资中）",
+ *  	  	pid:"{string} 项目Id",
+ *  	    money:"{String} 投资金额",
+ *  	    interestYet:"{number} 已获收益",
+ *      	interestWill:"{number} 待收收益",
+ *  	    status:"{int} 投资状态（0--已结束 1--投标中 2--持有中）",
  *  	    statusName:"{String} 投资状态名称",
- *  		project:{
- *  		    pid:"{string} 项目Id",
+ *  		project:{,
  *      		title:"{string} 项目名称",
- *      		category:"{int} 项目类型",
- *      		categoryName:"{string} 项目类型名称",
- *      		duration:"{int} 还剩n天",
- *      		money:"{number} 投资金额",
  *          	revenue:"{number} 年化收益率",
- *              interestYet:"{number} 累计收益",
- *      		interestWill:"{number} 待收收益",
- *      		status:"{int} 项目状态(3--预告，4--投资中，5--还款中，6--已还款)",
- *      		statusName:"{String} 项目状态名称",
- *      		publishTime:"{String} 发布时间",
- *      		expireTime:"{String} 到期时间",
-				repaymentTime:"{String} 还款日期"
+ *          	repaymentTime:"{String} 还款时间"
  *  		}
  * 		}]
  *    }
@@ -467,6 +459,7 @@ router.all('/account/myInvestment', function (req, res, next) {
     var limit = req.body.limit || 10;
     var order = req.body.order;
     var type = req.body.type;
+	var random = Math.floor(Math.random() * 20)*0.01;
 	var projects = [];
     var max = 35;
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
@@ -474,24 +467,16 @@ router.all('/account/myInvestment', function (req, res, next) {
         var type = Math.floor(Math.random() * 7);
         projects.push({
         	iid: start,
-			timeline:'2015-10-20',
-			status: [0,1][start % 2],
-			statusName: ["已结束","投资中"][start % 2],
+			pid: start+1,
+			money: 1000000,
+			interestYet: 36000,
+			interestWill: 1000000 * random,
+			status: [0,1,2][start % 3],
+			statusName: ["已结束","投标中","持有中"][start % 3],
 			project:{
-				pid: start,
 				title: types[type] + '-' + start,
-				category: type,
-				categoryName: types[type],
-				duration:12,
-				money: 1000000,
-				revenue:15,
-				interestYet: 36000,
-				interestWill: 64000,
-				publishTime:'2014-10-2',
-				status: [3,4,5,6][start % 4],
-				statusName: ["预告","投资中","还款中","已还款"][start % 4],
-				expireTime :"2016-12-01",
-				repaymentTime:"2016-5-20"
+				revenue:random,
+				repaymentTime:'2016-12-21'
 			}
         });
         start++;
@@ -505,9 +490,6 @@ router.all('/account/myInvestment', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		investmentc:87800,
-    		money:988,
-    		note:'距下期收款还有2天, 金额10.22元',
     		projectList:projects
     	}
     }
@@ -530,23 +512,18 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:{
  *  	iid:"{string} 记录Id",
- *    	timeline:"{String} 投资时间",
- *  	status:"{int} 投资状态（0--已结束 1--投资中）",
+ *   	pid:"{int} 项目Id",
+ *  	status:"{int} 投资状态（0--已结束 1--投标中 2--持有中）",
  *  	statusName:"{String} 投资状态名称",
- *  	interestYet:"{number} 已收收益",
- *      interestWill:"{number} 待收收益",
+ *      interestWill:"{number} 预期收益",
+ * 		money:"{number} 投资金额",
  *  	project:{
- *  		pid:"{int} 项目Id",
  *      	title:"{string} 项目名称",
- *     	 	category:"{int} 项目类型",
- *      	categoryName:"{string} 项目类型名称",
- *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本','一次性返还本息','按年返还本息'）",
- *      	money:"{number} 投资金额",
- *      	status:"{int} 项目状态(3--预告，4--投资中，5--还款中，6--已还款)",
- *      	statusName:"{String} 项目状态名称",
+ *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本'）",
  *      	schedule:"{number} 融资进度，不要加(%)",
  *      	revenue: "{number} 年化收益率",
  *      	remaindAndTotalMonth:"{String} 剩余/总期数",
+ *          repaymentTime:"{String} 还款日期（应和投资人的收款期一致）",
   *		}
  *    }
  * }
@@ -564,6 +541,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     var limit = req.body.limit || 10;
     var order = req.body.order;
     var type = req.body.recordId;
+	var random = Math.floor(Math.random() * 20)*0.01;
 	var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
 	var random = Math.floor(Math.random() * 3) % 3;
     var resultValue = {
@@ -571,22 +549,18 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     	text: 'ok',
     	data: {
     		iid: 2,
-			status: [0,1][random],
-			statusName: ["已结束","投资中"][random],
-			timeline : '2015-12-1',
-			interestYet: 36000,
+			status: [0,1,2][random],
+			statusName: ["已结束","投标中","持有中"][random],
+			interestTimeline : '2015-12-1',
+			money: 1000000,
 			interestWill: 64000,
+			pid: 1,
 			project:{
-				pid: 1,
 				title: types[type] + '-' + type,
-				categoryName:types[type],
-				category: type,
-				methods: ["按日计息，按月付息，到期还本","一次性返还本息","按年返还本息"][random],
-				money: 1000000,
-				status: [3,4,5,6][start % 4],
-				statusName: ["预告","投资中","还款中","已还款"][start % 4],
+				methods: "按日计息，按月付息，到期还本",
 				schedule:65,
-				revenue:15,
+				revenue:random,
+				repaymentTime:'2016-12-20',
 				remaindAndTotalMonth : "20/100"
 			}
     	}
