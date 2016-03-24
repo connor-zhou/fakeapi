@@ -418,7 +418,7 @@ router.all('/account/myTickets', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} flag 			标识（2--持有中，1--投标中，0--已结束）
+ * @input.post {string} flag 			标识（1--持有中，0--已结束）
  *
  * @output {json} 我的投资
  * {
@@ -434,7 +434,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	    money:"{String} 投资金额",
  *  	    interestYet:"{number} 已获收益",
  *      	interestWill:"{number} 待收收益",
- *  	    status:"{int} 投资状态（0--已结束 1--投标中 2--持有中）",
+ *  	    status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	    statusName:"{String} 投资状态名称",
  *  		project:{
  *      		title:"{string} 项目名称",
@@ -471,8 +471,8 @@ router.all('/account/myInvestment', function (req, res, next) {
 			money: 1000000,
 			interestYet: 36000,
 			interestWill: 1000000 * random,
-			status:[0,1,2][start % 3],
-			statusName:["已结束","投标中","持有中"][start % 3],
+			status:[0,1][start % 2],
+			statusName:["已结束","持有中"][start % 2],
 			project:{title:types[type] + '-' + start,
 				revenue:random,
 				repaymentTime:'2016-12-21'
@@ -512,7 +512,7 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  data:{
  *  	iid:"{string} 记录Id",
  *   	pid:"{int} 项目Id",
- *  	status:"{int} 投资状态（0--已结束 1--投标中 2--持有中）",
+ *  	status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	statusName:"{String} 投资状态名称",
  *      interestWill:"{number} 预期收益",
  * 		money:"{number} 投资金额",
@@ -548,8 +548,8 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
     	text: 'ok',
     	data: {
     		iid: 2,
-			status: [0,1,2][random],
-			statusName: ["已结束","投标中","持有中"][random],
+			status: [0,1][random],
+			statusName: ["已结束","持有中"][random],
 			interestTimeline : '2015-12-1',
 			money: 1000000,
 			interestWill: 64000,
