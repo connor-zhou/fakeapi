@@ -315,9 +315,12 @@ router.all('/account/logout', function (req, res, next) {
  *  		uname:"{String}  用户名",
  *  		email:"{String} 电子邮箱",
  *  		capitalTotal:"{number} 账户资产",
+ *  		interestTotal:"{number} 账户收益",
  *  		money:"{number} 账户余额",
- *  		interestWill:"{number} 待收收息",
+ *  		interestc:"{number} 累计收益",
+ *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
+ *  		capitalFreeze:"{number} 冻结本金",
 			award:"{number} 投资券"
  *  	}
  * }
@@ -338,10 +341,13 @@ router.all('/account/my', function (req, res, next) {
 		text: text,
 		data: {
 			photo:"https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg",
-			capitalTotal:189000,
+			capitalTotal:9600,
 			money:1000,
-			interestWill:25434,
+			capitalFreeze:3600,
 			capitalWill:5000,
+			interestTotal:30434,
+			interestc:2500,
+			interestWill:25434,
 			aid: 5,
 			nickname: '小二hahaha',
 			chinaId:'622742199102053562',
