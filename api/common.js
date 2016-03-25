@@ -61,7 +61,7 @@ var _ = require('lodash');
 router.all('/common/isMobile', function (req, res, next) {
 	var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
     var resultValue = {
-    	code: phone == '13566667777' ? 0 : 1,
+    	code: phone == '13566667777' ? 0 : 0,
     	text: 'ok',
     }
     res.json(resultValue);

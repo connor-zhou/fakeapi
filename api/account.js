@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 手机号码是否已注册
+ * @fakedoc xtz.手机号码是否已注册
  *
  * @name account.hasRegistered
  * @href /account/hasRegistered
@@ -19,20 +19,20 @@ var _ = require('lodash');
  * 
  * @description
  *
- * 手机号码如果是 13577778888 表示已经注册过，否则都表示未注册过
+ * 手机号码如果是 13566667777 表示已经注册过，否则都表示未注册过
  *
- * https://localhost:5000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13577778888
+ * https://localhost:5000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13566667777
  * 
- * https://fakeapi.fdjf.net:3000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13577778888
+ * https://fakeapi.fdjf.net:3000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13566667777
  */
 router.all('/account/hasRegistered', function (req, res, next) {
-	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13577778888');
+	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
 	var range = 10;
 	var rand = Math.random();
 	var i = Math.round(rand * range);
 	var code = 0;
 	var text = "已注册";
-    if (mobile != '13577778888') {
+    if (mobile != '13566667777') {
     	code = 1;
     	text = "未注册";
     }
@@ -44,7 +44,7 @@ router.all('/account/hasRegistered', function (req, res, next) {
 });
 
 /**
- * @fakedoc 发送验证码
+ * @fakedoc xtz.发送验证码
  *
  * @name account.sendSmsCode
  * @href /account/sendSmsCode
@@ -54,7 +54,7 @@ router.all('/account/hasRegistered', function (req, res, next) {
  *
  * @output {json} 手机号码是否已注册
  * {
- *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，其它值不成功，数据默认为0）",
  *  text:"{String} 状态描述"
  * }
  *
@@ -73,7 +73,7 @@ router.all('/account/sendSmsCode', function (req, res, next) {
 });
 
 /**
- * @fakedoc 注册
+ * @fakedoc xtz.注册
  *
  * @name account.register
  * @href /account/register
@@ -98,16 +98,18 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:5000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ * 手机号码如果是 13577778888 可以注册通过。
  *
- * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ * https://localhost:5000/account/register?client=asdfaqerq1werqwe&mobile=13577778888&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ *
+ * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13577778888&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
  */
 router.all('/account/register', function (req, res, next) {
-	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
-	var password = req.query.password ? req.query.password :(req.body.password ? req.body.password : '13566667777');
+	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13577778888');
+	var password = req.query.password ? req.query.password :(req.body.password ? req.body.password : '13577778888');
 	var code = 0;
 	var text = "注册成功";
-	if (mobile != '13566667777') {
+	if (mobile != '13577778888') {
     	code = 1;
     	text = "注册失败";
     }
