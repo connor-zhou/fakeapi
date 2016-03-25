@@ -594,36 +594,41 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data: [{
- *  	planTime:"{string} 还款日期",
- *  	repaymentc:"{string} 应还总计",
- *  	interestWill:"{string} 应还利息",
- *  	capitalWill:"{string} 剩余应还本金",
- *  	status:"{string} 状态",
- *  	statusName:"{String} 状态名称"
- *  }]
+ *  data: {
+ *  	interestTotal:"{number} 总收益",
+ *  	money:"{number} 投资金额",
+ *     	recordList:
+ *     	[{
+ *      	planTime:"{string} 应还款时间",
+ *  		interestWill:"{string} 应还利息",
+ *  		capitalWill:"{string} 剩余应还本金",
+			days:"{int} 计息天数"
+ *  	}]
+ * 	 }
  * }
  */
 router.all('/account/repaymentPlan', function (req, res, next) {
     var moment = require('moment');
-
     var records = [];
     var limit = 10;
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            planTime: dt.format('YYYY-MM-DD'),
-            repaymentc: 100,
-            interestWill: 10,
-            capitalWill: 1000,
-            status: Math.floor(Math.random() * 4),
-            statusName: "还款中"
+				planTime: dt.format('YYYY-MM-DD'),
+				interestWill: 10,
+				capitalWill: 1000,
+				days:12
         });
     }
     var resultValue = {
     	code: 0,
     	text: 'ok',
-    	data: records
+    	data: {
+			interestTotal: 1002,
+			money:20000,
+			recordList:records
+		}
+
     }
     res.json(resultValue);
 });
