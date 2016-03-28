@@ -12,9 +12,9 @@ var _ = require('lodash');
  *
  * @description
  *
- * https://localhost:5000/event/carousel?client=asdfaqerq1werqwe
+ * https://localhost:5000/event/carousel
  *
- * https://fakeapi.fdjf.net:3000/event/carousel?client=asdfaqerq1werqwe
+ * https://fakeapi.asterlake.cn:5000/event/carousel
  *
  * @output {json} 首页轮播列表
  * {
@@ -105,9 +105,9 @@ router.all('/event/checkUpdate', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/event/checkServerStatus?client=asfdaqwerqe
+ * https://localhost:3000/event/checkServerStatus
  *
- * https://fakeapi.fdjf.net:3000/event/checkServerStatus?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/checkServerStatus
  *
  * @output {json} 服务端状态检查
  * {
@@ -345,9 +345,9 @@ router.all('/event/shareSuccess', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:5000/event/lotteryPrizeList?client=asfdaqwerqe
+ * https://localhost:5000/event/lotteryPrizeList
  *
- * https://fakeapi.fdjf.net:3000/event/lotteryPrizeList?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/lotteryPrizeList
  *
  * @output {json} 中奖榜单接口
  * {

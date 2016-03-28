@@ -8,9 +8,9 @@ var router = express.Router();
  *
  * @description
  * 
- * https://localhost:5000/project/pageList?client=2435234523451&pageSize=10&pageNumber=1
+ * https://localhost:5000/project/pageList
  * 
- * https://fakeapi.fdjf.net:3000/project/pageList?client=2435234523451&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/project/pageList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {int=} [pageSize=10] 	页容量
@@ -99,9 +99,9 @@ router.all('/project/pageList', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/project/recommend?client=2435234523451
+ * https://localhost:5000/project/recommend
  * 
- * https://fakeapi.fdjf.net:3000/project/recommend?client=2435234523451
+ * https://fakeapi.asterlake.cn:5000/project/recommend
  *
  * 输出同'/project/pageList'
  */
@@ -119,9 +119,9 @@ router.all('/project/recommend', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/project/detail?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/detail
  * 
- * https://fakeapi.fdjf.net:3000/project/detail?client=asdfaqerq1werqwe&projectId=1
+ * https://fakeapi.asterlake.cn:5000/project/detail
  *
  * @output {json} 项目详情字段
  * {
@@ -208,9 +208,9 @@ router.all('/project/detail', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/repaymentPlan
  * 
- * https://fakeapi.fdjf.net:3000/project/repaymentPlan?client=asdfaqerq1werqwe&projectId=1
+ * https://fakeapi.asterlake.cn:5000/project/repaymentPlan
  *
  * @output {json} 还款计划
  * {
@@ -258,9 +258,9 @@ router.all('/project/repaymentPlan', function (req, res, next) {
  * 
  * 得到投资记录列表
  * 
- * https://localhost:5000/project/investmentRecords?client=asdfaqerq1werqwe&projectId=1
+ * https://localhost:5000/project/investmentRecords
  * 
- * https://fakeapi.fdjf.net:3000/project/investmentRecords?client=asdfaqerq1werqwe&projectId=1
+ * https://fakeapi.asterlake.cn:5000/project/investmentRecords
  *
  * @output {json} 投资记录列表
  * {
@@ -319,9 +319,9 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/project/interestCalculation?client=asdfaqerq1werqwe&projectId=1&amount=10000
+ * https://localhost:5000/project/interestCalculation
  * 
- * https://fakeapi.fdjf.net:3000/project/interestCalculation?client=asdfaqerq1werqwe&projectId=1&amount=10000
+ * https://fakeapi.asterlake.cn:5000/project/interestCalculation
  *
  * @output {json} 收益
  * {

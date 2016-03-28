@@ -21,9 +21,9 @@ var _ = require('lodash');
  *
  * 手机号码如果是 13566667777 表示已经注册过，否则都表示未注册过
  *
- * https://localhost:5000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13566667777
- * 
- * https://fakeapi.fdjf.net:3000/account/hasRegistered?client=asdfaqerq1werqwe&mobile=13566667777
+ * https://localhost:5000/account/hasRegistered
+ *
+ *https://fakeapi.asterlake.cn:5000/account/hasRegistered
  */
 router.all('/account/hasRegistered', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -60,9 +60,9 @@ router.all('/account/hasRegistered', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:5000/account/sendSmsCode?client=asdfaqerq1werqwe&mobile=13566667777
+ * https://localhost:5000/account/sendSmsCode
  * 
- * https://fakeapi.fdjf.net:3000/account/sendSmsCode?client=asdfaqerq1werqwe&mobile=13566667777
+ * https://fakeapi.asterlake.cn:5000/account/sendSmsCode
  */
 router.all('/account/sendSmsCode', function (req, res, next) {
 	var resultValue = {
@@ -100,9 +100,9 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  *
  * 手机号码如果是 13577778888 可以注册通过。
  *
- * https://localhost:5000/account/register?client=asdfaqerq1werqwe&mobile=13577778888&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ * https://localhost:5000/account/register
  *
- * https://fakeapi.fdjf.net:3000/account/register?client=asdfaqerq1werqwe&mobile=13577778888&password=111111&smsCode=000000&channel=baiduAd&lotteryToken=&subid=
+ * https://fakeapi.asterlake.cn:5000/account/register
  */
 router.all('/account/register', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13577778888');
@@ -142,9 +142,9 @@ router.all('/account/register', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:5000/account/resetPassword?client=asdfaqerq1werqwe&mobile=13566667777&newPassword=111111smsCode=000000
+ * https://localhost:5000/account/resetPassword
  *
- * https://fakeapi.fdjf.net:3000/account/resetPassword?client=asdfaqerq1werqwe&mobile=13566667777&newPassword=111111smsCode=000000
+ * https://fakeapi.asterlake.cn:5000/account/resetPassword
  */
 router.all('/account/resetPassword', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -186,9 +186,9 @@ router.all('/account/resetPassword', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/changePassword?client=asdfaqerq1werqwe&token=23452345243&newPassword=111111&oldPassword=111111
+ * https://localhost:5000/account/changePassword
  *
- * https://fakeapi.fdjf.net:3000/account/changePassword?client=asdfaqerq1werqwe&token=23452345243&newPassword=111111&oldPassword=111111
+ * https://fakeapi.asterlake.cn:5000/account/changePassword
  */
 router.all('/account/changePassword', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -235,9 +235,9 @@ router.all('/account/changePassword', function (req, res, next) {
  * 
  * 用户可以用mobile或uname + password登录，也可以用mobile + smsCode登录
  *
- * https://localhost:5000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
+ * https://localhost:5000/account/login
  * 
- * https://fakeapi.fdjf.net:3000/account/login?client=asdfaqerq1werqwe&mobile=13566667777&password=111111&smsCode=222222
+ * https://fakeapi.asterlake.cn:5000/account/login
  */
 router.all('/account/login', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
@@ -278,9 +278,9 @@ router.all('/account/login', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/logout?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/logout
  * 
- * https://fakeapi.fdjf.net:3000/account/logout?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://fakeapi.asterlake.cn:5000/account/logout
  */
 router.all('/account/logout', function (req, res, next) {
 	var code = 0;
@@ -329,9 +329,9 @@ router.all('/account/logout', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/my?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/my
  * 
- * https://fakeapi.fdjf.net:3000/account/my?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://fakeapi.asterlake.cn:5000/account/my
  */
 router.all('/account/my', function (req, res, next) {
 	var code = 0;
@@ -387,9 +387,9 @@ router.all('/account/my', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/myTickets?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/myTickets
  * 
- * https://fakeapi.fdjf.net:3000/account/myTickets?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://fakeapi.asterlake.cn:5000/account/myTickets
  */
 router.all('/account/myTickets', function (req, res, next) {
 	var start = req.body.start || 0;
@@ -458,9 +458,9 @@ router.all('/account/myTickets', function (req, res, next) {
  * @description
  *
  *
- * https://localhost:5000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=0
+ * https://localhost:5000/account/myInvestment
  * 
- * https://fakeapi.fdjf.net:3000/account/myInvestment?client=asdfaqerq1werqwe&token=2435135345623413&flag=0
+ * https://fakeapi.asterlake.cn:5000/account/myInvestment
  */
 router.all('/account/myInvestment', function (req, res, next) {
 	var start = req.body.start || 0;
@@ -539,9 +539,9 @@ router.all('/account/myInvestment', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/myInvestmentDetail?client=asdfaqerq1werqwe&token=4324523452345&recordId=2435135345623413
+ * https://localhost:5000/account/myInvestmentDetail
  * 
- * https://fakeapi.fdjf.net:3000/account/myInvestmentDetail?client=asdfaqerq1werqwe&token=4324523452345&recordId=2435135345623413
+ * https://fakeapi.asterlake.cn:5000/account/myInvestmentDetail
  */
 router.all('/account/myInvestmentDetail', function (req, res, next) {
 	var start = req.body.start || 0;
@@ -586,9 +586,9 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
+ * https://localhost:5000/account/repaymentPlan
  * 
- * https://fakeapi.fdjf.net:3000/account/repaymentPlan?client=asdfaqerq1werqwe&recordId=1
+ * https://fakeapi.asterlake.cn:5000/account/repaymentPlan
  *
  * @output {json} 还款计划
  * {
@@ -671,9 +671,9 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/repaymentCalendar?client=asdfaqerq1werqwe&token=2435135345623413&year=2015&month=10
+ * https://localhost:5000/account/repaymentCalendar
  * 
- * https://fakeapi.fdjf.net:3000/account/repaymentCalendar?client=asdfaqerq1werqwe&token=2435135345623413&year=2015&month=10
+ * https://fakeapi.asterlake.cn:5000/account/repaymentCalendar
  */
 router.all('/account/repaymentCalendar', function (req, res, next) {
 	var start = req.body.start || 0;
@@ -746,9 +746,9 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:5000/account/transactionRecord?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/transactionRecord
  * 
- * https://fakeapi.fdjf.net:3000/account/transactionRecord?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/transactionRecord
  */
 router.all('/account/transactionRecord', function (req, res, next) {
 	var code = 0;
@@ -789,9 +789,9 @@ router.all('/account/transactionRecord', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234&avatarUrl=
+ * https://localhost:5000/account/saveAvatar
  * 
- * https://fakeapi.fdjf.net:3000/account/saveAvatar?client=asdfaqerq1werqwe&token=2435135345623413&avatar=23523afdfasdfasdfasdfasdfasdfq1413241234&avatarUrl=
+ * https://fakeapi.asterlake.cn:5000/account/saveAvatar
  */
 router.all('/account/saveAvatar', function (req, res, next) {
 	var code = 0;

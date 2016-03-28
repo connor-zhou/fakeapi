@@ -46,9 +46,9 @@ var _ = require('lodash');
  *
  * @description
  * 
- * https://localhost:5000/common/isMobile?client=asdfaqerq1werqwe&mobile
+ * https://localhost:5000/common/isMobile
  * 
- * https://fakeapi.fdjf.net:3000/common/isMobile?client=asdfaqerq1werqwe&mobile
+ * https://fakeapi.asterlake.cn:5000/common/isMobile
  *
  * @output {json} 手机号码是否正确
  * {
