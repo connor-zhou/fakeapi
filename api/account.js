@@ -759,11 +759,11 @@ router.all('/account/transactionRecord', function (req, res, next) {
     	code: code,
     	text: text,
     	data: [
-    	   {timeline:'2015-10-19 11:01:01',category:1,categoryName:'充值',money:10000,note:'+10000'},
-    	   {timeline:'2015-10-12 11:01:01',category:2,categoryName:'投资',money:500,note:'-500'},
-    	   {timeline:'2015-10-09 11:01:01',category:3,categoryName:'收益',money:10,note:'+10'},
-    	   {timeline:'2015-10-09 11:01:01',category:4,categoryName:'提现',money:-100,note:'-100'},
-    	   {timeline:'2015-09-09 11:01:01',category:5,categoryName:'提现手续费',money:-2,note:'-2'}
+    	   {timeline:'2015-10-19 11:01',category:1,categoryName:'充值',money:10000,note:'+10000'},
+    	   {timeline:'2015-10-12 11:01',category:2,categoryName:'投资',money:500,note:'-500'},
+    	   {timeline:'2015-10-09 11:01',category:3,categoryName:'收益',money:10,note:'+10'},
+    	   {timeline:'2015-10-09 11:01',category:4,categoryName:'提现',money:-100,note:'-100'},
+    	   {timeline:'2015-09-09 11:01',category:5,categoryName:'提现手续费',money:-2,note:'-2'}
        ]
     }
     res.json(resultValue);
