@@ -247,7 +247,7 @@ router.all('/account/login', function (req, res, next) {
 
 	var code = 0;
 	var text = "登录成功";
-	if (mobile != '13566667777') {
+	if (mobile != '13566667777'|| password != '000001') {
     	code = 1;
     	text = "登录失败";
     }
