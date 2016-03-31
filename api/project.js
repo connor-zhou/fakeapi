@@ -136,7 +136,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      money:"{number} 融资金额",
  *      haveMoney:"{number} 已融资金额",
  *      schedule:"{number} 已投百分比(%)",
- *      projectStatus:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
+ *      projectStatus:"{int} 状态(3未满在投，4企业还款中，5企业已还款",
  *      projectStatusName:"{String} 状态说明",
  *      revenue:"{number} 年化利率",
  *      revenueAward:"{number} 活动加息年化利率",
@@ -151,6 +151,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      revolve:"{string} 资金运转",
  *      control:"{html} 风险控制",
  *      market:"{string} 担保机构及其意见",
+ *      investNumber:"{number} 投资总数"
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
  *      canUseAward :"{int} 能否用券 (1--能,0--否)"
@@ -172,7 +173,7 @@ router.all('/project/detail', function (req, res, next) {
         money: 200000,
         haveMoney:10000,
         schedule: 35,
-        projectStatus: [3, 5, 7][pid % 3],
+        projectStatus: [3,4,5][pid % 3],
         projectStatusName: Math.floor(Math.random() * 3) == 1 ?  "未满在投":"还款中",
         revenue: Math.floor(Math.random() * 20) * 0.01,
         revenueAward: Math.floor(Math.random() * 5) * 0.01,
@@ -186,6 +187,7 @@ router.all('/project/detail', function (req, res, next) {
         description: '资金周转',
         revolve: '投资后3天可转让',
         market:"星投资",
+        investNumber:100,
         control: '<h2>项目风险保障方案</h2><p>专业尽调团队对核心企业和必要的融资项目进行360度实地尽职调查，调查报告的数据包括实地调查数据、人民银行征信系统数</p>',
         isRecommend:Math.floor(Math.random() * 2),
         canInvest:Math.floor(Math.random() * 2),
