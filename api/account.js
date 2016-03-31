@@ -435,9 +435,6 @@ router.all('/account/myTickets', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	investmentc:"{number} 投资总额",
- *  	money:"{number} 收款总额",
- *  	note:"{String} 收款提示信息",
  *  	projectList:[{
  *  		iid:"{string} 记录Id",
  *  	  	pid:"{string} 项目Id",

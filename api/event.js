@@ -24,8 +24,7 @@ var _ = require('lodash');
  * 	  {
  *  	photo:"{string} 	图片URL（绝对路径）",
  *  	title:"{string} 标题",
- *  	type:"{int} 类型（1--活动，点击后打开url；2--项目，点击后跳到项目详情",
- *  	target:"{string} 目标参数"
+ *  	target:"{string} 链接地址"
  *     }
  * 	]
  * }
@@ -38,7 +37,6 @@ router.all('/event/carousel', function (req, res, next) {
     	events.push({
     		photo:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
         	title: 'slide'+i,
-        	type: [1,2][i % 2],
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1"
         });
     });
