@@ -132,7 +132,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      title:"{string} 项目名称",
  *      category:"{int} 项目类型",
  *      categoryName:"{string} 项目类型名称",
- *      methods:"{int} 还款方式",
+ *      methods:"{string} 还款方式",
  *      money:"{number} 融资金额",
  *      haveMoney:"{number} 已融资金额",
  *      schedule:"{number} 已投百分比(%)",
