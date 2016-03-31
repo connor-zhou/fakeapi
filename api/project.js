@@ -130,7 +130,7 @@ router.all('/project/recommend', function (req, res, next) {
  *  data: {
  *      id:"{int} 项目ID",
  *      title:"{string} 项目名称",
- *      category:"{int} 项目类型",
+ *      category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *      categoryName:"{string} 项目类型名称",
  *      methods:"{string} 还款方式",
  *      money:"{number} 融资金额",
@@ -162,13 +162,13 @@ router.all('/project/recommend', function (req, res, next) {
 router.all('/project/detail', function (req, res, next) {
     var pid = req.body.projectId || 1;
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
-    var type = Math.floor(Math.random() * 7);
+    var type = Math.floor(Math.random() * 7+1);
     var duration = Math.floor(Math.random() * 20 + 2);
     var project = {
         id: pid,
         title: '个人信用贷款' + pid,
         category: type,
-        categoryName: types[type],
+        categoryName: types[type-1],
         methods: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
         money: 200000,
         haveMoney:10000,
