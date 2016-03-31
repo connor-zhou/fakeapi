@@ -134,7 +134,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      categoryName:"{string} 项目类型名称",
  *      methods:"{int} 还款方式",
  *      money:"{number} 融资金额",
- *      haveMoney:"{number} 已投金额",
+ *      haveMoney:"{number} 已融资金额",
  *      schedule:"{number} 已投百分比(%)",
  *      projectStatus:"{int} 状态(3-投标中，4--投标结束，5-还款中，6--还款结束，7-清算结束)",
  *      projectStatusName:"{String} 状态说明",
