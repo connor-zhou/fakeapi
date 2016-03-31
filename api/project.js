@@ -166,7 +166,7 @@ router.all('/project/detail', function (req, res, next) {
     var duration = Math.floor(Math.random() * 20 + 2);
     var project = {
         id: pid,
-        title: '个人信用贷款' + pid,
+        title: types[type-1]+"**"+pid,
         category: type,
         categoryName: types[type-1],
         methods: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
