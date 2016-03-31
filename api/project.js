@@ -151,7 +151,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      revolve:"{string} 资金运转",
  *      control:"{html} 风险控制",
  *      market:"{string} 担保机构及其意见",
- *      investNumber:"{number} 投资总数"
+ *      investNumber:"{number} 投资总数",
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
  *      canUseAward :"{int} 能否用券 (1--能,0--否)"
