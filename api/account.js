@@ -446,7 +446,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *      		title:"{String} 项目名称",
  *          	revenue:"{number} 年化收益率",
  *          	repaymentTime:"{String} 还款时间",
- *          	category:"{int} 项目类型(0--星企贷，1--星保理，2--星车宝，3--星票宝，4--星房宝，5--星股神，6--星居宝)",
+ *          	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *          	categoryName:"{String} 项目类型说明 "
  *  		}
  * 		}]
@@ -466,13 +466,12 @@ router.all('/account/myInvestment', function (req, res, next) {
 	var start = req.body.start || 0;
     var limit = req.body.limit || 10;
     var order = req.body.order;
-    var type = req.body.type;
 	var random = Math.floor(Math.random() * 20)*0.01;
 	var projects = [];
     var max = 35;
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 7);
+        var type = Math.floor(Math.random() * 7 + 1) ;
         projects.push({
         	iid: start,
 			pid: start+1,
@@ -483,9 +482,9 @@ router.all('/account/myInvestment', function (req, res, next) {
 			statusName:["已结束","持有中"][start % 2],
 			days:17,
 			project:{
-				title:types[type] + '-' + start,
+				title:types[type-1] + '-' + start,
 				category:type,
-				categoryName:types[type],
+				categoryName:types[type-1],
 				revenue:random,
 				repaymentTime:'2016-12-21'
 			}
@@ -530,7 +529,7 @@ router.all('/account/myInvestment', function (req, res, next) {
  * 		money:"{number} 投资金额",
  *  	project:{
  *      	title:"{string} 项目名称",
- *      	category:"{int} 项目类型(0--星企贷，1--星保理，2--星车宝，3--星票宝，4--星房宝，5--星股神，6--星居宝)",
+ *      	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *          categoryName:"{String} 项目类型说明 ",
  *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本'）",
  *      	schedule:"{number} 融资进度，不要加(%)",
@@ -569,9 +568,9 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 			interestWill: 64000,
 			pid: 1,
 			project:{
-				title: types[type] + '-' + type,
+				title: types[type-1] + '-' + type,
 				category:type,
-				categoryName:types[type],
+				categoryName:types[type-1],
 				methods: "按日计息,按月付息,到期还本",
 				schedule:65,
 				revenue:random,
