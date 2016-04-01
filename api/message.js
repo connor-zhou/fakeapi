@@ -48,13 +48,13 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         pageList.push({
-        	msgsId: "" + start,
+        	msgsId: "msgs" + start,
         	category: 0,
-        	title: "您有一笔回款",
+        	title: "提现成功",
         	content:"尊敬的用户，您于2016年02月14日回款22154.0元。关注花生金服官方微信，查详情、抢标的，让您随时随地赚不停！",
-        	markRead:[0,1][start % 2],
-            markReadName: ["未读","已读"][start % 2],
-            timeline: "2015-10-20"
+        	markRead:[0,1][type % 2],
+            markReadName: ["未读","已读"][type % 2],
+            timeline: "2015-10-20 13:02"
         });
         start++;
         limit--;
@@ -110,10 +110,10 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         pageList.push({
-        	msgsId: "" + start,
-        	title: "您有一条系统消息",
+        	msgsId: "msgs" + start,
+        	title: "新消息",
         	content:"活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动活动，活动！",
-            timeline: "2015-10-20"
+            timeline: "2015-10-20 12:30"
         });
         start++;
         limit--;
