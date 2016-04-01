@@ -466,12 +466,12 @@ router.all('/account/myInvestment', function (req, res, next) {
 	var start = req.body.start || 0;
     var limit = req.body.limit || 10;
     var order = req.body.order;
-	var random = Math.floor(Math.random() * 20)*0.01;
 	var projects = [];
     var max = 35;
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 7 + 1) ;
+		var random = Math.floor(Math.random() * 20)*0.01;
         projects.push({
         	iid: start,
 			pid: start+1,
@@ -659,17 +659,14 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *         repayment:"{number} 本月应回款(元)",
  *         repaymentYet:"{number} 本月已回款(元)",
  *         dayList:[{
- *  			day:"{int} 天",
- *  			money:"{number} 还款额",
- *  			status:"{int} 状态(0-未还，1--已还，2--逾期)",
- *  			recordList:[{
- *      			title:"{string} 项目名称",
- *      			planTime:"{string} 还款日期",
- *  				repaymentc:"{string} 还款金额",
- *  				money:"{string} 应还本金",
- *  				interest:"{string} 应还利息",
- *  				capitalWill:"{string} 剩余应还本金"
- * 				}]
+ *         		day:"{int} 天数",
+ *         		recordList:
+ *         		[{
+ *         		title:"{string} 项目名称",
+ *      		repaymentTime:"{string} 还款日期",
+ *  			money:"{string} 应还本金",
+ *  			interest:"{string} 应还利息"
+ *  			}]
  *  	   }]
  *     }
  * }
@@ -692,11 +689,9 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
         var type = Math.floor(Math.random() * 4);
         records.push({
             title: types[type] + '-' + start,
-            planTime: '2015-11-06',
-            repaymentc: 100,
+            repaymentTime: ['2015-11-06','2015-11-07','2015-11-20'][start % 3],
             money: 90,
-            interest: 10,
-            capitalWill: 1000
+            interest: 10
         });
         start++;
         limit--;
@@ -714,11 +709,11 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
     		repayment:30000,
     		repaymentYet:2000,
     		dayList:[
-      	   		{day:5,money:3500,status:1,recordList:records},
-      	   		{day:8,money:500,status:1,recordList:records},
-      	   		{day:12,money:100,status:1,recordList:records},
-      	   		{day:15,money:10200,status:0,recordList:records},
-      	   		{day:25,money:3500,status:0,recordList:records},
+      	   		{day:5,recordList:records},
+      	   		{day:8,recordList:records},
+      	   		{day:12,recordList:records},
+      	   		{day:15,recordList:records},
+      	   		{day:25,recordList:records},
       	   	]
     	}
     }
