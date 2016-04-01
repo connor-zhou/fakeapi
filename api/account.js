@@ -659,7 +659,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *         repayment:"{number} 本月应回款(元)",
  *         repaymentYet:"{number} 本月已回款(元)",
  *         dayList:[{
- *         		day:"{int} 天数",
+ *         		day:"{int} 回款日",
  *         		recordList:
  *         		[{
  *         		title:"{string} 项目名称",
