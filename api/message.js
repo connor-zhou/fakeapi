@@ -29,7 +29,7 @@ var _ = require('lodash');
  *      category:"{String} 消息分类（默认返回0）",
  *      title:"{String} 标题",
  *		content:"{String} 内容",
- *		markRead:"{int} 状态(2:已读、其它：未读)",
+ *		markRead:"{int} 状态(1:已读、其它：未读)",
  *      markReadName:"{String} 状态名称(已读、未读)",
  *      timeline:"{String} 创建时间"
  * 	  }
@@ -52,8 +52,8 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
         	category: 0,
         	title: "您有一笔回款",
         	content:"尊敬的用户，您于2016年02月14日回款22154.0元。关注花生金服官方微信，查详情、抢标的，让您随时随地赚不停！",
-        	markRead:[0,2][start % 2],
-            markReadName: ["已读","未读"][start % 2],
+        	markRead:[0,1][start % 2],
+            markReadName: ["未读","已读"][start % 2],
             timeline: "2015-10-20"
         });
         start++;

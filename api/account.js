@@ -434,8 +434,8 @@ router.all('/account/myTickets', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:{
  *  	projectList:[{
- *  		iid:"{string} 记录Id",
- *  	  	pid:"{string} 项目Id",
+ *  		iid:"{String} 记录Id",
+ *  	  	pid:"{String} 项目Id",
  *  	    money:"{String} 投资金额",
  *  	    interestYet:"{number} 已获收益",
  *      	interestWill:"{number} 待收收益",
@@ -443,9 +443,11 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	    statusName:"{String} 投资状态名称",
  *  	    days:"{int} 剩余还款天数",
  *  		project:{
- *      		title:"{string} 项目名称",
+ *      		title:"{String} 项目名称",
  *          	revenue:"{number} 年化收益率",
- *          	repaymentTime:"{String} 还款时间"
+ *          	repaymentTime:"{String} 还款时间",
+ *          	category:"{int} 项目类型(0--星企贷，1--星保理，2--星车宝，3--星票宝，4--星房宝，5--星股神，6--星居宝)",
+ *          	categoryName:"{String} 项目类型说明 "
  *  		}
  * 		}]
  *    }
@@ -482,6 +484,8 @@ router.all('/account/myInvestment', function (req, res, next) {
 			days:17,
 			project:{
 				title:types[type] + '-' + start,
+				category:type,
+				categoryName:types[type],
 				revenue:random,
 				repaymentTime:'2016-12-21'
 			}
@@ -526,6 +530,8 @@ router.all('/account/myInvestment', function (req, res, next) {
  * 		money:"{number} 投资金额",
  *  	project:{
  *      	title:"{string} 项目名称",
+ *      	category:"{int} 项目类型(0--星企贷，1--星保理，2--星车宝，3--星票宝，4--星房宝，5--星股神，6--星居宝)",
+ *          categoryName:"{String} 项目类型说明 ",
  *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本'）",
  *      	schedule:"{number} 融资进度，不要加(%)",
  *      	revenue: "{number} 年化收益率",
@@ -564,6 +570,8 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 			pid: 1,
 			project:{
 				title: types[type] + '-' + type,
+				category:type,
+				categoryName:types[type],
 				methods: "按日计息,按月付息,到期还本",
 				schedule:65,
 				revenue:random,
