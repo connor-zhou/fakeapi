@@ -295,8 +295,8 @@ router.all('/project/investmentRecords', function (req, res, next) {
     var max = 35;
     while (i < max && limit > 0) {
         records.push({
-            uname: 'a*b*c*d',
-            timeline: '2015-08-29',
+            uname: 'a****d',
+            timeline: '2015-08-29 12:15',
             money: [100, 1000, 50, 10500, 6700, 5][Math.floor(Math.random() * 6)]
         });
         i++;
