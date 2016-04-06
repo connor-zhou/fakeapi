@@ -80,14 +80,10 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @name account.register
  * @href /account/register
  *
- * @input.post {string} client 		客户端统计参数（common/client）
+ *
  * @input.post {string} mobile 		手机号码
  * @input.post {string} password 		密码
  * @input.post {string} smsCode 		短信验证码
- * @input.post {string} inviteCode 	邀请码(选填)
- * @input.post {string} channel 		注册渠道(选填)
- * @input.post {string} lotteryToken 	奖品token(选填)
- * @input.post {string} subid			最终客户在渠道商处的编码， 由渠道商生成，花生金服负责记录(选填)
  *
  * @output {json} 注册结果
  * {
