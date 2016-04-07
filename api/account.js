@@ -122,7 +122,7 @@ router.all('/account/register', function (req, res, next) {
 });
 
 /**
- * @fakedoc 忘记密码时，重置密码（用户未登录）
+ * @fakedoc xtz.忘记密码时，重置密码（用户未登录）
  *
  * @name account.resetPassword
  * @href /account/resetPassword
@@ -163,7 +163,7 @@ router.all('/account/resetPassword', function (req, res, next) {
 });
 
 /**
- * @fakedoc 修改密码（用户已登录）
+ * @fakedoc xtz.修改密码（用户已登录）
  *
  * @name account.changePassword
  * @href /account/changePassword
