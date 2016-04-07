@@ -432,7 +432,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	projectList:[{
  *  		iid:"{String} 记录Id",
  *  	  	pid:"{String} 项目Id",
- *  	    money:"{String} 投资金额",
+ *  	    money:"{number} 投资金额",
  *  	    interestYet:"{number} 已获收益",
  *      	interestWill:"{number} 待收收益",
  *  	    status:"{int} 投资状态（0--已结束 1--持有中）",
@@ -517,14 +517,14 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	iid:"{string} 记录Id",
- *   	pid:"{int} 项目Id",
+ *  	iid:"{String} 记录Id",
+ *   	pid:"{String} 项目Id",
  *  	status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	statusName:"{String} 投资状态名称",
  *      interestWill:"{number} 预期收益",
  * 		money:"{number} 投资金额",
  *  	project:{
- *      	title:"{string} 项目名称",
+ *      	title:"{String} 项目名称",
  *      	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *          categoryName:"{String} 项目类型说明 ",
  *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本'）",
