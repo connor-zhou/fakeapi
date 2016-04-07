@@ -733,7 +733,8 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:[{
  *  	timeline:"{String} 操作日期时间",
- *  	category:"{String} 变更类型（B2B网银:NET_B2B，B2C网银:NET_B2C，一键支付:A_PAY，代充值:WH_NO_CARD，快捷充值:SWIFT，正常提现，T+1 天到账:NORMAL，加急提现，T+0 当日到账:URGENT，投资冻结:1，投资冻结取消:2，投资确认:3，还款:4，充值获取抵用额:5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
+ *  	category:"{int} 变更类型（1-充值，2-取现，3-投资，4-系统奖励，5-积分兑换，6-收益，7-回收本金，8-折让金（转让），9-债券转让，10-折让金（认购）,
+ *  	102-推荐投资佣金，801-股票配资保证金，802-股票配资管理费，803-股票配资结算，804-股票配资利息，805-保证金（股票配资免费体验保证金）",
  *  	categoryName:"{String} 变更类型名称",
  *  	note:"{String} 备注",
  *  	money: "{number} 金额"
