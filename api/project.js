@@ -252,6 +252,43 @@ router.all('/project/repaymentPlan', function (req, res, next) {
 });
 
 /**
+ * @fakedoc xtz.得到指定项目的企业信息
+ *
+ * @name project.enterpriseInfo
+ * @href project/enterpriseInfo
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {String} projectId      项目id
+ *
+ * @description
+ *
+ * https://localhost:5000/project/enterpriseInfo
+ *
+ * https://fakeapi.asterlake.cn:5000/project/enterpriseInfo
+ *
+ *@output {json} 企业信息
+ * {
+ *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data: {
+ *          information:"{html} 企业信息的html"
+ *      }
+ * }
+ *
+ * **/
+router.all('/project/enterpriseInfo',function(req,res,next){
+    var pid = req.body.projectId || 1;
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+           information: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+        }
+    }
+    res.json(resultValue);
+});
+
+/**
  * @fakedoc xtz.得到指定项目的投资记录列表
  *
  * @name project.investmentRecords
