@@ -69,7 +69,7 @@ router.all('/project/pageList', function (req, res, next) {
             canInvestMoney:4000000,
             money:5000000,
             schedule: 10,
-            projectStatus: [3, 5, 7][start % 3],
+            projectStatus: [1, 2, 3][start % 3],
             projectStatusName:["投标中","还款中","已还款"][start % 3],
             revenue: Math.floor(Math.random() * 20) * 0.01,
             revenueAward: Math.floor(Math.random() * 5) * 0.01,
@@ -148,11 +148,6 @@ router.all('/project/recommend', function (req, res, next) {
  *      canInvestMoney:"{number} 可投金额",
  *      expireTime:"{string} 投资截止日期",
  *      repaymentTime:"{string} 还款日期",
- *      description:"{html} 项目简介",
- *      information:"{html} 企业信息",
- *      revolve:"{html} 资金运转",
- *      control:"{html} 风险控制",
- *      market:"{html} 担保机构及其意见",
  *      investNumber:"{number} 投资总数",
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
@@ -185,12 +180,7 @@ router.all('/project/detail', function (req, res, next) {
         canInvestMoney:190000,
         expireTime: '2016-09-05',
         repaymentTime:"2016-08-05",
-        information: 'some text一些介绍',
-        description: '资金周转',
-        revolve: '投资后3天可转让',
-        market:"星投资",
         investNumber:100,
-        control: '<h2>项目风险保障方案</h2><p>专业尽调团队对核心企业和必要的融资项目进行360度实地尽职调查，调查报告的数据包括实地调查数据、人民银行征信系统数</p>',
         isRecommend:Math.floor(Math.random() * 2),
         canInvest:Math.floor(Math.random() * 2),
         canUseAward:Math.floor(Math.random() * 2)
@@ -271,7 +261,7 @@ router.all('/project/repaymentPlan', function (req, res, next) {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
  *      data: {
- *          information:"{html} 企业信息的html"
+ *          html:"{html} 企业信息的html"
  *      }
  * }
  *
@@ -282,7 +272,156 @@ router.all('/project/enterpriseInfo',function(req,res,next){
         code:0,
         text:'ok',
         data:{
-           information: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+           html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+        }
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到指定项目的项目描述
+ *
+ * @name project.description
+ * @href project/description
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {String} projectId      项目id
+ *
+ * @description
+ *
+ * https://localhost:5000/project/description
+ *
+ * https://fakeapi.asterlake.cn:5000/project/description
+ *
+ *@output {json} 企业信息
+ * {
+ *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data: {
+ *          html:"{html} 项目描述的html"
+ *      }
+ * }
+ *
+ * **/
+router.all('/project/description',function(req,res,next){
+    var pid = req.body.projectId || 1;
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+        }
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到指定项目的担保机构及意见
+ *
+ * @name project.guaranteeAndAdvice
+ * @href project/guaranteeAndAdvice
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {String} projectId      项目id
+ *
+ * @description
+ *
+ * https://localhost:5000/project/guaranteeAndAdvice
+ *
+ * https://fakeapi.asterlake.cn:5000/project/guaranteeAndAdvice
+ *
+ *@output {json} 担保机构及意见
+ * {
+ *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data: {
+ *          html:"{html} 担保机构及意见的html"
+ *      }
+ * }
+ *
+ * **/
+router.all('/project/guaranteeAndAdvice',function(req,res,next){
+    var pid = req.body.projectId || 1;
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+        }
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到指定项目的资金运转
+ *
+ * @name project.moneyOperation
+ * @href project/moneyOperation
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {String} projectId      项目id
+ *
+ * @description
+ *
+ * https://localhost:5000/project/moneyOperation
+ *
+ * https://fakeapi.asterlake.cn:5000/project/moneyOperation
+ *
+ *@output {json} 资金运转
+ * {
+ *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data: {
+ *          html:"{html} 资金运转的html"
+ *      }
+ * }
+ *
+ * **/
+router.all('/project/moneyOperation',function(req,res,next){
+    var pid = req.body.projectId || 1;
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+        }
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到指定项目的风险控制
+ *
+ * @name project.riskControl
+ * @href project/riskControl
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {String} projectId      项目id
+ *
+ * @description
+ *
+ * https://localhost:5000/project/riskControl
+ *
+ * https://fakeapi.asterlake.cn:5000/project/riskControl
+ *
+ *@output {json} 风险控制
+ * {
+ *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data: {
+ *          html:"{html} 风险控制的html"
+ *      }
+ * }
+ *
+ * **/
+
+router.all('/project/riskControl',function(req,res,next){
+    var pid = req.body.projectId || 1;
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
         }
     }
     res.json(resultValue);
