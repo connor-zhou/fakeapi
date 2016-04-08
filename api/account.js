@@ -374,12 +374,10 @@ router.all('/account/my', function (req, res, next) {
  *  		id:"{int} 投资券id",
  *  		status:"{int} 投资券状态（0--正常，1--已使用，2--过期）",
  *      	award:"{number} 金额",
- *      	category:"{int} 来源类型(1--注册奖励，2--推荐注册奖励)",
- *      	categoryName:"{String} 来源类型说明",
  *      	useRule:"{int} 券可用投资额类型(1--10000,2--1000,3--500,4--5000)",
  *      	params:"{number} 券可用投资额",
  *     		expiryTime:"{String} 过期时间",
- *     		note:"{String} 券使用说明",
+ *     		note:"{String} 券来源说明",
  *     		usedTime:"{String} 使用时间"
  *    }]
  * }
