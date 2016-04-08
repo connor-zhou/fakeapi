@@ -405,10 +405,8 @@ router.all('/account/myTickets', function (req, res, next) {
 			id:start,
 			status:[0,1,2][type % 3],
             award: [10,20,50][start % 3],
-			category:[1,2][type % 2],
-			categoryName:['注册奖励','推荐注册奖励'][type % 2],
             expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
-            note:"满10000元可用",
+            note:"注册奖励",
 			usedTime:"2015-01-02",
 			useRule: type,
 			params:[10000,1000,500,5000][type-1]
