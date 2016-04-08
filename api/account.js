@@ -371,10 +371,15 @@ router.all('/account/my', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
+ *  		id:"{int} 投资券id",
+ *  		status:"{int} 投资券状态（0--正常，1--已使用，2--过期）",
  *      	award:"{number} 金额",
- *      	useRule:"{string} 使用规则",
+ *      	category:"{int} 来源类型(1--注册奖励，2--推荐注册奖励)",
+ *      	categoryName:"{String} 来源类型说明",
+ *      	useRule:"{int} 券可用投资额类型(1--10000,2--1000,3--500,4--5000)",
+ *      	params:"{number} 券可用投资额",
  *     		expiryTime:"{String} 过期时间",
- *     		note:"{String} 备注",
+ *     		note:"{String} 券使用说明",
  *     		usedTime:"{String} 使用时间"
  *    }]
  * }
@@ -395,13 +400,18 @@ router.all('/account/myTickets', function (req, res, next) {
 	var tickets = [];
     var max = 15;
     while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 4);
+        var type = Math.floor(Math.random() * 4+1);
         tickets.push({
-            award: [10,20,50][start%3],
+			id:start,
+			status:[0,1,2][type % 3],
+            award: [10,20,50][start % 3],
+			category:[1,2][type % 2],
+			categoryName:['注册奖励','推荐注册奖励'][type % 2],
             expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
-            note:"推荐好友奖励",
-			usedTime:"2015-1-2",
-			useRule: '满1000元可用'
+            note:"满10000元可用",
+			usedTime:"2015-01-02",
+			useRule: type,
+			params:[10000,1000,500,5000][type-1]
         });
         start++;
         limit--;
