@@ -2,69 +2,68 @@ var express = require('express');
 var router = express.Router();
 
 /**
- * @fakedoc 得到易宝平台注册新用户的URL
+ * @fakedoc xtz.得到乾多多平台注册新用户的URL
  *
- * @name yeepay.toRegister
- * @href /yeepay/toRegister
+ * @name mmm.toRegister
+ * @href /mmm/toRegister
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
  * @input.post {string} realName 		真实姓名
- * @input.post {string} idCardNo 		身份证号码
- * @input.post {string} mobile 		手机号码
+ * @input.post {string} chinaId 		身份证号码
  *
  * @description
- * 得到易宝平台注册新用户的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
- * 
- * https://localhost:3000/yeepay/toRegister?client=asdfaqerq1werqwe&token=134252345234&realName=温强&idCardNo=1225234523451&mobile=13564335614
- * 
- * https://fakeapi.fdjf.net:3000/yeepay/toRegister?client=asdfaqerq1werqwe&token=134252345234&realName=温强&idCardNo=1225234523451&mobile=13564335614
  *
- * @output {json} 易宝平台注册新用户的URL
+ * 得到乾多多平台注册新用户的URL
+ * 
+ * https://localhost:3000/mmm/toRegister
+ * 
+ * https://fakeapi.fdjf.net:3000/mmm/toRegister
+ *
+ * @output {json} 乾多多平台注册新用户的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台注册新用户的URL"
+ *  data:"{string} 乾多多平台注册新用户的URL"
  * }
  */
-router.all('/yeepay/toRegister', function (req, res, next) {
-        var realName, idCardNo, url, mobile;
+router.all('/mmm/toRegister', function (req, res, next) {
+        var realName, chinaId;
         realName = req.query.realName ? req.query.realName :req.body.realName;
-        idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
-        mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
+        chinaId = req.query.chinaId ? req.query.chinaId :req.body.chinaId;
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/yeepay/callback/toRegister'
+        	data: '/mmm/callback/toRegister'
         }
         res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到易宝平台绑定银行卡的URL
+ * @fakedoc 得到乾多多平台绑定银行卡的URL
  *
- * @name yeepay.toBindBankCard
- * @href /yeepay/toBindBankCard
+ * @name mmm.toBindBankCard
+ * @href /mmm/toBindBankCard
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
  *
  * @description
  *
- * 得到易宝平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
- * https://localhost:3000/yeepay/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://localhost:3000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  * 
- * https://fakeapi.fdjf.net:3000/yeepay/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://fakeapi.fdjf.net:3000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
  * @output {json} 绑定银行卡的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台绑定银行卡的URL"
+ *  data:"{string} 乾多多平台绑定银行卡的URL"
  * }
  */
-router.all('/yeepay/toBindBankCard', function (req, res, next) {
+router.all('/mmm/toBindBankCard', function (req, res, next) {
         var realName, idCardNo, url, mobile;
         realName = req.query.realName ? req.query.realName :req.body.realName;
         idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
@@ -72,27 +71,27 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/yeepay/callback/toBindBankCard'
+        	data: '/mmm/callback/toBindBankCard'
         };
         res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到易宝平台解绑银行卡的URL
+ * @fakedoc 得到乾多多平台解绑银行卡的URL
  *
- * @name yeepay.toUnBindBankCard
- * @href /yeepay/toUnBindBankCard
+ * @name mmm.toUnBindBankCard
+ * @href /mmm/toUnBindBankCard
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
  *
  * @description
  *
- * 得到易宝平台解绑银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台解绑银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
- * https://localhost:3000/yeepay/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://localhost:3000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
- * https://fakeapi.fdjf.net:3000/yeepay/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://fakeapi.fdjf.net:3000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
  * @output {json} 绑定银行卡的URL
  * {
@@ -100,7 +99,7 @@ router.all('/yeepay/toBindBankCard', function (req, res, next) {
  *  text:"{String} 状态描述",
  * }
  */
-router.all('/yeepay/toUnBindBankCard', function (req, res, next) {
+router.all('/mmm/toUnBindBankCard', function (req, res, next) {
     var resultValue = {
         code: 0,
         text: 'ok'
@@ -111,133 +110,120 @@ router.all('/yeepay/toUnBindBankCard', function (req, res, next) {
 
 
 /**
- * @fakedoc 得到易宝平台充值的URL
+ * @fakedoc xtz.得到乾多多平台充值的URL
  *
- * @name yeepay.toRecharge
- * @href /yeepay/toRecharge
+ * @name mmm.toRecharge
+ * @href /mmm/toRecharge
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} amount 		充值金额
+ * @input.post {string} money 		充值金额
  *
  * @description
  *
- * 得到易宝平台充值的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台充值的URL
  * 
- * https://localhost:3000/yeepay/toRecharge?client=asdfaqerq1werqwe&token=134252345234&amount=1000
+ * https://localhost:3000/mmm/toRecharge
  * 
- * https://fakeapi.fdjf.net:3000/yeepay/toRecharge?client=asdfaqerq1werqwe&token=134252345234&amount=1000
+ * https://fakeapi.fdjf.net:3000/mmm/toRecharge
  *
  * @output {json} 充值的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台充值的URL"
+ *  data:"{string} 乾多多平台充值的URL"
  * }
  */
-router.all('/yeepay/toRecharge', function (req, res, next) {
-        var realName, idCardNo, url, mobile;
-        realName = req.query.realName ? req.query.realName :req.body.realName;
-        idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
-        mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
+router.all('/mmm/toRecharge', function (req, res, next) {
+        var money = req.query.money ? req.money :req.body.money;
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/yeepay/callback/toRecharge'
+        	data: '/mmm/callback/toRecharge'
         }
         res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到易宝平台提现的URL
+ * @fakedoc xtz.得到乾多多平台提现的URL
  *
- * @name yeepay.toWithdraw
- * @href /yeepay/toWithdraw
+ * @name mmm.toWithdraw
+ * @href /mmm/toWithdraw
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} amount 		提现金额
- * @input.post {String} useTicket		是否用提现券（true 是，false 否）"
+ * @input.post {string} money 		提现金额
  *
  * @description
  *
- * 得到易宝平台提现的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台提现的URL
  * 
- * https://localhost:3000/yeepay/toWithdraw?client=asdfaqerq1werqwe&token=134252345234&amout=1000&useTicket=true
+ * https://localhost:3000/mmm/toWithdraw
  * 
- * https://fakeapi.fdjf.net:3000/yeepay/toWithdraw?client=asdfaqerq1werqwe&token=134252345234&amout=1000&useTicket=true
+ * https://fakeapi.fdjf.net:3000/mmm/toWithdraw
  *
  * @output {json} 提现的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台提现的URL"
+ *  data:"{string} 乾多多平台提现的URL"
  * }
  */
-router.all('/yeepay/toWithdraw', function (req, res, next) {
-        var realName, idCardNo, url, mobile;
-        realName = req.query.realName ? req.query.realName :req.body.realName;
-        idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
-        mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
+router.all('/mmm/toWithdraw', function (req, res, next) {
+        var money = req.query.money ? req.query.money :req.body.money;
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/yeepay/callback/toWithdraw'
+        	data: '/mmm/callback/toWithdraw'
         }
         res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到易宝平台投资的URL
+ * @fakedoc xtz.得到乾多多平台投资的URL
  *
- * @name yeepay.toInvest
- * @href /yeepay/toInvest
+ * @name mmm.toInvest
+ * @href /mmm/toInvest
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token					Token
  * @input.post {string} projectId				项目Id
- * @input.post {string} transferProjectId		转让编号
- * @input.post {string} amount					投资金额
- * @input.post {string} ticketIds				优惠券Ids
- * @input.post {string} ticketAmount			优惠券金额
- * @input.post {string} platformAmount			平台垫付金额
- * @input.post {string} type					直投（"1"）、债权转让（"2"）
- * 
- * @input.post {string} token					Token
+ * @input.post {string} money					投资金额
+ * @input.post {string} awardIds				投资券Ids
  * 
  * @output {json} 投资的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台投资的URL"
+ *  data:"{string} 乾多多平台投资的URL"
  * }
  * 
  * @needAuth
  * 
  * @description
  *
- * 得到易宝平台投资(直投或债权转让)的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台投资的URL
  *
- * https://localhost:3000/yeepay/toInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&transferProjectId=2&amount=1000&ticketIds=1,2&ticketAmount=20&platformAmount=0&type=1
+ * https://localhost:3000/mmm/toInvest
  * 
- * https://fakeapi.fdjf.net:3000/yeepay/toInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&transferProjectId=2&amount=1000&ticketIds=1,2&ticketAmount=20&platformAmount=0&type=1
+ * https://fakeapi.fdjf.net:3000/mmm/toInvest
  */
-router.all('/yeepay/toInvest', function (req, res, next) {
+router.all('/mmm/toInvest', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: '/yeepay/callback/toInvest'
+    	data: '/mmm/callback/toInvest'
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc 得到易宝平台活期投资的URL
+ * @fakedoc 得到乾多多平台活期投资的URL
  *
- * @name yeepay.toCurrentInvest
- * @href /yeepay/toCurrentInvest
+ * @name mmm.toCurrentInvest
+ * @href /mmm/toCurrentInvest
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token					Token
@@ -248,31 +234,31 @@ router.all('/yeepay/toInvest', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 易宝平台提现的活期投资URL"
+ *  data:"{string} 乾多多平台提现的活期投资URL"
  * }
  * 
  * @needAuth
  * 
  * @description
  *
- * 得到易宝平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
+ * 得到乾多多平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
- * https://localhost:3000/yeepay/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ * https://localhost:3000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
  * 
- * https://fakeapi.fdjf.net:3000/yeepay/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ * https://fakeapi.fdjf.net:3000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
  */
-router.all('/yeepay/toCurrentInvest', function (req, res, next) {
+router.all('/mmm/toCurrentInvest', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: '/yeepay/callback/toCurrentInvest'
+    	data: '/mmm/callback/toCurrentInvest'
     }
     res.json(resultValue);
 });
 
-router.get('/yeepay/form/:action', function (req, res, next) {
+router.get('/mmm/form/:action', function (req, res, next) {
     switch(req.params.action) {
         case 'toRegister':
             var userNo = 'wechat_fake_user_' + Math.floor(Math.random() * 10000);
@@ -286,24 +272,24 @@ router.get('/yeepay/form/:action', function (req, res, next) {
                 idCardNo: req.query.idCardNo,
                 mobile: req.query.mobile,
                 email: '',
-                callbackUrl: 'http://43.254.146.157:8088/yeepay/callback/toRegister?parmas='+req.query.realName+'____'+ req.query.mobile+'____'+req.query.idCardNo+'____' + requestNo+'____' + userNo,
+                callbackUrl: 'http://43.254.146.157:8088/mmm/callback/toRegister?parmas='+req.query.realName+'____'+ req.query.mobile+'____'+req.query.idCardNo+'____' + requestNo+'____' + userNo,
                 notifyUrl: 'http://www.baidu.com/a/notify/toRegister'//do not need fake notify
             };
             //res.status(200).send('<script type="text/javascript">window.top.postMessage("toRegisterSuccess","*");</script>');
-            //res.status(200).send(yeepayCreateForm('toRegister', data));
-            res.redirect('/yeepay/callback/toRegister?parmas=温强____13564335614____511623198707103957____wechat_fake_requset_1231____wechat_fake_user_1242');
+            //res.status(200).send(mmmCreateForm('toRegister', data));
+            res.redirect('/mmm/callback/toRegister?parmas=温强____13564335614____511623198707103957____wechat_fake_requset_1231____wechat_fake_user_1242');
             break;
     }
 });
 
-router.all('/yeepay/callback/:action', function (req, res, next) {
+router.all('/mmm/callback/:action', function (req, res, next) {
     var html = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title></title></head><body><h1>I\'m in</h1>'+
     '<script type="text/javascript">window.top.postMessage({event:"'+req.params.action+'Success",params:{}},"*");</script>'
     +'</body></html>';
     res.status(200).send(html);
 });
 
-function yeepaySign(req){
+function mmmSign(req){
     var restler = require('restler-when');
     var signUrl = 'http://120.25.122.251:6789/sign/servlet/signService';
     var ret;
@@ -320,16 +306,16 @@ function yeepaySign(req){
     return ret;
 }
 
-function yeepayCreateForm(method, reqData){
+function mmmCreateForm(method, reqData){
     var reqString = '<?xml version="1.0" encoding="UTF-8"?>';
     reqString += '<request platformNo="10012467598">';
     for (x in reqData) {
         reqString += '<' + x + '>' + reqData[x] + '</' + x + '>';
     }
     reqString+='</request>';
-    var sign = yeepaySign(reqString);
-    var action = 'https://member.yeepay.com/member/bha/'+method;
-    //var action = 'https://member.yeepay.com/member/bhawireless/'+method;
+    var sign = mmmSign(reqString);
+    var action = 'https://member.mmm.com/member/bha/'+method;
+    //var action = 'https://member.mmm.com/member/bhawireless/'+method;
     var escapeHTML = (function() {
         var MAP = {
             '&': '&amp;',
