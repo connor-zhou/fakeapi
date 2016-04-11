@@ -22,7 +22,7 @@ var router = express.Router();
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *      id:"{String} 项目ID",
+ *      id:"{int} 项目ID",
  *      title:"{String} 项目名称",
  *      category:"{int} 项目类型",
  *      categoryName:"{String} 项目类型名称",
@@ -130,7 +130,7 @@ router.all('/project/recommend', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *      id:"{String} 项目ID",
+ *      id:"{int} 项目ID",
  *      title:"{String} 项目名称",
  *      category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *      categoryName:"{String} 项目类型名称",

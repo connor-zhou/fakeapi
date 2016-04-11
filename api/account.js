@@ -436,8 +436,8 @@ router.all('/account/myTickets', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:{
  *  	projectList:[{
- *  		iid:"{String} 记录Id",
- *  	  	pid:"{String} 项目Id",
+ *  		iid:"{int} 记录Id",
+ *  	  	pid:"{int} 项目Id",
  *  	    money:"{number} 投资金额",
  *  	    interestYet:"{number} 已获收益",
  *      	interestWill:"{number} 待收收益",
@@ -523,8 +523,8 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	iid:"{String} 记录Id",
- *   	pid:"{String} 项目Id",
+ *  	iid:"{int} 记录Id",
+ *   	pid:"{int} 项目Id",
  *  	status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	statusName:"{String} 投资状态名称",
  *      interestWill:"{number} 预期收益",
