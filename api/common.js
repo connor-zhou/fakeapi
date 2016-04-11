@@ -185,7 +185,6 @@ router.all('/common/provinceList',function(req,res,next){
  * }
  * */
 router.all('/common/cityList',function(req,res,next){
-    var code = req.query.provinceCode ? req.query.provinceCode :req.body.mobile ;
     var resultValue = {
         code: 0,
         text:'ok',
@@ -201,4 +200,40 @@ router.all('/common/cityList',function(req,res,next){
     }
     res.json(resultValue);
 })
+
+/**
+ * @fakedoc xtz.银行分行查询
+ *
+ * @name common.branchBankName
+ * @href common/branchBankName
+ *
+ * @input.post {String} client                  客户端统计参数（common/client）
+ * @input.post {String} provinceName            省份名称
+ * @input.post {String} cityName                城市名称
+ * @input.post {String} bankName                银行名称
+ * @input.post {String} branchName              银行分行名称
+ *
+ * @description
+ *
+ * https://localhost:5000/common/branchBankName
+ *
+ * https://fakeapi.asterlake.cn:5000/common/branchBankName
+ *
+ * @output {json} 得到银行卡的开户省份列表(数据示例为 安徽-合肥-交通银行-某分行)
+ *{
+ *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data:[ "{String} 字符串数组"]
+ * }
+ * */
+router.all('/common/branchBankName',function(req,res,next){
+    var resultValue = {
+        code: 0,
+        text:'ok',
+        data:['交通银行安徽省分行','交通银行安徽省分行营业部','交通银行合肥三孝口支行','交通银行股份有限公司合肥滨湖新区支行',
+               '交通银行合肥寿春路桥支行','交通银行股份有限公司合肥临泉路支行','交通银行合肥南七支行','交通银行股份有限公司合肥屯溪路支行']
+    }
+    res.json(resultValue);
+});
+
 module.exports = router;

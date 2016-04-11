@@ -1627,4 +1627,129 @@ router.all('/account/savePushSwitch', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.绑定银行卡
+ *
+ * @name account.addBankCard
+ * @href /account/addBankCard
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ * @input.post {String} provinceCode   	省份编码
+ * @input.post {String} cityCode   		城市编码
+ * @input.post {String} bankId				银行Id
+ * @input.post {String} branchBankName		分行名称
+ * @input.post {String} cardNo				银行卡号
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/addBankCard
+ *
+ * https://fakeapi.fdjf.net:5000/account/addBankCard
+ *
+ * @output {json} 绑定银行卡
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	recordId:"{String} 添加成功后的记录Id"
+ *  }
+ * }
+ *
+ */
+router.all('/account/addBankCard', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data :{
+			recordId:11
+		}
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.解绑银行卡
+ *
+ * @name account.removeBankCard
+ * @href /account/removeBankCard
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ * @input.post {String} recordId			绑定记录Id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/removeBankCard
+ *
+ * https://fakeapi.fdjf.net:5000/account/removeBankCard
+ *
+ * @output {json} 解绑银行卡
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ */
+router.all('/account/removeBankCard', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.绑定的银行卡列表
+ *
+ * @name account.bankCardList
+ * @href /account/bankCardList
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/bankCardList
+ *
+ * https://fakeapi.fdjf.net:5000/account/bankCardList
+ *
+ * @output {json} 绑定的银行卡列表
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  	text:"{String} 状态描述",
+ *  	data:[{
+ *  		id:"{String} 绑定记录Id",
+ *  		cardNo:"{String} 银行卡号",
+ *  		bankName:"{String} 银行卡所属银行名称",
+ *  		bankId:"{String} 银行卡所属银行Id",
+ *  		bankAbbr:"{String} 银行卡所属银行英文缩写"
+ * 	 }]
+ * }
+ *
+ */
+router.all('/account/bankCardList', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:[
+			{id:'19',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
+			{id:'20',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
+			{id:'21',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
+			{id:'22',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
+			{id:'23',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
+			{id:'24',cardNo:'6227001218550121545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'}
+		]
+	}
+	res.json(resultValue);
+});
+
+
+
 module.exports = router;
