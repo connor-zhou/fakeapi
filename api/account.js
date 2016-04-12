@@ -1750,6 +1750,38 @@ router.all('/account/bankCardList', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.账户是否已开通乾多多支付
+ *
+ * @name account.isOpenMmm
+ * @href /account/isOpenMmm
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/isOpenMmm
+ *
+ * https://fakeapi.fdjf.net:5000/account/isOpenMmm
+ *
+ * @output {json} 账户是否已开通乾多多支付
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
+ *  	text:"{String} 状态描述"
+ * }
+ *
+ */
+router.all('/account/isOpenMmm', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+	res.json(resultValue);
+});
+
 
 
 module.exports = router;
