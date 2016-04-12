@@ -16,9 +16,9 @@ var router = express.Router();
  *
  * 得到乾多多平台注册新用户的URL
  * 
- * https://localhost:3000/mmm/toRegister
+ * https://localhost:5000/mmm/toRegister
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toRegister
+ * https://fakeapi.asterlake.cn:5000/mmm/toRegister
  *
  * @output {json} 乾多多平台注册新用户的URL
  * {
@@ -52,9 +52,9 @@ router.all('/mmm/toRegister', function (req, res, next) {
  *
  * 得到乾多多平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  * 
- * https://localhost:3000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://localhost:5000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://fakeapi.fdjf.net:5000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
  * @output {json} 绑定银行卡的URL
  * {
@@ -89,9 +89,9 @@ router.all('/mmm/toBindBankCard', function (req, res, next) {
  *
  * 得到乾多多平台解绑银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
- * https://localhost:3000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://localhost:5000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
- * https://fakeapi.fdjf.net:3000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
+ * https://fakeapi.fdjf.net:5000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
  *
  * @output {json} 绑定银行卡的URL
  * {
@@ -123,9 +123,9 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  *
  * 得到乾多多平台充值的URL
  * 
- * https://localhost:3000/mmm/toRecharge
+ * https://localhost:5000/mmm/toRecharge
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toRecharge
+ * https://fakeapi.asterlake.cn:5000/mmm/toRecharge
  *
  * @output {json} 充值的URL
  * {
@@ -150,17 +150,17 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  * @name mmm.toWithdraw
  * @href /mmm/toWithdraw
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
- * @input.post {string} money 		提现金额
+ * @input.post {string} client 		 客户端统计参数（common/client）
+ * @input.post {string} token 			 Token
+ * @input.post {string} money 		     提现金额
  *
  * @description
  *
  * 得到乾多多平台提现的URL
  * 
- * https://localhost:3000/mmm/toWithdraw
+ * https://localhost:5000/mmm/toWithdraw
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toWithdraw
+ * https://fakeapi.asterlake.cn:5000/mmm/toWithdraw
  *
  * @output {json} 提现的URL
  * {
@@ -204,9 +204,9 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  *
  * 得到乾多多平台投资的URL
  *
- * https://localhost:3000/mmm/toInvest
+ * https://localhost:5000/mmm/toInvest
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toInvest
+ * https://fakeapi.asterlake.cn:5000/mmm/toInvest
  */
 router.all('/mmm/toInvest', function (req, res, next) {
 	var code = 0;
@@ -243,9 +243,9 @@ router.all('/mmm/toInvest', function (req, res, next) {
  *
  * 得到乾多多平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
  *
- * https://localhost:3000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ * https://localhost:5000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
  * 
- * https://fakeapi.fdjf.net:3000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
+ * https://fakeapi.fdjf.net:5000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
  */
 router.all('/mmm/toCurrentInvest', function (req, res, next) {
 	var code = 0;

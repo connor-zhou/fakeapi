@@ -1647,7 +1647,7 @@ router.all('/account/savePushSwitch', function (req, res, next) {
  *
  * https://localhost:5000/account/addBankCard
  *
- * https://fakeapi.fdjf.net:5000/account/addBankCard
+ * https://fakeapi.asterlake.cn:5000/account/addBankCard
  *
  * @output {json} 绑定银行卡
  * {
@@ -1686,7 +1686,7 @@ router.all('/account/addBankCard', function (req, res, next) {
  *
  * https://localhost:5000/account/removeBankCard
  *
- * https://fakeapi.fdjf.net:5000/account/removeBankCard
+ * https://fakeapi.asterlake.cn:5000/account/removeBankCard
  *
  * @output {json} 解绑银行卡
  * {
@@ -1718,7 +1718,7 @@ router.all('/account/removeBankCard', function (req, res, next) {
  *
  * https://localhost:5000/account/bankCardList
  *
- * https://fakeapi.fdjf.net:5000/account/bankCardList
+ * https://fakeapi.asterlake.cn:5000/account/bankCardList
  *
  * @output {json} 绑定的银行卡列表
  * {
@@ -1765,14 +1765,13 @@ router.all('/account/bankCardList', function (req, res, next) {
  *
  * https://localhost:5000/account/isOpenMmm
  *
- * https://fakeapi.fdjf.net:5000/account/isOpenMmm
+ * https://fakeapi.asterlake.cn:5000/account/isOpenMmm
  *
  * @output {json} 账户是否已开通乾多多支付
  * {
  * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
  *  	text:"{String} 状态描述"
  * }
- *
  */
 router.all('/account/isOpenMmm', function (req, res, next) {
 	var resultValue = {
