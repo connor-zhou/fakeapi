@@ -7,10 +7,10 @@ var router = express.Router();
  * @name mmm.toRegister
  * @href /mmm/toRegister
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
- * @input.post {string} realName 		真实姓名
- * @input.post {string} chinaId 		身份证号码
+ * @input.post {String} client 		客户端统计参数（common/client）
+ * @input.post {String} token 			Token
+ * @input.post {String} realName 		真实姓名
+ * @input.post {String} chinaId 		身份证号码
  *
  * @description
  *
@@ -24,7 +24,7 @@ var router = express.Router();
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台注册新用户的URL"
+ *  data:"{String} 乾多多平台注册新用户的URL"
  * }
  */
 router.all('/mmm/toRegister', function (req, res, next) {
@@ -45,8 +45,8 @@ router.all('/mmm/toRegister', function (req, res, next) {
  * @name mmm.toBindBankCard
  * @href /mmm/toBindBankCard
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
+ * @input.post {String} client 		客户端统计参数（common/client）
+ * @input.post {String} token 			Token
  *
  * @description
  *
@@ -60,7 +60,7 @@ router.all('/mmm/toRegister', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台绑定银行卡的URL"
+ *  data:"{String} 乾多多平台绑定银行卡的URL"
  * }
  */
 router.all('/mmm/toBindBankCard', function (req, res, next) {
@@ -82,8 +82,8 @@ router.all('/mmm/toBindBankCard', function (req, res, next) {
  * @name mmm.toUnBindBankCard
  * @href /mmm/toUnBindBankCard
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
+ * @input.post {String} client 		客户端统计参数（common/client）
+ * @input.post {String} token 			Token
  *
  * @description
  *
@@ -115,9 +115,9 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  * @name mmm.toRecharge
  * @href /mmm/toRecharge
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
- * @input.post {string} money 		充值金额
+ * @input.post {String} client 		客户端统计参数（common/client）
+ * @input.post {String} token 			Token
+ * @input.post {String} money 		充值金额
  *
  * @description
  *
@@ -131,7 +131,7 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台充值的URL"
+ *  data:"{String} 乾多多平台充值的URL"
  * }
  */
 router.all('/mmm/toRecharge', function (req, res, next) {
@@ -150,9 +150,10 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  * @name mmm.toWithdraw
  * @href /mmm/toWithdraw
  *
- * @input.post {string} client 		 客户端统计参数（common/client）
- * @input.post {string} token 			 Token
- * @input.post {string} money 		     提现金额
+ * @input.post {String} client 		 客户端统计参数（common/client）
+ * @input.post {String} token 			 Token
+ * @input.post {String} money 		     提现金额
+ * @input.post {String} cardNo         提现银行卡号
  *
  * @description
  *
@@ -166,11 +167,12 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台提现的URL"
+ *  data:"{String} 乾多多平台提现的URL"
  * }
  */
 router.all('/mmm/toWithdraw', function (req, res, next) {
         var money = req.query.money ? req.query.money :req.body.money;
+        var cardNo = req.query.cardNo ? req.query.cardNo :req.body.cardNo;
         var resultValue = {
         	code: 0,
         	text: 'ok',
@@ -185,17 +187,17 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @name mmm.toInvest
  * @href /mmm/toInvest
  * 
- * @input.post {string} client 				客户端统计参数（common/client）
- * @input.post {string} token					Token
- * @input.post {string} projectId				项目Id
- * @input.post {string} money					投资金额
- * @input.post {string} awardIds				投资券Ids
+ * @input.post {String} client 				客户端统计参数（common/client）
+ * @input.post {String} token					Token
+ * @input.post {String} projectId				项目Id
+ * @input.post {String} money					投资金额
+ * @input.post {String} awardIds				投资券Ids
  * 
  * @output {json} 投资的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台投资的URL"
+ *  data:"{String} 乾多多平台投资的URL"
  * }
  * 
  * @needAuth
@@ -225,16 +227,16 @@ router.all('/mmm/toInvest', function (req, res, next) {
  * @name mmm.toCurrentInvest
  * @href /mmm/toCurrentInvest
  * 
- * @input.post {string} client 				客户端统计参数（common/client）
- * @input.post {string} token					Token
- * @input.post {string} projectId				项目Id
- * @input.post {string} amount					投资金额
+ * @input.post {String} client 				客户端统计参数（common/client）
+ * @input.post {String} token					Token
+ * @input.post {String} projectId				项目Id
+ * @input.post {String} amount					投资金额
  * 
  * @output {json} 活期投资的URL
  * {
  *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{string} 乾多多平台提现的活期投资URL"
+ *  data:"{String} 乾多多平台提现的活期投资URL"
  * }
  * 
  * @needAuth

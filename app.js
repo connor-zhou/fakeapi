@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 //fakes
 var fakeProject = require('./api/project');
 var fakeAssignment = require('./api/assignment');
-var fakeYeepay = require('./api/yeepay');
+var fakeYeepay = require('./api/mmm');
 var fakeEvent = require('./api/event');
 var fakeAccount = require('./api/account');
 var fakeMore = require('./api/more');
