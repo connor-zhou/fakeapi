@@ -1003,37 +1003,33 @@ router.all('/account/sign', function (req, res, next) {
 });
 
 /**
- * @fakedoc 推荐有奖-好友分页列表
+ * @fakedoc xtz.推荐有奖-好友分页列表
  * 
  * @name account.myInvitationPageList
  * @href /account/myInvitationPageList
  *
  * @description
  * 
- * https://localhost:3000/account/myInvitationPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/myInvitationPageList
  * 
- * https://fakeapi.fdjf.net:3000/account/myInvitationPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/myInvitationPageList
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- * @input.post {string} status			状态（如果为空，则取全部）
- * @input.post {int=} [pageSize=10] 	页容量
- * @input.post {int=} [pageNumber=1] 	页码
+ * @input.post {string} client 		 客户端统计参数（common/client）
+ * @input.post {string} token			 Token
+ * @input.post {string} status			 状态（如果为空，则取全部）
+ * @input.post {int=} [pageSize=10] 	 页容量
+ * @input.post {int=} [pageNumber=1] 	 页码
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data: [
- * 	  {
- *      name:"{String} 姓名",
- *      account:"{String} 帐号",
- *      status:"{int} 状态(0:已注册、1：已投资、2：已充值、3：已开通第三方账号、4：已成交)",
- *      statusName:"{String} 状态名称(已注册、已投资、已充值、已开通第三方账号、已成交)",
- *      registerChannel:"{String} 注册渠道",
- *		registerDt:"{String} 注册时间"
- * 	  }
- * 	]
+ * 		code:"{int} 状态代码(0表示成功，69633表示token无效，其它值表示失败)",
+ *  	text:"{String} 状态描述",
+ *  	data: [{
+ *      	uname:"{String} 姓名",
+ *      	account:"{String} 账号(手机号)",
+ *      	status:"{int} 状态(0:已注册、1：已实名、2：已投资)",
+ *      	statusName:"{String} 状态名称"
+ * 	  }]
  * }
  */
 router.all('/account/myInvitationPageList', function (req, res, next) {
@@ -1048,12 +1044,10 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4);
         myInvitation.push({
-            name: "张三" + start,
-            account: 'abcd-' + start,
-            status: [1, 2, 3][start % 3],
-            statusName: ["已注册","已充值","已投资"][start % 3],
-            registerChannel: "通过微信邀请注册",
-            registerDt: "2015-10-20"
+            uname: "张三" + start,
+            account: '15025863698',
+            status: [0, 1, 2][start % 3],
+            statusName: ["已注册","已实名","已投资"][start % 3]
         });
         start++;
         limit--;
@@ -1067,34 +1061,28 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 推荐有奖-统计
+ * @fakedoc xtz.推荐有奖-统计
  * 
  * @name account.myInvitationStat
  * @href /account/myInvitationStat
  *
  * @description
  * 
- * https://localhost:3000/account/myInvitationStat?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://localhost:5000/account/myInvitationStat
  * 
- * https://fakeapi.fdjf.net:3000/account/myInvitationStat?client=asdfaqerq1werqwe&token=2435135345623413
+ * https://fakeapi.asterlake.cn:5000/account/myInvitationStat
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
  *
  * @output {json} 好友数量
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  *  	registerCount:"{int} 好友注册人数",
  *      nameAuthCount:"{int} 好友实名人数",
- *      investCount:"{int} 好友投资人数",
- *      investAccount:"{int} 好友投资人数(字段拼错，建议在1.1.1.0版本之后废弃)",
- *      registerAmount:"{number} 好友注册得现金券额度",
- *      nameAuthAmount:"{number} 好友实名得现金券额度",
- *      investAmount:"{number} 好友投资得现金券额度",
- *      earningAmount:"{number} 奖励金额",
- *      earningTicketAmount:"{number} 奖励投资券额度"
+ *      investCount:"{int} 好友投资人数"
  *  }
  * }
  */
@@ -1105,13 +1093,7 @@ router.all('/account/myInvitationStat', function (req, res, next) {
     	data: {
     		registerCount:100,
     		nameAuthCount:80,
-    		investCount:50,
-    		investAccount:50,
-    		registerAmount:1000,
-    		nameAuthAmount:800,
-    		investAmount:500,
-    		earningAmount:300,
-    		earningTicketAmount:3000
+    		investCount:50
     	}
     }
     res.json(resultValue);
