@@ -319,7 +319,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
  *  		capitalFreeze:"{number} 冻结本金",
- *  		hasBindBankCard:"{int} 是否绑定银行卡（1--绑定，0--未绑定）"
+ *  		hasBindBankCard:"{int} 是否绑定了银行卡（1--绑定，0--未绑定）"
  *  	}
  * }
  *
