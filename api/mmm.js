@@ -22,7 +22,7 @@ var router = express.Router();
  *
  * @output {json} 乾多多平台注册新用户的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台注册新用户的URL"
  * }
@@ -58,7 +58,7 @@ router.all('/mmm/toRegister', function (req, res, next) {
  *
  * @output {json} 绑定银行卡的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台绑定银行卡的URL"
  * }
@@ -95,7 +95,7 @@ router.all('/mmm/toBindBankCard', function (req, res, next) {
  *
  * @output {json} 绑定银行卡的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
  */
@@ -129,7 +129,7 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  *
  * @output {json} 充值的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台充值的URL"
  * }
@@ -165,7 +165,7 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  *
  * @output {json} 提现的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台提现的URL"
  * }
@@ -195,7 +195,7 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * 
  * @output {json} 投资的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台投资的URL"
  * }
@@ -234,7 +234,7 @@ router.all('/mmm/toInvest', function (req, res, next) {
  * 
  * @output {json} 活期投资的URL
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 乾多多平台提现的活期投资URL"
  * }

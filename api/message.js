@@ -21,7 +21,7 @@ var _ = require('lodash');
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
@@ -86,7 +86,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
@@ -138,7 +138,7 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
  * 
  * @output {json} 标记为已读
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述"
  * }
  *

@@ -175,7 +175,7 @@ router.all('/account/resetPassword', function (req, res, next) {
  *
  * @output {json} 修改密码结果
  * {
- *    code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *    code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *    text:"{String} 状态描述",
  *    data: {
  *  	  token:"{String} 登录凭证（旧token失败，返回新的token）"
@@ -301,7 +301,7 @@ router.all('/account/logout', function (req, res, next) {
  *
  * @output {json} 我的信息
  * {
- *  	code:"{int} 状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	data:{
  *  		aid:"{String} 会员账号Id",
@@ -368,7 +368,7 @@ router.all('/account/my', function (req, res, next) {
  *
  * @output {json} 我的投资券列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  		id:"{int} 投资券id",
@@ -432,7 +432,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *
  * @output {json} 我的投资
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
  *  	projectList:[{
@@ -655,7 +655,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *
  * @output {json} 回款日历
  * {
- *     code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *     code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *     text:"{String} 状态描述",
  *     data: {
  *         repayment:"{number} 本月应回款(元)",
@@ -735,7 +735,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *
  * @output {json} 交易记录分页列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  	timeline:"{String} 操作日期时间",
@@ -784,7 +784,7 @@ router.all('/account/transactionRecord', function (req, res, next) {
  * 
  * @output {json} 保存头像
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{String} 头像Url"
  * }
@@ -819,7 +819,7 @@ router.all('/account/saveAvatar', function (req, res, next) {
  * 
  * @output {json} 保存昵称
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述"
  * }
  *
@@ -854,7 +854,7 @@ router.all('/account/saveNickname', function (req, res, next) {
  * 
  * @output {json} 保存手机号码
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述"
  * }
  *
@@ -888,7 +888,7 @@ router.all('/account/saveMobile', function (req, res, next) {
  * 
  * @output {json} 保存Email
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述"
  * }
  *
@@ -924,7 +924,7 @@ router.all('/account/saveEmail', function (req, res, next) {
  * 
  * @output {json} 得到用户可提现金额、银行卡等信息
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  *  	cardNo:"{String} 绑定的卡号",
@@ -978,7 +978,7 @@ router.all('/account/beforeWithdraw', function (req, res, next) {
  * 
  * @output {json} 签到结果
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:"{number} 变化的积分值"
  * }
@@ -1118,7 +1118,7 @@ router.all('/account/myInvitationStat', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  	opDt:"{String} 操作日期时间",
@@ -1158,7 +1158,7 @@ router.all('/account/myEarningPageList', function (req, res, next) {
  *
  * @output {json} 我的投资券列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *      	ticketId:"{int} 投资券Id",
@@ -1221,7 +1221,7 @@ router.all('/account/myEarningTicketPageList', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  	opDt:"{String} 操作日期时间",
@@ -1268,7 +1268,7 @@ router.all('/account/myIntegralPageList', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
  * 		accountId:"{String} 用户编号",
@@ -1335,7 +1335,7 @@ router.all('/account/customerAddressPageList', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
  */
@@ -1370,7 +1370,7 @@ router.all('/account/customerAddressAdd', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
  */
@@ -1400,7 +1400,7 @@ router.all('/account/customerAddressEdit', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述"
  * }
  */
@@ -1432,7 +1432,7 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
  * 		orderCode:"{String} 订单编号",
@@ -1471,7 +1471,7 @@ router.all('/account/orderConfirm', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
  * 		orderCode:"{String} 订单编号",
@@ -1530,7 +1530,7 @@ router.all('/account/orderPageList', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示领取成功，1表示token无效，2表示未领取，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示领取成功，69633表示token无效，2表示未领取，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
  *
@@ -1563,7 +1563,7 @@ router.all('/account/hasGetNewYearGiftMoney', function (req, res, next) {
  *
  * @output {json} 操作结果
  * {
- * 	code:"{int}    状态代码（0表示领取成功，1表示token无效，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示领取成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  * }
  *

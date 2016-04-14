@@ -230,7 +230,7 @@ router.all('/current/interestCalculation', function (req, res, next) {
  *
  * @output {json} 我的活花生
  * {
- *  	code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	data:[{
  *      	projectId:"{string} 项目Id",
@@ -415,7 +415,7 @@ router.all('/current/myCurrentDetail', function (req, res, next) {
  *
  * @output {json} 分页列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  	opDt:"{String} 操作日期时间",
@@ -465,7 +465,7 @@ router.all('/current/myCurrentPrincipalPageList', function (req, res, next) {
  *
  * @output {json} 交易记录分页列表
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
  *  	opDt:"{String} 操作日期时间",
@@ -513,7 +513,7 @@ router.all('/current/myCurrentInterestPageList', function (req, res, next) {
  *
  * @output {json} 提取收益
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
  *  	resultCode:"{String} 结果（0：成功；1：失败）",
@@ -556,7 +556,7 @@ router.all('/current/redeemInterest', function (req, res, next) {
  *
  * @output {json} 赎回本金
  * {
- *  code:"{int}    状态代码（0表示成功，1表示token无效，其它值表示失败）",
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
  *  	resultCode:"{String} 结果（0：成功；1：失败）",
