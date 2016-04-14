@@ -319,6 +319,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
  *  		capitalFreeze:"{number} 冻结本金",
+ *  		hasBindBankCard:"{int} 是否绑定银行卡（1--绑定，0--未绑定）"
  *  	}
  * }
  *
@@ -333,6 +334,7 @@ router.all('/account/logout', function (req, res, next) {
 router.all('/account/my', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
+	var random = Math.floor(Math.random() * 4);
 	var resultValue = {
 		code: code,
 		text: text,
@@ -352,6 +354,7 @@ router.all('/account/my', function (req, res, next) {
 			phone: '13566667777',
 			uname:'小王',
 			email:'34523452@ww.com',
+			hasBindBankCard:[1,0][random % 2]
 		}
 	}
 	res.json(resultValue);

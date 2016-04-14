@@ -107,8 +107,6 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
     res.json(resultValue);
 });
 
-
-
 /**
  * @fakedoc xtz.得到乾多多平台充值的URL
  *
