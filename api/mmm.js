@@ -185,11 +185,11 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @name mmm.toInvest
  * @href /mmm/toInvest
  * 
- * @input.post {String}  client 				客户端统计参数（common/client）
- * @input.post {String}  token					Token
- * @input.post {String}  projectId				项目Id
- * @input.post {String}  money					投资金额
- * @input.post {Array}   awardIds				投资券Ids
+ * @input.post {String}   client 				    客户端统计参数（common/client）
+ * @input.post {String}   token					Token
+ * @input.post {String}   projectId				项目Id
+ * @input.post {String}   money					投资金额
+ * @input.post {String}   awardIds				    投资券Ids(多个id用 ，拼接)
  * 
  * @output {json} 投资的URL
  * {
