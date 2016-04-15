@@ -348,7 +348,7 @@ router.all('/account/my', function (req, res, next) {
 			interestWill:25434,
 			aid: 5,
 			nickname: '小二hahaha',
-			chinaId:'622742199102053562',
+			chinaId:'622*******3562',
 			realName: '王小二',
 			phone: '13566667777',
 			uname:'小王',
@@ -731,8 +731,8 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
- * @input.post {int=} [pageSize=10] 	页容量
- * @input.post {int=} [pageNumber=1] 	页码
+ * @input.post {int} [pageSize=10] 	页容量
+ * @input.post {int} [pageNumber=1] 	页码
  *
  * @output {json} 交易记录分页列表
  * {
