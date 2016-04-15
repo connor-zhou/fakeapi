@@ -318,8 +318,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestc:"{number} 累计收益",
  *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
- *  		capitalFreeze:"{number} 冻结本金",
- *  		hasBindBankCard:"{int} 是否绑定了银行卡（1--绑定，0--未绑定）"
+ *  		capitalFreeze:"{number} 冻结本金"
  *  	}
  * }
  *
@@ -353,8 +352,7 @@ router.all('/account/my', function (req, res, next) {
 			realName: '王小二',
 			phone: '13566667777',
 			uname:'小王',
-			email:'34523452@ww.com',
-			hasBindBankCard:[1,0][random % 2]
+			email:'34523452@ww.com'
 		}
 	}
 	res.json(resultValue);
