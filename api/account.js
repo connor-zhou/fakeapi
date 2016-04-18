@@ -734,7 +734,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  * @input.post {int} [pageSize=10] 	页容量
  * @input.post {int} [pageNumber=1] 	页码
  *
- * @output {json} 交易记录分页列表
+ * @output {json} 交易记录分页列表(返回数据应是全部数据据日期排序后按页返回)
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
