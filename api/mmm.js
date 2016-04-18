@@ -25,7 +25,9 @@ var router = express.Router();
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台注册新用户的URL"
+ *  data:{
+ *      url:"{String} 乾多多平台注册新用户的URL"
+ *  }
  * }
  */
 router.all('/mmm/toRegister', function (req, res, next) {
@@ -35,7 +37,9 @@ router.all('/mmm/toRegister', function (req, res, next) {
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/mmm/callback/toRegister'
+        	data: {
+               url:'/mmm/callback/toRegister'
+            }
         }
         res.json(resultValue);
 });
@@ -72,7 +76,9 @@ router.all('/mmm/toBindBankCard', function (req, res, next) {
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/mmm/callback/toBindBankCard'
+            data: {
+                url:'/mmm/callback/toBindBankCard'
+            }
         };
         res.json(resultValue);
 });
@@ -131,7 +137,9 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台充值的URL"
+ *  data:{
+ *      url:"{String} 乾多多平台充值的URL"
+ *   }
  * }
  */
 router.all('/mmm/toRecharge', function (req, res, next) {
@@ -139,7 +147,9 @@ router.all('/mmm/toRecharge', function (req, res, next) {
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/mmm/callback/toRecharge'
+            data: {
+                url:'/mmm/callback/toRecharge'
+            }
         }
         res.json(resultValue);
 });
@@ -168,7 +178,10 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台提现的URL"
+ *  data:{
+ *      url: "{String} 乾多多平台提现的URL"
+ *  }
+ *
  * }
  */
 router.all('/mmm/toWithdraw', function (req, res, next) {
@@ -177,7 +190,9 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
         var resultValue = {
         	code: 0,
         	text: 'ok',
-        	data: '/mmm/callback/toWithdraw'
+            data: {
+                url:'/mmm/callback/toWithdraw'
+            }
         }
         res.json(resultValue);
 });
@@ -199,7 +214,9 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台投资的URL"
+ *  data:{
+ *      url:"{String} 乾多多平台投资的URL"
+ *  }
  * }
  * 
  * @needAuth
@@ -218,7 +235,9 @@ router.all('/mmm/toInvest', function (req, res, next) {
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: '/mmm/callback/toInvest'
+        data: {
+            url:'/mmm/callback/toInvest'
+        }
     }
     res.json(resultValue);
 });
