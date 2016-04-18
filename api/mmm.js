@@ -189,7 +189,7 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @input.post {String}   token					Token
  * @input.post {String}   projectId				项目Id
  * @input.post {String}   money					投资金额
- * @input.post {String}   awardIds				    投资券Ids(多个id用 ，拼接)
+ * @input.post {String}   awardIds				    投资券Ids（多个id用 ","(英文逗号)拼接）
  * 
  * @output {json} 投资的URL
  * {

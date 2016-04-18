@@ -552,20 +552,17 @@ router.all('/account/myInvestment', function (req, res, next) {
  * https://fakeapi.asterlake.cn:5000/account/myInvestmentDetail
  */
 router.all('/account/myInvestmentDetail', function (req, res, next) {
-	var start = req.body.start || 0;
-    var limit = req.body.limit || 10;
-    var order = req.body.order;
-    var type = req.body.recordId;
-	var random = Math.floor(Math.random() * 20)*0.01;
+    var recordId = req.body.recordId;
 	var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
-	var random = Math.floor(Math.random() * 3) % 3;
+	var random = Math.floor(Math.random() * 20);
+	var type = Math.floor(Math.random() * 7 + 1);
     var resultValue = {
     	code: 0,
     	text: 'ok',
     	data: {
     		iid: 2,
-			status: [0,1][random],
-			statusName: ["已结束","持有中"][random],
+			status: [0,1][random  % 2],
+			statusName: ["已结束","持有中"][random  % 2],
 			interestTimeline : '2015-12-1',
 			money: 1000000,
 			interestWill: 64000,
