@@ -7,11 +7,12 @@ var router = express.Router();
  * @name mmm.toRegister
  * @href /mmm/toRegister
  *
- * @input.post {String} client 		客户端统计参数（common/client）
- * @input.post {String} token 			Token
- * @input.post {String} realName 		真实姓名
- * @input.post {String} chinaId 		身份证号码
- * @input.post {String} callbackUrl   注册成功后的跳转地址（只h5页面对应接口需要传入）
+ * @input.post {String} client 		    客户端统计参数（common/client）
+ * @input.post {String} token 			    Token
+ * @input.post {String} realName 		    真实姓名
+ * @input.post {String} chinaId 		    身份证号码
+ * @input.post {String} callbackUrlSucc   注册成功后的跳转地址（只h5页面对应接口需要传入）
+ * @input.post {String} callbackUrlFail   注册失败后的跳转地址（只h5页面对应接口需要传入）
  *
  * @description
  *
@@ -120,10 +121,11 @@ router.all('/mmm/toUnBindBankCard', function (req, res, next) {
  * @name mmm.toRecharge
  * @href /mmm/toRecharge
  *
- * @input.post {String} client 		 客户端统计参数（common/client）
- * @input.post {String} token 			 Token
- * @input.post {String} money 		     充值金额
- * @input.post {String} callbackUrl    充值成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String} client 		     客户端统计参数（common/client）
+ * @input.post {String} token 			     Token
+ * @input.post {String} money 		         充值金额
+ * @input.post {String} callbackUrlSucc    充值成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String} callbackUrlFail    充值失败后的跳转地址 （只h5页面对应接口需要传入）
  *
  * @description
  *
@@ -160,11 +162,12 @@ router.all('/mmm/toRecharge', function (req, res, next) {
  * @name mmm.toWithdraw
  * @href /mmm/toWithdraw
  *
- * @input.post {String} client 		 客户端统计参数（common/client）
- * @input.post {String} token 			 Token
- * @input.post {String} money 		     提现金额
- * @input.post {String} cardNo         提现银行卡号
- * @input.post {String} callbackUrl    提现成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String} client 		     客户端统计参数（common/client）
+ * @input.post {String} token 			     Token
+ * @input.post {String} money 		         提现金额
+ * @input.post {String} cardNo             提现银行卡号
+ * @input.post {String} callbackUrlSucc    提现成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String} callbackUrlFail    提现失败后的跳转地址 （只h5页面对应接口需要传入）
  *
  * @description
  *
@@ -203,13 +206,14 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @name mmm.toInvest
  * @href /mmm/toInvest
  * 
- * @input.post {String}   client 				    客户端统计参数（common/client）
- * @input.post {String}   token					Token
- * @input.post {String}   projectId				项目Id
- * @input.post {String}   money					投资金额
- * @input.post {String}   awardIds				    投资券Ids（多个id用 ","(英文逗号)拼接）
- * @input.post {String}   callbackUrl             投资成功后的跳转地址 （只h5页面对应接口需要传入）
- * 
+ * @input.post {String}   client 				        客户端统计参数（common/client）
+ * @input.post {String}   token					    Token
+ * @input.post {String}   projectId				    项目Id
+ * @input.post {String}   money					    投资金额
+ * @input.post {String}   awardIds				        投资券Ids（多个id用 ","(英文逗号)拼接）
+ * @input.post {String}   callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String}   callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
+ *
  * @output {json} 投资的URL
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
