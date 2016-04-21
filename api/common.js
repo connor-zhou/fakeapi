@@ -130,11 +130,14 @@ router.all('/common/bankList', function (req, res, next) {
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
  *      data:[{
- *          id:"{String} 编号Id",
- *          name:"{String} 省份名称",
- *          code:"{String} 省份编码",
- *          parent:"{String} 父级编码",
- *          firstLetter:"{String} 省份拼音的首字母（大写）"
+ *          firstLetter:"{String} 省份拼音的首字母（大写）",
+ *          provinceList:
+ *          [{
+ *              id:"{String} 编号Id",
+ *              name:"{String} 省份名称",
+ *              code:"{String} 省份编码",
+ *              parent:"{String} 父级编码"
+ *          }]
  *      }]
  * }
  * */
@@ -155,7 +158,26 @@ router.all('/common/provinceList',function(req,res,next){
     var resultValue = {
         code: 0,
         text:'ok',
-        data:provinceLists
+        data:[
+            {
+                firstLetter:'B',
+                provinceList:[
+                    {id:'2',name:'北京市',code:'1',parent:0}
+                ]
+            },
+            {
+                firstLetter:'T',
+                provinceList:[
+                    {id:'3',name:'天津市',code:'2',parent:0}
+                ]
+            },
+            {
+                firstLetter:'H',
+                provinceList:[
+                    {id:'4',name:'河北省',code:'3',parent:0}
+                ]
+            }
+        ]
     }
     res.json(resultValue);
 });
@@ -180,11 +202,14 @@ router.all('/common/provinceList',function(req,res,next){
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
  *      data:[{
- *          id:"{String} 编号Id",
- *          name:"{String} 城市名称",
- *          code:"{String} 城市编码",
- *          parent:"{String} 父级（省份）编码",
- *          firstLetter:"{String} 城市拼音的首字母（大写）"
+ *          firstLetter:"{String} 城市拼音的首字母（大写）",
+ *          cityList:
+  *          [{
+  *             id:"{String} 编号Id",
+ *              name:"{String} 城市名称",
+ *              code:"{String} 城市编码",
+ *              parent:"{String} 父级（省份）编码"
+ *          }]
  *      }]
  * }
  * */
@@ -193,12 +218,22 @@ router.all('/common/cityList',function(req,res,next){
         code: 0,
         text:'ok',
         data:[
-            {id:'36',name:'北京',code:'1001',parent:'1',firstLetter:'B'},
-            {id:'37',name:'天津',code:'1002',parent:'2',firstLetter:'T'},
-            {id:'38',name:'石家庄',code:'1003',parent:'2',firstLetter:'S'},
-            {id:'39',name:'唐山',code:'1004',parent:'2',firstLetter:'T'},
-            {id:'40',name:'秦皇岛',code:'1005',parent:'2',firstLetter:'Q'},
-            {id:'41',name:'邯郸',code:'1006',parent:'2',firstLetter:'H'}
+            {   firstLetter:'B',
+                cityList: [
+                    {id:'36',name:'北京',code:'1001',parent:'1',firstLetter:'B'}
+                ]
+            },
+            {   firstLetter:'T',
+                cityList: [
+                    {id:'37',name:'天津',code:'1002',parent:'2',firstLetter:'T'},
+                    {id:'39',name:'唐山',code:'1004',parent:'2',firstLetter:'T'}
+                ]
+            },
+            {   firstLetter:'S',
+                cityList: [
+                    {id:'38',name:'石家庄',code:'1003',parent:'2',firstLetter:'S'}
+                ]
+            }
         ]
     }
     res.json(resultValue);
