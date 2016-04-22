@@ -125,20 +125,19 @@ router.all('/common/bankList', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/common/provinceList
  *
- * @output {json} 得到银行卡的开户省份列表
+ * @output {json} 得到银行卡的开户省份列表 （firstLetter为首字母统称，具体数据会有不同值）
  *{
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
- *      data:[{
- *          firstLetter:"{String} 省份拼音的首字母（大写）",
- *          provinceList:
+ *      data:{
+ *          firstLetter:
  *          [{
  *              id:"{String} 编号Id",
  *              name:"{String} 省份名称",
  *              code:"{String} 省份编码",
  *              parent:"{String} 父级编码"
  *          }]
- *      }]
+ *      }
  * }
  * */
 router.all('/common/provinceList',function(req,res,next){
@@ -197,20 +196,19 @@ router.all('/common/provinceList',function(req,res,next){
  *
  * https://fakeapi.asterlake.cn:5000/common/cityList
  *
- * @output {json} 得到银行卡的开户省份列表
+ * @output {json} 得到银行卡开户所在省份城市列表（firstLetter为首字母统称，具体数据会有不同值）
  *{
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
- *      data:[{
- *          firstLetter:"{String} 城市拼音的首字母（大写）",
- *          cityList:
-  *          [{
-  *             id:"{String} 编号Id",
+ *      data:{
+ *          firstLetter:
+ *          [{
+ *             id:"{String} 编号Id",
  *              name:"{String} 城市名称",
  *              code:"{String} 城市编码",
  *              parent:"{String} 父级（省份）编码"
  *          }]
- *      }]
+ *      }
  * }
  * */
 router.all('/common/cityList',function(req,res,next){
