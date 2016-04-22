@@ -653,23 +653,21 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  * @input.post {string} year 			年
  * @input.post {string} month 			月
  *
- * @output {json} 回款日历
+ * @output {json} 回款日历 (day为第几天，可能为多个值)
  * {
  *     code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *     text:"{String} 状态描述",
  *     data: {
  *         repayment:"{number} 本月应回款(元)",
  *         repaymentYet:"{number} 本月已回款(元)",
- *         dayList:[{
- *         		day:"{int} 回款日",
- *         		recordList:
- *         		[{
- *         		title:"{string} 项目名称",
- *      		repaymentTime:"{string} 还款日期",
- *  			money:"{string} 应还本金",
- *  			interest:"{string} 应还利息"
- *  			}]
- *  	   }]
+ *         dayList:{
+ *         		day:[{
+ *         				 title:"{string} 项目名称",
+ *      				 repaymentTime:"{string} 还款日期",
+ *  					 money:"{string} 应还本金",
+ *  			         interest:"{string} 应还利息"
+ *         			}]
+ *  	   }
  *     }
  * }
  *
@@ -682,43 +680,22 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  * https://fakeapi.asterlake.cn:5000/account/repaymentCalendar
  */
 router.all('/account/repaymentCalendar', function (req, res, next) {
-	var start = req.body.start || 0;
-	var limit = req.body.limit || 10;
-	var records = [];
-    var max = 5;
-    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
-    while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 4);
-        records.push({
-            title: types[type] + '-' + start,
-            repaymentTime: ['2015-11-06','2015-11-07','2015-11-20'][start % 3],
-            money: 90,
-            interest: 10
-        });
-        start++;
-        limit--;
-    }
-
-    if (start > max) {
-        records.push(undefined);//no more
-    }
-	var code = 0;
-	var text = "ok";
 	var resultValue = {
-    	code: code,
-    	text: text,
+    	code: 0,
+    	text: "ok",
     	data: {
-    		repayment:30000,
-    		repaymentYet:2000,
-    		dayList:[
-      	   		{day:5,recordList:records},
-      	   		{day:8,recordList:records},
-      	   		{day:12,recordList:records},
-      	   		{day:15,recordList:records},
-      	   		{day:25,recordList:records},
-      	   	]
-    	}
-    }
+			repayment: 30000,
+			repaymentYet: 2000,
+			dayList: {
+				'5': [{title: '星企贷', repaymentTime: '2015-10-5', money: 90, interest: 10},
+					{title: '星保理', repaymentTime: '2015-11-5', money: 930, interest: 10},
+					{title: '星车宝', repaymentTime: '2015-11-5', money: 906, interest: 10}],
+				'10': [{title: '星企贷', repaymentTime: '2015-10-10', money: 90, interest: 10},
+					{title: '星保理', repaymentTime: '2015-11-10', money: 930, interest: 10},
+					{title: '星车宝', repaymentTime: '2015-11-10', money: 906, interest: 10}]
+			}
+		}
+	}
     res.json(resultValue);
 });
 
