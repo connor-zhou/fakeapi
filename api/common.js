@@ -141,42 +141,23 @@ router.all('/common/bankList', function (req, res, next) {
  * }
  * */
 router.all('/common/provinceList',function(req,res,next){
-    var provinceLists =[];
-    var start = 0;
-    var limit = 10;
-    while( start < limit){
-        provinceLists.push({
-            id:['2','3','4'][start % 4],
-            name:['北京市','天津市','河北省'][start % 4],
-            code:['1','2','3'][start % 4],
-            parent:0,
-            firstLetter:['B','T','H']
-        })
-        start++;
-    }
     var resultValue = {
         code: 0,
         text:'ok',
-        data:[
+        data:
             {
-                firstLetter:'B',
-                provinceList:[
+                'B':[
                     {id:'2',name:'北京市',code:'1',parent:0}
-                ]
-            },
-            {
-                firstLetter:'T',
-                provinceList:[
+                ],
+
+                'T':[
                     {id:'3',name:'天津市',code:'2',parent:0}
-                ]
-            },
-            {
-                firstLetter:'H',
-                provinceList:[
+                ],
+
+                'H':[
                     {id:'4',name:'河北省',code:'3',parent:0}
                 ]
             }
-        ]
     }
     res.json(resultValue);
 });
@@ -215,24 +196,19 @@ router.all('/common/cityList',function(req,res,next){
     var resultValue = {
         code: 0,
         text:'ok',
-        data:[
-            {   firstLetter:'B',
-                cityList: [
+        data:
+            {
+             'B':[
                     {id:'36',name:'北京',code:'1001',parent:'1',firstLetter:'B'}
-                ]
-            },
-            {   firstLetter:'T',
-                cityList: [
+                ],
+             'T': [
                     {id:'37',name:'天津',code:'1002',parent:'2',firstLetter:'T'},
                     {id:'39',name:'唐山',code:'1004',parent:'2',firstLetter:'T'}
-                ]
-            },
-            {   firstLetter:'S',
-                cityList: [
+                ],
+             'S': [
                     {id:'38',name:'石家庄',code:'1003',parent:'2',firstLetter:'S'}
                 ]
             }
-        ]
     }
     res.json(resultValue);
 })
