@@ -1690,7 +1690,8 @@ router.all('/account/removeBankCard', function (req, res, next) {
  *  		cardNo:"{String} 银行卡号 （后台加*输出 如：622****1234）",
  *  		bankName:"{String} 银行卡所属银行名称",
  *  		bankId:"{String} 银行卡所属银行Id",
- *  		bankAbbr:"{String} 银行卡所属银行英文缩写"
+ *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
+ *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
  * 	 }]
  * }
  *
@@ -1700,12 +1701,12 @@ router.all('/account/bankCardList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data:[
-			{id:'19',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
-			{id:'20',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
-			{id:'21',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
-			{id:'22',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
-			{id:'23',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'},
-			{id:'24',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB'}
+			{id:'19',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:1},
+			{id:'20',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
+			{id:'21',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
+			{id:'22',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
+			{id:'23',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
+			{id:'24',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0}
 		]
 	}
 	res.json(resultValue);
@@ -1738,6 +1739,100 @@ router.all('/account/isOpenMmm', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok'
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到默认银行卡
+ *
+ * @name account.getMainBankcard
+ * @href /account/getMainBankcard
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/getMainBankcard
+ *
+ * https://fakeapi.asterlake.cn:5000/account/getMainBankcard
+ *
+ * @output {json} 账户是否已开通乾多多支付
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
+ *  	text:"{String} 状态描述",
+ *  	data:{
+ *			id:"{String} 绑定记录Id",
+ *  		cardNo:"{String} 银行卡号 （后台加*输出 如：622****1234）",
+ *  		bankName:"{String} 银行卡所属银行名称",
+ *  		bankId:"{String} 银行卡所属银行Id",
+ *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
+ *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
+ *  	}
+ * }
+ */
+router.all('/account/getMainBankcard', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			id: '19',
+			cardNo: '622****1545',
+			bankName: '建设银行',
+			bankId: '3',
+			bankAbbr: 'CCB',
+			main: 1
+		}
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.设置默认银行卡
+ *
+ * @name account.getMainBankcard
+ * @href /account/getMainBankcard
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/getMainBankcard
+ *
+ * https://fakeapi.asterlake.cn:5000/account/getMainBankcard
+ *
+ * @output {json} 账户是否已开通乾多多支付
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
+ *  	text:"{String} 状态描述",
+ *  	data:{
+ *			id:"{String} 绑定记录Id",
+ *  		cardNo:"{String} 银行卡号 （后台加*输出 如：622****1234）",
+ *  		bankName:"{String} 银行卡所属银行名称",
+ *  		bankId:"{String} 银行卡所属银行Id",
+ *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
+ *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
+ *  	}
+ * }
+ */
+router.all('/account/getMainBankcard', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			id: '19',
+			cardNo: '622****1545',
+			bankName: '建设银行',
+			bankId: '3',
+			bankAbbr: 'CCB',
+			main: 1
+		}
 	}
 	res.json(resultValue);
 });
