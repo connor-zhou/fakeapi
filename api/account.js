@@ -660,14 +660,15 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *     data: {
  *         repayment:"{number} 本月应回款(元)",
  *         repaymentYet:"{number} 本月已回款(元)",
- *         dayList:{
- *         		day:[{
+ *         dayList:[{
+ *         			day:"{String} 天数",
+ *         			recordList:	[{
  *         				 title:"{string} 项目名称",
  *      				 repaymentTime:"{string} 还款日期",
  *  					 money:"{string} 应还本金",
  *  			         interest:"{string} 应还利息"
  *         			}]
- *  	   }
+ *  	   	}]
  *     }
  * }
  *
