@@ -1760,7 +1760,7 @@ router.all('/account/isOpenMmm', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/account/getMainBankcard
  *
- * @output {json} 账户是否已开通乾多多支付
+ * @output {json} 得到默认银行卡
  * {
  * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
  *  	text:"{String} 状态描述",
@@ -1793,46 +1793,32 @@ router.all('/account/getMainBankcard', function (req, res, next) {
 /**
  * @fakedoc xtz.设置默认银行卡
  *
- * @name account.getMainBankcard
- * @href /account/getMainBankcard
+ * @name account.setMainBankcard
+ * @href /account/setMainBankcard
  *
  * @input.post {String} client 			客户端统计参数（common/client）
  * @input.post {String} token 				token
+ * @input.post {String} recordId			要设置的银行卡添加记录Id
  *
  * @needAuth
  *
  * @description
  *
- * https://localhost:5000/account/getMainBankcard
+ * https://localhost:5000/account/setMainBankcard
  *
- * https://fakeapi.asterlake.cn:5000/account/getMainBankcard
+ * https://fakeapi.asterlake.cn:5000/account/setMainBankcard
  *
- * @output {json} 账户是否已开通乾多多支付
+ * @output {json} 设置默认银行卡
  * {
  * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
- *  	text:"{String} 状态描述",
- *  	data:{
- *			id:"{String} 绑定记录Id",
- *  		cardNo:"{String} 银行卡号 （后台加*输出 如：622****1234）",
- *  		bankName:"{String} 银行卡所属银行名称",
- *  		bankId:"{String} 银行卡所属银行Id",
- *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
- *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
- *  	}
+ *  	text:"{String} 状态描述"
+ *
  * }
  */
-router.all('/account/getMainBankcard', function (req, res, next) {
+router.all('/account/setMainBankcard', function (req, res, next) {
 	var resultValue = {
 		code: 0,
-		text: 'ok',
-		data: {
-			id: '19',
-			cardNo: '622****1545',
-			bankName: '建设银行',
-			bankId: '3',
-			bankAbbr: 'CCB',
-			main: 1
-		}
+		text: 'ok'
 	}
 	res.json(resultValue);
 });
