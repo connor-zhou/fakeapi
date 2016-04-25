@@ -611,7 +611,9 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *      	planTime:"{string} 应还款时间",
  *  		interestWill:"{string} 应还利息",
  *  		capitalWill:"{string} 剩余应还本金",
-			days:"{int} 计息天数"
+			days:"{int} 计息天数",
+			status:"{int} 支付状态（1--已支付,0--未支付）",
+			statusName:"{String} 支付状态说明"
  *  	}]
  * 	 }
  * }
@@ -621,12 +623,15 @@ router.all('/account/repaymentPlan', function (req, res, next) {
     var records = [];
     var limit = 10;
     while (limit-- > 0) {
+		var start = Math.floor(Math.random()*4);
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
 				planTime: dt.format('YYYY-MM-DD'),
 				interestWill: 10,
 				capitalWill: 1000,
-				days:12
+				days:12,
+				status:[0,1][start % 2],
+				statusName:['未支付','已支付'][start % 2]
         });
     }
     var resultValue = {
