@@ -176,7 +176,7 @@ router.all('/mmm/toInvest', function (req, res, next) {
     res.json(resultValue);
 });
 /**
- * @fakedoc xtz.得到乾多多提现手续费
+ * @fakedoc xtz.得到乾多多平台提现手续费
  *
  * @name mmm.withdrawFee
  * @href /mmm/withdrawFee
@@ -213,45 +213,6 @@ router.all('/mmm/withdrawFee', function (req, res, next) {
         data: {
             fee:'20'
         }
-    }
-    res.json(resultValue);
-});
-
-/**
- * @fakedoc 得到乾多多平台活期投资的URL
- *
- * @name mmm.toCurrentInvest
- * @href /mmm/toCurrentInvest
- * 
- * @input.post {String} client 				客户端统计参数（common/client）
- * @input.post {String} token					Token
- * @input.post {String} projectId				项目Id
- * @input.post {String} amount					投资金额
- * 
- * @output {json} 活期投资的URL
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台提现的活期投资URL"
- * }
- * 
- * @needAuth
- * 
- * @description
- *
- * 得到乾多多平台活期投资的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
- *
- * https://localhost:5000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
- * 
- * https://fakeapi.fdjf.net:5000/mmm/toCurrentInvest?client=asdfaqerq1werqwe&token=2435135345623413&projectId=1&amount=1000
- */
-router.all('/mmm/toCurrentInvest', function (req, res, next) {
-	var code = 0;
-	var text = "ok";
-	var resultValue = {
-    	code: code,
-    	text: text,
-    	data: '/mmm/callback/toCurrentInvest'
     }
     res.json(resultValue);
 });
