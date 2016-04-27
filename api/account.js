@@ -756,44 +756,48 @@ router.all('/account/transactionRecord', function (req, res, next) {
 });
 
 /**
- * @fakedoc 保存头像
+ * @fakedoc xtz.保存头像
  *
- * @name account.saveAvatar
- * @href /account/saveAvatar
+ * @name account.savePhoto
+ * @href /account/savePhoto
  * 
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- * @input.post {string} avatar			头像(base64)
- * @input.post {string} avatarUrl		头像Url(微信)
+ * @input.post {string} client 			客户端统计参数（common/client）
+ * @input.post {string} token				Token
+ * @input.post {string} photoData			头像数据
+ * @input.post {int}    type				头像数据类型( 0--base64，1--微信url，2--form表单 )
  * 
  * @output {json} 保存头像
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 头像Url"
+ *  data:{
+ *      	photo:"{String} 头像Url"
+ *      }
  * }
  *
  * @needAuth
  * 
  * @description
  *
- * https://localhost:5000/account/saveAvatar
+ * https://localhost:5000/account/savePhoto
  * 
- * https://fakeapi.asterlake.cn:5000/account/saveAvatar
+ * https://fakeapi.asterlake.cn:5000/account/savePhoto
  */
-router.all('/account/saveAvatar', function (req, res, next) {
+router.all('/account/savePhoto', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: "https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg"
+    	data: {
+			photo:"https://www.hsbank360.com/upload_files/avatar/20151013105933_792.jpg"
+		}
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc 保存昵称
+ * @fakedoc xtz.保存昵称
  *
  * @name account.saveNickname
  * @href /account/saveNickname
@@ -811,9 +815,9 @@ router.all('/account/saveAvatar', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/saveNickname?client=asdfaqerq1werqwe&token=2435135345623413&nickname=Haha
+ * https://localhost:5000/account/saveNickname
  * 
- * https://fakeapi.fdjf.net:3000/account/saveNickname?client=asdfaqerq1werqwe&token=2435135345623413&nickname=Haha
+ * https://fakeapi.asterlake.cn:5000/account/saveNickname
  * 
  */
 router.all('/account/saveNickname', function (req, res, next) {
@@ -827,14 +831,14 @@ router.all('/account/saveNickname', function (req, res, next) {
 });
 
 /**
- * @fakedoc 保存手机号码
+ * @fakedoc xtz.保存手机号码
  *
- * @name account.saveMobile
- * @href /account/saveMobile
+ * @name account.savePhone
+ * @href /account/savePhone
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
- * @input.post {string} mobile			手机号码
+ * @input.post {string} phone			手机号码
  * 
  * @output {json} 保存手机号码
  * {
@@ -846,11 +850,11 @@ router.all('/account/saveNickname', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/saveMobile?client=asdfaqerq1werqwe&token=2435135345623413&mobile=13566667777
+ * https://localhost:5000/account/savePhone
  * 
- * https://fakeapi.fdjf.net:3000/account/saveMobile?client=asdfaqerq1werqwe&token=2435135345623413&mobile=13566667777
+ * https://fakeapi.asterlake.cn:5000/account/savePhone
  */
-router.all('/account/saveMobile', function (req, res, next) {
+router.all('/account/savePhone', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
 	var resultValue = {
@@ -861,7 +865,7 @@ router.all('/account/saveMobile', function (req, res, next) {
 });
 
 /**
- * @fakedoc 保存Email
+ * @fakedoc xtz.保存Email
  *
  * @name account.saveEmail
  * @href /account/saveEmail
@@ -880,9 +884,9 @@ router.all('/account/saveMobile', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/saveEmail?client=asdfaqerq1werqwe&token=2435135345623413&email=13566667777@139.com
+ * https://localhost:5000/account/saveEmail
  * 
- * https://fakeapi.fdjf.net:3000/account/saveEmail?client=asdfaqerq1werqwe&token=2435135345623413&email=13566667777@139.com
+ * https://fakeapi.asterlake.cn:5000/account/saveEmail
  */
 router.all('/account/saveEmail', function (req, res, next) {
 	var code = 0;
@@ -890,63 +894,6 @@ router.all('/account/saveEmail', function (req, res, next) {
 	var resultValue = {
     	code: code,
     	text: text
-    }
-    res.json(resultValue);
-});
-
-/**
- * 
- * @Deprecated
- * 
- * @fakedoc 提现前置接口
- *
- * @name account.beforeWithdraw
- * @href /account/beforeWithdraw
- * 
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- * 
- * @output {json} 得到用户可提现金额、银行卡等信息
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data: {
- *  	cardNo:"{String} 绑定的卡号",
- *  	cardStatusCode:"{String} 银行卡绑定状态【VERIFYING（认证中），VERIFIED（已认证)】",
- *  	bankCode:"{String} 银行卡所属银行",
- *  	bankName:"{String} 银行卡所属银行名称",
- *      bankLogo:"{String} 银行Logo的URL",
- *  	amount:"{number} 可提现金额",
- *      ticketCount:"{int} 提现券张数"
- *   }
- * }
- * @deprecated 1.2.0.0
- *
- * @needAuth
- * 
- * @description
- *
- * 已过期，改调 'account/my'接口
- *
- * https://localhost:3000/account/beforeWithdraw?client=asdfaqerq1werqwe&token=2435135345623413
- * 
- * https://fakeapi.fdjf.net:3000/account/beforeWithdraw?client=asdfaqerq1werqwe&token=2435135345623413
- */
-router.all('/account/beforeWithdraw', function (req, res, next) {
-	var code = 0;
-	var text = "ok";
-	var resultValue = {
-    	code: code,
-    	text: text,
-    	data: {
-    		cardNo:"23452134523463456",
-    		cardStatusCode:"VERIFIED",
-    		bankCode:"NJYH",
-    		bankName:"东亚银行",
-    		bankLogo:"http://pic.58pic.com/58pic/12/38/92/34i58PICVNP.jpg",
-    		money:1345,
-    		award:5
-    	}
     }
     res.json(resultValue);
 });
@@ -971,9 +918,9 @@ router.all('/account/beforeWithdraw', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
+ * https://localhost:5000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
  * 
- * https://fakeapi.fdjf.net:3000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
+ * https://fakeapi.asterlake.cn:5000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
  */
 router.all('/account/sign', function (req, res, next) {
 	var code = 0;
@@ -1091,9 +1038,9 @@ router.all('/account/myInvitationStat', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  * 
- * https://fakeapi.fdjf.net:3000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
@@ -1156,9 +1103,9 @@ router.all('/account/myEarningPageList', function (req, res, next) {
  * 
  * @description
  *
- * https://localhost:3000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  * 
- * https://fakeapi.fdjf.net:3000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
  */
 router.all('/account/myEarningTicketPageList', function (req, res, next) {
 	var start = req.body.start || 0;
@@ -1187,53 +1134,6 @@ router.all('/account/myEarningTicketPageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的花生豆分页列表
- * 
- * @name account.myIntegralPageList
- * @href /account/myIntegralPageList
- *
- * @description
- * 
- * https://localhost:3000/account/myIntegralPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
- * 
- * https://fakeapi.fdjf.net:3000/account/myIntegralPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
- *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- * @input.post {int=} [pageSize=10] 	页容量
- * @input.post {int=} [pageNumber=1] 	页码
- *
- * @output {json} 分页列表
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:[{
- *  	opDt:"{String} 操作日期时间",
- *  	changeReason:"{String} 变更原因",
- *  	changeVal:"{String} 变更值",
- *  	type:"{String} 类型（1收，2兑）",
- *  	typeName:"{String} 类型名称"
- *   }]
- * }
- */
-router.all('/account/myIntegralPageList', function (req, res, next) {
-	var code = 0;
-	var text = "ok";
-	var resultValue = {
-    	code: code,
-    	text: text,
-    	data: [
-    	   {opDt:'2015-10-19 11:01:01',changeReason:'推荐好友投资返利',changeVal:'+10000',type:'1',typeName:'收'},
-    	   {opDt:'2015-10-12 11:01:01',changeReason:'首次充值送现金',changeVal:'-500',type:'2',typeName:'兑'},
-    	   {opDt:'2015-10-09 11:01:01',changeReason:'首次充值送现金',changeVal:'+10',type:'1',typeName:'收'},
-    	   {opDt:'2015-10-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-100',type:'1',typeName:'收'},
-    	   {opDt:'2015-09-09 11:01:01',changeReason:'中秋国庆双节投资返利',changeVal:'-2',type:'1',typeName:'收'}
-       ]
-    }
-    res.json(resultValue);
-});
-
-/**
  * @fakedoc (我的)收件人地址分页列表
  *
  * @name account.customerAddressPageList
@@ -1246,9 +1146,9 @@ router.all('/account/myIntegralPageList', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/customerAddressPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/customerAddressPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
  * 
- * https://fakeapi.fdjf.net:3000/account/customerAddressPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/customerAddressPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
  *
  * @output {json} 分页列表
  * {
@@ -1313,9 +1213,9 @@ router.all('/account/customerAddressPageList', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
+ * https://localhost:5000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
  * 
- * https://fakeapi.fdjf.net:3000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
+ * https://fakeapi.asterlake.cn:5000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
  *
  * @output {json} 操作结果
  * {
@@ -1348,9 +1248,9 @@ router.all('/account/customerAddressAdd', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
+ * https://localhost:5000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
  * 
- * https://fakeapi.fdjf.net:3000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
+ * https://fakeapi.asterlake.cn:5000/account/customerAddressAdd?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1&showName=张三&mobile=13566666666&address=浦江科技广场&postCode=123456&isDefault=0
  *
  * @output {json} 操作结果
  * {
@@ -1378,9 +1278,9 @@ router.all('/account/customerAddressEdit', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/customerAddressDelete?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1
+ * https://localhost:5000/account/customerAddressDelete?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1
  * 
- * https://fakeapi.fdjf.net:3000/account/customerAddressDelete?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1
+ * https://fakeapi.asterlake.cn:5000/account/customerAddressDelete?client=asdfaqerq1werqwe&token=adfasdf234&addressId=1
  *
  * @output {json} 操作结果
  * {
@@ -1410,9 +1310,9 @@ router.all('/account/customerAddressDelete', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://localhost:5000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  * 
- * https://fakeapi.fdjf.net:3000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
+ * https://fakeapi.asterlake.cn:5000/account/orderConfirm?client=asdfaqerq1werqwe&token=adfasdf234&productId=22&productCount=1&addressId=2
  *
  * @output {json} 操作结果
  * {
@@ -1449,9 +1349,9 @@ router.all('/account/orderConfirm', function (req, res, next) {
  *
  * @description
  * 
- * https://localhost:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * https://localhost:5000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
  * 
- * https://fakeapi.fdjf.net:3000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/account/orderPageList?client=asdfaqerq1werqwe&token=adfasdf234&pageSize=10&pageNumber=1
  *
  * @output {json} 分页列表
  * {
@@ -1508,9 +1408,9 @@ router.all('/account/orderPageList', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://localhost:5000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
- * https://fakeapi.fdjf.net:3000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://fakeapi.asterlake.cn:5000/account/hasGetNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
  * @output {json} 操作结果
  * {
@@ -1541,9 +1441,9 @@ router.all('/account/hasGetNewYearGiftMoney', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://localhost:5000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
- * https://fakeapi.fdjf.net:3000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
+ * https://fakeapi.asterlake.cn:5000/account/getNewYearGiftMoney?client=asdfaqerq1werqwe&token=adfasdf234
  *
  * @output {json} 操作结果
  * {
@@ -1574,9 +1474,9 @@ router.all('/account/getNewYearGiftMoney', function (req, res, next) {
  * @needAuth
  * @description
  *
- * https://localhost:3000/account/savePushSwitch?client=asfdaqwerqe
+ * https://localhost:5000/account/savePushSwitch?client=asfdaqwerqe
  *
- * https://fakeapi.fdjf.net:3000/account/savePushSwitch?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/account/savePushSwitch?client=asfdaqwerqe
  *
  * @output {json} 用户是否接收push消息的标识
  * {

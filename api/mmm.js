@@ -46,76 +46,6 @@ router.all('/mmm/toRegister', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到乾多多平台绑定银行卡的URL
- *
- * @name mmm.toBindBankCard
- * @href /mmm/toBindBankCard
- *
- * @input.post {String} client 		客户端统计参数（common/client）
- * @input.post {String} token 			Token
- *
- * @description
- *
- * 得到乾多多平台绑定银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
- * 
- * https://localhost:5000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
- * 
- * https://fakeapi.fdjf.net:5000/mmm/toBindBankCard?client=asdfaqerq1werqwe&token=134252345234
- *
- * @output {json} 绑定银行卡的URL
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:"{String} 乾多多平台绑定银行卡的URL"
- * }
- */
-router.all('/mmm/toBindBankCard', function (req, res, next) {
-        var realName, idCardNo, url, mobile;
-        realName = req.query.realName ? req.query.realName :req.body.realName;
-        idCardNo = req.query.idCardNo ? req.query.idCardNo :req.body.idCardNo;
-        mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13564335614');
-        var resultValue = {
-        	code: 0,
-        	text: 'ok',
-            data: {
-                url:'/mmm/callback/toBindBankCard'
-            }
-        };
-        res.json(resultValue);
-});
-
-/**
- * @fakedoc 得到乾多多平台解绑银行卡的URL
- *
- * @name mmm.toUnBindBankCard
- * @href /mmm/toUnBindBankCard
- *
- * @input.post {String} client 		客户端统计参数（common/client）
- * @input.post {String} token 			Token
- *
- * @description
- *
- * 得到乾多多平台解绑银行卡的URL，然后在WebView中调用这个URL，成功后再调用“我的”接口
- *
- * https://localhost:5000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
- *
- * https://fakeapi.fdjf.net:5000/mmm/toUnBindBankCard?client=asdfaqerq1werqwe&token=134252345234
- *
- * @output {json} 绑定银行卡的URL
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- * }
- */
-router.all('/mmm/toUnBindBankCard', function (req, res, next) {
-    var resultValue = {
-        code: 0,
-        text: 'ok'
-    };
-    res.json(resultValue);
-});
-
-/**
  * @fakedoc xtz.得到乾多多平台充值的URL
  *
  * @name mmm.toRecharge
@@ -241,6 +171,47 @@ router.all('/mmm/toInvest', function (req, res, next) {
     	text: text,
         data: {
             url:'/mmm/callback/toInvest'
+        }
+    }
+    res.json(resultValue);
+});
+/**
+ * @fakedoc xtz.得到乾多多提现手续费
+ *
+ * @name mmm.withdrawFee
+ * @href /mmm/withdrawFee
+ *
+ * @input.post {String}   client 				        客户端统计参数（common/client）
+ * @input.post {String}   token					    Token
+ * @input.post {String}   money					    提现金额
+ *
+ * @output {json} 投资的URL
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *      fee:"{Strng} 提现手续费用"
+ *      }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * 得到乾多多平台投资的URL
+ *
+ * https://localhost:5000/mmm/withdrawFee
+ *
+ * https://fakeapi.asterlake.cn:5000/mmm/withdrawFee
+ */
+router.all('/mmm/withdrawFee', function (req, res, next) {
+	var code = 0;
+	var text = "ok";
+	var resultValue = {
+    	code: code,
+    	text: text,
+        data: {
+            fee:'20'
         }
     }
     res.json(resultValue);
