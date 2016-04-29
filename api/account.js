@@ -692,14 +692,22 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
     	data: {
 			repayment: 30000,
 			repaymentYet: 2000,
-			dayList: {
-				'5': [{title: '星企贷', repaymentTime: '2015-10-5', money: 90, interest: 10},
+			dayList: [{
+					day:10,
+					recordList:
+				 	[{title: '星企贷', repaymentTime: '2015-10-5', money: 90, interest: 10},
 					{title: '星保理', repaymentTime: '2015-11-5', money: 930, interest: 10},
-					{title: '星车宝', repaymentTime: '2015-11-5', money: 906, interest: 10}],
-				'10': [{title: '星企贷', repaymentTime: '2015-10-10', money: 90, interest: 10},
-					{title: '星保理', repaymentTime: '2015-11-10', money: 930, interest: 10},
-					{title: '星车宝', repaymentTime: '2015-11-10', money: 906, interest: 10}]
-			}
+					{title: '星车宝', repaymentTime: '2015-11-5', money: 906, interest: 10}]
+				},
+				{
+					day: 11,
+					recordList:
+						[{title: '星企贷', repaymentTime: '2015-10-10', money: 90, interest: 10},
+						{title: '星保理', repaymentTime: '2015-11-10', money: 930, interest: 10},
+						{title: '星车宝', repaymentTime: '2015-11-10', money: 906, interest: 10}]
+
+
+				}]
 		}
 	}
     res.json(resultValue);
