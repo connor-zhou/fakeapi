@@ -764,6 +764,7 @@ router.all('/account/transactionRecord', function (req, res, next) {
  * @input.post {string} client 			客户端统计参数（common/client）
  * @input.post {string} token				Token
  * @input.post {string} photoData			头像数据
+ * @input.post {string} photoType			头像所用图片格式（ 'jpg'，'png'...）
  * @input.post {int}    type				头像数据类型( 0--base64，1--微信url，2--form表单 )
  * 
  * @output {json} 保存头像
