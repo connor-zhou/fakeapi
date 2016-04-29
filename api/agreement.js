@@ -98,17 +98,17 @@ router.all('/agreement/register', function (req, res, next) {
 /**
  * @fakedoc xtz.用户协议（登陆或者注册前使用）
  *
- * @name agreement.userNotes
- * @href /agreement/userNotes
+ * @name agreement.user
+ * @href /agreement/user
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
  *
  * @description
  * 
- * https://localhost:5000/agreement/userNotes
+ * https://localhost:5000/agreement/user
  * 
- * https://fakeapi.asterlake.cn:5000/agreement/userNotes
+ * https://fakeapi.asterlake.cn:5000/agreement/user
  *
  * @output {json} 操作结果
  * {
@@ -119,7 +119,7 @@ router.all('/agreement/register', function (req, res, next) {
  *   }
  * }
  */
-router.all('/agreement/userNotes', function (req, res, next) {
+router.all('/agreement/user', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok',
