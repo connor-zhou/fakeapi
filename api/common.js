@@ -88,7 +88,8 @@ router.all('/common/isMobile', function (req, res, next) {
  *      data:[{
  *          id:"{int} 银行Id",
  *          name:"{String} 银行中文名称",
- *          abbr:"{String} 银行英文简称"
+ *          abbr:"{String} 银行英文简称",
+ *          logoUrl:"{String} 银行logoUrl"
  *      }]
  * }
  */
@@ -100,7 +101,8 @@ router.all('/common/bankList', function (req, res, next) {
         bankLists.push({
             id:['11','9','1','3'][start % 4],
             name:['中国银行','交通银行','工商银行','建设银行'][start % 4],
-            abbr:['BOC','COMM','ICBC','CCB'][start % 4]
+            abbr:['BOC','COMM','ICBC','CCB'][start % 4],
+            logoUrl:''
         })
         start++;
     }

@@ -1605,6 +1605,7 @@ router.all('/account/removeBankCard', function (req, res, next) {
  *  		bankName:"{String} 银行卡所属银行名称",
  *  		bankId:"{String} 银行卡所属银行Id",
  *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
+ *  		logoUrl:"{String} 银行logoUrl",
  *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
  * 	 }]
  * }
@@ -1615,12 +1616,12 @@ router.all('/account/bankCardList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data:[
-			{id:'19',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:1},
-			{id:'20',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
-			{id:'21',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
-			{id:'22',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
-			{id:'23',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0},
-			{id:'24',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',main:0}
+			{id:'19',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:1},
+			{id:'20',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:0},
+			{id:'21',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:0},
+			{id:'22',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:0},
+			{id:'23',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:0},
+			{id:'24',cardNo:'622****1545',bankName:'建设银行',bankId:'3',bankAbbr:'CCB',logoUrl:'',main:0}
 		]
 	}
 	res.json(resultValue);
@@ -1684,6 +1685,7 @@ router.all('/account/isOpenMmm', function (req, res, next) {
  *  		bankName:"{String} 银行卡所属银行名称",
  *  		bankId:"{String} 银行卡所属银行Id",
  *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
+ *  		logoUrl:"{String} 银行logoUrl",
  *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
  *  	}
  * }
@@ -1698,6 +1700,7 @@ router.all('/account/getMainBankcard', function (req, res, next) {
 			bankName: '建设银行',
 			bankId: '3',
 			bankAbbr: 'CCB',
+			logoUrl:'',
 			main: 1
 		}
 	}
