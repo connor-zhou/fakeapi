@@ -1685,8 +1685,7 @@ router.all('/account/isOpenMmm', function (req, res, next) {
  *  		bankName:"{String} 银行卡所属银行名称",
  *  		bankId:"{String} 银行卡所属银行Id",
  *  		bankAbbr:"{String} 银行卡所属银行英文缩写",
- *  		logoUrl:"{String} 银行logoUrl",
- *  		main:"{int} 是否为默认银行卡（1--是，0--否）"
+ *  		logoUrl:"{String} 银行logoUrl"
  *  	}
  * }
  */
@@ -1700,8 +1699,7 @@ router.all('/account/getMainBankcard', function (req, res, next) {
 			bankName: '建设银行',
 			bankId: '3',
 			bankAbbr: 'CCB',
-			logoUrl:'',
-			main: 1
+			logoUrl:''
 		}
 	}
 	res.json(resultValue);
