@@ -68,7 +68,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.我的消息-系统消息
+ * @fakedoc xtz.我的消息-系统消息分页列表
  * 
  * @name message.systemMessagePageList
  * @href /message/systemMessagePageList
@@ -92,7 +92,7 @@ router.all('/message/accountMessagePageList', function (req, res, next) {
  * 	  {
  *      msgsId:"{String} 消息编号",
  *      title:"{String} 标题",
- *		content:"{String} 内容",
+ *		content:"{String} 内容简介",
  *      timeline:"{String} 创建时间"
  * 	  }
  * 	]
@@ -122,6 +122,44 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: pageList
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的消息-系统消息详情信息
+ *
+ * @name message.systemMessageDetail
+ * @href /message/systemMessageDetail
+ *
+ * @description
+ *
+ * https://localhost:5000/message/systemMessageDetail
+ *
+ * https://fakeapi.asterlake.cn:5000/message/systemMessageDetail
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} msgsId        消息Id
+ *
+ * @output {json} 分页列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:
+ *       {
+ *          html:"{String} 系统消息详情html"
+ *       }
+ * }
+ */
+router.all('/message/systemMessageDetail', function (req, res, next) {
+
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: {
+            html:'<p>这是一条系统消息测试，如果你看到此条消息，说明数据返回正常，祝愉快</p>'
+        }
     }
     res.json(resultValue);
 });
