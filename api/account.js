@@ -319,7 +319,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
  *  		capitalFreeze:"{number} 冻结本金",
- *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，2--未开通)",
+ *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，0--未开通)",
  *  		hasUnreadMessage:"{Boolean} 是否有未读信息（true--有，false--无）"
  *  	}
  * }
