@@ -81,9 +81,10 @@ router.all('/account/sendSmsCode', function (req, res, next) {
  * @href /account/register
  *
  *
- * @input.post {string} mobile 		手机号码
- * @input.post {string} password 		密码
- * @input.post {string} smsCode 		短信验证码
+ * @input.post {string} phone 		     	手机号码
+ * @input.post {string} password 		 	密码
+ * @input.post {string} smsCode 		 	短信验证码
+ * @input.post {string} recommendPhone  	推荐人手机号码
  *
  * @output {json} 注册结果
  * {
