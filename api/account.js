@@ -319,6 +319,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestWill:"{number} 待收利息",
  *  		capitalWill:"{number} 待收本金",
  *  		capitalFreeze:"{number} 冻结本金",
+ *  		isOpenMmm:"{int} 是否绑定乾多多(1--绑定，2--未绑定)",
  *  		hasUnreadMessage:"{Boolean} 是否有未读信息（true--有，false--无）"
  *  	}
  * }
@@ -354,6 +355,7 @@ router.all('/account/my', function (req, res, next) {
 			phone: '13566667777',
 			uname:'小王',
 			email:'34523452@ww.com',
+			isOpenMmm:0,
 			hasUnreadMessage:false
 		}
 	}
