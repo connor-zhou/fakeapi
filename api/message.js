@@ -148,6 +148,8 @@ router.all('/message/systemMessagePageList', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:
  *       {
+ *          title:"{String}  消息标题",
+ *          timeline:"{String} 消息时间",
  *          html:"{String} 系统消息详情html"
  *       }
  * }
@@ -158,6 +160,8 @@ router.all('/message/systemMessageDetail', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
+            title:'测试系统消息',
+            timeline:'2015-12-20',
             html:'<p>这是一条系统消息测试，如果你看到此条消息，说明数据返回正常，祝愉快</p>'
         }
     }
