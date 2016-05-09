@@ -946,16 +946,16 @@ router.all('/account/sign', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.推荐有奖-好友分页列表
+ * @fakedoc xtz.我的邀请
  * 
- * @name account.myInvitationPageList
- * @href /account/myInvitationPageList
+ * @name account.myInvitation
+ * @href /account/myInvitation
  *
  * @description
  * 
- * https://localhost:5000/account/myInvitationPageList
+ * https://localhost:5000/account/myInvitation
  * 
- * https://fakeapi.asterlake.cn:5000/account/myInvitationPageList
+ * https://fakeapi.asterlake.cn:5000/account/myInvitation
  *
  * @input.post {string} client 		 客户端统计参数（common/client）
  * @input.post {string} token			 Token
@@ -967,15 +967,20 @@ router.all('/account/sign', function (req, res, next) {
  * {
  * 		code:"{int} 状态代码(0表示成功，69633表示token无效，其它值表示失败)",
  *  	text:"{String} 状态描述",
- *  	data: [{
- *      	uname:"{String} 姓名",
- *      	account:"{String} 账号(手机号)",
- *      	status:"{int} 状态(0:已注册、1：已实名、2：已投资)",
- *      	statusName:"{String} 状态名称"
- * 	  }]
+ *  	data: {
+ *  		registerCount:"{int} 好友注册人数",
+ *      	nameAuthCount:"{int} 好友实名人数",
+ *      	investCount:"{int} 好友投资人数",
+ *  		pageList:[{
+ *      		uname:"{String} 姓名",
+ *      		account:"{String} 账号(手机号)",
+ *      		status:"{int} 状态(0:已注册、1：已实名、2：已投资)",
+ *      		statusName:"{String} 状态名称"
+ * 	  		}]
+ * 	  }
  * }
  */
-router.all('/account/myInvitationPageList', function (req, res, next) {
+router.all('/account/myInvitation', function (req, res, next) {
     var start = req.body.start || 0;
     var limit = req.body.limit || 10;
     var order = req.body.order;
@@ -998,46 +1003,12 @@ router.all('/account/myInvitationPageList', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok',
-    	data: myInvitation
-    }
-    res.json(resultValue);
-});
-
-/**
- * @fakedoc xtz.推荐有奖-统计
- * 
- * @name account.myInvitationStat
- * @href /account/myInvitationStat
- *
- * @description
- * 
- * https://localhost:5000/account/myInvitationStat
- * 
- * https://fakeapi.asterlake.cn:5000/account/myInvitationStat
- *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- *
- * @output {json} 好友数量
- * {
- * 	code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data: {
- *  	registerCount:"{int} 好友注册人数",
- *      nameAuthCount:"{int} 好友实名人数",
- *      investCount:"{int} 好友投资人数"
- *  }
- * }
- */
-router.all('/account/myInvitationStat', function (req, res, next) {
-    var resultValue = {
-    	code: 0,
-    	text: 'ok',
     	data: {
-    		registerCount:100,
-    		nameAuthCount:80,
-    		investCount:50
-    	}
+			 	registerCount:100,
+				nameAuthCount:80,
+				investCount:50,
+				pageList:myInvitation
+		}
     }
     res.json(resultValue);
 });
