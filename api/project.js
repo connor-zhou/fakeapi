@@ -27,15 +27,15 @@ var router = express.Router();
  *      category:"{int} 项目类型",
  *      categoryName:"{String} 项目类型名称",
  *      methods:"{int} 还款方式",
- *      money:"{number} 融资金额",
- *      minInvest:"{number} 起投金额",
- *      haveMoney:"{number} 已投金额",
- *      canInvestMoney:"{number} 可投金额",
- *      schedule:"{number} 已投百分比，不要加(%)",
+ *      money:"{String} 融资金额",
+ *      minInvest:"{String} 起投金额",
+ *      haveMoney:"{String} 已投金额",
+ *      canInvestMoney:"{String} 可投金额",
+ *      schedule:"{String} 已投百分比，不要加(%)",
  *      projectStatus:"{int} 状态(1-投标中，2--还款中，3--已还款)",
  *      projectStatusName:"{String} 状态说明",
- *      revenue:"{number} 年化利率",
- *      revenueAward:"{number} 活动加息年化利率",
+ *      revenue:"{String} 年化利率",
+ *      revenueAward:"{String} 活动加息年化利率",
  *      revenueDisplay:"{String} 活动说明（新手活动）",
  *      duration:"{int} 借款期限，单位 *月份*",
  *      expireTime:"{String} 过期时间",
@@ -135,20 +135,20 @@ router.all('/project/recommend', function (req, res, next) {
  *      category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *      categoryName:"{String} 项目类型名称",
  *      methods:"{String} 还款方式",
- *      money:"{number} 融资金额",
- *      haveMoney:"{number} 已融资金额",
- *      schedule:"{number} 已投百分比(%)",
+ *      money:"{String} 融资金额",
+ *      haveMoney:"{String} 已融资金额",
+ *      schedule:"{String} 已投百分比(%)",
  *      projectStatus:"{int} 状态(1--投标中，2-还款中，3-已还款",
  *      projectStatusName:"{String} 状态说明",
- *      revenue:"{number} 年化利率",
- *      revenueAward:"{number} 活动加息年化利率",
+ *      revenue:"{String} 年化利率",
+ *      revenueAward:"{String} 活动加息年化利率",
  *      revenueDisplay:"{string} 活动说明（新手活动）",
- *      duration:"{int} 项目期限，单位 *月份*",
- *      minInvest:"{number} 起投金额",
- *      canInvestMoney:"{number} 可投金额",
+ *      duration:"{String} 项目期限，单位 *月份*",
+ *      minInvest:"{String} 起投金额",
+ *      canInvestMoney:"{String} 可投金额",
  *      expireTime:"{string} 投资截止日期",
  *      repaymentTime:"{string} 还款日期",
- *      investNumber:"{number} 投资总数",
+ *      investNumber:"{String} 投资总数",
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
  *      canUseAward :"{int} 能否用券 (1--能,0--否)"
@@ -214,8 +214,8 @@ router.all('/project/detail', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data: [{
  *  	planTime:"{string} 还款时间",
- *  	repayment:"{bumber} 计划偿还本金",
- *  	interest:"{number} 应还利息",
+ *  	repayment:"{String} 计划偿还本金",
+ *  	interest:"{String} 应还利息",
         days:"{int} 计息天数 "
  *  }]
  * }
@@ -510,7 +510,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *      interest:"{number} 收益"
+ *      interest:"{String} 收益"
  *      }
  * }
  */

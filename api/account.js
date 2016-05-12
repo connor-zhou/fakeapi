@@ -313,15 +313,15 @@ router.all('/account/logout', function (req, res, next) {
  *  		phone:"{String} 手机号码",
  *  		uname:"{String}  用户名",
  *  		email:"{String} 电子邮箱",
- *  		capitalTotal:"{number} 账户资产",
- *  		interestTotal:"{number} 账户收益",
- *  		money:"{number} 账户余额",
- *  		interestc:"{number} 累计收益",
- *  		interestWill:"{number} 待收利息",
- *  		capitalWill:"{number} 待收本金",
- *  		capitalFreeze:"{number} 冻结本金",
+ *  		capitalTotal:"{String} 账户资产",
+ *  		interestTotal:"{String} 账户收益",
+ *  		money:"{String} 账户余额",
+ *  		interestc:"{String} 累计收益",
+ *  		interestWill:"{String} 待收利息",
+ *  		capitalWill:"{String} 待收本金",
+ *  		capitalFreeze:"{String} 冻结本金",
  *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，0--未开通)",
- *  		hasUnreadMessage:"{Boolean} 是否有未读信息（true--有，false--无）"
+ *  		hasUnreadMessage:"{int} 是否有未读信息（1--有，0--无）"
  *  	}
  * }
  *
@@ -379,9 +379,9 @@ router.all('/account/my', function (req, res, next) {
  *  data:[{
  *  		id:"{int} 投资券id",
  *  		status:"{int} 投资券状态（0--正常，1--已使用，2--过期）",
- *      	award:"{number} 金额",
+ *      	award:"{String} 金额",
  *      	useRule:"{int} 券可用投资额类型(1--10000,2--1000,3--500,4--5000)",
- *      	params:"{number} 券可用投资额",
+ *      	params:"{String} 券可用投资额",
  *     		expiryTime:"{String} 过期时间",
  *     		note:"{String} 券来源说明",
  *     		usedTime:"{String} 使用时间"
@@ -444,15 +444,15 @@ router.all('/account/myTickets', function (req, res, next) {
  *  	projectList:[{
  *  		iid:"{int} 记录Id",
  *  	  	pid:"{String} 项目Id",
- *  	    money:"{number} 投资金额",
- *  	    interestYet:"{number} 已获收益",
- *      	interestWill:"{number} 待收收益",
+ *  	    money:"{String} 投资金额",
+ *  	    interestYet:"{String} 已获收益",
+ *      	interestWill:"{String} 待收收益",
  *  	    status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	    statusName:"{String} 投资状态名称",
  *  	    days:"{int} 剩余还款天数",
  *  		project:{
  *      		title:"{String} 项目名称",
- *          	revenue:"{number} 年化收益率",
+ *          	revenue:"{String} 年化收益率",
  *          	repaymentTime:"{String} 还款时间",
  *          	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *          	categoryName:"{String} 项目类型说明 "
@@ -533,15 +533,15 @@ router.all('/account/myInvestment', function (req, res, next) {
  *   	pid:"{String} 项目Id",
  *  	status:"{int} 投资状态（0--已结束 1--持有中）",
  *  	statusName:"{String} 投资状态名称",
- *      interestWill:"{number} 预期收益",
- * 		money:"{number} 投资金额",
+ *      interestWill:"{String} 预期收益",
+ * 		money:"{String} 投资金额",
  *  	project:{
  *      	title:"{String} 项目名称",
  *      	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
  *          categoryName:"{String} 项目类型说明 ",
  *      	methods:"{String} 还款方式（'按日计息，按月付息，到期还本'）",
- *      	schedule:"{number} 融资进度，不要加(%)",
- *      	revenue: "{number} 年化收益率",
+ *      	schedule:"{String} 融资进度，不要加(%)",
+ *      	revenue: "{String} 年化收益率",
  *      	remaindAndTotalMonth:"{String} 剩余/总期数",
  *          repaymentTime:"{String} 还款日期（应和投资人的收款期一致）",
   *		}
@@ -607,8 +607,8 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	interestTotal:"{number} 总收益",
- *  	money:"{number} 投资金额",
+ *  	interestTotal:"{String} 总收益",
+ *  	money:"{String} 投资金额",
  *     	recordList:
  *     	[{
  *      	planTime:"{string} 应还款时间",
@@ -666,8 +666,8 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  *     code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *     text:"{String} 状态描述",
  *     data: {
- *         repayment:"{number} 本月应回款(元)",
- *         repaymentYet:"{number} 本月已回款(元)",
+ *         repayment:"{String} 本月应回款(元)",
+ *         repaymentYet:"{String} 本月已回款(元)",
  *         dayList:[{
  *         			day:"{String} 天数",
  *         			recordList:	[{
@@ -737,7 +737,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
  *  	category:"{int} 变更类型（1-充值，2-取现，3-投资，4-系统奖励，5-积分兑换，6-收益，7-回收本金，8-折让金（转让），9-债券转让，10-折让金（认购）,102-推荐投资佣金，801-股票配资保证金，802-股票配资管理费，803-股票配资结算，804-股票配资利息，805-保证金（股票配资免费体验保证金））",
  *  	categoryName:"{String} 变更类型名称",
  *  	note:"{String} 备注",
- *  	money: "{number} 金额"
+ *  	money: "{String} 金额"
  *   }]
  * }
  *
