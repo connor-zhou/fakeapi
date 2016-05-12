@@ -22,7 +22,8 @@ var _ = require('lodash');
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
- *  	photo:"{string} 	图片URL（绝对路径）",
+ * 	  	id:"{string} 图片id",
+ *  	photo:"{string} 图片URL（绝对路径）",
  *  	title:"{string} 标题",
  *  	target:"{string} 链接地址"
  *     }
@@ -32,9 +33,11 @@ var _ = require('lodash');
  *
  */
 router.all('/event/carousel', function (req, res, next) {
-    var events = [];
+    var events = [],random;
     _.forEach([2,3,4,5,6,8], function (i) {
+		random = Math.floor(Math.random*10);
     	events.push({
+			id:random,
     		photo:'https://www.hsbank360.com/static/modules/front/images/index/banner-0' + i + '.jpg',
         	title: 'slide'+i,
         	target: [1,2][i % 2] == 1 ? "https://www.hsbank360.com/f/activity/invitation" : "1"
