@@ -1712,6 +1712,42 @@ router.all('/account/setMainBankcard', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.获取用户姓名和身份证
+ *
+ * @name account.getNameAndChinaId
+ * @href /account/getNameAndChinaId
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/getNameAndChinaId
+ *
+ * https://fakeapi.asterlake.cn:5000/account/getNameAndChinaId
+ *
+ * @output {json} 设置默认银行卡
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
+ *  	text:"{String} 状态描述"
+ *
+ * }
+ */
+router.all('/account/getNameAndChinaId', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:{
+			name:'hello',
+			chinaId:'72262254896856985'
+		}
+	}
+	res.json(resultValue);
+});
+
 
 
 module.exports = router;
