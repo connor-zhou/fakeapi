@@ -1732,7 +1732,11 @@ router.all('/account/setMainBankcard', function (req, res, next) {
  * @output {json} 设置默认银行卡
  * {
  * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
- *  	text:"{String} 状态描述"
+ *  	text:"{String} 状态描述",
+ *      data:{
+ *      	name:"{String} 用户姓名",
+ *          chinaId:"{String} 用户身份证号"
+ *      }
  *
  * }
  */
