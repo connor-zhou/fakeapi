@@ -43,7 +43,7 @@ var router = express.Router();
  *      canInvest:"{int} 能否投资(1--能,0--不能)",
  *      canUseAward :"{int} 能否用券 (1--能,0--不能)",
  *      isRecommend:"{int} 是否推荐 (1--是,0--否)",
- *      isNewUserProject:"{int} 是否是新手项目"
+ *      isNewUserProject:"{int} 是否是新手项目 （1--是，0--否）"
  * 	  }
  * 	]
  * }
