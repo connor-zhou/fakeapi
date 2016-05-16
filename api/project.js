@@ -154,7 +154,7 @@ router.all('/project/recommend', function (req, res, next) {
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
  *      canUseAward :"{int} 能否用券 (1--能,0--否)",
- *      isNewUserProject:"{int} 是否是新手项目"
+ *      isNewUserProject:"{int} 是否是新手项目 (1--是，0--否)"
  *   }
  * }
  *
