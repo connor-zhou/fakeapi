@@ -42,7 +42,8 @@ var router = express.Router();
  *      repaymentTime:"{String} 还款时间",
  *      canInvest:"{int} 能否投资(1--能,0--不能)",
  *      canUseAward :"{int} 能否用券 (1--能,0--不能)",
- *      isRecommend:"{int} 是否推荐 (1--是,0--否)"
+ *      isRecommend:"{int} 是否推荐 (1--是,0--否)",
+ *      isNewUserProject:"{int} 是否是新手项目"
  * 	  }
  * 	]
  * }
@@ -79,7 +80,8 @@ router.all('/project/pageList', function (req, res, next) {
             expireTime:"2017-08-06",
             canInvest:start % 2,
             canUseAward:start % 2,
-            isRecommend:start % 2
+            isRecommend:start % 2,
+            isNewUserProject: start % 2
         });
         start++;
         limit--;
@@ -151,7 +153,8 @@ router.all('/project/recommend', function (req, res, next) {
  *      investNumber:"{String} 投资总数",
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
- *      canUseAward :"{int} 能否用券 (1--能,0--否)"
+ *      canUseAward :"{int} 能否用券 (1--能,0--否)",
+ *      isNewUserProject:"{int} 是否是新手项目"
  *   }
  * }
  *
@@ -183,7 +186,8 @@ router.all('/project/detail', function (req, res, next) {
         investNumber:100,
         isRecommend:Math.floor(Math.random() * 2),
         canInvest:Math.floor(Math.random() * 2),
-        canUseAward:Math.floor(Math.random() * 2)
+        canUseAward:Math.floor(Math.random() * 2),
+        isNewUserProject:Math.floor(Math.random() * 2)
     };
     var resultValue = {
         code: 0,

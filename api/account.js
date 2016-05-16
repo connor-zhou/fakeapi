@@ -321,6 +321,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		capitalWill:"{String} 待收本金",
  *  		capitalFreeze:"{String} 冻结本金",
  *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，0--未开通)",
+ *  		isNewUser:"{int} 用户是否是新手(1--是，0--否)",
  *  		hasUnreadMessage:"{int} 是否有未读信息（1--有，0--无）"
  *  	}
  * }
@@ -357,6 +358,7 @@ router.all('/account/my', function (req, res, next) {
 			uname:'小王',
 			email:'34523452@ww.com',
 			isOpenMmm:0,
+			isNewUser:1,
 			hasUnreadMessage:false
 		}
 	}
