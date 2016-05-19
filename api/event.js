@@ -529,4 +529,45 @@ router.all('/event/giftDetail', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.确认礼品领取
+ *
+ * @name event.confirmGetGift
+ * @href /event/confirmGetGift
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string}  id			领取礼品id
+ * @input.post {string} address	    礼品寄送详细地址
+ * @input.post {string} zipcode       邮编
+ *
+ * @description
+ *
+ * https://localhost:5000/event/confirmGetGift
+ *
+ * https://fakeapi.asterlake.cn:5000/event/confirmGetGift
+ *
+ * @output {json} 确认礼品领取接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *      title:"{String} 礼品标题",
+ *      imgUrl:"{String} 礼品介绍图片url",
+ *      zipcode:"{String} 寄送目的地邮编",
+ *      address:"{String}  寄送目的地址"
+ *  }
+ *}
+ */
+router.all('/event/giftDetail', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: [
+			{title:'小糊涂神',imgUrl:'',zipcode:'201209',address:'上海市浦东新区达尔文路'}
+		]
+	}
+	res.json(resultValue);
+});
+
 module.exports = router;
