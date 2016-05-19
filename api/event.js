@@ -568,4 +568,41 @@ router.all('/event/confirmGetGift', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.礼品寄送信息更新
+ *
+ * @name event.updataSendInfo
+ * @href /event/updataSendInfo
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} address	    礼品寄送详细地址
+ * @input.post {string} zipcode       邮编
+ *
+ * @description
+ *
+ * https://localhost:5000/event/updataSendInfo
+ *
+ * https://fakeapi.asterlake.cn:5000/event/updataSendInfo
+ *
+ * @output {json} 礼品寄送信息更新接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *      zipcode:"{String} 寄送目的地邮编(更新后)",
+ *      address:"{String}  寄送目的地址(更新后)"
+ *  }
+ *}
+ */
+router.all('/event/updataSendInfo', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:
+			{zipcode:'201200',address:'上海市浦东新区牛顿路'}
+	}
+	res.json(resultValue);
+});
+
 module.exports = router;
