@@ -476,7 +476,7 @@ router.all('/event/investmentList', function (req, res, next) {
  *      title:"{String} 礼品标题",
  *      intro:"{String} 礼品简介",
  *      imgUrl:"{String} 礼品图片url",
- *      level:"{String} 礼品可领取区间（1--1万至10万，2--10万至20万，3--20万至50万，4--50万至1000万，5--1000万以上）"
+ *      level:"{int} 礼品可领取区间（0--1万以下，1--1万至10万，2--10万至20万，3--20万至50万，4--50万至1000万，5--1000万以上）"
  *  }]
  *}
  */
@@ -486,6 +486,44 @@ router.all('/event/giftPageList', function (req, res, next) {
 		text: 'ok',
 		data: [
 			{id:'2',title:'小糊涂神',intro:'酒',imgUrl:'http://www.baidu.com',level:'1'}
+		]
+	}
+	res.json(resultValue);
+});
+/**
+ * @fakedoc xtz.礼品详情信息
+ *
+ * @name event.giftDetail
+ * @href /event/giftDetail
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} id		        礼品id
+ *
+ * @description
+ *
+ * https://localhost:5000/event/giftDetail
+ *
+ * https://fakeapi.asterlake.cn:5000/event/giftDetail
+ *
+ * @output {json} 礼品详情信息接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	id:"{String} 礼品id",
+ *      title:"{String} 礼品标题",
+ *      imgUrlArray:"{String} 礼品介绍图片数组",
+ *      status:"{int} 礼品领取状态 （1--立即领取，2--不在活动时间，3--已经领取过，4--投资额度不够，不能领取） "
+ *  }
+ *}
+ */
+router.all('/event/giftDetail', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: [
+			{id:'2',title:'小糊涂神',imgUrlArray:[],status:1}
 		]
 	}
 	res.json(resultValue);
