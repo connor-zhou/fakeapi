@@ -522,9 +522,8 @@ router.all('/event/giftDetail', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data: [
+		data:
 			{id:'2',title:'小糊涂神',imgUrlArray:[],status:1}
-		]
 	}
 	res.json(resultValue);
 });
@@ -559,13 +558,12 @@ router.all('/event/giftDetail', function (req, res, next) {
  *  }
  *}
  */
-router.all('/event/giftDetail', function (req, res, next) {
+router.all('/event/confirmGetGift', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data: [
+		data:
 			{title:'小糊涂神',imgUrl:'',zipcode:'201209',address:'上海市浦东新区达尔文路'}
-		]
 	}
 	res.json(resultValue);
 });
