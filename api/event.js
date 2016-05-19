@@ -450,4 +450,45 @@ router.all('/event/investmentList', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.礼品分页列表
+ *
+ * @name event.giftPageList
+ * @href /event/giftPageList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} pageSize		页容量
+ * @input.post {string} pageNumber    页码
+ *
+ * @description
+ *
+ * https://localhost:5000/event/giftPageList
+ *
+ * https://fakeapi.asterlake.cn:5000/event/giftPageList
+ *
+ * @output {json} 礼品分页接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  	id:"{String} 礼品id",
+ *      title:"{String} 礼品标题",
+ *      intro:"{String} 礼品简介",
+ *      imgUrl:"{String} 礼品图片url",
+ *      level:"{String} 礼品可领取区间（1--1万至10万，2--10万至20万，3--20万至50万，4--50万至1000万，5--1000万以上）"
+ *  }]
+ *}
+ */
+router.all('/event/giftPageList', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: [
+			{id:'2',title:'小糊涂神',intro:'酒',imgUrl:'http://www.baidu.com',level:'1'}
+		]
+	}
+	res.json(resultValue);
+});
+
 module.exports = router;
