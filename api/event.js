@@ -514,7 +514,8 @@ router.all('/event/giftPageList', function (req, res, next) {
  *  	id:"{String} 礼品id",
  *      title:"{String} 礼品标题",
  *      imgUrlArray:"{String} 礼品介绍图片数组",
- *      status:"{int} 礼品领取状态 （1--立即领取，2--不在活动时间，3--已经领取过，4--投资额度不够，不能领取） "
+ *      remainNumber:"{String} 礼品剩余数量",
+ *      status:"{int} 礼品领取状态 （1--立即领取，2--不在活动时间，3--已经领取过，4--投资额度不够，不能领取，5--剩余数量不够） "
  *  }
  *}
  */
@@ -523,7 +524,7 @@ router.all('/event/giftDetail', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data:
-			{id:'2',title:'小糊涂神',imgUrlArray:[],status:1}
+			{id:'2',title:'小糊涂神',imgUrlArray:[],remainNumber:'12',status:1}
 	}
 	res.json(resultValue);
 });
