@@ -52,7 +52,7 @@ router.all('/event/carousel', function (req, res, next) {
 });
 
 /**
- * @fakedoc App自动更新检查接口
+ * @fakedoc xtz.App自动更新检查接口
  *
  * @name event.checkUpdate
  * @href /event/checkUpdate
@@ -61,17 +61,17 @@ router.all('/event/carousel', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/event/checkUpdate?client=asfdaqwerqe
+ * https://localhost:5000/event/checkUpdate
  *
- * https://fakeapi.fdjf.net:3000/event/checkUpdate?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/checkUpdate
  *
  * @output {json} App自动更新检查
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- * 		needUpdate:"{String} 		是否有更新（0是，其它不是）",
- * 		needForcedUpdate:"{String} 	是否需要强制更新（0是，其它不是）",
+ * 		needUpdate:"{int} 		    是否有更新（1--是，0--否）",
+ * 		needForcedUpdate:"{int} 	是否需要强制更新（1--是，0--否）",
  *  	url:"{string} 				待更新的apk文件url（android）或AppStore下载链接（iOS）",
  *  	version:"{String} 			待更新App版本",
  *  	versionInfo:"{string} 		待更新App版本说明",
@@ -85,8 +85,8 @@ router.all('/event/checkUpdate', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		needUpdate:"1",
-    		needForcedUpdate:"1",
+    		needUpdate:1,
+    		needForcedUpdate:1,
     		url:"http://www.fdjf.net/client/fdjf_hsbank-1.0.1-fdjf-FDJF-release-aligned-com.fdjf.hsbank.apk",
     		version:"1.0.1",
     		versionInfo:"测试功能",
@@ -97,7 +97,7 @@ router.all('/event/checkUpdate', function (req, res, next) {
 });
 
 /**
- * @fakedoc 服务端状态检查接口
+ * @fakedoc xtz.服务端状态检查接口
  *
  * @name event.checkServerStatus
  * @href /event/checkServerStatus
@@ -106,7 +106,7 @@ router.all('/event/checkUpdate', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:3000/event/checkServerStatus
+ * https://localhost:5000/event/checkServerStatus
  *
  * https://fakeapi.asterlake.cn:5000/event/checkServerStatus
  *
@@ -115,8 +115,8 @@ router.all('/event/checkUpdate', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- * 		statusCode:"{String} 		服务端是否正常工作（0是，其它不是）",
- *  	statusText:"{string} 		服务端状态说明"
+ * 		statusCode:"{int} 		服务端是否正常工作（1--是，0--否）",
+ *  	statusText:"{string}    服务端状态说明"
  *    }
  * }
  *
@@ -127,8 +127,8 @@ router.all('/event/checkServerStatus', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-    		statusCode:i == 1 ? "1" : "0",
-    		statusText:i == 1 ? "维护中，请稍候再试" : "ok"
+    		statusCode:i == 1 ? 1 : 0,
+    		statusText:i == 1 ? "ok" : "维护中，请稍候再试"
     	}
     }
     res.json(resultValue);
