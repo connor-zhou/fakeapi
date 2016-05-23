@@ -605,4 +605,42 @@ router.all('/event/updataSendInfo', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.我的礼品
+ *
+ * @name event.myGift
+ * @href /event/myGift
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ *
+ * @description
+ *
+ * https://localhost:5000/event/myGift
+ *
+ * https://fakeapi.asterlake.cn:5000/event/myGift
+ *
+ * @output {json} 得到我的礼品信息接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *      zipcode:"{String} 寄送目的地邮编",
+ *      address:"{String}  寄送目的地详细地址",
+ *      status:"{String} 状态码(1--已发出，0--未发出)",
+ *      statusName:"{String} 状态名称"
+ *  }
+ *}
+ */
+router.all('/event/updataSendInfo', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:
+			{zipcode:'201200',address:'上海市浦东新区牛顿路',status:1,statusName:'已发出'}
+	}
+	res.json(resultValue);
+});
+
+
 module.exports = router;
