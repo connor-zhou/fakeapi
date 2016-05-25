@@ -629,6 +629,7 @@ router.all('/event/updataSendInfo', function (req, res, next) {
  *  	name:"{String} 姓名",
  *  	chinaId:"{String} 证件号码",
  *  	phone:"{String} 联系电话",
+ *  	id:"{String} 礼品id",
  *  	thumbUrl:"{String} 礼品图片url",
  *      zipcode:"{String} 寄送目的地邮编",
  *      address:"{String}  寄送目的地详细地址",
