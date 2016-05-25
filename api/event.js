@@ -626,6 +626,10 @@ router.all('/event/updataSendInfo', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
+ *  	name:"{String} 姓名",
+ *  	chinaId:"{String} 证件号码",
+ *  	phone:"{String} 联系电话",
+ *  	thumbUrl:"{String} 礼品图片url",
  *      zipcode:"{String} 寄送目的地邮编",
  *      address:"{String}  寄送目的地详细地址",
  *      status:"{String} 状态码(1--已发出，0--未发出)",
