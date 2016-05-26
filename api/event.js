@@ -647,6 +647,41 @@ router.all('/event/updataSendInfo', function (req, res, next) {
 	}
 	res.json(resultValue);
 });
+/**
+ * @fakedoc xtz.活动截止时间
+ *
+ * @name event.endTime
+ * @href /event/endTime
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {string} id			    活动id（默认为1）
+ *
+ * @description
+ *
+ * https://localhost:5000/event/endTime
+ *
+ * https://fakeapi.asterlake.cn:5000/event/endTime
+ *
+ * @output {json} 活动截止时间接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	time:"{String} 活动结束时间的毫秒数"
+ *  }
+ *}
+ */
+router.all('/event/endTime', function (req, res, next) {
+	var endTime = new Date().getTime();
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:
+			{time:endTime}
+	}
+	res.json(resultValue);
+});
 
 
 module.exports = router;
