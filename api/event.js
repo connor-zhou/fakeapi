@@ -668,7 +668,7 @@ router.all('/event/updataSendInfo', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	time:"{String} 活动结束时间的毫秒数"
+ *  	time:"{String} 活动结束时间的秒数"
  *  }
  *}
  */
