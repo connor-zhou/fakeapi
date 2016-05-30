@@ -683,6 +683,39 @@ router.all('/event/activityTime', function (req, res, next) {
 	}
 	res.json(resultValue);
 });
+/**
+ * @fakedoc xtz.当前用户累计投资额
+ *
+ * @name event.investTotal
+ * @href /event/investTotal
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ *
+ * @description
+ *
+ * https://localhost:5000/event/investTotal
+ *
+ * https://fakeapi.asterlake.cn:5000/event/investTotal
+ *
+ * @output {json} 用户累计投资接口
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	money:"{String} 用户累计投资额"
+ *  }
+ *}
+ */
+router.all('/event/investTotal', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:
+			{money:'12000'}
+	}
+	res.json(resultValue);
+});
 
 
 module.exports = router;
