@@ -684,7 +684,7 @@ router.all('/event/activityTime', function (req, res, next) {
 	res.json(resultValue);
 });
 /**
- * @fakedoc xtz.当前用户累计投资额
+ * @fakedoc xtz.用户当前累计投资额
  *
  * @name event.investTotal
  * @href /event/investTotal
@@ -698,7 +698,7 @@ router.all('/event/activityTime', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/event/investTotal
  *
- * @output {json} 用户累计投资接口
+ * @output {json} 用户当前累计投资接口
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
