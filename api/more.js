@@ -96,10 +96,11 @@ router.all('/more/feedbackAdvice', function (req, res, next) {
  */
 router.all('/more/myFeedback', function (req, res, next) {
 	var recordList = [];
-
+	var time = new Date().toLocaleString();
 	recordList.push({
 		imgArray:["http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg","http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg"],
-		content:'今天在路边看见有卖加密蚊帐的，不知道用的什么算法？！'
+		content:'今天在路边看见有卖加密蚊帐的，不知道用的什么算法？！',
+		timeline:time
 	})
     var resultValue = {
     	code: 0,
