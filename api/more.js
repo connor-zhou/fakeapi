@@ -42,7 +42,7 @@ router.all('/more/loan', function (req, res, next) {
  *
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token 					Token
- * @input.post {string} advice					反馈意见内容 (不得多于160个字符)
+ * @input.post {string} content				反馈意见内容 (不得多于160个字符)
  * @input.post {Array}	  imgArray				图片数组（格式：[{data:xxxx,format:'jpg'},.....]）
  * @input.post {int}	  imgDataType           图片数据类型( 0--base64，1--微信url，2--form表单 )
  *
