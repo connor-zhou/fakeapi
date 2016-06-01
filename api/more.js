@@ -87,16 +87,24 @@ router.all('/more/feedbackAdvice', function (req, res, next) {
  * {
  * 		code:"{int}   状态代码（0表示成功，其它值表示失败）",
  *  	text:"{String} 状态描述",
- *  	imgArray:"{Array} 图片url数组 （['url01','url02'....]）",
- *  	content:"{String} 反馈内容"
+ *  	recordList:[{
+ *  		imgArray:"{Array} 图片url数组 （['url01','url02'....]）",
+ *  		content:"{String} 反馈内容"
+  *  		}]
+ *
  * }
  */
 router.all('/more/myFeedback', function (req, res, next) {
+	var recordList = [];
+
+	recordList.push({
+		imgArray:["http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg","http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg"],
+		content:'今天在路边看见有卖加密蚊帐的，不知道用的什么算法？！'
+	})
     var resultValue = {
     	code: 0,
     	text: 'ok',
-		imgArray:["http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg","http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg"],
-    	content:'今天在路边看见有卖加密蚊帐的，不知道用的什么算法？！'
+		recordList:recordList
 	}
     res.json(resultValue);
 });
