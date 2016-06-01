@@ -90,8 +90,8 @@ router.all('/more/feedbackAdvice', function (req, res, next) {
  *  	recordList:[{
  *  		imgArray:"{Array} 图片url数组 （['url01','url02'....]）",
  *  		content:"{String} 反馈内容",
- *  		time:"{String}    反馈时间"
-  *  		}]
+ *  		timeline:"{String}    反馈时间"
+ *  		}]
  *
  * }
  */
