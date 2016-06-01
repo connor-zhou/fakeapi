@@ -174,7 +174,6 @@ router.all('/common/provinceList',function(req,res,next){
 
          ]
 
-
     }
     res.json(resultValue);
 });
