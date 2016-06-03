@@ -88,9 +88,10 @@ router.all('/more/feedbackAdvice', function (req, res, next) {
  * 		code:"{int}   状态代码（0表示成功，其它值表示失败）",
  *  	text:"{String} 状态描述",
  *  	recordList:[{
- *  		imgArray:"{Array} 图片url数组 （['url01','url02'....]）",
- *  		content:"{String} 反馈内容",
- *  		timeline:"{String}    反馈时间"
+ *  		id:"{String} 反馈意见id",
+ *  		imgArray:"{Array}  图片url数组 （['url01','url02'....]）",
+ *  		content:"{String}  反馈内容",
+ *  		timeline:"{String} 反馈时间"
  *  		}]
  *
  * }
@@ -99,6 +100,7 @@ router.all('/more/myFeedback', function (req, res, next) {
 	var recordList = [];
 	var time = new Date().toLocaleString();
 	recordList.push({
+		id:'22',
 		imgArray:["http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg","http://www.xingtouzi.com/static/img/index_img/media/sohu.jpg"],
 		content:'今天在路边看见有卖加密蚊帐的，不知道用的什么算法？！',
 		timeline:time
@@ -107,6 +109,37 @@ router.all('/more/myFeedback', function (req, res, next) {
     	code: 0,
     	text: 'ok',
 		recordList:recordList
+	}
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.删除反馈
+ *
+ * @name more.deleteMyFeedback
+ * @href /more/deleteMyFeedback
+ *
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token 					Token
+ * @input.post {string} id						要删除的反馈意见id
+ *
+ * @description
+ *
+ * https://localhost:5000/more/deleteMyFeedback
+ *
+ * https://fakeapi.asterlake.cn:5000/more/deleteMyFeedback
+ *
+ * @output {json} 删除我的反馈接口
+ * {
+ * 		code:"{int}   状态代码（0表示成功，其它值表示失败）",
+ *  	text:"{String} 状态描述"
+ *
+ * }
+ */
+router.all('/more/deleteMyFeedback', function (req, res, next) {
+    var resultValue = {
+    	code: 0,
+    	text: 'ok'
 	}
     res.json(resultValue);
 });
