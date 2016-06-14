@@ -447,7 +447,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  		id:"{int} 卡券id",
+ *  		id:"{string} 卡券id",
  *      	award:"{String} 卡券值",
  *      	params:"{String} 卡券可用投资额",
  *     		expiryTime:"{String} 过期时间",
@@ -474,13 +474,12 @@ router.all('/account/myAvailableTickets', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4+1);
         tickets.push({
-			id:start,
-			status:[0,1,2][type % 3],
-            award: [10,20,50][start % 3],
-            expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
+			id:start+'',
+            award: ['10','20','50'][start % 3],
+            expiryTime:type % 2 == 0 ? "2015-10-22":"2014-2-10",
             note:"注册奖励",
 			usedTime:"2015-01-02",
-			params:[10000,1000,500,5000][type-1]
+			params:['10000','1000','500','5000'][type-1]
         });
         start++;
         limit--;
