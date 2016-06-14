@@ -368,26 +368,26 @@ router.all('/account/my', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.我的投资券
+ * @fakedoc xtz.我的卡券
  *
  * @name account.myTickets
  * @href /account/myTickets
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
+ * @input.post {string} type			卡券类型（0--投资券，1--加息券）
  *
  * @output {json} 我的投资券列表
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  		id:"{int} 投资券id",
- *  		status:"{int} 投资券状态（0--正常，1--已使用，2--过期）",
- *      	award:"{String} 金额",
- *      	useRule:"{int} 券可用投资额类型(1--10000,2--1000,3--500,4--5000)",
- *      	params:"{String} 券可用投资额",
+ *  		id:"{int} 卡券id",
+ *  		status:"{int} 卡券状态（0--正常，1--已使用，2--过期）",
+ *      	award:"{String} 卡券值",
+ *      	params:"{String} 卡券可用投资额",
  *     		expiryTime:"{String} 过期时间",
- *     		note:"{String} 券来源说明",
+ *     		note:"{String} 卡券来源说明",
  *     		usedTime:"{String} 使用时间"
  *    }]
  * }
@@ -416,7 +416,70 @@ router.all('/account/myTickets', function (req, res, next) {
             expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
             note:"注册奖励",
 			usedTime:"2015-01-02",
-			useRule: type,
+			params:[10000,1000,500,5000][type-1]
+        });
+        start++;
+        limit--;
+    }
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: tickets
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的可用卡券
+ *
+ * @name account.myAvailableTickets
+ * @href /account/myAvailableTickets
+ *
+ * @input.post  {string} client 			客户端统计参数（common/client）
+ * @input.post  {string} token 			Token
+ * @input.post  {string} type				卡券类型（0--投资券，1--加息券）
+ * @input.post  {string} projectId     	要投资的项目id
+ * @input.post  {string} money			 	投资金额
+ *
+ *
+ * @output {json} 我的可用卡券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		id:"{int} 卡券id",
+ *      	award:"{String} 卡券值",
+ *      	params:"{String} 卡券可用投资额",
+ *     		expiryTime:"{String} 过期时间",
+ *     		note:"{String} 卡券来源说明",
+ *     		usedTime:"{String} 使用时间"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myAvailableTickets
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myAvailableTickets
+ */
+router.all('/account/myAvailableTickets', function (req, res, next) {
+	var start = req.body.start || 0;
+    var limit = req.body.limit || 10;
+    var order = req.body.order;
+    var type = req.body.type;
+	var tickets = [];
+    var max = 15;
+    while (start < max && limit > 0) {
+        var type = Math.floor(Math.random() * 4+1);
+        tickets.push({
+			id:start,
+			status:[0,1,2][type % 3],
+            award: [10,20,50][start % 3],
+            expiryTime:type%2 == 0?"2015-10-22":"2014-2-10",
+            note:"注册奖励",
+			usedTime:"2015-01-02",
 			params:[10000,1000,500,5000][type-1]
         });
         start++;
