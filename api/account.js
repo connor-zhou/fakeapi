@@ -375,7 +375,7 @@ router.all('/account/my', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} type			卡券类型（0--投资券，1--加息券）
+ * @input.post {int}    type			卡券类型（0--投资券，1--加息券）
  *
  * @output {json} 我的投资券列表
  * {
@@ -437,7 +437,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *
  * @input.post  {string} client 			客户端统计参数（common/client）
  * @input.post  {string} token 			Token
- * @input.post  {string} type				卡券类型（0--投资券，1--加息券）
+ * @input.post  {int}    type				卡券类型（0--投资券，1--加息券）
  * @input.post  {string} projectId     	要投资的项目id
  * @input.post  {string} money			 	投资金额
  *
