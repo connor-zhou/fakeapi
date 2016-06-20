@@ -141,6 +141,7 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @input.post {String}   projectId				    项目Id
  * @input.post {String}   money					    投资金额
  * @input.post {String}   awardIds				        投资券Ids（多个id用 ","(英文逗号)拼接）
+ * @input.post {String}   interestTicketId				加息券Id
  * @input.post {String}   callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
  * @input.post {String}   callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
  *

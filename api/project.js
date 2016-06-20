@@ -154,9 +154,11 @@ router.all('/project/recommend', function (req, res, next) {
  *      expireTime:"{string} 投资截止日期",
  *      repaymentTime:"{string} 还款日期",
  *      investNumber:"{String} 投资总数",
+ *      accountMoney:"{String} 账户余额",
  *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
  *      canInvest:"{int} 能否投资 (1--能,0--否)",
- *      canUseAward :"{int} 能否用券 (1--能,0--否)",
+ *      canUseAward :"{int} 能否用投资券 (1--能,0--否)",
+ *      canUseInterestTicket:"{int} 能否使用加息券 （1--能，0--否）",
  *      isNewUserProject:"{int} 是否是新手项目 (1--是，0--否)"
  *   }
  * }
@@ -167,14 +169,15 @@ router.all('/project/detail', function (req, res, next) {
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
     var type = Math.floor(Math.random() * 7+1);
     var duration = Math.floor(Math.random() * 20 + 2);
+    var yesOrNo = Math.floor(Math.random() * 2);
     var project = {
         id: pid,
         title: types[type-1]+"**"+pid,
         category: type,
         categoryName: types[type-1],
         methods: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
-        money: 200000,
-        haveMoney:10000,
+        money: '200000',
+        haveMoney:'10000',
         schedule: 35,
         projectStatus: [1,2,3][type % 3],
         projectStatusName: ["投标中","还款中","已还款"][type % 3],
@@ -183,15 +186,17 @@ router.all('/project/detail', function (req, res, next) {
         revenueDisplay: 'app专享加息+2.4%',
         duration: duration,
         durationUnit:'个月',
-        minInvest: [2000,1000][Math.floor(Math.random() * 2)],
-        canInvestMoney:190000,
+        minInvest: ['2000','1000'][yesOrNo],
+        canInvestMoney:'190000',
         expireTime: '2016-09-05',
         repaymentTime:"2016-08-05",
         investNumber:100,
-        isRecommend:Math.floor(Math.random() * 2),
-        canInvest:Math.floor(Math.random() * 2),
-        canUseAward:Math.floor(Math.random() * 2),
-        isNewUserProject:Math.floor(Math.random() * 2)
+        accountMoney:'25000',
+        isRecommend:yesOrNo,
+        canInvest:yesOrNo,
+        canUseAward:yesOrNo,
+        canUseInterestTicket:yesOrNo,
+        isNewUserProject:yesOrNo
     };
     var resultValue = {
         code: 0,
