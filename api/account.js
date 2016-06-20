@@ -431,6 +431,65 @@ router.all('/account/myTickets', function (req, res, next) {
 });
 
 /**
+ * @fakedoc xtz.我的加息券
+ *
+ * @name account.myInterestTickets
+ * @href /account/myInterestTickets
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @output {json} 我的加息券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		id:"{int} 投资券id",
+ *  		status:"{int} 投资券状态（0--正常，1--已使用，2--过期）",
+ *      	value:"{String} 券值",
+ *     		expiryTime:"{String} 过期时间",
+ *     		note:"{String} 券来源说明",
+ *     		usedTime:"{String} 使用时间"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myInterestTickets
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myInterestTickets
+ */
+router.all('/account/myInterestTickets', function (req, res, next) {
+	var start = req.body.start || 0;
+    var limit = req.body.limit || 10;
+    var order = req.body.order;
+    var type = req.body.type;
+	var tickets = [];
+    var max = 15;
+    while (start < max && limit > 0) {
+        var type = Math.floor(Math.random() * 4+1);
+        tickets.push({
+			id:start,
+			status:[0,1,2][type % 3],
+            value: ['10','20','50'][start % 3],
+            expiryTime:type % 2 == 0 ? "2015-10-22":"2014-2-10",
+            note:"注册奖励",
+			usedTime:"2015-01-02"
+        });
+        start++;
+        limit--;
+    }
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: tickets
+    }
+    res.json(resultValue);
+});
+
+/**
  * @fakedoc xtz.我的投资
  *
  * @name account.myInvestment
