@@ -177,54 +177,6 @@ router.all('/mmm/toInvest', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.得到乾多多平台投资的URL（v2版本）
- *
- * @name mmm.toInvest
- * @href /mmm/toInvest
- *
- * @input.post {String}   client 				        客户端统计参数（common/client）
- * @input.post {String}   token					    Token
- * @input.post {String}   projectId				    项目Id
- * @input.post {String}   money					    投资金额
- * @input.post {String}   awardIds				        投资券Ids（多个id用 ","(英文逗号)拼接）
- * @input.post {String}   interestTicketId				加息券Id
- * @input.post {String}   callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
- * @input.post {String}   callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
- *
- * @output {json} 投资的URL
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:{
- *      url:"{String} 乾多多平台投资的URL"
- *  }
- * }
- *
- * @needAuth
- *
- * @description
- *
- * 得到乾多多平台投资的URL（此版本的提交添加了加息券的信息）
- *
- * https://localhost:5000/mmm/toInvest
- *
- * https://fakeapi.asterlake.cn:5000/mmm/toInvest
- */
-
-router.all('/mmm/toInvest', function (req, res, next) {
-    var code = 0;
-    var text = "ok";
-    var resultValue = {
-        code: code,
-        text: text,
-        data: {
-            url:'/mmm/callback/toInvest'
-        }
-    }
-    res.json(resultValue);
-});
-
-/**
  * @fakedoc xtz.得到乾多多平台提现手续费
  *
  * @name mmm.withdrawFee
