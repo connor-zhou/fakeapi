@@ -210,6 +210,7 @@ router.all('/mmm/toInvest', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/mmm/toInvest
  */
+
 router.all('/mmm/toInvest', function (req, res, next) {
     var code = 0;
     var text = "ok";
