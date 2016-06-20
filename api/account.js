@@ -448,7 +448,7 @@ router.all('/account/myTickets', function (req, res, next) {
  *  		status:"{int} 加息券状态（0--正常，1--已使用，2--过期）",
  *      	value:"{String} 加息券值",
  *     		note:"{String} 加息券来源说明",
- *     		usedTime:"{String} 使用时间"
+ *     		usedTime:"{String} 使用时间",
  *     		expiryTime:"{String} 过期时间",
  *    }]
  * }
@@ -585,7 +585,7 @@ router.all('/account/myAvailInterestTickets', function (req, res, next) {
     while (start < max && limit > 0) {
         var type = Math.floor(Math.random() * 4+1);
         tickets.push({
-			id:start,
+			id:start+'',
             value: ['1','0.2','0.6'][start % 3],
 			ruleInfo:"满10000元可用",
             expiryTime:type % 2 == 0 ? "2015-10-22":"2014-2-10",
