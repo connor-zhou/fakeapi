@@ -447,14 +447,22 @@ router.all('/account/myTickets', function (req, res, next) {
  *  		id:"{int} 加息券id",
  *  		status:"{int} 加息券状态（0--正常，1--已使用，2--过期）",
  *      	value:"{String} 加息券值",
+ *      	useRule:"{String} 加息券使用规则说明",
  *     		note:"{String} 加息券来源说明",
  *     		usedTime:"{String} 使用时间",
  *     		expiryTime:"{String} 过期时间",
  *    }]
  * }
+ *  @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myInterestTickets
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myInterestTickets
  *
  **/
- router.all('/account/myAvailableTickets', function (req, res, next) {
+ router.all('/account/myInterestTickets', function (req, res, next) {
 	 var start = req.body.start || 0;
 	 var limit = req.body.limit || 10;
 	 var order = req.body.order;
@@ -467,6 +475,7 @@ router.all('/account/myTickets', function (req, res, next) {
 			 id:start,
 			 status:[0,1,2][type % 3],
 			 value: [10,20,50][start % 3],
+			 useRule:'满10000元可用',
 			 expiryTime:type % 2 == 0?"2015-10-22":"2014-2-10",
 			 note:"注册奖励",
 			 usedTime:"2015-01-02"
@@ -560,7 +569,7 @@ router.all('/account/myAvailableTickets', function (req, res, next) {
  *  data:[{
  *			id:"{String} 加息券id",
  *		    value:"{String} 加息券值",
- *      	ruleInfo:"{String} 规则说明",
+ *      	useRule:"{String} 使用规则说明",
  *     		expiryTime:"{String} 过期时间",
  *     		note:"{String} 加息券来源说明"
  *    }]
@@ -587,7 +596,7 @@ router.all('/account/myAvailInterestTickets', function (req, res, next) {
         tickets.push({
 			id:start+'',
             value: ['1','0.2','0.6'][start % 3],
-			ruleInfo:"满10000元可用",
+			useRule:"满10000元可用",
             expiryTime:type % 2 == 0 ? "2015-10-22":"2014-2-10",
             note:"注册奖励"
         });
