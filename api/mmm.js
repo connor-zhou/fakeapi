@@ -204,7 +204,7 @@ router.all('/mmm/toInvest', function (req, res, next) {
  *
  * @description
  *
- * 得到乾多多平台投资的URL
+ * 得到乾多多平台投资的URL（此版本的提交添加了加息券的信息）
  *
  * https://localhost:5000/mmm/toInvest
  *
