@@ -136,13 +136,14 @@ router.all('/mmm/toWithdraw', function (req, res, next) {
  * @name mmm.toInvest
  * @href /mmm/toInvest
  * 
- * @input.post {String}   client 				        客户端统计参数（common/client）
- * @input.post {String}   token					    Token
- * @input.post {String}   projectId				    项目Id
- * @input.post {String}   money					    投资金额
- * @input.post {String}   awardIds				        投资券Ids（多个id用 ","(英文逗号)拼接）
- * @input.post {String}   callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
- * @input.post {String}   callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String}    client 				        客户端统计参数（common/client）
+ * @input.post {String}    token					    Token
+ * @input.post {String}    projectId				    项目Id
+ * @input.post {String}    money					    投资金额
+ * @input.post {String=}   awardIds				        投资券Ids（多个id用 ","(英文逗号)拼接）
+ * @input.post {String=}   interestTicketId				加息券Id
+ * @input.post {String}    callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {String}    callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
  *
  * @output {json} 投资的URL
  * {
