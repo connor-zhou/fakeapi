@@ -1939,6 +1939,46 @@ router.all('/account/getNameAndChinaId', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.获取原快捷支付银行卡信息
+ *
+ * @name account.getQuickPayCardInfo
+ * @href /account/getQuickPayCardInfo
+ *
+ * @input.post {String} client 			客户端统计参数（common/client）
+ * @input.post {String} token 				token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/getQuickPayCardInfo
+ *
+ * https://fakeapi.asterlake.cn:5000/account/getQuickPayCardInfo
+ *
+ * @output {json} 设置默认银行卡
+ * {
+ * 		code:"{int}    状态代码（0表示成功，其它值表示失败--模拟接口默认返回0）",
+ *  	text:"{String} 状态描述",
+ *      data:[{
+ *      	cardNo:"{String} 银行卡号 (需模糊处理，格式：2545********2548)",
+ *          money:"{String} 必须提现金额"
+ *       }]
+ *
+ * }
+ */
+router.all('/account/getQuickPayCardInfo', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:[
+			{cardNo:'2548********2548',money:'10000'},
+			{cardNo:'2548********2018',money:'5000'}
+		]
+	}
+	res.json(resultValue);
+});
+
 
 
 module.exports = router;
