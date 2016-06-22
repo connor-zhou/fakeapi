@@ -321,6 +321,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		interestWill:"{String} 待收利息",
  *  		capitalWill:"{String} 待收本金",
  *  		capitalFreeze:"{String} 冻结本金",
+ *  		freeWithdrawLimit:"{String} 免费提现额度",
  *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，0--未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1--是，0--否)",
  *  		hasUnreadMessage:"{int} 是否有未读信息（1--有，0--无）"
@@ -359,6 +360,7 @@ router.all('/account/my', function (req, res, next) {
 			realPhone:'13526548754',
 			uname:'小王',
 			email:'34523452@ww.com',
+			freeWithdrawLimit:'5000',
 			isOpenMmm:0,
 			isNewUser:1,
 			hasUnreadMessage:false
