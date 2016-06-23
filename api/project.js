@@ -508,9 +508,10 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * @name project.interestCalculation
  * @href /project/interestCalculation
  * 
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {int} projectId 		项目Id
- * @input.post {number} amount 		投资金额
+ * @input.post {string} client 		    客户端统计参数（common/client）
+ * @input.post {int}    projectId 		    项目Id
+ * @input.post {number} amount 		    投资金额
+ * @input.post {string=} intTicketId 		加息券id
  *
  * @description 
  * 
