@@ -12,7 +12,7 @@ var _ = require('lodash');
  * @input.post {string}  token 				Token
  * @input.post {String}  projectId	 			项目Id
  * @input.post {String}  money	 			    投资金额
- * @input.post {String=} awardIds	 			投资券id（多个以英文逗号连接为字符串）
+ * @input.post {String=} intTicketId	 	    加息券id
  *
  * @description
  * 
