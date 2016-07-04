@@ -722,6 +722,7 @@ router.all('/account/myInvestment', function (req, res, next) {
  *  	statusName:"{String} 投资状态名称",
  *      interestWill:"{String} 预期收益",
  * 		money:"{String} 投资金额",
+ * 		intTicket:'{String} 投资时选择的加息利率',
  *  	project:{
  *      	title:"{String} 项目名称",
  *      	category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
@@ -759,6 +760,7 @@ router.all('/account/myInvestmentDetail', function (req, res, next) {
 			money: 1000000,
 			interestWill: 64000,
 			pid: 1,
+			intTicket:'0.2',
 			project:{
 				title: types[type-1] + '-' + type,
 				category:type,
