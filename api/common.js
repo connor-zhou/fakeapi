@@ -263,4 +263,39 @@ router.all('/common/branchBankName',function(req,res,next){
     res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.得到bbs登陆地址
+ *
+ * @name common.getBBSLoginUrl
+ * @href common/getBBSLoginUrl
+ *
+ * @input.post {String} client                  客户端统计参数（common/client）
+ * @input.post {String} url                     bbs地址
+ *
+ * @description
+ *
+ * https://localhost:5000/common/getBBSLoginUrl
+ *
+ * https://fakeapi.asterlake.cn:5000/common/getBBSLoginUrl
+ *
+ * @output {json} 得到bbs登陆地址
+ *{
+ *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
+ *      text:"{String} 状态描述",
+ *      data:{
+ *          url:'{string} 登陆Url'
+ *      }
+ * }
+ * */
+router.all('/common/getBBSLoginUrl',function(req,res,next){
+    var resultValue = {
+        code: 0,
+        text:'ok',
+        data:{
+            url:'http://bbs.xingtouzi.com/forum-36-1.html'
+        }
+    }
+    res.json(resultValue);
+});
+
 module.exports = router;
