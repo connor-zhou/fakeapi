@@ -200,7 +200,7 @@ router.all('/project/detail', function (req, res, next) {
         canUseInterestTicket:yesOrNo,
         isNewUserProject:yesOrNo
     };
-    
+
     var resultValue = {
         code: 0,
         text: 'ok',
