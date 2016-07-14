@@ -269,8 +269,9 @@ router.all('/common/branchBankName',function(req,res,next){
  * @name common.getBBSLoginUrl
  * @href common/getBBSLoginUrl
  *
- * @input.post {String} client                  客户端统计参数（common/client）
- * @input.post {String} url                     bbs地址
+ * @input.post {String}  client                  客户端统计参数（common/client）
+ * @input.post {string=} token 			       Token
+ * @input.post {String}   url                    bbs地址
  *
  * @description
  *
