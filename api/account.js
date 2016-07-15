@@ -601,8 +601,8 @@ router.all('/account/myCouponDetail', function (req, res, next) {
 /**
  * @fakedoc xtz.得到指定优惠券的二维码
  *
- * @name account.get2DCode
- * @href /account/get2DCode
+ * @name account.getQRCodeUrl
+ * @href /account/getQRCodeUrl
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token 			Token
@@ -613,7 +613,7 @@ router.all('/account/myCouponDetail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	code:"{string} 二维码地址"
+ *  	url:"{string} 二维码地址"
  *  }
  * }
  *
@@ -621,18 +621,172 @@ router.all('/account/myCouponDetail', function (req, res, next) {
  *
  * @description
  *
- * https://localhost:5000/account/get2DCode
+ * https://localhost:5000/account/getQRCodeUrl
  *
- * https://fakeapi.asterlake.cn:5000/account/get2DCode
+ * https://fakeapi.asterlake.cn:5000/account/getQRCodeUrl
  */
 
-router.all('/account/get2DCode', function (req, res, next) {
+router.all('/account/getQRCodeUrl', function (req, res, next) {
 
 	var resultValue = {
 		code: 0,
 		text: 'ok',
 		data: {
-			code:''
+			url:''
+		}
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的入账优惠券种类
+ *
+ * @name account.myCouponTypeList
+ * @href /account/myCouponTypeList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @output {json} 我的入账优惠券种类
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  	id:"{string} 记录id",
+ *  	type:"{string}  所属优惠券种类",
+ *  	thumbnail:"{string} 优惠券缩略图url",
+ *  	title:"{string}     优惠券标题",
+ *  	content:"{string}   优惠券内容",
+ *  }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myCouponTypeList
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myCouponTypeList
+ */
+
+router.all('/account/myCouponTypeList', function (req, res, next) {
+	var results = [];
+	var i = 1;
+	while(i < 6){
+		results.push({
+			id:'10'+i,
+			type:i+'',
+			thumbnail:'',
+			title:'柒妈美食',
+			content:'柒妈美食体验券'
+		})
+		i++;
+	}
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: results
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的入账优惠券对应信息列表
+ *
+ * @name account.myCouponInfoList
+ * @href /account/myCouponInfoList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {string} type 			已入账的优惠券类型
+ *
+ * @output {json} 我的入账优惠券对应内容列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	total:"{string} 优惠券总数",
+ *  	thumbnail:"{string} 优惠券缩略图url",
+ *  	infoLists:[{
+ *			phone:"{string} 使用人号码",
+ *			usedTime:"{string} 入账时间"
+ *  	}]
+ *  }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myCouponInfoList
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myCouponInfoList
+ */
+
+router.all('/account/myCouponInfoList', function (req, res, next) {
+	var results = [];
+	var i = 1;
+	while(i < 6){
+		results.push({
+			phone:'1356985625'+ i,
+			usedTime:'2015-12-23'
+		})
+		i++;
+	}
+
+	var recordList = {
+		total:23 + '',
+		thumbnail:'',
+		infoLists:results
+	}
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: recordList
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.检查二维码扫描结果
+ *
+ * @name account.checkQRCode
+ * @href /account/checkQRCode
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {string} param			提交参数
+ *
+ * @output {json} 二维码扫描结果
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	type:"{int} 结果类型 （0--表示扫描成功，1--无权限）",
+ *  	couponTitle:"{string} 优惠券类型名称 （type为 1 时可不显示）",
+ *  	phone:"{string} 使用人电话号码（type为 1 时可不显示）",
+ *  	currentTime:"{string} 当前时间（type为 1 时可不显示）"
+ *  }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/checkQRCode
+ *
+ * https://fakeapi.asterlake.cn:5000/account/checkQRCode
+ */
+
+router.all('/account/checkQRCode', function (req, res, next) {
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			type:'1'
 		}
 	}
 	res.json(resultValue);
