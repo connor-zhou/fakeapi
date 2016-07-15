@@ -756,7 +756,7 @@ router.all('/account/myCouponInfoList', function (req, res, next) {
  * @href /account/checkQRCode
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 			Token
+ * @input.post {string=} token 			Token
  * @input.post {string} param			提交参数
  *
  * @output {json} 二维码扫描结果
