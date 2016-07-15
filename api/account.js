@@ -562,8 +562,8 @@ router.all('/account/myUnavailCoupons', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:[{
  *  		id:"{string} 优惠券id",
- *  		code:"{string} 二维码地址（只有status为 0 时才有返回值，否则为''）",
- *  		usedTime:"{string} 使用时间（只有status为 1 时才有返回值，否则为''）",
+ *  		code:"{string=} 二维码地址（只有status为 0 时才有返回）",
+ *  		usedTime:"{string=} 使用时间（只有status为 1 时才有返回）",
  *  		expiryTime:"{string} 截止有效时间",
  *  		status:"{int} （0--正常，1--已使用，2--已过期）",
  *  		usedRule:"{string} 使用规则html"
@@ -765,9 +765,9 @@ router.all('/account/myCouponInfoList', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:{
  *  	type:"{int} 结果类型 （0--扫描成功，1--无权限）",
- *  	couponTitle:"{string} 优惠券类型名称 （type为 1 时可不显示）",
- *  	phone:"{string} 使用人电话号码（type为 1 时可不显示）",
- *  	currentTime:"{string} 当前时间（type为 1 时可不显示）"
+ *  	couponTitle:"{string=} 优惠券类型名称 （type为 1 时可不显示）",
+ *  	phone:"{string=} 使用人电话号码（type为 1 时可不显示）",
+ *  	currentTime:"{string=} 当前时间（type为 1 时可不显示）"
  *  }
  * }
  *
