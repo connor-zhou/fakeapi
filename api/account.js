@@ -764,7 +764,7 @@ router.all('/account/myCouponInfoList', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  	type:"{int} 结果类型 （0--表示扫描成功，1--无权限）",
+ *  	type:"{int} 结果类型 （0--扫描成功，1--无权限）",
  *  	couponTitle:"{string} 优惠券类型名称 （type为 1 时可不显示）",
  *  	phone:"{string} 使用人电话号码（type为 1 时可不显示）",
  *  	currentTime:"{string} 当前时间（type为 1 时可不显示）"
