@@ -322,6 +322,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		capitalWill:"{String} 待收本金",
  *  		capitalFreeze:"{String} 冻结本金",
  *  		freeWithdrawLimit:"{String} 免费提现额度",
+ *  		isSeller:"{int} 是否是商家（1--是，0--不是）",
  *  		isOpenMmm:"{int} 是否开通乾多多(1--开通，0--未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1--是，0--否)",
  *  		hasUnreadMessage:"{int} 是否有未读信息（1--有，0--无）"
@@ -361,6 +362,7 @@ router.all('/account/my', function (req, res, next) {
 			uname:'小王',
 			email:'34523452@ww.com',
 			freeWithdrawLimit:'5000',
+			isSeller:0,
 			isOpenMmm:0,
 			isNewUser:1,
 			hasUnreadMessage:false
@@ -431,6 +433,212 @@ router.all('/account/myTickets', function (req, res, next) {
     }
     res.json(resultValue);
 });
+
+/**
+ * @fakedoc xtz.我的可用优惠券
+ *
+ * @name account.myAvailCoupons
+ * @href /account/myAvailCoupons
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @output {json} 我的可用优惠券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		id:"{string} 优惠券id",
+ *  		thumbnail:"{string} 缩略图地址",
+ *  		content:"{string} 优惠券内容"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myAvailCoupons
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myAvailCoupons
+ */
+
+router.all('/account/myAvailCoupons', function (req, res, next) {
+	var start = req.body.start || 0;
+	var limit = req.body.limit || 10;
+	var order = req.body.order;
+	var type = req.body.type;
+	var coupons = [];
+	var max = 15;
+	while (start < max && limit > 0) {
+		var type = Math.floor(Math.random() * 4 + 1);
+		coupons.push({
+			id:start,
+			thumbnail:'',
+			content:'价值30元柒妈美食体验券'
+		});
+		start++;
+		limit--;
+	}
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: coupons
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的不可用优惠券
+ *
+ * @name account.myUnavailCoupons
+ * @href /account/myUnavailCoupons
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @output {json} 我的不可用优惠券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		id:"{string} 优惠券id",
+ *  		thumbnail:"{string} 缩略图地址",
+ *  		content:"{string} 优惠券内容",
+ *  		status:"{int} （1--已使用，2--已过期）",
+ *  		statusName:"{string} 状态说明"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myUnavailCoupons
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myUnavailCoupons
+ */
+
+router.all('/account/myUnavailCoupons', function (req, res, next) {
+	var start = req.body.start || 0;
+	var limit = req.body.limit || 10;
+	var order = req.body.order;
+	var type = req.body.type;
+	var coupons = [];
+	var max = 15;
+	while (start < max && limit > 0) {
+		var type = Math.floor(Math.random() * 4 + 1);
+		coupons.push({
+			id:start,
+			thumbnail:'',
+			content:'价值30元柒妈美食体验券',
+			status:1,
+			statusName:'已使用'
+		});
+		start++;
+		limit--;
+	}
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: coupons
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的优惠券详情
+ *
+ * @name account.myCouponDetail
+ * @href /account/myCouponDetail
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {string} id				优惠券id
+ *
+ * @output {json} 我的优惠券详情
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		id:"{string} 优惠券id",
+ *  		code:"{string} 二维码地址（只有status为 0 时才有返回值，否则为''）",
+ *  		usedTime:"{string} 使用时间（只有status为 1 时才有返回值，否则为''）",
+ *  		expiryTime:"{string} 截止有效时间",
+ *  		status:"{int} （0--正常，1--已使用，2--已过期）",
+ *  		usedRule:"{string} 使用规则html"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myCouponDetail
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myCouponDetail
+ */
+
+router.all('/account/myCouponDetail', function (req, res, next) {
+	var coupon = {
+			id:'1024',
+			code:'',
+			usedTime:'2016-07-15',
+			expiryTime:'2016-09-15',
+			status:1,
+			statusName:'已使用',
+			usedRule:'<p>1、凭该优惠券可到“柒妈美食”实体店领取价值30元特色美食一份;</p><p>2、该券有效期至2016年8月31日;</p><p>3、该券仅支持线下领取美食;</p><p>4、柒妈美食店地址;上海市浦东新区达尔文路88号6棟405</p>'
+	}
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: coupon
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.得到指定优惠券的二维码
+ *
+ * @name account.get2DCode
+ * @href /account/get2DCode
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {string} id				优惠券id
+ *
+ * @output {json} 我的优惠券详情
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	code:"{string} 二维码地址"
+ *  }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/get2DCode
+ *
+ * https://fakeapi.asterlake.cn:5000/account/get2DCode
+ */
+
+router.all('/account/get2DCode', function (req, res, next) {
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			code:''
+		}
+	}
+	res.json(resultValue);
+});
+
+
 
 /**
  * @fakedoc xtz.我的加息券
