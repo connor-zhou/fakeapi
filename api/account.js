@@ -651,13 +651,14 @@ router.all('/account/getQRCodeUrl', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:[{
- *  	id:"{string} 记录id",
- *  	type:"{string}  所属优惠券种类",
+ *  data:{
  *  	thumbnail:"{string} 优惠券缩略图url",
  *  	title:"{string}     优惠券标题",
- *  	content:"{string}   优惠券内容",
- *  }]
+ *  	recordList:[{
+ *  		id:"{string} 记录id",
+ *  		content:"{string}   优惠券内容",
+ *  	}]
+ *  }
  * }
  *
  * @needAuth
@@ -675,9 +676,6 @@ router.all('/account/myCouponTypeList', function (req, res, next) {
 	while(i < 6){
 		results.push({
 			id:'10'+i,
-			type:i+'',
-			thumbnail:'',
-			title:'柒妈美食',
 			content:'柒妈美食体验券'
 		})
 		i++;
@@ -686,7 +684,11 @@ router.all('/account/myCouponTypeList', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data: results
+		data: {
+			thumbnail:'',
+			title:'柒妈美食',
+			recordList:results
+		}
 	}
 	res.json(resultValue);
 });
