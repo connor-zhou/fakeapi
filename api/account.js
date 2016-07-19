@@ -560,14 +560,14 @@ router.all('/account/myUnavailCoupons', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:[{
+ *  data:{
  *  		id:"{string} 优惠券id",
  *  		code:"{string=} 二维码地址（只有status为 0 时才有返回）",
  *  		usedTime:"{string=} 使用时间（只有status为 1 时才有返回）",
  *  		expiryTime:"{string} 截止有效时间",
  *  		status:"{int} （0--正常，1--已使用，2--已过期）",
  *  		usedRule:"{string} 使用规则html"
- *    }]
+ *    }
  * }
  *
  * @needAuth
