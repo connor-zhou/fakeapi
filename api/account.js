@@ -712,7 +712,7 @@ router.all('/account/myCouponTypeList', function (req, res, next) {
  *  	thumbnail:"{string} 优惠券缩略图url",
  *  	content:"{string} 优惠券类别内容",
  *  	infoLists:[{
- *			phone:"{string} 使用人号码",
+ *			phone:"{string} 使用人号码(格式：135****1254)",
  *			usedTime:"{string} 入账时间"
  *  	}]
  *  }
@@ -732,7 +732,7 @@ router.all('/account/myCouponInfoList', function (req, res, next) {
 	var i = 1;
 	while(i < 6){
 		results.push({
-			phone:'1356985625'+ i,
+			phone:'135****5625'+ i,
 			usedTime:'2015-12-23'
 		})
 		i++;
