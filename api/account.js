@@ -710,6 +710,7 @@ router.all('/account/myCouponTypeList', function (req, res, next) {
  *  data:{
  *  	total:"{string} 优惠券总数",
  *  	thumbnail:"{string} 优惠券缩略图url",
+ *  	content:"{string} 优惠券类别内容",
  *  	infoLists:[{
  *			phone:"{string} 使用人号码",
  *			usedTime:"{string} 入账时间"
@@ -740,6 +741,7 @@ router.all('/account/myCouponInfoList', function (req, res, next) {
 	var recordList = {
 		total:23 + '',
 		thumbnail:'',
+		content:"价值30元水果体验券",
 		infoLists:results
 	}
 
