@@ -555,19 +555,19 @@ router.all('/account/myUnavailCoupons', function (req, res, next) {
  * @input.post {string}  client 				客户端统计参数（common/client）
  * @input.post {string}  token 				Token
  * @input.post {string}  id					优惠券id
- * @input.post {string} simple				是否简化输出字段（1--是，0--否）
+ * @input.post {string=} simple				是否简化输出字段（1--是，0--否）
  *
- * @output {json} 我的优惠券详情（先按simple条件，再按status条件过滤返回；未说明simple条件的，默认只按status条件返回）
+ * @output {json} 我的优惠券详情（注释中带simple字样为simple = 1 时可能输出字段）
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data:{
- *  		id:"{string=} 优惠券id（simple为 0 时才有返回）",
- *  		code:"{string=} 二维码地址（simple 为 1 且 status为 0 时才有返回）",
- *  		usedTime:"{string=} 使用时间（只有status为 1 时才有返回）",
- *  		expiryTime:"{string=} 截止有效时间（simple为 0 时才有返回）",
- *  		status:"{int} （0--正常，1--已使用，2--已过期）",
- *  		usedRule:"{string=} 使用规则html（simple为 0 时才有返回）"
+ *  		id:"{string=} 优惠券id",
+ *  		code:"{string=} 二维码地址（status为 0 时才有返回）",
+ *  		usedTime:"{string=} 使用时间（只有status为 1 时才有返回；simple）",
+ *  		expiryTime:"{string=} 截止有效时间",
+ *  		status:"{int}  优惠券状态（0--正常，1--已使用，2--已过期；simple）",
+ *  		usedRule:"{string=} 使用规则html"
  *    }
  * }
  *
