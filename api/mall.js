@@ -357,8 +357,8 @@ router.all('/mall/addressDetail', function (req, res, next) {
  * @input.post {string=} addressId						收货地址id（可选。不传表示新增，传值表示修改之前地址）
  * @input.post {string}  name							收件人姓名
  * @input.post {string}  phone							收件人手机号
- * @input.post {string}  province						收件地址所在区域
- * @input.post {string}  city						    收件地址所在街道
+ * @input.post {string}  province						收件地址所在省份
+ * @input.post {string}  city						    收件地址所在城市
  * @input.post {string}  detail						收件地址详情
  * @input.post {string}  main						    是否设为默认地址（1--是，0--否）
  *
