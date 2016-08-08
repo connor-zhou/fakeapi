@@ -3,66 +3,52 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 积分兑换商品分页列表
+ * @fakedoc xtz.热门兑换商品分页列表
  *
- * @name mall.productPageList
- * @href /mall/productPageList
+ * @name mall.hotProductPageList
+ * @href /mall/hotProductPageList
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
- * @input.post {interger=} [pageSize=10] 		页容量
- * @input.post {interger=} [pageNumber=1] 		页码
+ * @input.post {string} token					token
+ *
+ * @needAuth
  *
  * @description
  * 
- * https://localhost:3000/mall/productPageList?client=asdfaqerq1werqwe&pageSize=10&pageNumber=1
+ * https://localhost:5000/mall/hotProductPageList
  * 
- * https://fakeapi.fdjf.net:3000/mall/productPageList?client=asdfaqerq1werqwe&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/mall/hotProductPageList
  *
  * @output {json} 分页列表
  * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败（69633表示未登陆））",
  *  text:"{String} 状态描述",
  *  data: [
  * 	  {
  * 		productId:"{String} 商品Id",
- * 		productName:"{String} 商品名称",
- * 		typeId:"{String} 商品类别Id",
- * 		typeName:"{String} 商品类别名称",
- * 		logoMin:"{String} 商品图片",
- * 		introduction:"{String} 商品介绍",
+ * 		type:"{int} 商品类型(1--加息券，2--代金券，3--实物商品)",
+ * 		introduction:"{String} 商品名称",
+ * 		photo:"{String} 商品图片",
  *  	price:"{number} 原价",
  *  	showPrice:"{number} 现价",
- *  	upDt:"{string} 上架时间",
- *  	downDt:"{string} 下架时间",
- * 		productCount:"{int} 上架数量",
- *  	productSurplus:"{int} 剩余数量",
- *  	status:"{int} 状态",
- *      statusName:"{String} 状态名称",
- *  	isRecommend:"{string} 是否推荐(0是，1不是)"
+ * 		productCount:"{int} 库存量"
  *     }
  * 	]
  * }
  * 
  *
  */
-router.all('/mall/productPageList', function (req, res, next) {
+router.all('/mall/hotProductPageList', function (req, res, next) {
     var activities = [];
     _.forEach([1,2,3,4,5,6,7], function (i) {
     	activities.push({
-    		productId: i, 
-    		productName: '商品名称'+i, 
-        	typeId: [1,2][i % 2],
-        	typeName:"商品类别名称",
-        	logoMin:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+    		productId: i,
+			type:[1,2,3][i % 3],
+			introduction: '商品名称'+i,
+        	photo:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
         	price:1000,
         	showPrice:800,
-        	upDt:'2015-10-20 11:11:11',
-        	downDt:'2016-10-20 11:11:11',
-        	productCount:20,
-        	productSurplus:10,
-        	status:1,
-        	statusName:'状态名称',
-        	isRecommend:"0"
+        	productCount:'20'
         });
     });
     var resultValue = {
@@ -74,19 +60,81 @@ router.all('/mall/productPageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 积分兑换商品详情
+ * @fakedoc xtz.更多兑换商品分页列表
+ *
+ * @name mall.productPageList
+ * @href /mall/productPageList
+ *
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token					token
+ * @input.post {interger} [pageSize=10] 		页容量
+ * @input.post {interger} [pageNumber=1] 		页码
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/productPageList
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/productPageList
+ *
+ * @output {json} 分页列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败（69633表示未登陆））",
+ *  text:"{String} 状态描述",
+ *  data: [
+ * 	  {
+ * 		productId:"{String} 商品Id",
+ * 		type:"{int} 商品类型(1--加息券，2--代金券，3--实物商品)",
+ * 		introduction:"{String} 商品名称",
+ * 		photo:"{String} 商品图片",
+ *  	price:"{number} 原价",
+ *  	showPrice:"{number} 现价",
+ * 		productCount:"{int} 库存量"
+ *     }
+ * 	]
+ * }
+ *
+ *
+ */
+router.all('/mall/productPageList', function (req, res, next) {
+    var activities = [];
+    _.forEach([1,2,3,4,5,6,7], function (i) {
+    	activities.push({
+    		productId: i,
+			type:[1,2,3][i % 3],
+			introduction: '商品名称'+i,
+        	photo:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+        	price:1000,
+        	showPrice:800,
+        	productCount:'20'
+        });
+    });
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: activities
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 兑换商品详情
  *
  * @name mall.productDetail
  * @href /mall/productDetail
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token					token
  * @input.post {String} productId		 		商品Id
+ *
+ * @needAuth
  *
  * @description
  * 
- * https://localhost:3000/mall/productDetail?client=asdfaqerq1werqwe&pageSize=10&pageNumber=1
+ * https://localhost:5000/mall/productDetail
  * 
- * https://fakeapi.fdjf.net:3000/mall/productDetail?client=asdfaqerq1werqwe&pageSize=10&pageNumber=1
+ * https://fakeapi.asterlake.cn:5000/mall/productDetail
  *
  * @output {json} 分页列表
  * {
@@ -94,20 +142,11 @@ router.all('/mall/productPageList', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data: {
  * 		productId:"{String} 商品Id",
- * 		productName:"{String} 商品名称",
- * 		typeId:"{String} 商品类别Id",
- * 		typeName:"{String} 商品类别名称",
- * 		logoNormal:"{String} 商品图片(中图）",
  * 		introduction:"{String} 商品介绍",
- *  	price:"{number} 原价",
- *  	showPrice:"{number} 现价",
- *  	upDt:"{string} 上架时间",
- *  	downDt:"{string} 下架时间",
- * 		productCount:"{int} 上架数量",
- *  	productSurplus:"{int} 剩余数量",
- *  	status:"{int} 状态",
- *      statusName:"{String} 状态名称",
- *  	isRecommend:"{string} 是否推荐(0是，1不是)"
+ * 		pics:"{array} 商品图片url数组（虚拟商品取pics[0]）",
+ *  	showPrice:"{String} 现价",
+ *  	rule:"{String} 兑换规则html",
+ *		isExchange:"{int}  是否可兑换（1--是,0--否）"
  *   }
  * }
  * 
@@ -117,21 +156,12 @@ router.all('/mall/productDetail', function (req, res, next) {
     var activities = [];
     _.forEach([1], function (i) {
     	activities.push({
-    		productId: i, 
-    		productName: '商品名称'+i, 
-        	typeId: [1,2][i % 2],
-        	typeName:"商品类别名称",
-        	logoNormal:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+    		productId: i,
+			pics:["https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg"],
         	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
-        	price:1000,
-        	showPrice:800,
-        	upDt:'2015-10-20 11:11:11',
-        	downDt:'2016-10-20 11:11:11',
-        	productCount:20,
-        	productSurplus:10,
-        	status:1,
-        	statusName:'状态名称',
-        	isRecommend:"0"
+        	showPrice:'800',
+			rule:'<p>this is a test html</p><p>only two paraphgraph</p>',
+			isExchange:1
         });
     });
     var resultValue = {
