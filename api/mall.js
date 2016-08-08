@@ -318,8 +318,8 @@ router.all('/mall/addressList', function (req, res, next) {
  *  	addressId:"{String} 收货地址id",
  *  	name:"{String} 收件人姓名",
  *  	phone:"{String} 收件人电话",
- *  	area:"{String} 收件地址所在区域",
- *  	street:"{String} 收件地址所在街道",
+ *  	province:"{String} 收件地址所在省份",
+ *  	city:"{String} 收件地址所在城市",
  *  	detail:'{String} 详细地址',
  *  	isMain:"{int} 是否默认收货地址"
  *  }
@@ -332,8 +332,8 @@ router.all('/mall/addressDetail', function (req, res, next) {
 		addressId:'1012',
 		name:'张三丰',
 		phone:'13256478956',
-		area:'上海市浦东新区张江高科',
-		street:'达尔文路66号',
+		province:'上海市',
+		city:'浦东新区',
 		detail:'半岛科技园6号楼',
 		isMain:0
 	}
@@ -357,8 +357,8 @@ router.all('/mall/addressDetail', function (req, res, next) {
  * @input.post {string=} addressId						收货地址id（可选。不传表示新增，传值表示修改之前地址）
  * @input.post {string}  name							收件人姓名
  * @input.post {string}  phone							收件人手机号
- * @input.post {string}  area							收件地址所在区域
- * @input.post {string}  street						收件地址所在街道
+ * @input.post {string}  province						收件地址所在区域
+ * @input.post {string}  city						    收件地址所在街道
  * @input.post {string}  detail						收件地址详情
  * @input.post {string}  main						    是否设为默认地址（1--是，0--否）
  *
