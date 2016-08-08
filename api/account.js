@@ -1280,8 +1280,6 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 						[{title: '星企贷', repaymentTime: '2015-10-10', money: 90, interest: 10},
 						{title: '星保理', repaymentTime: '2015-11-10', money: 930, interest: 10},
 						{title: '星车宝', repaymentTime: '2015-11-10', money: 906, interest: 10}]
-
-
 				}]
 		}
 	}
@@ -1483,7 +1481,7 @@ router.all('/account/saveEmail', function (req, res, next) {
 });
 
 /**
- * @fakedoc 签到
+ * @fakedoc xtz.签到
  *
  * @name account.sign
  * @href /account/sign
@@ -1495,16 +1493,16 @@ router.all('/account/saveEmail', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{number} 变化的积分值"
+ *  data:"{String} 奖励的星币数量"
  * }
  * 
  * @needAuth
  * 
  * @description
  *
- * https://localhost:5000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
+ * https://localhost:5000/account/sign
  * 
- * https://fakeapi.asterlake.cn:5000/account/sign?client=asdfaqerq1werqwe&token=2435135345623413&client=234523452345
+ * https://fakeapi.asterlake.cn:5000/account/sign
  */
 router.all('/account/sign', function (req, res, next) {
 	var code = 0;
@@ -1512,7 +1510,7 @@ router.all('/account/sign', function (req, res, next) {
 	var resultValue = {
     	code: code,
     	text: text,
-    	data: -20
+    	data: '40'
     }
     res.json(resultValue);
 });
