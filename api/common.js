@@ -114,7 +114,7 @@ router.all('/common/bankList', function (req, res, next) {
     res.json(resultValue);
 });
 /**
- * @fakedoc xtz.得到银行卡的开户省份列表
+ * @fakedoc xtz.得到省份列表
  *
  * @name common.provinceList
  * @href common/provinceList
@@ -127,7 +127,7 @@ router.all('/common/bankList', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/common/provinceList
  *
- * @output {json} 得到银行卡的开户省份列表
+ * @output {json} 得到省份列表
  *{
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
@@ -179,7 +179,7 @@ router.all('/common/provinceList',function(req,res,next){
 });
 
 /**
- * @fakedoc xtz.得到银行卡开户所在省份城市列表
+ * @fakedoc xtz.得到所在省份城市列表
  *
  * @name common.cityList
  * @href common/cityList
@@ -193,7 +193,7 @@ router.all('/common/provinceList',function(req,res,next){
  *
  * https://fakeapi.asterlake.cn:5000/common/cityList
  *
- * @output {json} 得到银行卡开户所在省份城市列表（firstLetter为首字母统称，具体数据会有不同值）
+ * @output {json} 得到所在省份城市列表（firstLetter为首字母统称，具体数据会有不同值）
  *{
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
@@ -246,7 +246,7 @@ router.all('/common/cityList',function(req,res,next){
  *
  * https://fakeapi.asterlake.cn:5000/common/branchBankName
  *
- * @output {json} 得到银行卡的开户省份列表(数据示例为 安徽-合肥-交通银行-某分行)
+ * @output {json} 银行分行列表(数据示例为 安徽-合肥-交通银行-某分行)
  *{
  *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *      text:"{String} 状态描述",
@@ -262,6 +262,7 @@ router.all('/common/branchBankName',function(req,res,next){
     }
     res.json(resultValue);
 });
+
 
 /**
  * @fakedoc xtz.得到bbs登陆地址
