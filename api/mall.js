@@ -145,8 +145,7 @@ router.all('/mall/productPageList', function (req, res, next) {
  * 		introduction:"{String} 商品介绍",
  * 		pics:"{array} 商品图片url数组（虚拟商品取pics[0]）",
  *  	showPrice:"{String} 现价",
- *  	rule:"{String} 兑换规则html",
- *		isExchange:"{int}  是否可兑换（1--是,0--否）"
+ *  	rule:"{String} 兑换规则html"
  *   }
  * }
  * 
@@ -160,14 +159,82 @@ router.all('/mall/productDetail', function (req, res, next) {
 			pics:["https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg"],
         	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
         	showPrice:'800',
-			rule:'<p>this is a test html</p><p>only two paraphgraph</p>',
-			isExchange:1
+			rule:'<p>this is a test html</p><p>only two paraphgraph</p>'
         });
     });
     var resultValue = {
     	code: 0,
     	text: 'ok',
     	data: activities[0]
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.检查商品是否可兑换
+ *
+ * @name mall.checkExchange
+ * @href /mall/checkExchange
+ *
+ * @input.post {string} client 					客户端统计参数（common/client）
+ * @input.post {string} token						token
+ * @input.post {String} productId		 			商品Id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/checkExchange
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/checkExchange
+ *
+ * @output {json} 检查兑换
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/mall/checkExchange', function (req, res, next) {
+    var resultValue = {
+    	code: 0,
+    	text: 'ok'
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.商品兑换确认
+ *
+ * @name mall.confirmExchange
+ * @href /mall/confirmExchange
+ *
+ * @input.post {string} client 					客户端统计参数（common/client）
+ * @input.post {string} token						token
+ * @input.post {String} productId		 			商品Id
+ * @input.post {String} [num=1]		 			商品数量
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/confirmExchange
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/confirmExchange
+ *
+ * @output {json} 确认兑换
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/mall/confirmExchange', function (req, res, next) {
+    var resultValue = {
+    	code: 0,
+    	text: 'ok'
     }
     res.json(resultValue);
 });
