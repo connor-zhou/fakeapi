@@ -119,7 +119,7 @@ router.all('/mall/productPageList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 兑换商品详情
+ * @fakedoc xtz.兑换商品详情
  *
  * @name mall.productDetail
  * @href /mall/productDetail
