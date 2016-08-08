@@ -213,6 +213,7 @@ router.all('/mall/checkExchange', function (req, res, next) {
  * @input.post {string} client 					客户端统计参数（common/client）
  * @input.post {string} token						token
  * @input.post {String} productId		 			商品Id
+ * @input.post {String} addressId		 			收件地址Id
  * @input.post {String} [num=1]		 			商品数量
  *
  * @needAuth
@@ -236,6 +237,224 @@ router.all('/mall/confirmExchange', function (req, res, next) {
     	code: 0,
     	text: 'ok'
     }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.收货地址列表
+ *
+ * @name mall.addressList
+ * @href /mall/addressList
+ *
+ * @input.post {string} client 					客户端统计参数（common/client）
+ * @input.post {string} token						token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/addressList
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/addressList
+ *
+ * @output {json} 收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  	id:"{String} 收货地址id",
+ *  	name:"{String} 收件人姓名",
+ *  	phone:"{String} 收件人电话",
+ *  	address:"{String} 收件地址",
+ *  	isMain:"{int} 是否默认地址"
+ *  }]
+ * }
+ *
+ *
+ */
+router.all('/mall/addressList', function (req, res, next) {
+	var lists = [];
+	_.forEach([1,2,3,4,5,6], function (i) {
+		lists.push({
+			id:'10'+ i,
+			name:'李小龙',
+			phone:'1356478214'+ i,
+			address:'上海市浦东新区张江',
+			isMain:0
+		});
+	});
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: lists
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.收货地址详情
+ *
+ * @name mall.addressDetail
+ * @href /mall/addressDetail
+ *
+ * @input.post {string} client 						客户端统计参数（common/client）
+ * @input.post {string} token							token
+ * @input.post {string} addressId						收货地址id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/addressDetail
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/addressDetail
+ *
+ * @output {json} 收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	addressId:"{String} 收货地址id",
+ *  	name:"{String} 收件人姓名",
+ *  	phone:"{String} 收件人电话",
+ *  	area:"{String} 收件地址所在区域",
+ *  	street:"{String} 收件地址所在街道",
+ *  	detail:'{String} 详细地址',
+ *  	isMain:"{int} 是否默认收货地址"
+ *  }
+ * }
+ *
+ *
+ */
+router.all('/mall/addressDetail', function (req, res, next) {
+	var list = {
+		addressId:'1012',
+		name:'张三丰',
+		phone:'13256478956',
+		area:'上海市浦东新区张江高科',
+		street:'达尔文路66号',
+		detail:'半岛科技园6号楼',
+		isMain:0
+	}
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: list
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.编辑（添加）收货地址
+ *
+ * @name mall.editAddress
+ * @href /mall/editAddress
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {string=} addressId						收货地址id（可选。不传表示新增，传值表示修改之前地址）
+ * @input.post {string}  name							收件人姓名
+ * @input.post {string}  phone							收件人手机号
+ * @input.post {string}  area							收件地址所在区域
+ * @input.post {string}  street						收件地址所在街道
+ * @input.post {string}  detail						收件地址详情
+ * @input.post {string}  main						    是否设为默认地址（1--是，0--否）
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/editAddress
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/editAddress
+ *
+ * @output {json} 收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/mall/editAddress', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.删除收货地址
+ *
+ * @name mall.deleteAddress
+ * @href /mall/deleteAddress
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {string} addressId						收货地址id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/deleteAddress
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/deleteAddress
+ *
+ * @output {json} 删除收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/mall/deleteAddress', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+
+    res.json(resultValue);
+});
+
+
+/**
+ * @fakedoc xtz.设置默认收货地址
+ *
+ * @name mall.setMainAddress
+ * @href /mall/setMainAddress
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {string}  addressId						收货地址id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/setMainAddress
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/setMainAddress
+ *
+ * @output {json} 删除收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/mall/setMainAddress', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok'
+	}
+
     res.json(resultValue);
 });
 
