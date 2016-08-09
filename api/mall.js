@@ -26,7 +26,7 @@ var _ = require('lodash');
  *  data: [
  * 	  {
  * 		productId:"{String} 商品Id",
- * 		type:"{int} 商品类型(1--加息券，2--代金券，3--实物商品)",
+ * 		type:"{int} 商品类型(1--卡券，2--实物商品)",
  * 		introduction:"{String} 商品名称",
  * 		photo:"{String} 商品图片",
  *  	price:"{number} 原价",
@@ -85,7 +85,7 @@ router.all('/mall/hotProductPageList', function (req, res, next) {
  *  data: [
  * 	  {
  * 		productId:"{String} 商品Id",
- * 		type:"{int} 商品类型(1--加息券，2--代金券，3--实物商品)",
+ * 		type:"{int} 商品类型(1--卡券，2--实物商品)",
  * 		introduction:"{String} 商品名称",
  * 		photo:"{String} 商品图片",
  *  	price:"{number} 原价",
@@ -143,7 +143,8 @@ router.all('/mall/productPageList', function (req, res, next) {
  *  data: {
  * 		productId:"{String} 商品Id",
  * 		introduction:"{String} 商品介绍",
- * 		pics:"{array} 商品图片url数组（虚拟商品取pics[0]）",
+ * 		type:"{int} (1--卡券，2--实物商品)",
+ * 		pics:"{array} 商品图片url数组（卡券取pics[0]）",
  *  	showPrice:"{String} 现价",
  *  	rule:"{String} 兑换规则html"
  *   }
@@ -159,6 +160,7 @@ router.all('/mall/productDetail', function (req, res, next) {
 			pics:["https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg"],
         	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
         	showPrice:'800',
+			type:1,
 			rule:'<p>this is a test html</p><p>only two paraphgraph</p>'
         });
     });
