@@ -441,7 +441,7 @@ router.all('/mall/deleteAddress', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/mall/setMainAddress
  *
- * @output {json} 删除收货地址
+ * @output {json} 默认收货地址
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述"
@@ -453,6 +453,162 @@ router.all('/mall/setMainAddress', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok'
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的兑换订单列表
+ *
+ * @name mall.orderPageList
+ * @href /mall/orderPageList
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {interger} [pageSize=10] 				页容量
+ * @input.post {interger} [pageNumber=1] 				页码
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/orderPageList
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/orderPageList
+ *
+ * @output {json} 兑换订单列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  	introduction:"{String} 商品介绍",
+ *  	productCount:"{int} 订单所兑商品数量",
+ *  	timeline:"{String} 兑换时间（格式：2016-08-06 12:00）",
+ *  	status:"{int} 订单状态 (0--已创建，1--已发货，2--已撤销)",
+ *  	statusName:'{String} 订单状态说明',
+ *  	coins:"{int} 所用星币数量"
+ *  }]
+ * }
+ *
+ */
+router.all('/mall/orderPageList', function (req, res, next) {
+	var lists = [];
+
+	_.forEach([1,2,3,4,5,6],function(i){
+		lists.push({
+			introduction:'50元代金券',
+			productCount:5,
+			timeline:'2016-08-06 12:00',
+			status:0,
+			statusName:'已创建',
+			coins:400
+		})
+	})
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:lists
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的星币记录列表
+ *
+ * @name mall.coinLogPageList
+ * @href /mall/coinLogPageList
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {interger} [pageSize=10] 				页容量
+ * @input.post {interger} [pageNumber=1] 				页码
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/coinLogPageList
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/coinLogPageList
+ *
+ * @output {json} 星币记录列表
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  		yearMonth:"{string} 记录年月（格式如：2016-12）",
+ *  		recordList:[{
+ *  			timeline:"{String} 操作日期时间 （格式如：12-07 12:00:00）",
+ *  			category:"{int} 记录类型",
+ *  			categoryName:"{String} 记录类型名称",
+ *  			note:"{String} 备注( 格式如：+5)"
+ *  		}]
+ *  	}]
+ * }
+ *
+ */
+router.all('/mall/coinLogPageList', function (req, res, next) {
+	var lists = [];
+
+	_.forEach([1,2,3,4,5,6],function(i){
+		lists.push({
+			yearMonth:'2016-12',
+			recordList:[{
+				timeline:'12-06 12:00:00',
+				category:0,
+				categoryName:'bbs论坛',
+				note:'+5'
+			}]
+		})
+	})
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:lists
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.星币兑换规则
+ *
+ * @name mall.coinRule
+ * @href /mall/coinRule
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/coinRule
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/coinRule
+ *
+ * @output {json} 星币记录列表
+ * {
+ * 	code:"{int}  状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:"{Array} 规则html数组（格式如：['规则01html','规则02html',..]）"
+ *}
+ */
+router.all('/mall/coinLogPageList', function (req, res, next) {
+	var lists = [];
+
+	_.forEach([1,2,3],function(i){
+		lists.push('<p>'+i+'、投资获取星币，投资100元1个星币</p>')
+	})
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:lists
 	}
 
     res.json(resultValue);
