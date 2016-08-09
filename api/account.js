@@ -1586,6 +1586,109 @@ router.all('/account/myInvitation', function (req, res, next) {
 });
 
 /**
+ * @fakedoc 推荐有奖-奖励现金分页列表
+ *
+ * @name account.myEarningPageList
+ * @href /account/myEarningPageList
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myEarningPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ * @input.post {int=} [pageSize=10] 	页容量
+ * @input.post {int=} [pageNumber=1] 	页码
+ *
+ * @output {json} 分页列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *  	opDt:"{String} 操作日期时间",
+ *  	changeType:"{String} 变更类型（5，推荐好友投资返利:6，首次充值送现金:7，中秋国庆双节投资返利:8）",
+ *  	changeTypeName:"{String} 变更类型名称",
+ *  	changeVal:"{String} 变更值"
+ *   }]
+ * }
+ */
+router.all('/account/myEarningPageList', function (req, res, next) {
+	var code = 0;
+	var text = "ok";
+	var resultValue = {
+    	code: code,
+    	text: text,
+    	data: [
+    	   {opDt:'2015-10-19 11:01:01',changeType:1,changeTypeName:'推荐好友投资返利',changeVal:'+10000'},
+    	   {opDt:'2015-10-12 11:01:01',changeType:2,changeTypeName:'首次充值送现金',changeVal:'-500'},
+    	   {opDt:'2015-10-09 11:01:01',changeType:3,changeTypeName:'首次充值送现金',changeVal:'+10'},
+    	   {opDt:'2015-10-09 11:01:01',changeType:4,changeTypeName:'中秋国庆双节投资返利',changeVal:'-100'},
+    	   {opDt:'2015-09-09 11:01:01',changeType:5,changeTypeName:'中秋国庆双节投资返利',changeVal:'-2'}
+       ]
+    }
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 推荐有奖-奖励投资券分页列表
+ *
+ * @name account.myEarningTicketPageList
+ * @href /account/myEarningTicketPageList
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {int=} [pageSize=10] 	页容量
+ * @input.post {int=} [pageNumber=1] 	页码
+ *
+ * @output {json} 我的投资券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:[{
+ *      	ticketId:"{int} 投资券Id",
+ *      	amount:"{number} 面值",
+ *     		getDt:"{String} 获得时间",
+ *     		getRemark:"{String} 来源备注"
+ *    }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myEarningTicketPageList?client=asdfaqerq1werqwe&token=2435135345623413&pageSize=10&pageNumber=1
+ */
+router.all('/account/myEarningTicketPageList', function (req, res, next) {
+	var start = req.body.start || 0;
+    var limit = req.body.limit || 10;
+    var order = req.body.order;
+    var type = req.body.type;
+	var tickets = [];
+    var max = 15;
+    while (start < max && limit > 0) {
+        var type = Math.floor(Math.random() * 4);
+        tickets.push({
+        	ticketId: start,
+            amount: 10,
+            getDt:"2015-10-22",
+            getRemark:"推荐好友奖励"
+        });
+        start++;
+        limit--;
+    }
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: tickets
+    }
+    res.json(resultValue);
+});
+
+/**
  * @fakedoc 是否领取新年红包
  *
  * @name account.hasGetNewYearGiftMoney
