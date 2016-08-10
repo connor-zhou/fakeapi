@@ -3,10 +3,10 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc xtz.热门兑换商品分页列表
+ * @fakedoc xtz.热门兑换商品列表
  *
- * @name mall.hotProductPageList
- * @href /mall/hotProductPageList
+ * @name mall.hotProductList
+ * @href /mall/hotProductList
  * 
  * @input.post {string} client 				客户端统计参数（common/client）
  * @input.post {string} token					token
@@ -15,9 +15,9 @@ var _ = require('lodash');
  *
  * @description
  * 
- * https://localhost:5000/mall/hotProductPageList
+ * https://localhost:5000/mall/hotProductList
  * 
- * https://fakeapi.asterlake.cn:5000/mall/hotProductPageList
+ * https://fakeapi.asterlake.cn:5000/mall/hotProductList
  *
  * @output {json} 分页列表
  * {
@@ -38,7 +38,7 @@ var _ = require('lodash');
  * 
  *
  */
-router.all('/mall/hotProductPageList', function (req, res, next) {
+router.all('/mall/hotProductList', function (req, res, next) {
     var activities = [];
     _.forEach([1,2,3,4,5,6,7], function (i) {
     	activities.push({
