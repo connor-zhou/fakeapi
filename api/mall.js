@@ -35,7 +35,6 @@ var _ = require('lodash');
  *     }
  * 	]
  * }
- * 
  *
  */
 router.all('/mall/hotProductList', function (req, res, next) {
@@ -484,6 +483,7 @@ router.all('/mall/setMainAddress', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述",
  *  data:[{
+ *  	photo:"{String} 商品简介照片url",
  *  	introduction:"{String} 商品介绍",
  *  	productCount:"{int} 订单所兑商品数量",
  *  	timeline:"{String} 兑换时间（格式：2016-08-06 12:00）",
@@ -499,6 +499,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
 
 	_.forEach([1,2,3,4,5,6],function(i){
 		lists.push({
+			photo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
 			introduction:'50元代金券',
 			productCount:5,
 			timeline:'2016-08-06 12:00',
