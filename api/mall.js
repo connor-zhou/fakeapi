@@ -145,7 +145,8 @@ router.all('/mall/productPageList', function (req, res, next) {
  * 		type:"{int} (1--卡券，2--实物商品)",
  * 		pics:"{array} 商品图片url数组（卡券取pics[0]）",
  *  	showPrice:"{String} 现价",
- *  	rule:"{String} 兑换规则html"
+ *  	rule:"{String} 兑换规则html",
+ *  	canExchange:"{int} 能否兑换（1--能，0--否）"
  *   }
  * }
  * 
@@ -160,6 +161,7 @@ router.all('/mall/productDetail', function (req, res, next) {
         	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
         	showPrice:'800',
 			type:1,
+			canExchange:1,
 			rule:'<p>this is a test html</p><p>only two paraphgraph</p>'
         });
     });
@@ -483,6 +485,7 @@ router.all('/mall/setMainAddress', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述",
  *  data:[{
+ *  	productId:"{String} 商品id",
  *  	photo:"{String} 商品简介照片url",
  *  	introduction:"{String} 商品介绍",
  *  	productCount:"{int} 订单所兑商品数量",
@@ -499,6 +502,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
 
 	_.forEach([1,2,3,4,5,6],function(i){
 		lists.push({
+			productId:'10'+ i,
 			photo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
 			introduction:'50元代金券',
 			productCount:5,
