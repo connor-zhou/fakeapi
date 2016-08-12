@@ -174,6 +174,60 @@ router.all('/mall/productDetail', function (req, res, next) {
 });
 
 /**
+ * @fakedoc xtz.兑换商品简介
+ *
+ * @name mall.productIntro
+ * @href /mall/productIntro
+ *
+ * @input.post {string} client 				客户端统计参数（common/client）
+ * @input.post {string} token					token
+ * @input.post {String} productId		 		商品Id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/productIntro
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/productIntro
+ *
+ * @output {json} 兑换商品简介
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ * 		productId:"{String} 商品Id",
+ * 		introduction:"{String} 商品介绍",
+ * 		type:"{int} (1--卡券，2--实物商品)",
+ * 		photo:"{String} 商品图片url",
+ *  	showPrice:"{String} 现价",
+ *  	productCount:"{int} 商品库存"
+ *   }
+ * }
+ *
+ *
+ */
+router.all('/mall/productIntro', function (req, res, next) {
+    var activities = [];
+    _.forEach([1], function (i) {
+    	activities.push({
+    		productId: i,
+			photo:"https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg",
+        	introduction:"商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍",
+        	showPrice:'800',
+			type:1,
+			productCount:10
+        });
+    });
+    var resultValue = {
+    	code: 0,
+    	text: 'ok',
+    	data: activities[0]
+    }
+    res.json(resultValue);
+});
+
+/**
  * @fakedoc xtz.检查商品是否可兑换
  *
  * @name mall.checkExchange
@@ -456,6 +510,53 @@ router.all('/mall/setMainAddress', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok'
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.获取默认收货地址
+ *
+ * @name mall.getMainAddress
+ * @href /mall/getMainAddress
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/getMainAddress
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/getMainAddress
+ *
+ * @output {json} 默认收货地址
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	addressId:"{String} 收货地址id",
+ *  	name:"{String} 收货人姓名",
+ *  	phone:"{String} 收货人电话",
+ *  	address:"{String} 收货地址"
+ *  }
+ * }
+ *
+ *
+ */
+router.all('/mall/getMainAddress', function (req, res, next) {
+	var obj = {
+		addressId:'1012',
+		name:'雷锋',
+		phone:'13254678745',
+		address:'上海市浦东新区金海路2360号'
+	}
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:obj
 	}
 
     res.json(resultValue);
