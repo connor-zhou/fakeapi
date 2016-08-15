@@ -590,7 +590,7 @@ router.all('/mall/getMainAddress', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述",
  *  data:[{
- *  	productId:"{String} 商品id",
+ *  	orderId:"{String} 订单id",
  *  	photo:"{String} 商品简介照片url",
  *  	introduction:"{String} 商品介绍",
  *  	productCount:"{int} 订单所兑商品数量",
@@ -607,7 +607,77 @@ router.all('/mall/orderPageList', function (req, res, next) {
 
 	_.forEach([1,2,3,4,5,6],function(i){
 		lists.push({
-			productId:'10'+ i,
+			orderId:'10'+ i,
+			photo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
+			introduction:'50元代金券',
+			productCount:5,
+			timeline:'2016-08-06 12:00',
+			status:0,
+			statusName:'已创建',
+			coins:400
+		})
+	})
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:lists
+	}
+
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.我的兑换订单详情
+ *
+ * @name mall.orderDetail
+ * @href /mall/orderDetail
+ *
+ * @input.post {string}  client 						客户端统计参数（common/client）
+ * @input.post {string}  token							token
+ * @input.post {string}  orderId						订单id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/orderDetail
+ *
+ * https://fakeapi.asterlake.cn:5000/mall/oorderDetail
+ *
+ * @output {json} 兑换订单详情
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	addressInfo:{
+ *  		name:"{String} 收货人姓名",
+ *  		phone:"{String} 收货人电话",
+ *  		address:"{String} 收货地址"
+ *  	},
+ *  	orderInfo:{
+ *			photo:"{String} 商品简介照片url",
+ *  		introduction:"{String} 商品介绍",
+ *  		num:"{int} 订单所兑商品数量",
+ *  		status:"{int} 订单状态 (0--已创建，1--已发货，2--已撤销)",
+ *  		statusName:'{String} 订单状态说明',
+ *  		coins:"{int} 所用星币数量"
+ *  	},
+ *  	orderStatusInfo:{
+ *  		orderNo:"{String} 订单编号",
+ *  		createTime:"{String} 创建时间",
+ *  		sendTime:"{String} 发货时间"
+ *  	}
+ *   }
+ * }
+ *
+ */
+router.all('/mall/orderPageList', function (req, res, next) {
+	var lists = [];
+
+	_.forEach([1,2,3,4,5,6],function(i){
+		lists.push({
+			orderId:'10'+ i,
 			photo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
 			introduction:'50元代金券',
 			productCount:5,
