@@ -663,7 +663,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *  		statusName:'{String} 订单状态说明',
  *  		coins:"{int} 所用星币数量"
  *  	},
- *  	orderStatusInfo:{
+ *  	orderSendInfo:{
  *  		orderNo:"{String} 订单编号",
  *  		createTime:"{String} 创建时间",
  *  		sendTime:"{String} 发货时间"
