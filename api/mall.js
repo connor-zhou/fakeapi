@@ -665,8 +665,8 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *  	},
  *  	orderSendInfo:{
  *  		orderNo:"{String} 订单编号",
- *  		createTime:"{String} 创建时间(订单创建时间（格式：2016-05-16 08:51:30）)",
- *  		sendTime:"{String} 发货时间(订单发货时间（格式：2016-05-16 08:51:30））"
+ *  		createTime:"{String} 创建时间(订单创建时间（格式如：2016-05-16 08:51:30）)",
+ *  		sendTime:"{String} 发货时间(订单发货时间（格式如：2016-05-16 08:51:30））"
  *  	}
  *   }
  * }
