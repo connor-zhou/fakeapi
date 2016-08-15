@@ -645,7 +645,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/mall/orderDetail
  *
- * @output {json} 兑换订单详情
+ * @output {json} 兑换订单详情(addressInfo字段在为type==1时可不显示)
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述",
@@ -659,6 +659,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *			photo:"{String} 商品简介照片url",
  *  		introduction:"{String} 商品介绍",
  *  		num:"{int} 订单所兑商品数量",
+ *  		type:"{int} 订单所属商品类型(1--卡券，2--实物)",
  *  		status:"{int} 订单状态 (0--已创建，1--已发货，2--已撤销)",
  *  		statusName:'{String} 订单状态说明',
  *  		coins:"{int} 所用星币数量"
