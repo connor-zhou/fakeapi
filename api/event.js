@@ -8,7 +8,8 @@ var _ = require('lodash');
  * @name event.carousel
  * @href /event/carousel
  *
- * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string}  client 		客户端统计参数（common/client）
+ * @input.post {string=} [type=0]		返回图片用途（0--首页轮播图，1--弹框图片，2--启动页广告）
  *
  * @description
  *
