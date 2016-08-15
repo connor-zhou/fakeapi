@@ -376,7 +376,9 @@ router.all('/mall/addressList', function (req, res, next) {
  *  	name:"{String} 收件人姓名",
  *  	phone:"{String} 收件人电话",
  *  	province:"{String} 收件地址所在省份",
+ *  	provinceCode:"{String} 收件地址所在省份编码",
  *  	city:"{String} 收件地址所在城市",
+ *  	cityCode:"{String} 收件地址所在城市编码",
  *  	detail:'{String} 详细地址',
  *  	isMain:"{int} 是否默认收货地址"
  *  }
@@ -390,7 +392,9 @@ router.all('/mall/addressDetail', function (req, res, next) {
 		name:'张三丰',
 		phone:'13256478956',
 		province:'上海市',
+		provinceCode:'1012',
 		city:'浦东新区',
+		cityCode:'1010',
 		detail:'半岛科技园6号楼',
 		isMain:0
 	}
