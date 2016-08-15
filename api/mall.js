@@ -267,11 +267,11 @@ router.all('/mall/checkExchange', function (req, res, next) {
  * @name mall.confirmExchange
  * @href /mall/confirmExchange
  *
- * @input.post {string} client 					客户端统计参数（common/client）
- * @input.post {string} token						token
- * @input.post {String} productId		 			商品Id
- * @input.post {String} addressId		 			收件地址Id
- * @input.post {String} [num=1]		 			商品数量
+ * @input.post {string}  client 					客户端统计参数（common/client）
+ * @input.post {string}  token						token
+ * @input.post {String}  productId		 			商品Id
+ * @input.post {String=} addressId		 			收件地址Id
+ * @input.post {String}  [num=1]		 			商品数量
  *
  * @needAuth
  *
