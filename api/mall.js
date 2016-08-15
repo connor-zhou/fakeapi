@@ -643,7 +643,7 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *
  * https://localhost:5000/mall/orderDetail
  *
- * https://fakeapi.asterlake.cn:5000/mall/oorderDetail
+ * https://fakeapi.asterlake.cn:5000/mall/orderDetail
  *
  * @output {json} 兑换订单详情
  * {
@@ -665,33 +665,39 @@ router.all('/mall/orderPageList', function (req, res, next) {
  *  	},
  *  	orderSendInfo:{
  *  		orderNo:"{String} 订单编号",
- *  		createTime:"{String} 创建时间",
- *  		sendTime:"{String} 发货时间"
+ *  		createTime:"{String} 创建时间(订单创建时间（格式：2016-05-16 08:51:30）)",
+ *  		sendTime:"{String} 发货时间(订单发货时间（格式：2016-05-16 08:51:30））"
  *  	}
  *   }
  * }
  *
  */
-router.all('/mall/orderPageList', function (req, res, next) {
-	var lists = [];
-
-	_.forEach([1,2,3,4,5,6],function(i){
-		lists.push({
-			orderId:'10'+ i,
+router.all('/mall/orderDetail', function (req, res, next) {
+	var list = {
+		addressInfo:{
+			name:'lisi',
+			phone:'18654725847',
+			address:'上海市浦东新区金海路'
+		},
+		orderInfo:{
 			photo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
-			introduction:'50元代金券',
-			productCount:5,
-			timeline:'2016-08-06 12:00',
-			status:0,
-			statusName:'已创建',
+			introduction:'双汇牌火腿',
+			num:2,
+			status:1,
+			statusName:'已发货',
 			coins:400
-		})
-	})
+		},
+		orderSendInfo:{
+			orderNo:'201664765464654654',
+			createTime:'2016-05-16 09:51:21',
+			sendTime:'2016-08-10 09:51:30'
+		}
+	}
 
 	var resultValue = {
 		code: 0,
 		text: 'ok',
-		data:lists
+		data:list
 	}
 
     res.json(resultValue);
