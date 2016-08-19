@@ -1497,7 +1497,11 @@ router.all('/account/saveEmail', function (req, res, next) {
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{String} 状态描述",
- *  data:"{String} 奖励的星币数量"
+ *  data:{
+ *  	coins:"{String} 本次签到奖励星币",
+ *		days:"{int} 连续签到天数",
+ *		extraCoins:"{int} 连续签到奖励星币"
+ *  }
  * }
  * 
  * @needAuth
@@ -1509,12 +1513,15 @@ router.all('/account/saveEmail', function (req, res, next) {
  * https://fakeapi.asterlake.cn:5000/account/sign
  */
 router.all('/account/sign', function (req, res, next) {
-	var code = 0;
-	var text = "ok";
+	var result = {
+		coins:'10',
+		days:7,
+		extraCoins:12
+	}
 	var resultValue = {
-    	code: code,
-    	text: text,
-    	data: '40'
+    	code: 0,
+    	text: 'ok',
+    	data: result
     }
     res.json(resultValue);
 });
