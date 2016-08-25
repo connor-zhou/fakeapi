@@ -1500,6 +1500,7 @@ router.all('/account/saveEmail', function (req, res, next) {
  *  data:{
  *  	coins:"{String} 本次签到奖励星币",
  *		days:"{int} 已连续签到天数",
+ *		isGet:"{int} 是否获得额外奖励（1--是，0--否）",
  *		remainDays:"{int} 为获得奖励还需连续天数",
  *		extraCoins:"{int} 满足连续天数可获得奖励星币"
  *  }
@@ -1517,6 +1518,7 @@ router.all('/account/sign', function (req, res, next) {
 	var result = {
 		coins:'10',
 		days:7,
+		isGet:0,
 		remainDays:8,
 		extraCoins:100
 	}
