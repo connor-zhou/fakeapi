@@ -30,7 +30,17 @@ var _ = require('lodash');
  *	type:"",           				//类型：website、wechat、android、ios
  *	version:"",						//版本
  *	website:{},						//网站参数
- *	wechat:{}						//微信参数
+ *	wechat:{
+ *      ad:""                       //广告渠道
+ *      channel:""                  //营销渠道
+ *      m:""                        //推荐人手机号码
+ *      type:""                     //wechat类型标识
+ *      version:""                  //版本号
+ *      wechat:{
+ *          ua:""                   //代理信息
+ *      }
+ *
+ *  }
  *}
  * </pre>
  */
