@@ -2117,6 +2117,71 @@ router.all('/account/getQuickPayCardInfo', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.我的体验金
+ *
+ * @name account.myExpericeMoney
+ * @href /account/myExpericeMoney
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ *
+ * @output {json} 我的投资券列表
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	money:"{String} 体验金额度",
+ *  	interestTotal:"{String} 体验金总收益",
+ *  	revenue:"{String} 体验项目年化利率",
+ *  	duration:"{String} 体验金使用期限",
+ *  	isOvertime:"{int} 是否已过体验时间（1--没过，0--已过期）",
+ *  	interestRecord:[{
+ *  	   interest:"{String} 收益（格式如：+1.61元）",
+ *  	   title:"{String} 体验金收益标题",
+ *  	   timeline:"{String} 体验项目时间(格式如：2015-02-15 12:00)"
+ *  	}]
+ *    }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/myExpericeMoney
+ *
+ * https://fakeapi.asterlake.cn:5000/account/myExpericeMoney
+ */
+router.all('/account/myExpericeMoney', function (req, res, next) {
+	var start = req.body.start || 0;
+	var limit = req.body.limit || 10;
+	var records = [];
+	var max = 5;
+	while (start < max) {
+		records.push({
+			interest:'+1.61元',
+			title:"体验金收益",
+			timeline:"2015-12-16 12:45"
+		});
+		start++;
+	}
+	var obj = {
+		money:'4888',
+		interestTotal:"4888",
+		revenue:"12%",
+		duration:"5日",
+		isOvertime:1,
+		interestRecord:records
+	}
+
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: obj
+	}
+	res.json(resultValue);
+});
+
 
 
 module.exports = router;
