@@ -721,17 +721,17 @@ router.all('/event/investTotal', function (req, res, next) {
 /**
  * @fakedoc xtz.体验金介绍
  *
- * @name event.expericeMoneyIntro
- * @href /event/expericeMoneyIntro
+ * @name event.experienceMoneyIntro
+ * @href /event/experienceMoneyIntro
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string=} token			Token
  *
  * @description
  *
- * https://localhost:5000/event/expericeMoneyIntro
+ * https://localhost:5000/event/experienceMoneyIntro
  *
- * https://fakeapi.asterlake.cn:5000/event/expericeMoneyIntro
+ * https://fakeapi.asterlake.cn:5000/event/experienceMoneyIntro
  *
  * @output {json} 体验金介绍
  * {
@@ -742,7 +742,7 @@ router.all('/event/investTotal', function (req, res, next) {
  *  }
  *}
  */
-router.all('/event/expericeMoneyIntro', function (req, res, next) {
+router.all('/event/experienceMoneyIntro', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
@@ -756,17 +756,17 @@ router.all('/event/expericeMoneyIntro', function (req, res, next) {
 /**
  * @fakedoc xtz.绑定乾多多成功后可获得体验金
  *
- * @name event.getExpericeMoney
- * @href /event/getExpericeMoney
+ * @name event.getExperienceMoney
+ * @href /event/getExperienceMoney
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
  *
  * @description
  *
- * https://localhost:5000/event/getExpericeMoney
+ * https://localhost:5000/event/getExperienceMoney
  *
- * https://fakeapi.asterlake.cn:5000/event/getExpericeMoney
+ * https://fakeapi.asterlake.cn:5000/event/getExperienceMoney
  *
  * @output {json} 体验金介绍
  * {
@@ -777,7 +777,7 @@ router.all('/event/expericeMoneyIntro', function (req, res, next) {
  *  }
  *}
  */
-router.all('/event/getExpericeMoney', function (req, res, next) {
+router.all('/event/getExperienceMoney', function (req, res, next) {
 	var resultValue = {
 		code: 0,
 		text: 'ok',
