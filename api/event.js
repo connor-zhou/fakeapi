@@ -718,5 +718,75 @@ router.all('/event/investTotal', function (req, res, next) {
 	res.json(resultValue);
 });
 
+/**
+ * @fakedoc xtz.体验金介绍
+ *
+ * @name event.expericeMoneyIntro
+ * @href /event/expericeMoneyIntro
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string=} token			Token
+ *
+ * @description
+ *
+ * https://localhost:5000/event/expericeMoneyIntro
+ *
+ * https://fakeapi.asterlake.cn:5000/event/expericeMoneyIntro
+ *
+ * @output {json} 体验金介绍
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	html:"{String} 体验金介绍的html"
+ *  }
+ *}
+ */
+router.all('/event/expericeMoneyIntro', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:{
+			html:'<h4>体验金常见问题：</h4><ol><li>体验金是星投资为奖励用户开通钱多多第三方支付平台而奖励的投资本金，有效期为5天，年化收益为12%</li><li>体验金是星投资为奖励用户开通钱多多第三方支付平台而奖励的投资本金，有效期为5天，年化收益为12%</li></ol>'
+		}
+	}
+	res.json(resultValue);
+});
+
+/**
+ * @fakedoc xtz.绑定乾多多成功后可获得体验金
+ *
+ * @name event.getExpericeMoney
+ * @href /event/getExpericeMoney
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token			Token
+ *
+ * @description
+ *
+ * https://localhost:5000/event/getExpericeMoney
+ *
+ * https://fakeapi.asterlake.cn:5000/event/getExpericeMoney
+ *
+ * @output {json} 体验金介绍
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *  	money:"{String} 体验金额度"
+ *  }
+ *}
+ */
+router.all('/event/getExpericeMoney', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data:{
+			money:'4888'
+		}
+	}
+	res.json(resultValue);
+});
+
 
 module.exports = router;
