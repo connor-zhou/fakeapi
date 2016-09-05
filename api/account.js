@@ -2139,7 +2139,7 @@ router.all('/account/getQuickPayCardInfo', function (req, res, next) {
  *  	interestRecord:[{
  *  	   interest:"{String} 收益（格式如：+1.61元）",
  *  	   title:"{String} 体验金收益标题",
- *  	   timeline:"{String} 体验项目时间(格式如：2015-02-15 12:00)"
+ *  	   timeline:"{String} 体验项目时间(格式如：2015-02-15)"
  *  	}]
  *    }
  * }
