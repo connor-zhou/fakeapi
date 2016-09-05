@@ -753,40 +753,4 @@ router.all('/event/experienceMoneyIntro', function (req, res, next) {
 	res.json(resultValue);
 });
 
-/**
- * @fakedoc xtz.绑定乾多多成功后可获得体验金
- *
- * @name event.getExperienceMoney
- * @href /event/getExperienceMoney
- *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- *
- * @description
- *
- * https://localhost:5000/event/getExperienceMoney
- *
- * https://fakeapi.asterlake.cn:5000/event/getExperienceMoney
- *
- * @output {json} 体验金介绍
- * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
- *  data:{
- *  	money:"{String} 体验金额度"
- *  }
- *}
- */
-router.all('/event/getExperienceMoney', function (req, res, next) {
-	var resultValue = {
-		code: 0,
-		text: 'ok',
-		data:{
-			money:'4888'
-		}
-	}
-	res.json(resultValue);
-});
-
-
 module.exports = router;
