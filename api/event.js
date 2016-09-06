@@ -656,7 +656,7 @@ router.all('/event/updataSendInfo', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token			Token
- * @input.post {string} id			    活动id（默认为1）
+ * @input.post {string} id			    活动id（1--老用户反馈活动，1002--体验金活动，默认为1）
  *
  * @description
  *
@@ -670,7 +670,8 @@ router.all('/event/updataSendInfo', function (req, res, next) {
  *  text:"{String} 状态描述",
  *  data:{
  *  	startTime:"{String} 活动开始时间的秒数",
- *  	endTime:"{String} 活动结束时间的秒数"
+ *  	endTime:"{String} 活动结束时间的秒数",
+ *  	isOvertime:"{int} 活动是否过期（1--过期，0--在活动期间）"
  *  }
  *}
  */
@@ -680,7 +681,7 @@ router.all('/event/activityTime', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data:
-			{startTime:endTime,endTime:endTime}
+			{startTime:endTime,endTime:endTime,isOvertime:0}
 	}
 	res.json(resultValue);
 });
