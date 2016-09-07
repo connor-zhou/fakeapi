@@ -223,21 +223,20 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  * @href /event/lottery
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 		token
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树,1011 :女神升值季】)
+ * @input.post {string} token 			token
+ * @input.post {string} code 			活动代码(【1003:中秋抽奖活动】)
  * @needAuth
  * @description
  *
- * https://localhost:3000/event/lottery?client=asfdaqwerqe
+ * https://localhost:5000/event/lottery
  *
- * https://fakeapi.fdjf.net:3000/event/lottery?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/lottery
  *
  * @output {json} 抽奖接口
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	angle:"{int} 	旋转角度（适用于转盘）",
  *  	result:"{String}   返回信息",
  *    }
  * }
@@ -248,7 +247,6 @@ router.all('/event/lottery', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			angle:40,
 			result:'返回信息'
 		}
 	}
@@ -256,32 +254,29 @@ router.all('/event/lottery', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的中奖信息
+ * @fakedoc 我的奖品列表
  * @name event.myPrizeList
  * @href /event/myPrizeList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 		token
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
- * @input.post {int=} [pageSize=10] 	页容量
- * @input.post {int=} [pageNumber=1] 	页码
+ * @input.post {string} token 			token
+ * @input.post {string} code 			活动代码(【1003：中秋抽奖活动】)
+ *
  * @needAuth
  * @description
  *
- * https://localhost:3000/event/myPrizeList?client=asfdaqwerqe
+ * https://localhost:5000/event/myPrizeList
  *
- * https://fakeapi.fdjf.net:3000/event/myPrizeList?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/myPrizeList
  *
  * @output {json} 我的中奖信息
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *   data: {
- *   count : "{int} 	奖品数量",
- *   data : [{
- *  	prize:"{String}   奖品",
- *  	date:"{String} 	中奖时间"
- *   }]
+ *  	logo:"{String} 奖品图片url",
+ *  	intro:"{String} 奖品简介",
+ *  	timeline:"{String} 中奖时间（格式：2016-08-09 12:12）"
  *  }
  * }
  *
@@ -291,19 +286,9 @@ router.all('/event/myPrizeList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			count: 10,
-			data :[
-			{date: '2016.3.1 10:02', result: "10元现金券"},
-			{date: '2016.3.1 10:02', result: "迪士尼米奇玩偶"},
-			{date: '2016.3.1 10:02', result: "10元现金券"},
-			{date: '2016.3.1 10:02', result: "iPad mini3"},
-			{date: '2016.3.1 10:02', result: "10元现金券"},
-			{date: '2016.3.1 10:02', result: "10元现金券"},
-			{date: '2016.3.1 10:02', result: "50元现金券"},
-			{date: '2016.3.1 10:02', result: "10元现金券"},
-			{date: '2016.3.1 10:02', result: "iPhone 6s"},
-			{date: '2016.3.1 10:02', result: "20元投资券"}
-			]
+			logo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
+			intro:'12元代金券',
+			timeline:'2016-12-12 10:10'
 		}
 	};
 	res.json(resultValue);
