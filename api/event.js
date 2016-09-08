@@ -275,6 +275,7 @@ router.all('/event/lottery', function (req, res, next) {
  *  text:"{String} 状态描述",
  *   data: {
  *   	id:"{String} 奖品id",
+ *   	type:"{int} 奖品级别（101，102....）",
  *  	logo:"{String} 奖品图片url",
  *  	intro:"{String} 奖品简介",
  *  	code:"{String=} 代金码",
@@ -289,6 +290,7 @@ router.all('/event/myPrizeList', function (req, res, next) {
 		text: 'ok',
 		data: {
 			id:'1021',
+			type:101,
 			logo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
 			intro:'12元代金券',
 			code:'852SZR',
