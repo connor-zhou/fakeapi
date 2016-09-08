@@ -176,6 +176,42 @@ router.all('/event/newUserTask', function (req, res, next) {
 });
 
 /**
+ * @fakedoc xtz.获得代金码
+ *
+ * @name event.couponCode
+ * @href /event/couponCode
+ *
+ * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} token 			token
+ * @input.post {string} id				奖品记录id
+ * @needAuth
+ * @description
+ *
+ * https://localhost:5000/event/couponCode
+ *
+ * https://fakeapi.asterlake.cn:5000/event/couponCode
+ *
+ * @output {json} 我的抽奖信息
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ *  	code:"{String} 代金码"
+ *    }
+ * }
+ *
+ */
+router.all('/event/couponCode', function (req, res, next) {
+	var resultValue = {
+		code: 0,
+		text: 'ok',
+		data: {
+			code:'852SZR'
+		}
+	};
+	res.json(resultValue);
+});
+/**
  * @fakedoc xtz.我的抽奖信息
  *
  * @name event.lotteryInfo
