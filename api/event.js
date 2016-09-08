@@ -176,20 +176,20 @@ router.all('/event/newUserTask', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的抽奖信息
+ * @fakedoc xtz.我的抽奖信息
  *
  * @name event.lotteryInfo
  * @href /event/lotteryInfo
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token 		token
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树,1011 :女神升值季】)
+ * @input.post {string} token 			token
+ * @input.post {string} code 			活动代码(【1003：中秋抽奖活动】)
  * @needAuth
  * @description
  *
- * https://localhost:3000/event/lotteryInfo?client=asfdaqwerqe
+ * https://localhost:5000/event/lotteryInfo
  *
- * https://fakeapi.fdjf.net:3000/event/lotteryInfo?client=asfdaqwerqe
+ * https://fakeapi.asterlake.cn:5000/event/lotteryInfo
  *
  * @output {json} 我的抽奖信息
  * {
@@ -198,7 +198,7 @@ router.all('/event/newUserTask', function (req, res, next) {
  *  data: {
  *  	count:"{int} 	抽奖机会（已使用抽奖次数+剩余抽奖次数）",
  *  	used:"{int} 	已使用抽奖次数",
- *  	over:"{int} 	剩余抽奖次数",
+ *  	over:"{int} 	剩余抽奖次数"
  *    }
  * }
  *
@@ -334,7 +334,7 @@ router.all('/event/shareSuccess', function (req, res, next) {
  * @href /event/lotteryPrizeList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} code 		活动代码(【1009:春节活动 ,1010:摇钱树】)
+ * @input.post {string} code 			活动代码(【1003:中秋抽奖活动】)
  *
  * @description
  *
@@ -347,8 +347,8 @@ router.all('/event/shareSuccess', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: [{
- *  	phone:"{String} 	手机号码",
- *  	prize:"{String}   奖品"
+ *  	phone:"{String}  手机号码（模糊处理如：158****4609）",
+ *  	prize:"{String}  奖品"
  *  }]
  * }
  *
@@ -374,36 +374,29 @@ router.all('/event/lotteryPrizeList', function (req, res, next) {
 });
 
 /**
- * @fakedoc 投资排行
+ * @fakedoc xtz.累计投资榜单
  *
  * @name event.investmentList
  * @href /event/investmentList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} token			Token
- * @input.post {string} type 			类型（week:周排行；month:月排行）
- * @input.post {string} year 			年份
- * @input.post {string} month 			月份
- * @input.post {string} week 			当月第N周
- * @input.post {string} genre 			类型2（1:投资排行[default],2,年化排行）
+ * @input.post {string=} token			Token
  *
  * @description
  *
- * https://localhost:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
+ * https://localhost:5000/event/investmentList
  *
- * https://fakeapi.fdjf.net:3000/event/investmentList?client=asfdaqwerqe&token=1342345234532&type=month&year=2015&month=12&week=2
+ * https://fakeapi.asterlake.cn:5000/event/investmentList
  *
- * @output {json} 投资排行接口
+ * @output {json} 累计投资列表
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	myRanking:"{String} 	当前用户的名次（如果未登录，则为0）",
- *  	myAmount:"{String}    	当前用户的周期内的投资金额（元）(如果未登录，则为0)",
+ *  	investTotal:"{String} 我的累计投资总额",
  *  	recordList:[{
- *  		ranking:"{String} 	名次",
- *  		mobile:"{String}    手机号码（要预处理，显示成如下格式：136****5555）",
- *  		amount:"{String}    周期内的投资金额（元）"
+ *  		phone:"{String} 手机号码 （模糊处理如：158****4609）",
+ *  		money:"{String} 累计投资额"
  *  	}]
  *    }
  * }
@@ -414,28 +407,16 @@ router.all('/event/investmentList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			myRanking:100,
-			myAmount:23456,
-			recordList:[{ranking:'1',mobile:'158****4609',amount:"100000"},
-				{ranking:'2',mobile:'158****4609',amount:"100000"},
-				{ranking:'3',mobile:'158****4609',amount:"100000"},
-				{ranking:'4',mobile:'158****4609',amount:"100000"},
-				{ranking:'5',mobile:'158****4609',amount:"100000"},
-				{ranking:'6',mobile:'158****4609',amount:"100000"},
-				{ranking:'7',mobile:'158****4609',amount:"100000"},
-				{ranking:'8',mobile:'158****4609',amount:"100000"},
-				{ranking:'9',mobile:'158****4609',amount:"100000"},
-				{ranking:'10',mobile:'158****4609',amount:"100000"},
-				{ranking:'11',mobile:'158****4609',amount:"100000"},
-				{ranking:'12',mobile:'158****4609',amount:"100000"},
-				{ranking:'13',mobile:'158****4609',amount:"100000"},
-				{ranking:'14',mobile:'158****4609',amount:"100000"},
-				{ranking:'15',mobile:'158****4609',amount:"100000"},
-				{ranking:'16',mobile:'158****4609',amount:"100000"},
-				{ranking:'17',mobile:'158****4609',amount:"100000"},
-				{ranking:'18',mobile:'158****4609',amount:"100000"},
-				{ranking:'19',mobile:'158****4609',amount:"100000"},
-				{ranking:'20',mobile:'158****4609',amount:"100000"}
+			investTotal:10000,
+			recordList:[{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"},
+				{phone:'158****4609',money:"100000"}
 			]
 		}
 	}
