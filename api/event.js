@@ -217,7 +217,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
 });
 
 /**
- * @fakedoc 抽奖
+ * @fakedoc xtz.抽奖
  *
  * @name event.lottery
  * @href /event/lottery
@@ -237,7 +237,7 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	result:"{String}   返回信息",
+ *  	result:"{String}   返回信息"
  *    }
  * }
  *
@@ -254,7 +254,7 @@ router.all('/event/lottery', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的奖品列表
+ * @fakedoc xtz.我的奖品列表
  * @name event.myPrizeList
  * @href /event/myPrizeList
  *
@@ -269,14 +269,16 @@ router.all('/event/lottery', function (req, res, next) {
  *
  * https://fakeapi.asterlake.cn:5000/event/myPrizeList
  *
- * @output {json} 我的中奖信息
+ * @output {json} 我的奖品列表
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *   data: {
+ *   	id:"{String} 奖品id",
  *  	logo:"{String} 奖品图片url",
  *  	intro:"{String} 奖品简介",
- *  	timeline:"{String} 中奖时间（格式：2016-08-09 12:12）"
+ *  	code:"{String=} 代金码",
+ *  	timeline:"{String} 中奖时间（格式：2016-08-09 12:12)"
  *  }
  * }
  *
@@ -286,8 +288,10 @@ router.all('/event/myPrizeList', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
+			id:'1021',
 			logo:'https://www.hsbank360.com/userfiles/1/images/integral/integralMallProduct/2015/09/integralMall_img02(1).jpg',
 			intro:'12元代金券',
+			code:'852SZR',
 			timeline:'2016-12-12 10:10'
 		}
 	};
