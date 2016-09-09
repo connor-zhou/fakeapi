@@ -273,7 +273,8 @@ router.all('/event/lotteryInfo', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{String} 状态描述",
  *  data: {
- *  	result:"{String}   返回信息"
+ *  	result:"{String}   返回信息",
+ *  	id:"{String} 奖品id"
  *    }
  * }
  *
@@ -283,7 +284,8 @@ router.all('/event/lottery', function (req, res, next) {
 		code: 0,
 		text: 'ok',
 		data: {
-			result:'返回信息'
+			result:'返回信息',
+			id:'1001'
 		}
 	}
 	res.json(resultValue);
