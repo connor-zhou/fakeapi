@@ -76,20 +76,20 @@ gulp.task('fakedocs', function(done){
 /*====================================
  =            fake server remote     =
  ====================================*/
-gulp.task('fakeserver', function (done) {
-    var sftp = require('gulp-sftp');
-    return gulp.src(['./**','!bower_components/**', '!node_modules/**', '!tools/**', '!docs/**', '!fakedocs/**' ,
-        '!certificate.pem', '!privatekey.pem','!certrequest.csr'])
-        .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath}, fakeServerSshConfig)));
-});
-
-gulp.task('fakeroutes', function (done) {
-    var sftp = require('gulp-sftp');
-    gulp.src(['./app.js'])
-        .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath}, fakeServerSshConfig)));
-    return gulp.src(['./api/**'])
-        .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath+'/api'}, fakeServerSshConfig)));
-});
+// gulp.task('fakeserver', function (done) {
+//     var sftp = require('gulp-sftp');
+//     return gulp.src(['./**','!bower_components/**', '!node_modules/**', '!tools/**', '!docs/**', '!fakedocs/**' ,
+//         '!certificate.pem', '!privatekey.pem','!certrequest.csr'])
+//         .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath}, fakeServerSshConfig)));
+// });
+//
+// gulp.task('fakeroutes', function (done) {
+//     var sftp = require('gulp-sftp');
+//     gulp.src(['./app.js'])
+//         .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath}, fakeServerSshConfig)));
+//     return gulp.src(['./api/**'])
+//         .pipe(sftp(_.extend({remotePath:fakeapiRemoteRootPath+'/api'}, fakeServerSshConfig)));
+// });
 
 gulp.task('fakeapi', function () {
    seq(['fakedocs', 'fakeroutes']);
