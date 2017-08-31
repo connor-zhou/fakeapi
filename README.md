@@ -15,7 +15,7 @@
 # 常用命令
 + 运行 `gulp`
 
-  本地访问：https://localhost:3000/fakedocs/#/api
+  本地访问：https://localhost:5000/fakedocs/#/api
   
 + 上传文档和api接口到远程 `gulp fakeapi`
 

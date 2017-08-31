@@ -21,12 +21,12 @@ var gulp              = require('gulp'),
  =            Globs            =
  =============================*/
 
-var fakeServerSshConfig = {
-    host: 'fakeapi.fdjf.net',
-    port: 22,
-    user: 'wechat',
-    key : path.homedir()+'/.ssh/wechat.key'
-};
+// var fakeServerSshConfig = {
+//     host: 'fakeapi.fdjf.net',
+//     port: 22,
+//     user: 'wechat',
+//     key : path.homedir()+'/.ssh/wechat.key'
+// };
 
 var fakeapiRemoteRootPath = '/home/wechat/www/fakeapi';
 
