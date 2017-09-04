@@ -54,7 +54,7 @@ gulp.task('nodemon', function () {
  ===================================================================*/
 
 gulp.task('watch', function () {
-    //gulp.watch(['api/**','app.js'],['fakeroutes']);
+    gulp.watch(['api/**','app.js'],['fakedocs','fakeroutes']);
 });
 
 /*====================================
