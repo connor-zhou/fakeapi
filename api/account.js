@@ -497,7 +497,7 @@ router.all('/account/myAvailCoupons', function (req, res, next) {
 /**
  * @fakedoc xtz.我的不可用优惠券
  *
- * @name account.myUnavailCoupons
+ * @name account.myUnavailCoupon
  * @href /account/myUnavailCoupons
  *
  * @input.post {string} client 		客户端统计参数（common/client）
