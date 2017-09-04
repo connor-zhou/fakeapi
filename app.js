@@ -4,17 +4,17 @@ var bodyParser = require('body-parser');
 
 //fakes
 var fakeProject = require('./api/project');
-var fakeAssignment = require('./api/assignment');
-var fakeYeepay = require('./api/mmm');
-var fakeEvent = require('./api/event');
-var fakeAccount = require('./api/account');
-var fakeMore = require('./api/more');
-var fakeMall = require('./api/mall');
-var fakeCommon = require('./api/common');
-var fakeWechat = require('./api/wechat');
-var fakeAgreement = require('./api/agreement');
-var fakeCurrent = require('./api/current');
-var fakeMessage = require('./api/message');
+// var fakeAssignment = require('./api/assignment');
+// var fakeYeepay = require('./api/mmm');
+// var fakeEvent = require('./api/event');
+// var fakeAccount = require('./api/account');
+// var fakeMore = require('./api/more');
+// var fakeMall = require('./api/mall');
+// var fakeCommon = require('./api/common');
+// var fakeWechat = require('./api/wechat');
+// var fakeAgreement = require('./api/agreement');
+// var fakeCurrent = require('./api/current');
+// var fakeMessage = require('./api/message');
 
 var app = express();
 
@@ -27,17 +27,17 @@ app.use(function(req, res, next) {//fake cros
     next();
 });
 app.use('/', fakeProject);
-app.use('/', fakeAssignment);
-app.use('/', fakeYeepay);
-app.use('/', fakeEvent);
-app.use('/', fakeAccount);
-app.use('/', fakeMore);
-app.use('/', fakeMall);
-app.use('/', fakeCommon);
-app.use('/', fakeWechat);
-app.use('/', fakeAgreement);
-app.use('/', fakeCurrent);
-app.use('/', fakeMessage);
+// app.use('/', fakeAssignment);
+// app.use('/', fakeYeepay);
+// app.use('/', fakeEvent);
+// app.use('/', fakeAccount);
+// app.use('/', fakeMore);
+// app.use('/', fakeMall);
+// app.use('/', fakeCommon);
+// app.use('/', fakeWechat);
+// app.use('/', fakeAgreement);
+// app.use('/', fakeCurrent);
+// app.use('/', fakeMessage);
 
 //livereload
 if(app.get('env') == 'development'){
