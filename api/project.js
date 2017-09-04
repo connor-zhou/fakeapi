@@ -10,7 +10,7 @@ var router = express.Router();
  * 
  * https://localhost:5000/project/pageList
  * 
- * https://fakeapi.asterlake.cn:5000/project/pageList
+ * https://192.168.1.86:3000/project/pageList
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {int=} [pageSize=10] 	页容量
@@ -107,7 +107,7 @@ router.all('/project/pageList', function (req, res, next) {
  * 
  * https://localhost:5000/project/recommend
  * 
- * https://fakeapi.asterlake.cn:5000/project/recommend
+ * https://192.168.1.86:3000/project/recommend
  *
  * 输出同'/project/pageList'
  */
@@ -127,7 +127,7 @@ router.all('/project/recommend', function (req, res, next) {
  * 
  * https://localhost:5000/project/detail
  * 
- * https://fakeapi.asterlake.cn:5000/project/detail
+ * https://192.168.1.86:3000/project/detail
  *
  * @output {json} 项目详情字段
  * {
@@ -222,7 +222,7 @@ router.all('/project/detail', function (req, res, next) {
  * 
  * https://localhost:5000/project/repaymentPlan
  * 
- * https://fakeapi.asterlake.cn:5000/project/repaymentPlan
+ * https://192.168.1.86:3000/project/repaymentPlan
  *
  * @output {json} 还款计划
  * {
@@ -270,7 +270,7 @@ router.all('/project/repaymentPlan', function (req, res, next) {
  *
  * https://localhost:5000/project/enterpriseInfo
  *
- * https://fakeapi.asterlake.cn:5000/project/enterpriseInfo
+ * https://192.168.1.86:3000/project/enterpriseInfo
  *
  *@output {json} 企业信息
  * {
@@ -307,7 +307,7 @@ router.all('/project/enterpriseInfo',function(req,res,next){
  *
  * https://localhost:5000/project/description
  *
- * https://fakeapi.asterlake.cn:5000/project/description
+ * https://192.168.1.86:3000/project/description
  *
  *@output {json} 企业信息
  * {
@@ -344,7 +344,7 @@ router.all('/project/description',function(req,res,next){
  *
  * https://localhost:5000/project/guaranteeAndAdvice
  *
- * https://fakeapi.asterlake.cn:5000/project/guaranteeAndAdvice
+ * https://192.168.1.86:3000/project/guaranteeAndAdvice
  *
  *@output {json} 担保机构及意见
  * {
@@ -381,7 +381,7 @@ router.all('/project/guaranteeAndAdvice',function(req,res,next){
  *
  * https://localhost:5000/project/moneyOperation
  *
- * https://fakeapi.asterlake.cn:5000/project/moneyOperation
+ * https://192.168.1.86:3000/project/moneyOperation
  *
  *@output {json} 资金运转
  * {
@@ -418,7 +418,7 @@ router.all('/project/moneyOperation',function(req,res,next){
  *
  * https://localhost:5000/project/riskControl
  *
- * https://fakeapi.asterlake.cn:5000/project/riskControl
+ * https://192.168.1.86:3000/project/riskControl
  *
  *@output {json} 风险控制
  * {
@@ -458,7 +458,7 @@ router.all('/project/riskControl',function(req,res,next){
  * 
  * https://localhost:5000/project/investmentRecords
  * 
- * https://fakeapi.asterlake.cn:5000/project/investmentRecords
+ * https://192.168.1.86:3000/project/investmentRecords
  *
  * @output {json} 投资记录列表
  * {
@@ -520,7 +520,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * 
  * https://localhost:5000/project/interestCalculation
  * 
- * https://fakeapi.asterlake.cn:5000/project/interestCalculation
+ * https://192.168.1.86:3000/project/interestCalculation
  *
  * @output {json} 收益
  * {
@@ -531,6 +531,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *      }
  * }
  */
+
 router.all('/project/interestCalculation', function (req, res, next) {
     var resultValue = {
     	code: 0,
