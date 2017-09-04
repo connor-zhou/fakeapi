@@ -66,7 +66,7 @@ router.all('/project/pageList', function (req, res, next) {
             category: type,
             categoryName: types[type],
             methods: "先息后本",
-            minInvest:2000.00,
+            minInvest:20000.00,
             haveMoney: 1000000,
             canInvestMoney:4000000,
             money:5000000,
