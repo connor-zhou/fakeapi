@@ -314,6 +314,7 @@ router.all('/project/borrowerInfo',function(req,res,next){
  * }
  *
  * **/
+
 router.all('/project/instruction',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
@@ -323,7 +324,8 @@ router.all('/project/instruction',function(req,res,next){
             instruction: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'   }
     }
     res.json(resultValue);
-});
+})
+
 
 // /**
 //  * @fakedoc xtz.得到指定项目的担保机构及意见
