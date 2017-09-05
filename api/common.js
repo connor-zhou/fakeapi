@@ -9,8 +9,7 @@ var _ = require('lodash');
 
  *
  * @description
- *
- * 使用方式：http://www.xxxxx.com?client=Base64.encode(json)
+ * 使用时（传到后台时）需要 base64 encode编码
  *
  * <pre>
  *{

@@ -2,7 +2,7 @@
 var router = express.Router();
 
 /**
- * @fakedoc xtz.项目分页列表
+ * @fakedoc 项目分页列表
  * @name project.pageList
  * @href /project/pageList
  *
@@ -12,43 +12,42 @@ var router = express.Router();
  * 
  * https://192.168.1.86:3000/project/pageList
  *
- * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} client 		    客户端统计参数
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  *
  * @output {json} 分页列表
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{string} 状态描述",
  *  data: [
  * 	  {
- *      id:"{String} 项目ID",
- *      title:"{String} 项目名称",
+ *      id:"{string} 项目ID",
+ *      title:"{string} 项目名称",
+ *      borrowerType:"{int} 借款方类型（0-个人，1-企业）",
  *      category:"{int} 项目类型",
- *      categoryName:"{String} 项目类型名称",
- *      methods:"{int} 还款方式",
- *      money:"{String} 融资金额",
- *      minInvest:"{String} 起投金额",
- *      haveMoney:"{String} 已投金额",
- *      canInvestMoney:"{String} 可投金额",
- *      schedule:"{String} 已投百分比，不要加(%)",
- *      projectStatus:"{int} 状态(1-投标中，2--还款中，3--已还款)",
- *      projectStatusName:"{String} 状态说明",
- *      revenue:"{String} 年化利率",
- *      revenueAward:"{String} 活动加息年化利率",
- *      revenueDisplay:"{String} 活动说明（新手活动）",
+ *      categoryText:"{string} 项目类型名称",
+ *      repaymendMode:"{int} 还款方式",
+ *      money:"{string} 融资金额",
+ *      minInvest:"{string} 起投金额",
+ *      remainInvest:"{string} 可投金额",
+ *      schedule:"{string} 已投百分比，不要加(%)",
+ *      status:"{int} 项目状态(0-投标中，1-还款中，2-已还款)",
+ *      statusText:"{string} 项目状态说明",
+ *      annualizedRate :"{string} 年化利率（不用加 %）",
  *      duration:"{int} 项目期限",
- *      durationUnit:"{String} 项目期限单位",
- *      expireTime:"{String} 过期时间",
- *      repaymentTime:"{String} 还款时间",
- *      canInvest:"{int} 能否投资(1--能,0--不能)",
- *      canUseAward :"{int} 能否用券 (1--能,0--不能)",
- *      isRecommend:"{int} 是否推荐 (1--是,0--否)",
- *      isNewUserProject:"{int} 是否是新手项目 （1--是，0--否）"
+ *      durationUnit:"{string} 项目期限单位",
+ *      expireTimeline:"{string} 过期时间",
+ *      repaymentTimeline:"{string} 还款时间",
+ *      canUseCashTicket :"{int} 能否用投资券 (1-能,0-否)",
+ *      canUseRateTicket:"{int} 能否使用加息券 （1-能，0-否）",
+ *      isNewUserProject:"{int} 是否是新手项目 (1-是，0-否)",
+ *      isRecommend:"{int} 是否重点推荐 (1-是,0-否)"
  * 	  }
  * 	]
  * }
  */
+
 router.all('/project/pageList', function (req, res, next) {
     var start = req.body.start || 1;
     var limit = req.body.limit || 10;
@@ -62,28 +61,26 @@ router.all('/project/pageList', function (req, res, next) {
         var type = Math.floor(Math.random() * 7);
         projects.push({
             id: start,
+            borrowerType:start % 2,
             title: types[type] + '**' + start,
             category: type,
-            categoryName: types[type],
-            methods: "先息后本",
+            categoryText: types[type],
+            repaymentMode: "先息后本",
             minInvest:20000.00,
-            haveMoney: 1000000,
-            canInvestMoney:4000000,
+            remainMoney:4000000,
             money:5000000,
             schedule: 10,
-            projectStatus: [1, 2, 3][start % 3],
-            projectStatusName:["投标中","还款中","已还款"][start % 3],
-            revenue: Math.floor(Math.random() * 20) * 0.01,
-            revenueAward: Math.floor(Math.random() * 5) * 0.01,
-            revenueDisplay: 'app专享加息+1.4%',
+            status: [1, 2, 3][start % 3],
+            statusText:["投标中","还款中","已还款"][start % 3],
+            annualizedRate: Math.floor(Math.random() * 20) * 0.01,
             duration: 6,
             durationUnit:'个月',
-            repaymentTime:"2016-12-15",
-            expireTime:"2017-08-06",
-            canInvest:start % 2,
-            canUseAward:start % 2,
-            isRecommend:start % 2,
-            isNewUserProject: start % 2
+            repaymentTimeline:"2016-12-15",
+            expireTimeline:"2017-08-06",
+            canUseCashTicket:start % 2,
+            canUseRateTicket:start % 2,
+            isNewUserProject:start % 2,
+            isRecommend:start % 2
         });
         start++;
         limit--;
@@ -95,33 +92,36 @@ router.all('/project/pageList', function (req, res, next) {
     }
     res.json(resultValue);
 });
+
 /**
- * @fakedoc xtz.推荐项目列表
+ * @fakedoc 推荐项目列表
  * 
- * @name project.recommend
- * @href /project/recommend
+ * @name project.recommendList
+ * @href /project/recommendList
  * 
- * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} client 		客户端统计参数
  *
  * @description 
  * 
- * https://localhost:5000/project/recommend
+ * https://localhost:5000/project/recommendList
  * 
- * https://192.168.1.86:3000/project/recommend
+ * https://192.168.1.86:3000/project/recommendList
  *
  * 输出同'/project/pageList'
  */
-router.all('/project/recommend', function (req, res, next) {
+
+router.all('/project/recommendList', function (req, res, next) {
     res.redirect('/project/pageList?client=2435234523451&pageSize=10&pageNumber=1');
-});
+})
+
 /**
- * @fakedoc xtz.得到指定项目的详情信息
+ * @fakedoc 得到指定项目的详情信息
  *
  * @name project.detail
  * @href /project/detail
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {int} projectId 		项目Id
+ * @input.post {string} projectId 		项目Id
  *
  * @description 
  * 
@@ -132,39 +132,34 @@ router.all('/project/recommend', function (req, res, next) {
  * @output {json} 项目详情字段
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{string} 状态描述",
  *  data: {
- *      id:"{String} 项目ID",
- *      title:"{String} 项目名称",
- *      category:"{int} 项目类型(1--星企贷，2--星保理，3--星车宝，4--星票宝，5--星房宝，6--星股神，7--星居宝)",
- *      categoryName:"{String} 项目类型名称",
- *      methods:"{String} 还款方式",
- *      money:"{String} 融资金额",
- *      haveMoney:"{String} 已融资金额",
- *      schedule:"{String} 已投百分比(%)",
- *      projectStatus:"{int} 状态(1--投标中，2-还款中，3-已还款",
- *      projectStatusName:"{String} 状态说明",
- *      revenue:"{String} 年化利率",
- *      revenueAward:"{String} 活动加息年化利率",
- *      revenueDisplay:"{string} 活动说明（新手活动）",
- *      duration:"{String} 项目期限",
- *      durationUnit:"{String} 项目期限单位",
- *      minInvest:"{String} 起投金额",
- *      canInvestMoney:"{String} 可投金额",
- *      expireTime:"{string} 投资截止日期",
- *      repaymentTime:"{string} 还款日期",
- *      investNumber:"{String} 投资总数",
- *      accountMoney:"{String} 账户余额",
- *      isRecommend:"{int} 是否推荐 (1--能,0--否)",
- *      bbsUrl:'{String} bbs地址',
- *      canInvest:"{int} 能否投资 (1--能,0--否)",
- *      canUseAward :"{int} 能否用投资券 (1--能,0--否)",
- *      canUseInterestTicket:"{int} 能否使用加息券 （1--能，0--否）",
- *      isNewUserProject:"{int} 是否是新手项目 (1--是，0--否)"
+ *      id:"{string} 项目ID",
+ *      title:"{string} 项目名称",
+ *      borrowerType:"{int} 项目的借款方类别（0-个人，1-企业）",
+ *      category:"{int} 项目类型(例：0-星企贷，1-星保理，2-星车宝)",
+ *      categoryText:"{string} 项目类型描述",
+ *      repaymentMode:"{string} 还款方式",
+ *      schedule:"{string} 已投百分比(不需加百分号 %)",
+ *      status:"{int} 状态(0-投标中，1-还款中，2-已还款)",
+ *      statusText:"{string} 状态描述",
+ *      annualizedRate:"{string} 年化利率（不用加 %）",
+ *      duration:"{string} 项目期限",
+ *      durationUnit:"{string} 项目期限单位",
+ *      money:"{string} 融资金额",
+ *      minInvest:"{string} 起投金额",
+ *      remainInvest:"{string} 剩余可投金额",
+ *      expireTimeline:"{string} 投资截止日期",
+ *      repaymentTimeline:"{string} 还款日期",
+ *      tips:"{string} 项目温馨提示",
+ *      canUseCashTicket :"{int} 能否用投资券 (1-能,0-否)",
+ *      canUseRateTicket:"{int} 能否使用加息券 （1-能，0-否）",
+ *      isNewUserProject:"{int} 是否是新手项目 (1-是，0-否)",
+ *      isRecommend:"{int} 是否重点推荐 (1-是,0-否)"
  *   }
  * }
- *
  */
+
 router.all('/project/detail', function (req, res, next) {
     var pid = req.body.projectId || 1;
     var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
@@ -174,31 +169,26 @@ router.all('/project/detail', function (req, res, next) {
     var project = {
         id: pid,
         title: types[type-1]+"**"+pid,
+        borrowerType:Math.floor(Math.random()),
         category: type,
-        categoryName: types[type-1],
-        methods: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
+        categoryText: types[type-1],
+        repaymentMode: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
         money: '200000',
-        haveMoney:'10000',
         schedule: 35,
-        projectStatus: [1,2,3][type % 3],
-        projectStatusName: ["投标中","还款中","已还款"][type % 3],
-        revenue: Math.floor(Math.random() * 20) * 0.01,
-        revenueAward: Math.floor(Math.random() * 5) * 0.01,
-        revenueDisplay: 'app专享加息+2.4%',
+        status: [1,2,3][type % 3],
+        statusName: ["投标中","还款中","已还款"][type % 3],
+        annualizedRate : Math.floor(Math.random() * 20) * 0.01,
         duration: duration,
         durationUnit:'个月',
         minInvest: ['2000','1000'][yesOrNo],
-        canInvestMoney:'190000',
-        expireTime: '2016-09-05',
-        repaymentTime:"2016-08-05",
-        investNumber:100,
-        accountMoney:'25000',
-        isRecommend:yesOrNo,
-        bbsUrl:'http://bbs.xingtouzi.com/forum-36-1.html',
-        canInvest:yesOrNo,
-        canUseAward:yesOrNo,
-        canUseInterestTicket:yesOrNo,
-        isNewUserProject:yesOrNo
+        remainInvest:'190000',
+        expireTimeline: '2016-09-05',
+        repaymentTimeline:"2016-08-05",
+        tips:'这个项目可以赚好多哦！',
+        canUseCashTicket:yesOrNo,
+        canUseRateTicket:yesOrNo,
+        isNewUserProject:yesOrNo,
+        isRecommend:yesOrNo
     };
 
     var resultValue = {
@@ -209,14 +199,15 @@ router.all('/project/detail', function (req, res, next) {
     res.json(resultValue);
 });
 
+
 /**
- * @fakedoc xtz.得到指定项目的还款计划
+ * @fakedoc 得到指定项目的还款计划
  *
  * @name project.repaymentPlan
  * @href /project/repaymentPlan
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {int} projectId 		项目Id
+ * @input.post {string} client 		    客户端统计参数（common/client）
+ * @input.post {string} projectId 		项目Id
  *
  * @description 
  * 
@@ -227,12 +218,12 @@ router.all('/project/detail', function (req, res, next) {
  * @output {json} 还款计划
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{string} 状态描述",
  *  data: [{
- *  	planTime:"{string} 还款时间",
- *  	repayment:"{String} 计划偿还本金",
- *  	interest:"{String} 应还利息",
-        days:"{int} 计息天数 "
+ *  	planTimeline:"{string} 还款时间",
+ *  	money:"{string} 计划偿还本金",
+ *  	interest:"{string} 应还利息",
+        days:"{string} 计息天数 "
  *  }]
  * }
  */
@@ -243,10 +234,10 @@ router.all('/project/repaymentPlan', function (req, res, next) {
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            planTime: dt.format('YYYY-MM-DD'),
-            interest: 100,
-            repayment:2000,
-            days:20
+            planTimeline: dt.format('YYYY-MM-DD'),
+            money: '100',
+            repayment:'2000',
+            days:'20'
         });
     }
     var resultValue = {
@@ -258,63 +249,67 @@ router.all('/project/repaymentPlan', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.得到指定项目的企业信息
+ * @fakedoc 得到指定项目的借款方信息
  *
- * @name project.enterpriseInfo
- * @href project/enterpriseInfo
+ * @name project.borrowerInfo
+ * @href project/borrowerInfo
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {String} projectId      项目id
+ * @input.post {string} client 		 客户端统计参数（common/client）
+ * @input.post {string} projectId    项目id
  *
  * @description
  *
- * https://localhost:5000/project/enterpriseInfo
+ * https://localhost:5000/project/borrowerInfo
  *
- * https://192.168.1.86:3000/project/enterpriseInfo
+ * https://192.168.1.86:3000/project/borrowerInfo
  *
- *@output {json} 企业信息
+ *@output {json} 借款方信息
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{String} 状态描述",
+ *      text:"{string} 状态描述",
  *      data: {
- *          html:"{html} 企业信息的html"
+ *          type:"{int} 借款方类型（0-个人，1-企业）",
+ *          intro:"{string} 借款方介绍html（标题和正文需用不同标签或者类名区分，方便前台加样式。）",
+ *          photos:"{array} 资料图片绝对url数组"
  *      }
  * }
  *
  * **/
-router.all('/project/enterpriseInfo',function(req,res,next){
+router.all('/project/borrowerInfo',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
         code:0,
         text:'ok',
         data:{
-           html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+            type:Math.floor(Math.random()*1),
+            intro: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>',
+            photos:["http://www.xingtouzi.com/upload/images/20170726/15010699741311.png","http://www.xingtouzi.com/upload/images/20170726/15010699741311.png"]
         }
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc xtz.得到指定项目的项目描述
+ * @fakedoc 得到指定项目的投资须知
  *
- * @name project.description
- * @href project/description
+ * @name project.instruction
+ * @href project/instruction
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {String} projectId      项目id
+ * @input.post {string} projectId   项目id
  *
  * @description
  *
- * https://localhost:5000/project/description
+ * https://localhost:5000/project/instruction
  *
- * https://192.168.1.86:3000/project/description
+ * https://192.168.1.86:3000/project/instruction
  *
  *@output {json} 企业信息
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{String} 状态描述",
+ *      text:"{string} 状态描述",
  *      data: {
- *          html:"{html} 项目描述的html"
+ *          instruction:"{string} 项目说明的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
  *      }
  * }
  *
@@ -325,132 +320,131 @@ router.all('/project/description',function(req,res,next){
         code:0,
         text:'ok',
         data:{
-            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
-        }
+            instruction: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'   }
     }
     res.json(resultValue);
 });
 
+// /**
+//  * @fakedoc xtz.得到指定项目的担保机构及意见
+//  *
+//  * @name project.guaranteeAndAdvice
+//  * @href project/guaranteeAndAdvice
+//  *
+//  * @input.post {string} client 		客户端统计参数（common/client）
+//  * @input.post {string} projectId      项目id
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/project/guaranteeAndAdvice
+//  *
+//  * https://192.168.1.86:3000/project/guaranteeAndAdvice
+//  *
+//  *@output {json} 担保机构及意见
+//  * {
+//  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *      text:"{string} 状态描述",
+//  *      data: {
+//  *          html:"{html} 担保机构及意见的html"
+//  *      }
+//  * }
+//  *
+//  * **/
+// router.all('/project/guaranteeAndAdvice',function(req,res,next){
+//     var pid = req.body.projectId || 1;
+//     var resultValue = {
+//         code:0,
+//         text:'ok',
+//         data:{
+//             html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
+//         }
+//     }
+//     res.json(resultValue);
+// });
+//
+
 /**
- * @fakedoc xtz.得到指定项目的担保机构及意见
+ * @fakedoc 得到指定项目的贷后管理
  *
- * @name project.guaranteeAndAdvice
- * @href project/guaranteeAndAdvice
+ * @name project.executionInfo
+ * @href project/executionInfo
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {String} projectId      项目id
+ * @input.post {string} projectId      项目id
  *
  * @description
  *
- * https://localhost:5000/project/guaranteeAndAdvice
+ * https://localhost:5000/project/executionInfo
  *
- * https://192.168.1.86:3000/project/guaranteeAndAdvice
+ * https://192.168.1.86:3000/project/executionInfo
  *
- *@output {json} 担保机构及意见
+ *@output {json} 贷后管理信息
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{String} 状态描述",
+ *      text:"{string} 状态描述",
  *      data: {
- *          html:"{html} 担保机构及意见的html"
+ *          info:"{string} 项目执行情况的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
  *      }
  * }
  *
- * **/
-router.all('/project/guaranteeAndAdvice',function(req,res,next){
+ *
+ **/
+router.all('/project/executionInfo',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
         code:0,
         text:'ok',
         data:{
-            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
-        }
+            info: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'           }
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc xtz.得到指定项目的资金运转
+ * @fakedoc 得到指定项目的风险提示
  *
- * @name project.moneyOperation
- * @href project/moneyOperation
+ * @name project.riskInfo
+ * @href project/riskInfo
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {String} projectId      项目id
+ * @input.post {string} projectId      项目id
  *
  * @description
  *
- * https://localhost:5000/project/moneyOperation
+ * https://localhost:5000/project/riskInfo
  *
- * https://192.168.1.86:3000/project/moneyOperation
+ * https://192.168.1.86:3000/project/riskInfo
  *
- *@output {json} 资金运转
+ *@output {json} 风险提示
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{String} 状态描述",
+ *      text:"{string} 状态描述",
  *      data: {
- *          html:"{html} 资金运转的html"
- *      }
- * }
- *
- * **/
-router.all('/project/moneyOperation',function(req,res,next){
-    var pid = req.body.projectId || 1;
-    var resultValue = {
-        code:0,
-        text:'ok',
-        data:{
-            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
-        }
-    }
-    res.json(resultValue);
-});
-
-/**
- * @fakedoc xtz.得到指定项目的风险控制
- *
- * @name project.riskControl
- * @href project/riskControl
- *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {String} projectId      项目id
- *
- * @description
- *
- * https://localhost:5000/project/riskControl
- *
- * https://192.168.1.86:3000/project/riskControl
- *
- *@output {json} 风险控制
- * {
- *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{String} 状态描述",
- *      data: {
- *          html:"{html} 风险控制的html"
+ *          info:"{string} 风险提示的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
  *      }
  * }
  *
  * **/
 
-router.all('/project/riskControl',function(req,res,next){
+router.all('/project/riskInfo',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
         code:0,
         text:'ok',
         data:{
-            html: '<p><strong>企业背景：</strong>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p><p><strong>经营状况：</strong>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p><p><br/></p>'
-        }
+            info: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'        }
     }
     res.json(resultValue);
 });
 
 /**
- * @fakedoc xtz.得到指定项目的投资记录列表
+ * @fakedoc 得到指定项目的投资记录列表
  *
  * @name project.investmentRecords
  * @href /project/investmentRecords
  *
  * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {int} projectId 		项目Id
+ * @input.post {string} projectId 		项目Id
  *
  * @description 
  * 
@@ -463,11 +457,19 @@ router.all('/project/riskControl',function(req,res,next){
  * @output {json} 投资记录列表
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{string} 状态描述",
  *  data: [{
- *  	uname:"{string} 投资人",
- *  	timeline:"{string} 操作日期",
- *  	money:"{string} 投资金额"
+ *      repayMoney:"{string} 已还款金额 ",
+ *      repayDuration:"{string} 已还款期数",
+ *      remainRepayMoney:"{string} 未还款金额",
+ *      remainRepayDuration:"{string} 未还款期数",
+ *      recordList:{
+ *          no:"{string} 顺序编号",
+ *          name:"{string} 投资人（模糊化的用户手机号。例：135****2547）",
+ *          money:"{string} 投资金额（默认两位小数。例：2000.00）",
+ *          terminal:"{string} 投资来源（wechat，ios，android，website）",
+ *          timeline:"{string} 投资时间（例：2017-09-05 12:15）"
+ *      }
  *  }]
  * }
  */
@@ -487,9 +489,11 @@ router.all('/project/investmentRecords', function (req, res, next) {
     var max = 35;
     while (i < max && limit > 0) {
         records.push({
-            uname: 'a****d',
+            no:i+'',
+            name: 'a****d',
             timeline: '2015-08-29 12:15',
-            money: [100, 1000, 50, 10500, 6700, 5][Math.floor(Math.random() * 6)]
+            money: [100.12, 1000.14, 50.15, 10500.65, 6700.00, 5.00][Math.floor(Math.random() * 6)],
+            terminal:['wechat','ios','android','website'][Math.floor(Math.random() * 3)]
         });
         i++;
         limit--;
@@ -506,15 +510,16 @@ router.all('/project/investmentRecords', function (req, res, next) {
 });
 
 /**
- * @fakedoc xtz.收益计算
+ *
+ * @fakedoc 收益计算
  *
  * @name project.interestCalculation
  * @href /project/interestCalculation
  * 
- * @input.post {string} client 		    客户端统计参数（common/client）
- * @input.post {int}    projectId 		    项目Id
- * @input.post {number} amount 		    投资金额
- * @input.post {string=} intTicketId 		加息券id
+ * @input.post {string}  client 		    客户端统计参数（common/client）
+ * @input.post {string}  projectId 		    项目Id
+ * @input.post {string}  money 		        投资金额
+ * @input.post {string=} rateTicketId 		加息券id
  *
  * @description 
  * 
@@ -525,9 +530,9 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * @output {json} 收益
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{String} 状态描述",
+ *  text:"{string} 状态描述",
  *  data:{
- *      interest:"{String} 收益"
+ *      interest:"{string} 收益"
  *      }
  * }
  */
