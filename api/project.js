@@ -314,7 +314,7 @@ router.all('/project/borrowerInfo',function(req,res,next){
  * }
  *
  * **/
-router.all('/project/description',function(req,res,next){
+router.all('/project/instruction',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
         code:0,
