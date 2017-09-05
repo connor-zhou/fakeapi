@@ -96,16 +96,16 @@ router.all('/project/pageList', function (req, res, next) {
 /**
  * @fakedoc 推荐项目列表
  * 
- * @name project.recommendList
- * @href /project/recommendList
+ * @name project.recommend
+ * @href /project/recommend
  * 
  * @input.post {string} client 		客户端统计参数
  *
  * @description 
  * 
- * https://localhost:5000/project/recommendList
+ * https://localhost:5000/project/recommend
  * 
- * https://192.168.1.86:3000/project/recommendList
+ * https://192.168.1.86:3000/project/recommend
  *
  * 输出同'/project/pageList'
  */
