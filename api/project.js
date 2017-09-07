@@ -15,6 +15,8 @@ var router = express.Router();
  * @input.post {string} client 		    客户端统计参数
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
+ * @input.post {string=} sort 	        排序格式（1表示升序，0表示降序。格式："timeline:0",表示按时间降序排列；如果有多种排序，用英文逗号隔开，
+ *                                      如："timeline:0,money:1"，表示先按timeline降序排列，再按money升序排列；不传此字段或为空，按默认时间线降序排。）
  *
  * @output {json} 分页列表
  * {
@@ -149,7 +151,7 @@ router.all('/project/recommendList', function (req, res, next) {
  *      money:"{string} 融资金额",
  *      minInvest:"{string} 起投金额",
  *      remainInvest:"{string} 剩余可投金额",
- *      expireTimeline:"{string} 投资截止日期",
+ *      expireTimeline:"{string} 截止日期（毫秒级时间戳，可计算剩余投资时间。例：1504698000207）",
  *      repaymentTimeline:"{string} 还款日期",
  *      tips:"{string} 项目温馨提示",
  *      canUseCashTicket :"{int} 能否用投资券 (1-能,0-否)",
@@ -182,7 +184,7 @@ router.all('/project/detail', function (req, res, next) {
         durationUnit:'个月',
         minInvest: ['2000','1000'][yesOrNo],
         remainInvest:'190000',
-        expireTimeline: '2016-09-05',
+        expireTimeline: '1504698000207',
         repaymentTimeline:"2016-08-05",
         tips:'这个项目可以赚好多哦！',
         canUseCashTicket:yesOrNo,
@@ -220,10 +222,10 @@ router.all('/project/detail', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data: [{
- *  	planTimeline:"{string} 还款时间",
- *  	money:"{string} 计划偿还本金",
+ *  	timeline:"{string} 还款时间",
+ *  	capital:"{string} 计划偿还本金",
  *  	interest:"{string} 应还利息",
-        days:"{string} 计息天数 "
+ *      days:"{string} 计息天数 "
  *  }]
  * }
  */
@@ -234,9 +236,9 @@ router.all('/project/repaymentPlan', function (req, res, next) {
     while (limit-- > 0) {
         var dt = moment().add(10 - limit - 1, 'M');
         records.push({
-            planTimeline: dt.format('YYYY-MM-DD'),
-            money: '100',
-            repayment:'2000',
+            timeline: dt.format('YYYY-MM-DD'),
+            capital: '100',
+            interest:'2000',
             days:'20'
         });
     }
@@ -321,7 +323,8 @@ router.all('/project/instruction',function(req,res,next){
         code:0,
         text:'ok',
         data:{
-            instruction: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'   }
+            instruction: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'
+        }
     }
     res.json(resultValue);
 })
@@ -515,8 +518,8 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *
  * @fakedoc 收益计算
  *
- * @name project.interestCalculation
- * @href /project/interestCalculation
+ * @name project.profitCalculation
+ * @href /project/profitCalculation
  * 
  * @input.post {string}  client 		    客户端统计参数（common/client）
  * @input.post {string}  projectId 		    项目Id
@@ -525,26 +528,26 @@ router.all('/project/investmentRecords', function (req, res, next) {
  *
  * @description 
  * 
- * https://localhost:5000/project/interestCalculation
+ * https://localhost:5000/project/profitCalculation
  * 
- * https://192.168.1.86:3000/project/interestCalculation
+ * https://192.168.1.86:3000/project/profitCalculation
  *
  * @output {json} 收益
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data:{
- *      interest:"{string} 收益"
+ *      profit:"{string} 收益"
  *      }
  * }
  */
 
-router.all('/project/interestCalculation', function (req, res, next) {
+router.all('/project/profitCalculation', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok',
     	data:{
-            interest:100
+            profit:100
         }
     }
     res.json(resultValue);
