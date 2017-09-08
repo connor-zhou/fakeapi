@@ -14,7 +14,8 @@ var fakeCommon = require('./api/common');
 // var fakeWechat = require('./api/wechat');
 // var fakeAgreement = require('./api/agreement');
 // var fakeCurrent = require('./api/current');
-// var fakeMessage = require('./api/message');
+var fakeMessage = require('./api/message');
+var fakePlatform = require('./api/platform');
 
 var app = express();
 
@@ -37,7 +38,8 @@ app.use('/', fakeCommon);
 // app.use('/', fakeWechat);
 // app.use('/', fakeAgreement);
 // app.use('/', fakeCurrent);
-// app.use('/', fakeMessage);
+app.use('/', fakeMessage);
+app.use('/', fakePlatform);
 
 //livereload
 if(app.get('env') == 'development'){

@@ -13,9 +13,11 @@ var router = express.Router();
  * https://192.168.1.86:3000/project/pageList
  *
  * @input.post {string} client 		    客户端统计参数
+ * @input.post {string} category 		项目类型（0-全部，其它类型待确认）
+ * @input.post {string} period 		    项目类型（单位：月。0-全部）
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
- * @input.post {string=} sort 	        排序格式（1表示升序，0表示降序。格式："timeline:0",表示按时间降序排列；如果有多种排序，用英文逗号隔开，
+ * @input.post {string=} sort 	        排序格式（1表示升序，0表示降序。格式："timeline:0",表示按时间降序排列；如果有多种排序，用半角逗号隔开，
  *                                      如："timeline:0,money:1"，表示先按timeline降序排列，再按money升序排列；不传此字段或为空，按默认时间线降序排。）
  *
  * @output {json} 分页列表
@@ -28,7 +30,7 @@ var router = express.Router();
  *      title:"{string} 项目名称",
  *      borrowerType:"{int} 借款方类型（0-个人，1-企业）",
  *      category:"{int} 项目类型",
- *      categoryText:"{string} 项目类型名称",
+ *      categoryText:"{string} 项目类型描述",
  *      repaymendMode:"{int} 还款方式",
  *      money:"{string} 融资金额",
  *      minInvest:"{string} 起投金额",
@@ -98,16 +100,16 @@ router.all('/project/pageList', function (req, res, next) {
 /**
  * @fakedoc 推荐项目列表
  * 
- * @name project.recommend
- * @href /project/recommend
+ * @name project.recommendList
+ * @href /project/recommendList
  * 
  * @input.post {string} client 		客户端统计参数
  *
  * @description 
  * 
- * https://localhost:5000/project/recommend
+ * https://localhost:5000/project/recommendList
  * 
- * https://192.168.1.86:3000/project/recommend
+ * https://192.168.1.86:3000/project/recommendList
  *
  * 输出同'/project/pageList'
  */
@@ -154,6 +156,7 @@ router.all('/project/recommendList', function (req, res, next) {
  *      expireTimeline:"{string} 截止日期（毫秒级时间戳，可计算剩余投资时间。例：1504698000207）",
  *      repaymentTimeline:"{string} 还款日期",
  *      tips:"{string} 项目温馨提示",
+ *      investTotalCount:"{string} 投资总人数",
  *      canUseCashTicket :"{int} 能否用投资券 (1-能,0-否)",
  *      canUseRateTicket:"{int} 能否使用加息券 （1-能，0-否）",
  *      isNewUserProject:"{int} 是否是新手项目 (1-是，0-否)",
@@ -187,6 +190,7 @@ router.all('/project/detail', function (req, res, next) {
         expireTimeline: '1504698000207',
         repaymentTimeline:"2016-08-05",
         tips:'这个项目可以赚好多哦！',
+        investTotalCount:'21',
         canUseCashTicket:yesOrNo,
         canUseRateTicket:yesOrNo,
         isNewUserProject:yesOrNo,

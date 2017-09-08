@@ -25,6 +25,7 @@ var _ = require('lodash');
  *
  * @description
  *
+ * 也可用来检测某个合法的手机号是否已注册（待确定）。
  *
  * https://localhost:5000/account/register
  *
@@ -73,7 +74,10 @@ router.all('/account/register', function (req, res, next) {
  * 
  * @description
  * 
- * aname+password 可通用；aname+smsCode 仅适用 aname 用手机号的情况。
+ * 1、aname+password 可通用；aname+smsCode 仅适用 aname 用手机号的情况。
+ *
+ * 2、aname+password 登录时，用户1小时内密码连续试错次数不能超过5次。
+ *
  *
  * https://localhost:5000/account/login
  * 
@@ -163,8 +167,10 @@ router.all('/account/logout', function (req, res, next) {
  *  		freeWithdrawLimit:"{string} 免费提现额度",
  *  		investmentSum:"{string} 累计投资",
  *  		integral:"{string} 积分",
+ *  	    cashTicketsCount:"{string} 状态正常（status == 0）的投资券（代金券）张数",
+ *  	    rateTicketsCount:"{string} 状态正常（status == 0）的加息券张数",
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
- *  		isOpenFy:"{int} 是否开通富有(1-开通，0-未开通)",
+ *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1-是，0-否)",
  *  	}
  * }
@@ -202,7 +208,9 @@ router.all('/account/info', function (req, res, next) {
      		investmentSum:"5000.00",
 			freeWithdrawLimit:'5000.00',
 			integral:"2000",
-			isSign:0,
+            cashTicketsCount:'12',
+            rateTicketsCount:'45',
+            isSign:0,
 			isOpenFy:0,
 			isNewUser:1
 		}
@@ -815,66 +823,111 @@ router.all('/account/invitation', function (req, res, next) {
     });
 });
 
-
 /**
- * @fakedoc 我的消息
+ * @fakedoc 添加银行卡
  *
- * @name account.messagePageList
- * @href /account/messagePageList
+ * @name account.addBankCard
+ * @href /account/addBankCard
  *
  * @input.post {string}     client 				客户端统计参数
  * @input.post {string}     token 				Token
- * @input.post {int}        type 				消息类型（0-账户消息，1-系统消息）
- * @input.post {int=}      status 				消息状态（0-未读，1-已读，不传或者传空，返回全部）
- * @input.post {int=}      [pageNumber=1] 	    页码
- * @input.post {int=}      [pageSize=10] 	    页量
+ * @input.post {string}     provinceCode 		省份编码
+ * @input.post {string}     cityCode 			城市编码
+ * @input.post {string}     bankId 				银行Id
+ * @input.post {string}     branchBankName 		分行名称
+ * @input.post {string}     cardNo 				银行卡号
  *
  *
- * @output {json} 我的消息
+ * @output {json} 添加银行卡
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *      data:[{
- *          id:"{string} 消息唯一标识id",
- *          status:"{int} 消息状态（0-未读，其它已读）",
- *          title:"{string} 消息标题",
- *          content:"{string} 消息内容简介（type == 0 时显示全部内容）",
- *          timeline:"{string} 创建时间（例：2015-12-12 12:12:15）"
- *      }]
+ *  	data:{
+ *         recordId:"{string} 添加成功后的记录Id"
+ *   }
  * }
  *
  * @needAuth
  *
  * @description
  *
- * https://localhost:5000/account/messagePageList
+ * https://localhost:5000/account/addBankCard
  *
- * https://192.168.1.86:3000/account/messagePageList
+ * https://192.168.1.86:3000/account/addBankCard
  */
 
-router.all('/account/messagePageList', function (req, res, next) {
+router.all('/account/addBankCard', function (req, res, next) {
 
-    var random = [1,3,5,8,2,5];
-    var recordList= [];
+;
 
+
+    res.json({
+        code:0,
+        text:'ok',
+        data:{
+            recordId:"454454"
+        }
+    });
+});
+
+
+/**
+ * @fakedoc 我的银行卡列表
+ *
+ * @name account.bankCardList
+ * @href /account/bankCardList
+ *
+ * @input.post {string}     client 				客户端统计参数
+ * @input.post {string}     token 				Token
+ * @input.post {string=}     main 				默认银行卡标识（非空值=只取默认银行卡，不传此字段或空值=全部）
+ *
+ * @output {json} 银行卡列表
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:[{
+ *         id:"{string} 绑定记录Id",
+ *         cardNo:"{string} 银行卡号（例：622****1234）",
+ *         bankName:"{string} 银行卡所属银行名称",
+ *         bankId:"{string} 银行卡所属银行Id",
+ *         bankAbbr:"{string} 银行卡所属银行英文缩写",
+ *         main:"{int} 是否为默认银行卡（1-是，0-否）"
+ *   }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * 适用：取得默认银行卡、判断用户有无绑定银行卡、取得绑定所有银行卡等情况。
+ *
+ * https://localhost:5000/account/bankCardList
+ *
+ * https://192.168.1.86:3000/account/bankCardList
+ */
+
+router.all('/account/bankCardList', function (req, res, next) {
+
+    var random = [1,3,5,8,2];
+    var bankList = [];
 
     random.forEach(function(value,key){
-        recordList.push({
-            id:key+'',
-            title:'有一个美丽的小女孩',
-            timeline:'2017-09-1'+value,
-            content:'她的名字叫做小微..',
-            status:key % 2
+        bankList.push({
+            id:value+'',
+            cardNo:'6227****2547',
+            bankName:'中国工商银行',
+            bankId:"5845****6665",
+            bankAbbr:"ICBC",
+            main:0
         });
     });
 
     res.json({
         code:0,
         text:'ok',
-        data:recordList
+        data:bankList
     });
 });
-
 
 
 module.exports = router;
