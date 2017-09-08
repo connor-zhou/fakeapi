@@ -91,6 +91,7 @@ router.all('/message/PageList', function (req, res, next) {
  *       }
  * }
  */
+
 router.all('/message/detail', function (req, res, next) {
 
     var resultValue = {
