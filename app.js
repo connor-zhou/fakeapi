@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 //fakes
 var fakeProject = require('./api/project');
 // var fakeAssignment = require('./api/assignment');
-// var fakeYeepay = require('./api/mmm');
-// var fakeEvent = require('./api/event');
+var fakeBf = require('./api/bf');
+var fakeEvent = require('./api/event');
 var fakeAccount = require('./api/account');
 // var fakeMore = require('./api/more');
 // var fakeMall = require('./api/mall');
@@ -29,8 +29,8 @@ app.use(function(req, res, next) {//fake cros
 });
 app.use('/', fakeProject);
 // app.use('/', fakeAssignment);
-// app.use('/', fakeYeepay);
-// app.use('/', fakeEvent);
+app.use('/', fakeBf);
+app.use('/', fakeEvent);
 app.use('/', fakeAccount);
 // app.use('/', fakeMore);
 // app.use('/', fakeMall);

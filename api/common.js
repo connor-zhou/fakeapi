@@ -321,7 +321,7 @@ var _ = require('lodash');
  *
  * https://localhost:5000/common/imageCode
  *
- * https://92.168.1.86:3000/common/imageCode
+ * https://192.168.1.86:3000/common/imageCode
  *
  * @output {json} 图形验证码
  *{
@@ -361,7 +361,7 @@ router.all('/common/imageCode',function(req,res,next){
  *
  * https://localhost:5000/common/sendSmsCode
  *
- * https://92.168.1.86:3000/common/sendSmsCode
+ * https://192.168.1.86:3000/common/sendSmsCode
  *
  *
  * @output {json} 短信验证码
