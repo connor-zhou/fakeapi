@@ -317,7 +317,7 @@ var _ = require('lodash');
  * @href common/imageCode
  *
  * @input.post {string}  client                  客户端统计参数
- * @input.post {string}  uniqueId                可表示唯一性的id（比如当前时间戳）
+ * @input.post {string}  uniqueId                可表示唯一性的id
  *
  * @description
  *

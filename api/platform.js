@@ -104,35 +104,35 @@ router.all('/platform/news/detail', function (req, res, next) {
 });
 
 
-/**
- * @fakedoc 帮助中心问题列表
- *
- * @name platform.helpQuestionList
- * @href /platform/help/questionList
- *
- * @input.post {string}         client 				    客户端统计参数
- * @input.post {int=}           type 				    根据问题分类搜索
- * @input.post {string=}        keywords 				根据问题关键字搜索（type，keywords 都传，默认按keywords搜索）
- *
- *
- * @output {json} 问题列表
- * {
- *  	code:"{int} 状态代码（0表示成功，其它值表示失败）",
- *  	text:"{string} 状态描述",
- *      data:[{
- *          id:"{string} 问题id",
- *          title:"{string} 问题"
- *      }]
- * }
- *
- * @needAuth
- *
- * @description
- *
- * https://localhost:5000/platform/help/questionList
- *
- * https://192.168.1.86:3000/platform/help/questionList
- */
+// /**
+//  * @fakedoc 帮助中心问题列表
+//  *
+//  * @name platform.helpQuestionList
+//  * @href /platform/help/questionList
+//  *
+//  * @input.post {string}         client 				    客户端统计参数
+//  * @input.post {int=}           type 				    根据问题分类搜索
+//  * @input.post {string=}        keywords 				根据问题关键字搜索（type，keywords 都传，默认按keywords搜索）
+//  *
+//  *
+//  * @output {json} 问题列表
+//  * {
+//  *  	code:"{int} 状态代码（0表示成功，其它值表示失败）",
+//  *  	text:"{string} 状态描述",
+//  *      data:[{
+//  *          id:"{string} 问题id",
+//  *          title:"{string} 问题"
+//  *      }]
+//  * }
+//  *
+//  * @needAuth
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/platform/help/questionList
+//  *
+//  * https://192.168.1.86:3000/platform/help/questionList
+//  */
 
 router.all('/platform/help/questionList', function (req, res, next) {
 
@@ -154,34 +154,34 @@ router.all('/platform/help/questionList', function (req, res, next) {
     });
 });
 
-/**
- * @fakedoc 帮助中心问题答案
- *
- * @name platform.helpQanswer
- * @href /platform/help/answer
- *
- * @needAuth
- *
- * @description
- *
- * https://localhost:5000/platform/help/answer
- *
- * https://192.168.1.86:3000/platform/help/answer
- *
- * @input.post {string} client 		    客户端统计参数
- * @input.post {string} questionId      问题Id
- *
- * @output {json} 帮助中心问题答案
- * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{string} 状态描述",
- *  data:
- *       {
- *          id:"{string} 问题id",
- *          answer:"{string} 问题答案"
- *       }
- * }
- */
+// /**
+//  * @fakedoc 帮助中心问题答案
+//  *
+//  * @name platform.helpQanswer
+//  * @href /platform/help/answer
+//  *
+//  * @needAuth
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/platform/help/answer
+//  *
+//  * https://192.168.1.86:3000/platform/help/answer
+//  *
+//  * @input.post {string} client 		    客户端统计参数
+//  * @input.post {string} questionId      问题Id
+//  *
+//  * @output {json} 帮助中心问题答案
+//  * {
+//  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *  text:"{string} 状态描述",
+//  *  data:
+//  *       {
+//  *          id:"{string} 问题id",
+//  *          answer:"{string} 问题答案"
+//  *       }
+//  * }
+//  */
 router.all('/platform/help/answer', function (req, res, next) {
 
     var resultValue = {

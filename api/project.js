@@ -588,9 +588,43 @@ router.all('/project/investmentRecords', function (req, res, next) {
             lists:records
 
         }
-    }
+    };
     res.json(resultValue);
 });
+
+/**
+ * @fakedoc 得到指定项目信息咨询服务协议
+ *
+ * @name project.agreementLoan
+ * @href /project/agreementLoan
+ *
+ * @input.post {string} client 		    客户端统计参数
+ * @input.post {string} projectId 		项目Id
+ * @input.post {string} money 		    投资金额
+ *
+ * @description
+ *
+ * https://localhost:5000/project/agreementLoan?projectId='1321'&money=223
+ *
+ * https://192.168.1.86:3000/project/agreementLoan?projectId='1321'&money=223
+ *
+ * @output {json} 还款计划
+ * {
+ *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{string} 状态描述"
+ * }
+ */
+
+
+router.all('/project/agreementLoan', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok'
+    };
+    res.json(resultValue);
+});
+
+
 
 /**
  *
