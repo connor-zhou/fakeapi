@@ -529,7 +529,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
 
 /**
  *
- * @fakedoc 收益计算
+ * @fakedoc 项目收益计算
  *
  * @name project.profitCalculation
  * @href /project/profitCalculation
@@ -537,7 +537,6 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * @input.post {string}  client 		    客户端统计参数（common/client）
  * @input.post {string}  projectId 		    项目Id
  * @input.post {string}  money 		        投资金额
- * @input.post {string=} rateTicketId 		加息券id
  *
  * @description 
  * 

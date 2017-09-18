@@ -658,7 +658,7 @@ router.all('/account/withdrawTickets', function (req, res, next) {
 
 
 /**
- * @fakedoc 我指定投资项目的还款计划
+ * @fakedoc 我的指定投资项目的还款计划
  *
  * @name account.repaymentPlan
  * @href /account/repaymentPlan
@@ -707,6 +707,45 @@ router.all('/account/repaymentPlan', function (req, res, next) {
 });
 
 
+/**
+ *
+ * @fakedoc 我的指定项目的总收益计算
+ *
+ * @name account.profitCalculation
+ * @href /account/profitCalculation
+ *
+ * @input.post {string}  client 		    客户端统计参数
+ * @input.post {string}  token 		        Token
+ * @input.post {string}  projectId 		    项目Id
+ * @input.post {string}  money 		        投资金额
+ * @input.post {string}  rateTicketId 		加息券id
+ *
+ * @description
+ *
+ * https://localhost:5000/account/profitCalculation
+ *
+ * https://192.168.1.86:3000/account/profitCalculation
+ *
+ * @output {json} 收益
+ * {
+ *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{string} 状态描述",
+ *  data:{
+ *      profit:"{string} 收益"
+ *    }
+ * }
+ */
+
+router.all('/account/profitCalculation', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data:{
+            profit:100
+        }
+    }
+    res.json(resultValue);
+});
 
 
 /**
