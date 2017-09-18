@@ -99,8 +99,8 @@ router.all('/bf/toRecharge', function (req, res, next) {
  * @input.post {string}  token 			 Token
  * @input.post {string}  money 		     提现金额
  * @input.post {string=} cardId          提现银行卡id
- * @input.post {int}    isUseTicket      是否用提现券（1-是，0-否）
- * @input.post {string} callbackUrl      提现完成后的跳转地址（需 base64 编码）
+ * @input.post {int}     isUseTicket     是否用提现券（1-是，0-否）
+ * @input.post {string}  callbackUrl     提现完成后的跳转地址（需 base64 编码）
  *
  * @description
  *
@@ -144,7 +144,7 @@ router.all('/bf/toWithdraw', function (req, res, next) {
  * @input.post {string}    token					    Token
  * @input.post {string}    projectId				    项目Id
  * @input.post {string}    money					    投资金额
- * @input.post {string=}   cashTicketIds				现金券Ids（多个id用半角逗号隔开,例：'42,2323...'）
+ * @input.post {string=}   cashTicketIds				现金券Ids（多个id用半角逗号隔开,例："'015','023'..."）
  * @input.post {string=}   cashTicketTotalValue			选中的现金券总值（cashTicketIds 有值时必传）
  * @input.post {string=}   rateTicketId			        加息券Id
  * @input.post {string}    callbackUrl                  投资完成后的跳转地址（需 base64 编码）

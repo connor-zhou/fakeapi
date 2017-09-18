@@ -212,7 +212,7 @@ router.all('/project/detail', function (req, res, next) {
  * @name project.repaymentPlan
  * @href /project/repaymentPlan
  *
- * @input.post {string} client 		    客户端统计参数（common/client）
+ * @input.post {string} client 		    客户端统计参数
  * @input.post {string} projectId 		项目Id
  *
  * @description 
@@ -254,33 +254,34 @@ router.all('/project/repaymentPlan', function (req, res, next) {
     res.json(resultValue);
 });
 
-/**
- * @fakedoc 得到指定项目的借款方信息
- *
- * @name project.borrowerInfo
- * @href project/borrowerInfo
- *
- * @input.post {string} client 		 客户端统计参数（common/client）
- * @input.post {string} projectId    项目id
- *
- * @description
- *
- * https://localhost:5000/project/borrowerInfo
- *
- * https://192.168.1.86:3000/project/borrowerInfo
- *
- *@output {json} 借款方信息
- * {
- *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{string} 状态描述",
- *      data: {
- *          type:"{int} 借款方类型（0-个人，1-企业）",
- *          intro:"{string} 借款方介绍html（标题和正文需用不同标签或者类名区分，方便前台加样式。）",
- *          photos:"{array} 资料图片绝对url数组"
- *      }
- * }
- *
- * **/
+// /**
+//  * @fakedoc 得到指定项目的借款方信息
+//  *
+//  * @name project.borrowerInfo
+//  * @href project/borrowerInfo
+//  *
+//  * @input.post {string} client 		 客户端统计参数（common/client）
+//  * @input.post {string} projectId    项目id
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/project/borrowerInfo
+//  *
+//  * https://192.168.1.86:3000/project/borrowerInfo
+//  *
+//  *@output {json} 借款方信息
+//  * {
+//  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *      text:"{string} 状态描述",
+//  *      data: {
+//  *          type:"{int} 借款方类型（0-个人，1-企业）",
+//  *          intro:"{string} 借款方介绍html（标题和正文需用不同标签或者类名区分，方便前台加样式。）",
+//  *          photos:"{array} 资料图片绝对url数组"
+//  *      }
+//  * }
+//  *
+//  **/
+
 router.all('/project/borrowerInfo',function(req,res,next){
     var pid = req.body.projectId || 1;
     var resultValue = {
@@ -295,31 +296,95 @@ router.all('/project/borrowerInfo',function(req,res,next){
     res.json(resultValue);
 });
 
+
 /**
- * @fakedoc 得到指定项目的投资须知
+ * @fakedoc 得到指定项目的其它信息（项目信息，风控信息等）
  *
- * @name project.instruction
- * @href project/instruction
+ * @name project.appendix
+ * @href project/appendix
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} projectId   项目id
+ * @input.post {string} client 		 客户端统计参数
+ * @input.post {string} projectId    项目id
  *
  * @description
  *
- * https://localhost:5000/project/instruction
+ * https://localhost:5000/project/appendix
  *
- * https://192.168.1.86:3000/project/instruction
+ * https://192.168.1.86:3000/project/appendix
  *
- *@output {json} 企业信息
+ * @output {json} 借款方信息
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *      text:"{string} 状态描述",
  *      data: {
- *          instruction:"{string} 项目说明的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
+ *          type:"{int} 借款方类型（0-企业，1-个人）",
+ *          projectInfo:{
+ *              name:"{string} 借款人姓名（企业时为法人姓名）",
+ *              application:"{string} 借款用途",
+ *              address:"{string} 借款人居住地（企业时为公司地址）",
+ *              chinaId:"{string=} 借款人身份证（仅type == 1 时返回，例：6227****2547）",
+ *              company:"{string=} 企业名称（仅type == 0 时返回）",
+ *              instruction:"{string} 项目说明"
+ *          },
+ *          files:{
+ *              photos:"{array} 图片url数组"
+ *          },
+ *          riskInfo:"{string} 风控信息的html"
  *      }
  * }
  *
- * **/
+ **/
+
+
+router.all('/project/appendix',function(req,res,next){
+
+    var resultValue = {
+        code:0,
+        text:'ok',
+        data:{
+            type:0,
+            projectInfo:{
+              name:"毛泽东",
+              application:"建立中华人民共和国",
+              address:"北京",
+              company:"中国共产党",
+              instruction:"中国共产党是中国工人阶级的先锋队，同时是中国人民和中华民族的先锋队，是中国特色社会主义事业的领导核心，代表中国先进生产力的发展要求，代表中国先进文化的前进方向，代表中国最广大人民的根本利益。党的最高理想和最终目标是实现共产主义。"
+            },
+            files:{
+                photos:["http://www.xingtouzi.com/upload/images/20170726/15010699741311.png","http://www.xingtouzi.com/upload/images/20170726/15010699741311.png"]
+            },
+            riskInfo: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'
+        }
+    };
+    res.json(resultValue);
+});
+
+
+// /**
+//  * @fakedoc 得到指定项目的投资须知
+//  *
+//  * @name project.instruction
+//  * @href project/instruction
+//  *
+//  * @input.post {string} client 		客户端统计参数
+//  * @input.post {string} projectId   项目id
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/project/instruction
+//  *
+//  * https://192.168.1.86:3000/project/instruction
+//  *
+//  *@output {json} 企业信息
+//  * {
+//  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *      text:"{string} 状态描述",
+//  *      data: {
+//  *          instruction:"{string} 项目说明的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
+//  *      }
+//  * }
+//  *
+//  * **/
 
 router.all('/project/instruction',function(req,res,next){
     var pid = req.body.projectId || 1;
@@ -378,8 +443,8 @@ router.all('/project/instruction',function(req,res,next){
  * @name project.executionInfo
  * @href project/executionInfo
  *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} projectId      项目id
+ * @input.post {string} client 		客户端统计参数
+ * @input.post {string} projectId   项目id
  *
  * @description
  *
@@ -409,31 +474,31 @@ router.all('/project/executionInfo',function(req,res,next){
     res.json(resultValue);
 });
 
-/**
- * @fakedoc 得到指定项目的风险提示
- *
- * @name project.riskInfo
- * @href project/riskInfo
- *
- * @input.post {string} client 		客户端统计参数（common/client）
- * @input.post {string} projectId      项目id
- *
- * @description
- *
- * https://localhost:5000/project/riskInfo
- *
- * https://192.168.1.86:3000/project/riskInfo
- *
- *@output {json} 风险提示
- * {
- *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *      text:"{string} 状态描述",
- *      data: {
- *          info:"{string} 风险提示的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
- *      }
- * }
- *
- * **/
+// /**
+//  * @fakedoc 得到指定项目的风险提示
+//  *
+//  * @name project.riskInfo
+//  * @href project/riskInfo
+//  *
+//  * @input.post {string} client 		客户端统计参数（common/client）
+//  * @input.post {string} projectId      项目id
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/project/riskInfo
+//  *
+//  * https://192.168.1.86:3000/project/riskInfo
+//  *
+//  *@output {json} 风险提示
+//  * {
+//  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *      text:"{string} 状态描述",
+//  *      data: {
+//  *          info:"{string} 风险提示的html（标题和正文需用不同标签或者类名区分，方便前台加样式。）"
+//  *      }
+//  * }
+//  *
+//  * **/
 
 router.all('/project/riskInfo',function(req,res,next){
     var pid = req.body.projectId || 1;
@@ -452,7 +517,7 @@ router.all('/project/riskInfo',function(req,res,next){
  * @name project.investmentRecords
  * @href /project/investmentRecords
  *
- * @input.post {string} client 		客户端统计参数（common/client）
+ * @input.post {string} client 		    客户端统计参数
  * @input.post {string} projectId 		项目Id
  * @input.post {int=}   [pageNumber=1]	页码
  * @input.post {int=}   [pageSize=10]	页量
