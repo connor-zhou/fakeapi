@@ -171,6 +171,7 @@ router.all('/account/logout', function (req, res, next) {
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
  *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1-是，0-否)",
+ *  		isRiskAssess:"{int} 用户是否做过风险评估(1-是，0-否)"
  *  	}
  * }
  *
@@ -1190,6 +1191,101 @@ router.all('/account/bankCardList', function (req, res, next) {
         data:bankList
     });
 });
+
+
+/**
+ * @fakedoc 我的风险评估
+ *
+ * @name account.riskAssessList
+ * @href /account/riskAssess/list
+ *
+ * @input.post {string}     client 				客户端统计参数
+ * @input.post {string}     token 				Token
+ *
+ * @output {json} 风险评估
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:[{
+ *         id:"{string} 问题id",
+ *         title:"{string} 问题",
+ *         answerlist:[{
+ *          answerId:"{string} 答案id",
+ *          content:"{string} 答案"
+ *         }]
+ *   }]
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ *
+ * https://localhost:5000/account/riskAssess/list
+ *
+ * https://192.168.1.86:3000/account/riskAssess/list
+ */
+
+router.all('/account/riskAssessList', function (req, res, next) {
+
+    var random = [1,3,5,8,2];
+    var result = [];
+
+    random.forEach(function(value,key){
+        result.push({
+            id:value+'',
+            title:'这世界有鬼吗?',
+            answerList:[{
+                answerId:'023',
+                content:"你信则有，不信则无。"
+            }]
+        });
+    });
+
+    res.json({
+        code:0,
+        text:'ok',
+        data:result
+    });
+});
+
+
+
+/**
+ * @fakedoc 我的风险评估提交
+ *
+ * @name account.riskAssessSubmit
+ * @href /account/riskAssess/submit
+ *
+ * @input.post {string}     client 				客户端统计参数
+ * @input.post {string}     token 				Token
+ * @input.post {string}     answer 				选择的问题和答案（格式:"'q0Id;a0Id','q1Id;a1Id'..."）
+ *
+ * @output {json} 风险评估
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述"
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ *
+ * https://localhost:5000/account/riskAssess/submit
+ *
+ * https://192.168.1.86:3000/account/riskAssess/submit
+ */
+
+router.all('/account/riskAssess/submit', function (req, res, next) {
+
+
+    res.json({
+        code:0,
+        text:'ok'
+    });
+});
+
 
 
 module.exports = router;

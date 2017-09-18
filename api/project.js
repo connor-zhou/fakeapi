@@ -394,9 +394,9 @@ router.all('/project/instruction',function(req,res,next){
         data:{
             instruction: '<div><h2>企业背景：</h2><p>借款企业于2012年2月29日注册成立。公司自成立以来，严守“质量是公司的生命，顾客需求是公司的目标”的理念，参与市场竞争，做到在质量上让顾客放心，在价格上让顾客称心，在服务上让顾客欢心。目前已多家电气公司签订长期合作，上下游稳定。</p></div><div><h2>经营状况：</h2><p>主要生产产品为冰箱内胆、冰箱干燥器、压塑机后罩盖等，和多家大型电气厂商签订长期供销合同。今年9月份才上的吹塑项目，主要为江苏某集团生产的冷却壶出口产品。公司产品一次送检合格率98%，顾客反馈信息处理率100%。</p></div>'
         }
-    }
+    };
     res.json(resultValue);
-})
+});
 
 
 // /**
@@ -438,12 +438,13 @@ router.all('/project/instruction',function(req,res,next){
 //
 
 /**
- * @fakedoc 得到指定项目的贷后管理
+ * @fakedoc 得到指定项目的贷后披露
  *
  * @name project.executionInfo
  * @href project/executionInfo
  *
  * @input.post {string} client 		客户端统计参数
+ * @input.post {string} token 		Token
  * @input.post {string} projectId   项目id
  *
  * @description
@@ -452,7 +453,7 @@ router.all('/project/instruction',function(req,res,next){
  *
  * https://192.168.1.86:3000/project/executionInfo
  *
- *@output {json} 贷后管理信息
+ *@output {json} 贷后披露信息
  * {
  *      code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *      text:"{string} 状态描述",
@@ -593,20 +594,22 @@ router.all('/project/investmentRecords', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到指定项目信息咨询服务协议
+ * @fakedoc 得到指定项目信息咨询服务协议（借款协议）
  *
  * @name project.agreementLoan
  * @href /project/agreementLoan
  *
- * @input.post {string} client 		    客户端统计参数
- * @input.post {string} projectId 		项目Id
- * @input.post {string} money 		    投资金额
+ * @input.post {string}  client 		客户端统计参数
+ * @input.post {string=} projectId 		项目Id（仅type == 0 时传入）
+ * @input.post {string=} money 		    投资金额（仅type == 0 时传入）
+ * @input.post {string=} investId 		投资记录id（仅type == 1 时传入）
+ * @input.post {int}     type 		    何时调用（0-确认投资时，1-账户中借款协议）
  *
  * @description
  *
- * https://localhost:5000/project/agreementLoan?projectId='1321'&money=223
+ * https://localhost:5000/project/agreementLoan?client='sdfsaf'&token='adfasdf'&projectId='1321'&money=223&type=0
  *
- * https://192.168.1.86:3000/project/agreementLoan?projectId='1321'&money=223
+ * https://192.168.1.86:3000/project/agreementLoan?client='sdfsaf'&token='adfasdf'&projectId='1321'&money=223&type=0
  *
  * @output {json} 还款计划
  * {

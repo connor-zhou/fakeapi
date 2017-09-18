@@ -27,7 +27,7 @@ var router = express.Router();
  *  text:"{string} 状态描述",
  *  data:{
  *      url:"{string} 注册的URL",
- *      maps:"{array} 参数数组"
+ *      maps:"{map} 参数map"
  *  }
  * }
  */
@@ -72,7 +72,7 @@ router.all('/bf/toRegister', function (req, res, next) {
  *  text:"{string} 状态描述",
  *  data:{
  *      url:"{string} 充值的URL",
- *      maps:"{array} 参数数组"
+ *      maps:"{map} 参数map"
  *  }
  * }
  */
@@ -116,7 +116,7 @@ router.all('/bf/toRecharge', function (req, res, next) {
  *  text:"{string} 状态描述",
  *  data:{
  *      url:"{string} 提现的URL",
- *      maps:"{array} 参数数组"
+ *      maps:"{map} 参数map"
  *  }
  * }
  */
@@ -130,7 +130,7 @@ router.all('/bf/toWithdraw', function (req, res, next) {
                 url:'/bf/callback/toWithdraw',
                 maps:[{'key':'value'}]
             }
-        }
+        };
         res.json(resultValue);
 });
 
@@ -155,7 +155,7 @@ router.all('/bf/toWithdraw', function (req, res, next) {
  *  text:"{string} 状态描述",
  *  data:{
  *      url:"{string} 投资的URL",
- *      maps:"{array} 参数数组"
+ *      maps:"{map} 参数map"
  *  }
  * }
  * 
@@ -183,35 +183,35 @@ router.all('/bf/toInvest', function (req, res, next) {
     res.json(resultValue);
 });
 
-/**
- * @fakedoc 得到宝付平台提现手续费
- *
- * @name bf.withdrawFee
- * @href /bf/withdrawFee
- *
- * @input.post {string}   client 				    客户端统计参数
- * @input.post {string}   token					    Token
- * @input.post {string}   money					    提现金额
- *
- * @output {json} 投资的URL
- * {
- *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  text:"{string} 状态描述",
- *  data:{
- *      fee:"{Strng} 提现手续费用"
- *      }
- * }
- *
- * @needAuth
- *
- * @description
- *
- * 得到宝付平台投资的URL
- *
- * https://localhost:5000/bf/withdrawFee
- *
- * https://192.168.1.86:3000/bf/withdrawFee
- */
+// /**
+//  * @fakedoc 得到宝付平台提现手续费
+//  *
+//  * @name bf.withdrawFee
+//  * @href /bf/withdrawFee
+//  *
+//  * @input.post {string}   client 				    客户端统计参数
+//  * @input.post {string}   token					    Token
+//  * @input.post {string}   money					    提现金额
+//  *
+//  * @output {json} 投资的URL
+//  * {
+//  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+//  *  text:"{string} 状态描述",
+//  *  data:{
+//  *      fee:"{Strng} 提现手续费用"
+//  *      }
+//  * }
+//  *
+//  * @needAuth
+//  *
+//  * @description
+//  *
+//  * 得到宝付平台投资的URL
+//  *
+//  * https://localhost:5000/bf/withdrawFee
+//  *
+//  * https://192.168.1.86:3000/bf/withdrawFee
+
 router.all('/bf/withdrawFee', function (req, res, next) {
 	var code = 0;
 	var text = "ok";
