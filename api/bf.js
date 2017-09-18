@@ -8,11 +8,10 @@ var router = express.Router();
  * @href /bf/toRegister
  *
  * @input.post {string} client 		    客户端统计参数
- * @input.post {string} token 			    Token
- * @input.post {string} realname 		    真实姓名
- * @input.post {string} chinaId 		    身份证号码
- * @input.post {string} callbackUrlSucc   注册成功后的跳转地址（只h5页面对应接口需要传入）
- * @input.post {string} callbackUrlFail   注册失败后的跳转地址（只h5页面对应接口需要传入）
+ * @input.post {string} token 			Token
+ * @input.post {string} realname 		真实姓名
+ * @input.post {string} chinaId 		身份证号码
+ * @input.post {string} callbackUrl     注册完成后的跳转地址（需 base64 编码）
  *
  * @description
  *
@@ -27,7 +26,8 @@ var router = express.Router();
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data:{
- *      url:"{string} 宝付平台注册新用户的URL"
+ *      url:"{string} 注册的URL",
+ *      maps:"{array} 参数数组"
  *  }
  * }
  */
@@ -39,7 +39,8 @@ router.all('/bf/toRegister', function (req, res, next) {
         	code: 0,
         	text: 'ok',
         	data: {
-               url:'/bf/callback/toRegister'
+               url:'/bf/callback/toRegister',
+               maps:[{'key':'value'}]
             }
         }
         res.json(resultValue);
@@ -52,10 +53,10 @@ router.all('/bf/toRegister', function (req, res, next) {
  * @href /bf/toRecharge
  *
  * @input.post {string} client 		     客户端统计参数
- * @input.post {string} token 			     Token
- * @input.post {string} money 		         充值金额
- * @input.post {string} callbackUrlSucc    充值成功后的跳转地址 （只h5页面对应接口需要传入）
- * @input.post {string} callbackUrlFail    充值失败后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {string} token 			 Token
+ * @input.post {string} money 		     充值金额
+ * @input.post {string} method 		     充值方式（0-快捷支付，1-网银支付）
+ * @input.post {string} callbackUrl      充值完成后的跳转地址（需 base64 编码）
  *
  * @description
  *
@@ -70,8 +71,9 @@ router.all('/bf/toRegister', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data:{
- *      url:"{string} 宝付平台充值的URL"
- *   }
+ *      url:"{string} 充值的URL",
+ *      maps:"{array} 参数数组"
+ *  }
  * }
  */
 router.all('/bf/toRecharge', function (req, res, next) {
@@ -80,7 +82,8 @@ router.all('/bf/toRecharge', function (req, res, next) {
         	code: 0,
         	text: 'ok',
             data: {
-                url:'/bf/callback/toRecharge'
+                url:'/bf/callback/toRecharge',
+                maps:[{'key':'value'}]
             }
         }
         res.json(resultValue);
@@ -92,12 +95,12 @@ router.all('/bf/toRecharge', function (req, res, next) {
  * @name bf.toWithdraw
  * @href /bf/toWithdraw
  *
- * @input.post {string} client 		     客户端统计参数
- * @input.post {string} token 			     Token
- * @input.post {string} money 		         提现金额
- * @input.post {string} cardNo             提现银行卡号
- * @input.post {string} callbackUrlSucc    提现成功后的跳转地址 （只h5页面对应接口需要传入）
- * @input.post {string} callbackUrlFail    提现失败后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {string}  client 		 客户端统计参数
+ * @input.post {string}  token 			 Token
+ * @input.post {string}  money 		     提现金额
+ * @input.post {string=} cardId          提现银行卡id
+ * @input.post {int}    isUseTicket      是否用提现券（1-是，0-否）
+ * @input.post {string} callbackUrl      提现完成后的跳转地址（需 base64 编码）
  *
  * @description
  *
@@ -112,9 +115,9 @@ router.all('/bf/toRecharge', function (req, res, next) {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data:{
- *      url: "{string} 宝付平台提现的URL"
+ *      url:"{string} 提现的URL",
+ *      maps:"{array} 参数数组"
  *  }
- *
  * }
  */
 router.all('/bf/toWithdraw', function (req, res, next) {
@@ -124,7 +127,8 @@ router.all('/bf/toWithdraw', function (req, res, next) {
         	code: 0,
         	text: 'ok',
             data: {
-                url:'/bf/callback/toWithdraw'
+                url:'/bf/callback/toWithdraw',
+                maps:[{'key':'value'}]
             }
         }
         res.json(resultValue);
@@ -140,17 +144,18 @@ router.all('/bf/toWithdraw', function (req, res, next) {
  * @input.post {string}    token					    Token
  * @input.post {string}    projectId				    项目Id
  * @input.post {string}    money					    投资金额
- * @input.post {string=}   cashTicketIds				    投资券Ids（多个id用 ","(英文逗号)拼接）
- * @input.post {string=}   rateTicketId			加息券Id
- * @input.post {string}    callbackUrlSucc             投资成功后的跳转地址 （只h5页面对应接口需要传入）
- * @input.post {string}    callbackUrlFail             投资失败后的跳转地址 （只h5页面对应接口需要传入）
+ * @input.post {string=}   cashTicketIds				现金券Ids（多个id用半角逗号隔开,例：'42,2323...'）
+ * @input.post {string=}   cashTicketTotalValue			选中的现金券总值（cashTicketIds 有值时必传）
+ * @input.post {string=}   rateTicketId			        加息券Id
+ * @input.post {string}    callbackUrl                  投资完成后的跳转地址（需 base64 编码）
  *
  * @output {json} 投资的URL
  * {
  *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data:{
- *      url:"{string} 宝付平台投资的URL"
+ *      url:"{string} 投资的URL",
+ *      maps:"{array} 参数数组"
  *  }
  * }
  * 
@@ -171,7 +176,8 @@ router.all('/bf/toInvest', function (req, res, next) {
     	code: code,
     	text: text,
         data: {
-            url:'/bf/callback/toInvest'
+            url:'/bf/callback/toInvest',
+            maps:[{'key':'value'}]
         }
     }
     res.json(resultValue);

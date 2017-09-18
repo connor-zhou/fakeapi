@@ -10,7 +10,7 @@ var _ = require('lodash');
  *
  *
  * @input.post {string} mobile		     	手机号码
- * @input.post {string} password 		 	密码
+ * @input.post {string} password 		 	密码（需base64 编码）
  * @input.post {string} smsCode 		 	短信验证码
  * @input.post {string=} inviteMobile  		邀请人手机号码
  *
@@ -58,10 +58,11 @@ router.all('/account/register', function (req, res, next) {
  * @name account.login
  * @href /account/login
  *
- * @input.post {string} client 			客户端统计参数
- * @input.post {string} aname 			账户名（手机号或者用户名）
- * @input.post {string=} password 		密码
- * @input.post {string=} smsCode 		短信验证码
+ * @input.post {string}  client 		客户端统计参数
+ * @input.post {string}  aname 			账户名（手机号或者用户名）
+ * @input.post {string=} password 		密码（仅type == 0 时传入，需base64 编码）
+ * @input.post {string=} smsCode 		短信验证码（仅type == 1 时传入）
+ * @input.post {int}     type 		    登录类型（0-密码登录，1-短信验证码登录）
  *
  * @output {json} 登录结果
  * {
@@ -74,9 +75,7 @@ router.all('/account/register', function (req, res, next) {
  * 
  * @description
  * 
- * 1、aname+password 可通用；aname+smsCode 仅适用 aname 用手机号的情况。
- *
- * 2、aname+password 登录时，用户1小时内密码连续试错次数不能超过5次。
+ * aname+password 可通用；aname+smsCode 仅适用 aname 用手机号的情况。
  *
  *
  * https://localhost:5000/account/login
@@ -164,10 +163,10 @@ router.all('/account/logout', function (req, res, next) {
  *  		profitWill:"{string} 待收利息",
  *  		capitalWill:"{string} 待收本金",
  *  		capitalFreeze:"{string} 冻结本金",
- *  		freeWithdrawLimit:"{string} 免费提现额度",
  *  		investmentSum:"{string} 累计投资",
  *  		integral:"{string} 积分",
- *  	    cashTicketsCount:"{string} 状态正常（status == 0）的投资券（代金券）张数",
+ *  	    cashTicketsCount:"{string} 状态正常（status == 0）的现金券张数",
+ *  	    withdrawTicketsCount:"{string} 状态正常（status == 0）的提现券张数",
  *  	    rateTicketsCount:"{string} 状态正常（status == 0）的加息券张数",
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
  *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
@@ -206,10 +205,10 @@ router.all('/account/info', function (req, res, next) {
             profitWill:"9600.00",
             money:"9600.00",
      		investmentSum:"5000.00",
-			freeWithdrawLimit:'5000.00',
 			integral:"2000",
             cashTicketsCount:'12',
             rateTicketsCount:'45',
+            withdrawTicketsCount:'45',
             isSign:0,
 			isOpenFy:0,
 			isNewUser:1
@@ -228,9 +227,9 @@ router.all('/account/info', function (req, res, next) {
  * @input.post {string}     client 		客户端统计参数
  * @input.post {string}     token 		Token
  * @input.post {int}        step        更改步骤（1 或 2）
- * @input.post {string}     email 		新邮箱地址（仅 step == 1 时传入）
- * @input.post {string}     smsCode     手机验证码（仅 step == 1 时传入）
- * @input.post {string}     emailCode   邮箱验证码（仅 step == 2 时传入）
+ * @input.post {string=}     email 		新邮箱地址（仅 step == 1 时传入）
+ * @input.post {string=}     smsCode    手机验证码（仅 step == 1 时传入）
+ * @input.post {string=}     emailCode  邮箱验证码（仅 step == 2 时传入）
  *
  * @output {json} 邮箱信息
  * {
@@ -264,9 +263,9 @@ router.all('/account/alterEmail', function (req, res, next) {
  * @input.post {string}     client 		客户端统计参数
  * @input.post {string}     token 		Token
  * @input.post {int}        step        更改步骤（1 或 2）
- * @input.post {string}     mobile 		新手机号码（仅 step == 1 时传入）
- * @input.post {string}     smsCode01   原手机验证码（仅 step == 1 时传入）
- * @input.post {string}     smsCode02   新手机验证码（仅 step == 2 时传入）
+ * @input.post {string=}     mobile 	新手机号码（仅 step == 1 时传入）
+ * @input.post {string=}     smsCode01   原手机验证码（仅 step == 1 时传入）
+ * @input.post {string=}     smsCode02   新手机验证码（仅 step == 2 时传入）
  *
  * @output {json} 手机号信息
  * {
@@ -335,9 +334,7 @@ router.all('/account/alterNickname', function (req, res, next) {
  *
  * @input.post {string} client 			客户端统计参数
  * @input.post {string} token 			Token
- * @input.post {string} avatarType 		头像所用图片格式（ 'jpg'，'png'...）
- * @input.post {string} avatarData 		头像数据
- * @input.post {string} type			头像数据类型( 0--base64，1--微信url，2--form表单 )
+ * @input.post {string} avatarData 		头像数据（需base64编码）
  *
  * @output {json} 返回的头像
  * {
@@ -371,21 +368,21 @@ router.all('/account/alterAvatar', function (req, res, next) {
 
 
 /**
- * @fakedoc 更改密码（修改，重置）
+ * @fakedoc 更改密码
  *
  * @name account.alterPassword
  * @href /account/alterPassword
  *
  * @input.post {string}  client 		客户端统计参数
- * @input.post {string}  pwdNew         新密码
- * @input.post {string} pwdNewAgain 	确认新密码
- * @input.post {string=}  mobile 		手机号（仅重置密码传入，必须传）
+ * @input.post {string}  pwdNew         新密码（需base64编码）
+ * @input.post {string}  pwdNewAgain 	确认新密码（需base64编码）
+ * @input.post {string=} mobile 		手机号（仅重置密码传入，必须传）
  * @input.post {string=} smsCode        验证码（仅重置密码时传入，必须传）
- * @input.post {string=} token 			Token（仅修改密码时传入，必须传）
- * @input.post {string=} pwd 		    原始密码（仅修改密码时传入，必须传）
+ * @input.post {string=} token 			Token
+ * @input.post {string=} pwd 		    原始密码（需base64编码）
  *
  *
- * @output {json} 返回的头像
+ * @output {json} 更改密码
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
@@ -415,6 +412,48 @@ router.all('/account/alterPassword', function (req, res, next) {
 });
 
 
+/**
+ * @fakedoc 重置密码
+ *
+ * @name account.resetPassword
+ * @href /account/resetPassword
+ *
+ * @input.post {string}  client 		客户端统计参数
+ * @input.post {string}  pwdNew         新密码（需base64编码）
+ * @input.post {string}  pwdNewAgain 	确认新密码（需base64编码）
+ * @input.post {string}  mobile 		手机号
+ * @input.post {string}  smsCode        验证码
+ *
+ *
+ * @output {json} 返回的头像
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:{
+ *  		token:"{string=} 登录凭证（旧token失败，返回新的token。仅修改密码成功后返回）"
+ 		}
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/resetPassword
+ *
+ * https://192.168.1.86:3000/account/resetPassword
+ */
+
+router.all('/account/resetPassword', function (req, res, next) {
+
+    res.json({
+        code:0,
+        text:'ok',
+        data:{
+            token:"4654654615465"
+        }
+    });
+});
+
 
 /**
  * @fakedoc 我的加息券
@@ -424,13 +463,17 @@ router.all('/account/alterPassword', function (req, res, next) {
  *
  * @input.post {string} client 			客户端统计参数
  * @input.post {string} token 			Token
- * @input.post {int=} 	status 			加息券状态（0-正常，1-已使用，2-过期。不传或者值为空，按时间顺序显示全部。）
+ * @input.post {int=}   [pageNumber=1]	页码
+ * @input.post {int=}   [pageSize=10]	页量
+ * @input.post {int=} 	status 			加息券状态（0-正常，1-已使用，2-过期。值为空，按时间顺序显示全部。）
  *
  * @output {json} 加息券信息
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *  	data:[{
+ *  	data:{
+ *          count:"{int} 分页总数",
+ *      	recordList:[{
  *  		id:"{string} 加息券id",
  *  		value:"{string} 加息券值",
  *  		status:"{int} 加息券状态（0-正常，1-已使用，2-已过期）",
@@ -439,6 +482,7 @@ router.all('/account/alterPassword', function (req, res, next) {
  *  		useRule:"{string} 加息券使用规则说明",
  *  		remark:"{string} 加息券来源等备注信息"
  		}]
+ 	   }
  * }
  *
  * @needAuth
@@ -470,7 +514,10 @@ router.all('/account/rateTickets', function (req, res, next) {
     res.json({
         code:0,
         text:'ok',
-        data:result
+        data:{
+            count:'5',
+            recordList:result
+        }
     });
 });
 
@@ -483,13 +530,17 @@ router.all('/account/rateTickets', function (req, res, next) {
  *
  * @input.post {string} client 			客户端统计参数
  * @input.post {string} token 			Token
+ * @input.post {int=}   [pageNumber=1]	页码
+ * @input.post {int=}   [pageSize=10]	页量
  * @input.post {int=} 	status 			投资券状态（0-正常，1-已使用，2-过期。不传或者值为空，按时间顺序显示全部。）
  *
  * @output {json} 投资券信息
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *  	data:[{
+ *  	data:{
+ *          count:"{int} 分页总数",
+ *          recordList:[{
  *  		id:"{string} 投资券id",
  *  		value:"{string} 投资券值",
  *  		status:"{int} 投资券状态（0-正常，1-已使用，2-已过期）",
@@ -498,7 +549,8 @@ router.all('/account/rateTickets', function (req, res, next) {
  *  		expireTimeline:"{string} 投资券过期时间",
  *  		useRule:"{string} 投资券使用规则说明",
  *  		remark:"{string} 投资券来源等备注信息"
- 		}]
+ 		    }]
+ 		}
  * }
  *
  * @needAuth
@@ -531,9 +583,130 @@ router.all('/account/cashTickets', function (req, res, next) {
     res.json({
         code:0,
         text:'ok',
-        data:result
+        data:{
+            count:'5',
+            recordList:result
+        }
     });
 });
+
+
+/**
+ * @fakedoc 我的提现券
+ *
+ * @name account.withdrawTickets
+ * @href /account/withdrawTickets
+ *
+ * @input.post {string} client 			客户端统计参数
+ * @input.post {string} token 			Token
+ * @input.post {int=}   [pageNumber=1]	页码
+ * @input.post {int=}   [pageSize=10]	页量
+ * @input.post {int=} 	status 			投资券状态（0-正常，1-已使用，2-过期。不传或者值为空，按时间顺序显示全部。）
+ *
+ * @output {json} 提现券信息
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:{
+ *          count:"{int} 分页总数",
+ *      	recordList:[{
+ *  		id:"{string} 投资券id",
+ *  		value:"{string} 投资券值",
+ *  		status:"{int} 投资券状态（0-正常，1-已使用）",
+ *  		usedTimeline:"{string=} 投资券使用时间（仅当status = 1 时返回）",
+ *  		expireTimeline:"{string} 投资券过期时间",
+ *  		useRule:"{string} 投资券使用规则说明",
+ *  		remark:"{string} 投资券来源等备注信息"
+ 		}]
+ 		}
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/withdrawTickets
+ *
+ * https://192.168.1.86:3000/account/withdrawTickets
+ */
+
+router.all('/account/withdrawTickets', function (req, res, next) {
+
+    var random = [1,3,5,8,2,5];
+    var result= [];
+
+    random.forEach(function(value,key){
+        result.push({
+            id:value+'',
+            status:value === 5 ? 0 : value === 2 ? 1:2 ,
+            expireTimeline:'2018-12-1'+value+' 12:50',
+            useRule:'只能用在投资额'+value * 1000+'元以上的项目',
+            remark:"是在参加线下逗比全明星赛时候获得的"
+        });
+        value === 2 && (result[key]['usedTimeline'] = '2017-12-1'+value+' 12:50')
+    });
+
+    res.json({
+        code:0,
+        text:'ok',
+        data:{
+            count:'5',
+            recordList:result
+        }
+    });
+});
+
+
+/**
+ * @fakedoc 我指定投资项目的还款计划
+ *
+ * @name account.repaymentPlan
+ * @href /account/repaymentPlan
+ *
+ * @input.post {string} client 		    客户端统计参数（common/client）
+ * @input.post {string} token 			Token
+ * @input.post {string} projectId 		项目Id
+ *
+ * @description
+ *
+ * https://localhost:5000/account/repaymentPlan
+ *
+ * https://192.168.1.86:3000/account/repaymentPlan
+ *
+ * @output {json} 还款计划
+ * {
+ *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{string} 状态描述",
+ *  data: [{
+ *  	timeline:"{string} 还款时间",
+ *  	capital:"{string} 计划偿还本金",
+ *  	interest:"{string} 应还利息",
+ *      days:"{string} 计息天数 "
+ *  }]
+ * }
+ */
+router.all('/account/repaymentPlan', function (req, res, next) {
+    var moment = require('moment');
+    var records = [];
+    var limit = 10;
+    while (limit-- > 0) {
+        var dt = moment().add(10 - limit - 1, 'M');
+        records.push({
+            timeline: dt.format('YYYY-MM-DD'),
+            capital: '100',
+            interest:'2000',
+            days:'20'
+        });
+    }
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data: records
+    }
+    res.json(resultValue);
+});
+
+
 
 
 /**
@@ -542,11 +715,11 @@ router.all('/account/cashTickets', function (req, res, next) {
  * @name account.transactionRecords
  * @href /account/transactionRecords
  *
- * @input.post {string} client 				客户端统计参数
- * @input.post {string} token 				Token
- * @input.post {int=}  [pageNumber=1]		页码
- * @input.post {int=}  [pageSize=10]		页量
- * @input.post {int}  	category			交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）
+ * @input.post {string}  client 			客户端统计参数
+ * @input.post {string}  token 				Token
+ * @input.post {int=}    [pageNumber=1]		页码
+ * @input.post {int=}    [pageSize=10]		页量
+ * @input.post {int}  	 category			交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）
  * @input.post {string}  startTimeline		开始时间（毫秒级时间戳，所有时间段时，传空值)
  * @input.post {string}  endTimeline		结束时间（毫秒级时间戳，所有时间段时，传空值）
  *
@@ -554,15 +727,18 @@ router.all('/account/cashTickets', function (req, res, next) {
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *  	data:[{
- *  		id:"{string} 交易流水唯一标识",
- *  		timeline:"{string} 交易发生时间（例：2017-12-04）",
- *  		category:"{int} 交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）",
- *  		categoryText:"{string} 交易类型描述",
- *  		remark:"{string} 交易详情",
- *  		cash:"{string} 交易涉及到金额",
- *  		money:"{string} 交易后账户余额"
- 		}]
+ *  	data:{
+ *          count:"{int} 分页总数",
+ *          recordList:	[{
+ *  		    id:"{string} 交易流水唯一标识",
+ *  		    timeline:"{string} 交易发生时间（例：2017-12-04）",
+ *  		    category:"{int} 交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）",
+ *  		    categoryText:"{string} 交易类型描述",
+ *  		    remark:"{string} 交易详情",
+ *  		    cash:"{string} 交易涉及到金额",
+ *  		    money:"{string} 交易后账户余额"
+ 		    }]
+ 		    }
  * }
  *
  * @needAuth
@@ -584,7 +760,7 @@ router.all('/account/transactionRecords', function (req, res, next) {
     	var cat = Math.floor(Math.random() * 5+1);
         result.push({
             id:value+'',
-            timeline:'2017-09-1'+value,
+            timeline:'2017-09-01'+value,
             category:cat,
 			categoryText:catText[cat],
             remark:catText[cat],
@@ -596,7 +772,10 @@ router.all('/account/transactionRecords', function (req, res, next) {
     res.json({
         code:0,
         text:'ok',
-        data:result
+        data:{
+            count:'4',
+            recordList:result
+        }
     });
 });
 
@@ -609,25 +788,30 @@ router.all('/account/transactionRecords', function (req, res, next) {
  *
  * @input.post {string}     client 				客户端统计参数
  * @input.post {string}     token 				Token
- * @input.post {int}        state 				投资项目的状态（0-持有中，1-已结束，传空值表示所有。）
+ * @input.post {int=}       [pageNumber=1]		页码
+ * @input.post {int=}       [pageSize=10]		页量
+ * @input.post {int}        state 				投资项目的状态（0-持有中，1-投标中，2-已结束，空值表示所有。）
  *
  *
  * @output {json} 投资记录信息
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *  	data:[{
- *  		id:"{string} 投资记录id",
- *  		pId:"{string} 投资项目的id",
- *  	    pTitle:"{string} 项目名称",
- *          state:"{int} 投资记录的状态（0-持有中，1-已结束）",
- *  		money:"{string} 投资金额",
- *  	    annualizedRate:"{string} 年化利率",
- *  	    profitWill:"{string=} 待收收益（仅 status == 0 时返回）",
- *  	    profit:"{string} 已收收益",
- *  	    remainDays:"{string=} 剩余天数（仅 status == 0 时返回）",
- *  	    endTimeline:"{string} 项目结束时间（仅 status == 1 时返回，例：2017-12-14）"
- 		}]
+ *  	data:{
+ *          count:"{string} 总分页数",
+ *          recordList:[{
+ *  		    id:"{string} 投资记录id",
+ *  		    pId:"{string} 投资项目的id",
+ *  	        pTitle:"{string} 项目名称",
+ *              state:"{int} 投资记录的状态（0-持有中，1-投标中，2-已结束）",
+ *  		    money:"{string} 投资金额",
+ *  	        annualizedRate:"{string} 年化利率",
+ *  	        profitWill:"{string=} 待收收益（仅 status == 0 时返回）",
+ *  	        profit:"{string} 已收收益",
+ *  	        remainDays:"{string=} 剩余天数（仅 status == 0 时返回）",
+ *  	        endTimeline:"{string} 项目结束时间（仅 status == 2 时返回，例：2017-12-14）"
+ 		    }]
+ *      }
  * }
  *
  * @needAuth
@@ -661,7 +845,10 @@ router.all('/account/investmentRecords', function (req, res, next) {
     res.json({
         code:0,
         text:'ok',
-        data:result
+        data:{
+            count:"4",
+            recordList:result
+        }
     });
 });
 
@@ -824,17 +1011,14 @@ router.all('/account/invitation', function (req, res, next) {
 });
 
 /**
- * @fakedoc 添加银行卡
+ * @fakedoc 绑定银行卡
  *
  * @name account.addBankCard
  * @href /account/addBankCard
  *
  * @input.post {string}     client 				客户端统计参数
  * @input.post {string}     token 				Token
- * @input.post {string}     provinceCode 		省份编码
- * @input.post {string}     cityCode 			城市编码
- * @input.post {string}     bankId 				银行Id
- * @input.post {string}     branchBankName 		分行名称
+ * @input.post {string}     mobile				银行预留手机号
  * @input.post {string}     cardNo 				银行卡号
  *
  *
@@ -858,8 +1042,46 @@ router.all('/account/invitation', function (req, res, next) {
 
 router.all('/account/addBankCard', function (req, res, next) {
 
-;
+    res.json({
+        code:0,
+        text:'ok',
+        data:{
+            recordId:"454454"
+        }
+    });
+});
 
+
+/**
+ * @fakedoc 解绑银行卡
+ *
+ * @name account.removeBankCard
+ * @href /account/removeBankCard
+ *
+ * @input.post {string}     client 				客户端统计参数
+ * @input.post {string}     token 				Token
+ * @input.post {string=}    bankId 			    绑定的银行卡id
+ *
+ *
+ * @output {json} 添加银行卡
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:{
+ *         recordId:"{string} 解绑成功后的记录Id"
+ *   }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/removeBankCard
+ *
+ * https://192.168.1.86:3000/account/removeBankCard
+ */
+
+router.all('/account/removeBankCard', function (req, res, next) {
 
     res.json({
         code:0,
@@ -869,6 +1091,7 @@ router.all('/account/addBankCard', function (req, res, next) {
         }
     });
 });
+
 
 
 /**

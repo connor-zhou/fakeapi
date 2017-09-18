@@ -454,6 +454,8 @@ router.all('/project/riskInfo',function(req,res,next){
  *
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} projectId 		项目Id
+ * @input.post {int=}   [pageNumber=1]	页码
+ * @input.post {int=}   [pageSize=10]	页量
  *
  * @description 
  * 
@@ -467,7 +469,9 @@ router.all('/project/riskInfo',function(req,res,next){
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",
- *  data: [{
+ *  data: {
+ *      count:"{int} 分页总数",
+ *      lists:[{
  *      repayMoney:"{string} 已还款金额 ",
  *      repayDuration:"{string} 已还款期数",
  *      remainRepayMoney:"{string} 未还款金额",
@@ -478,8 +482,9 @@ router.all('/project/riskInfo',function(req,res,next){
  *          money:"{string} 投资金额（默认两位小数。例：2000.00）",
  *          terminal:"{string} 投资来源（wechat，ios，android，website）",
  *          timeline:"{string} 投资时间（例：2017-09-05 12:15）"
- *      }
- *  }]
+ *          }
+ *      }]
+ *  }
  * }
  */
 router.all('/project/investmentRecords', function (req, res, next) {
@@ -513,7 +518,11 @@ router.all('/project/investmentRecords', function (req, res, next) {
     var resultValue = {
     	code: 0,
     	text: 'ok',
-    	data: records
+    	data: {
+    	    count:'1',
+            lists:records
+
+        }
     }
     res.json(resultValue);
 });
