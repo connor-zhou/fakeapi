@@ -351,10 +351,11 @@ router.all('/common/imageCode',function(req,res,next){
  * @href common/sendSmsCode
  *
  * @input.post {string}   client                  客户端统计参数
- * @input.post {string=}  token                   Token
- * @input.post {string=}  mobile                  手机号（用户登陆时不必传入）
+ * @input.post {string=}  token                   Token（仅type == 0 时传入）
+ * @input.post {string=}  mobile                  手机号（仅type == 1 时传入）
  * @input.post {string}   uniqueId                请求图形验证码时用到的唯一id
  * @input.post {string}   imageCode               图形验证码
+ * @input.post {int}      type                    发送时机（0-已登录，1-未登录）
  *
  * @description
  *
