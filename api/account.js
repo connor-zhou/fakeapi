@@ -384,16 +384,15 @@ router.all('/account/alterAvatar', function (req, res, next) {
  * @output {json} 更改密码
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  	text:"{string} 状态描述",
- *  	data:{
- *  		token:"{string=} 登录凭证（旧token失败，返回新的token。仅修改密码成功后返回）"
- 		}
+ *  	text:"{string} 状态描述"
  * }
  *
  * @needAuth
  *
  * @description
- *
+
+ * 密码更改成功后，之前用旧密码登录的账号token都会失效，若需要登录状态需重新登录。
+
  * https://localhost:5000/account/alterPassword
  *
  * https://192.168.1.86:3000/account/alterPassword
@@ -429,13 +428,15 @@ router.all('/account/alterPassword', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *  		token:"{string=} 登录凭证（旧token失败，返回新的token。仅修改密码成功后返回）"
+ *  		token:"{string=} 登录凭证（返回token。仅修改密码成功后返回）"
  		}
  * }
  *
  * @needAuth
  *
  * @description
+ *
+ * 密码重置成功后，之前用旧密码登录的账号token都会失效，若需要登录状态需重新登录。
  *
  * https://localhost:5000/account/resetPassword
  *
@@ -1063,19 +1064,16 @@ router.all('/account/invitation', function (req, res, next) {
  *
  * @input.post {string}     client 				客户端统计参数
  * @input.post {string}     token 				Token
- * @input.post {string=}     main 				默认银行卡标识（非空值=只取默认银行卡，不传此字段或空值=全部）
  *
  * @output {json} 银行卡列表
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:[{
- *         id:"{string} 绑定记录Id",
+ *         id:"{string} 银行卡记录Id",
  *         cardNo:"{string} 银行卡号（例：622****1234）",
  *         bankName:"{string} 银行卡所属银行名称",
- *         bankId:"{string} 银行卡所属银行Id",
- *         bankAbbr:"{string} 银行卡所属银行英文缩写",
- *         main:"{int} 是否为默认银行卡（1-是，0-否）"
+ *         bankAbbr:"{string} 银行卡所属银行英文缩写"
  *   }]
  * }
  *
@@ -1083,7 +1081,7 @@ router.all('/account/invitation', function (req, res, next) {
  *
  * @description
  *
- * 适用：取得默认银行卡、判断用户有无绑定银行卡、取得绑定所有银行卡等情况。
+ * 适用：判断用户有无绑定银行卡、取得绑定所有银行卡等。
  *
  * https://localhost:5000/account/bankCardList
  *
@@ -1100,9 +1098,7 @@ router.all('/account/bankCardList', function (req, res, next) {
             id:value+'',
             cardNo:'6227****2547',
             bankName:'中国工商银行',
-            bankId:"5845****6665",
-            bankAbbr:"ICBC",
-            main:0
+            bankAbbr:"ICBC"
         });
     });
 
