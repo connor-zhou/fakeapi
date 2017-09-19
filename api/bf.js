@@ -195,7 +195,7 @@ router.all('/bf/toTradePassword', function (req, res, next) {
  *
  * @input.post {string}  client 		 客户端统计参数
  * @input.post {string}  token 			 Token
- * @input.post {string}  callbackUrl     修改交易密码完成后的跳转地址（需 base64 编码）
+ * @input.post {string}  callbackUrl     绑定银行卡完成后的跳转地址（需 base64 编码）
  *
  * @needAuth
  *
