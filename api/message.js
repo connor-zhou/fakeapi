@@ -20,13 +20,16 @@ var _ = require('lodash');
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *      data:[{
- *          id:"{string} 消息唯一标识id",
- *          status:"{int} 消息状态（0-未读，其它已读）",
- *          title:"{string} 消息标题",
- *          content:"{string} 消息内容简介（type == 0 时显示全部内容）",
- *          timeline:"{string} 创建时间（例：2015-12-12 12:12:15）"
+ *      data:{
+ *          count:"{int} 条目总数量",
+ *          recordList:[{
+ *              id:"{string} 消息唯一标识id",
+ *              status:"{int} 消息状态（0-未读，其它已读）",
+ *              title:"{string} 消息标题",
+ *              content:"{string} 消息内容简介（type == 0 时显示全部内容）",
+ *              timeline:"{string} 创建时间（例：2015-12-12 12:12:15）"
  *      }]
+ *      }
  * }
  *
  * @needAuth

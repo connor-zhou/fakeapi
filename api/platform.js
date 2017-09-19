@@ -18,13 +18,16 @@ var _ = require('lodash');
  * {
  *  	code:"{int} 状态代码（0表示成功，其它值表示失败）",
  *  	text:"{string} 状态描述",
- *      data:[{
+ *      data:{
+ *          count:"{int} 条目总数量",
+ *          recordList:[{
  *          id:"{string} 新闻id",
  *          profile:"{string} 新闻缩略图",
  *          title:"{string} 新闻标题",
  *          intro:"{string} 新闻内容简介",
  *          timeline:"{string} 创建时间（例：2015-12-12 12:12:15）"
  *      }]
+ *      }
  * }
  *
  * @needAuth
@@ -77,7 +80,7 @@ router.all('/platform/news/pageList', function (req, res, next) {
  * @input.post {string} type		新闻类型（0-媒体报道，1-行业动态）
  * @input.post {string} newsId      新闻Id
  *
- * @output {json} 分页列表
+ * @output {json} 新闻详情
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",

@@ -536,7 +536,7 @@ router.all('/project/riskInfo',function(req,res,next){
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",
  *  data: {
- *      count:"{int} 分页总数",
+ *      count:"{int} 条目总数量",
  *      lists:[{
  *      repayMoney:"{string} 已还款金额 ",
  *      repayDuration:"{string} 已还款期数",

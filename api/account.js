@@ -471,7 +471,7 @@ router.all('/account/resetPassword', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{int} 分页总数",
+ *          count:"{int} 条目总数量",
  *      	recordList:[{
  *  		id:"{string} 加息券id",
  *  		value:"{string} 加息券值",
@@ -538,7 +538,7 @@ router.all('/account/rateTickets', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{int} 分页总数",
+ *          count:"{int} 条目总数量",
  *          recordList:[{
  *  		id:"{string} 投资券id",
  *  		value:"{string} 投资券值",
@@ -607,7 +607,7 @@ router.all('/account/cashTickets', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{int} 分页总数",
+ *          count:"{int} 条目总数量",
  *      	recordList:[{
  *  		id:"{string} 投资券id",
  *  		value:"{string} 投资券值",
@@ -766,7 +766,7 @@ router.all('/account/profitCalculation', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{int} 分页总数",
+ *          count:"{int} 条目总数量",
  *          recordList:	[{
  *  		    id:"{string} 交易流水唯一标识",
  *  		    timeline:"{string} 交易发生时间（例：2017-12-04）",
@@ -836,7 +836,7 @@ router.all('/account/transactionRecords', function (req, res, next) {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{string} 总分页数",
+ *          count:"{string} 条目总数量",
  *          recordList:[{
  *  		    id:"{string} 投资记录id",
  *  		    pId:"{string} 投资项目的id",
