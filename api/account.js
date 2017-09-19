@@ -75,7 +75,7 @@ router.all('/account/register', function (req, res, next) {
  * 
  * @description
  * 
- * aname+password 可通用；aname+smsCode 仅适用 aname 用手机号的情况。
+ * aname+password 可通用；aname+smsCode（v1.5 版本暂不实现） 仅适用 aname 用手机号的情况。
  *
  *
  * https://localhost:5000/account/login
