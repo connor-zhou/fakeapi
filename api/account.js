@@ -912,6 +912,9 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *          moneyYet:"{string} 本月已回款(元)",
  *          dayList:[{
  *              day:"{string} 本月第几天（几号）",
+ *              status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
+ *              capital:"{string} 此 day 涉及本金",
+ *              profit:"{string} 此 day 涉及利息（利润）",
  *              recordList:[{
  *                  id:"{string} 项目id",
  *                  title:"{string} 项目名称",
@@ -953,6 +956,9 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 
         dayList.push({
             day:value+'',
+            status:Math.floor(Math.random() * 2),
+            capital:'1215.89',
+            profit:'4587.11',
             recordList:recordList
         })
     })
