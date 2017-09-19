@@ -205,34 +205,34 @@ router.all('/project/detail', function (req, res, next) {
     res.json(resultValue);
 });
 
-
-/**
- * @fakedoc 得到指定项目的还款计划
- *
- * @name project.repaymentPlan
- * @href /project/repaymentPlan
- *
- * @input.post {string} client 		    客户端统计参数
- * @input.post {string} projectId 		项目Id
- *
- * @description 
- * 
- * https://localhost:5000/project/repaymentPlan
- * 
- * https://192.168.1.86:3000/project/repaymentPlan
- *
- * @output {json} 还款计划
- * {
- *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{string} 状态描述",
- *  data: [{
- *  	timeline:"{string} 还款时间",
- *  	capital:"{string} 计划偿还本金",
- *  	interest:"{string} 应还利息",
- *      days:"{string} 计息天数 "
- *  }]
- * }
- */
+//
+// /**
+//  * @fakedoc 得到指定项目的还款计划
+//  *
+//  * @name project.repaymentPlan
+//  * @href /project/repaymentPlan
+//  *
+//  * @input.post {string} client 		    客户端统计参数
+//  * @input.post {string} projectId 		项目Id
+//  *
+//  * @description
+//  *
+//  * https://localhost:5000/project/repaymentPlan
+//  *
+//  * https://192.168.1.86:3000/project/repaymentPlan
+//  *
+//  * @output {json} 还款计划
+//  * {
+//  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
+//  *  text:"{string} 状态描述",
+//  *  data: [{
+//  *  	timeline:"{string} 还款时间",
+//  *  	capital:"{string} 计划偿还本金",
+//  *  	interest:"{string} 应还利息",
+//  *      days:"{string} 计息天数 "
+//  *  }]
+//  * }
+//  */
 router.all('/project/repaymentPlan', function (req, res, next) {
     var moment = require('moment');
     var records = [];
