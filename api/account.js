@@ -377,8 +377,6 @@ router.all('/account/alterAvatar', function (req, res, next) {
  * @input.post {string}  client 		客户端统计参数
  * @input.post {string}  pwdNew         新密码（需base64编码）
  * @input.post {string}  pwdNewAgain 	确认新密码（需base64编码）
- * @input.post {string=} mobile 		手机号（仅重置密码传入，必须传）
- * @input.post {string=} smsCode        验证码（仅重置密码时传入，必须传）
  * @input.post {string=} token 			Token
  * @input.post {string=} pwd 		    原始密码（需base64编码）
  *
