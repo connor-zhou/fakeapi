@@ -436,7 +436,7 @@ router.all('/account/alterPassword', function (req, res, next) {
  *
  * @description
  *
- * 密码重置成功后，之前用旧密码登录此账号的终端（除当前重置终端）token都会失效，若需要登录状态需重新登录。
+ * 密码重置成功后，之前用旧密码登录此账号的终端token都会失效，若需要登录状态需重新登录。
  *
  * https://localhost:5000/account/resetPassword
  *
