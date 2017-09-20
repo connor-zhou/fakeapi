@@ -314,23 +314,17 @@ var _ = require('lodash');
  * @name common.imageCode
  * @href common/imageCode
  *
- * @input.post {string}  client                  客户端统计参数
- * @input.post {string}  uniqueId                可表示唯一性的id
+ * @input.get {string}  client                  客户端统计参数
+ * @input.get {string}  uniqueId                可表示唯一性的id
  *
  * @description
  *
- * https://localhost:5000/common/imageCode
+ * https://localhost:5000/common/imageCode?client="LKJLSJFDAL"&uniqueId="SAFSFS"
  *
- * https://192.168.1.86:3000/common/imageCode
+ * https://192.168.1.86:3000/common/imageCode?client="LKJLSJFDAL"&uniqueId="SAFSFS"
  *
- * @output {json} 图形验证码
- *{
- *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
- *      text:"{string} 状态描述",
- *      data:{
- *          url:'{string} 图形验证码的Url'
- *      }
- * }
+ * @output {string} 返回图片数据data
+ *
  * */
 
 router.all('/common/imageCode',function(req,res,next){
@@ -340,8 +334,9 @@ router.all('/common/imageCode',function(req,res,next){
         data:{
             url:'http://bbs.xingtouzi.com/forum-36-1.html'
         }
-    }
-    res.json(resultValue);
+    };
+
+    res.json('');
 });
 
 /**
