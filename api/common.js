@@ -350,7 +350,8 @@ router.all('/common/imageCode',function(req,res,next){
  * @input.post {string=}  mobile                  手机号（仅type == 1 时传入）
  * @input.post {string}   uniqueId                请求图形验证码时用到的唯一id
  * @input.post {string}   imageCode               图形验证码
- * @input.post {int}      type                    发送时机（0-已登录，1-未登录）
+ * @input.post {int}      status                  是否登录状态（0-已登录，1-未登录）
+ * @input.post {int}      serviceType             验证码用途（0-重置密码，1-更改密码，2-注册，3-修改邮箱，4-验证码登录）
  *
  * @description
  *
