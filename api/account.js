@@ -375,8 +375,8 @@ router.all('/account/alterAvatar', function (req, res, next) {
  * @href /account/alterPassword
  *
  * @input.post {string}  client 		客户端统计参数
- * @input.post {string=} token 			Token
- * @input.post {string=} pwd 		    原始密码（需base64编码）
+ * @input.post {string}  token 			Token
+ * @input.post {string}  pwd 		    原始密码（需base64编码）
  * @input.post {string}  pwdNew         新密码（需base64编码）
  * @input.post {string}  pwdNewAgain 	确认新密码（需base64编码）
  *
