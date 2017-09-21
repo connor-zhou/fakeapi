@@ -494,8 +494,10 @@ router.all('/account/resetPassword', function (req, res, next) {
  *
  * @description
  *
- * 说明：仅status == 2 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
+ * 仅status == 2 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
+ * 
  * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
+ *
  * https://localhost:5000/account/rateTickets
  *
  * https://192.168.1.86:3000/account/rateTickets
