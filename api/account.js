@@ -475,12 +475,17 @@ router.all('/account/resetPassword', function (req, res, next) {
  *          count:"{int} 条目总数量",
  *      	recordList:[{
  *  		id:"{string} 加息券id",
- *  		value:"{string} 加息券值",
+ *  	    name:"{string} 加息券名称",
+ *  		rate:"{string} 所加利息（不加 %）",
+ *  	    rateDuration:"{string} 加息期限（天）",
+ *  	    maxMoney:"{string} 额度上限（元）",
  *  		status:"{int} 加息券状态（0-正常，1-已使用，2-已过期）",
  *  		usedTimeline:"{string=} 加息券使用时间（仅当status = 1 时返回）",
- *  		expireTimeline:"{string} 加息券过期时间",
+ *  	    beginValidTimeline:"{string} 有效期-开始时间（例：2017-12-12）",
+ *  		endValidTimeline:"{string} 有效期-结束时间（例：2017-10-12）",
  *  		useRule:"{string} 加息券使用规则说明",
- *  		remark:"{string} 加息券来源等备注信息"
+ *  		usedRemark:"{string=} 已使用券的备注（如，券用在哪个项目等。仅 status == 1 时返回）",
+ *  		getRemark:"{string} 加息券来源等备注信息"
  		}]
  	   }
  * }
@@ -488,6 +493,8 @@ router.all('/account/resetPassword', function (req, res, next) {
  * @needAuth
  *
  * @description
+ *
+ * 说明：仅status == 1 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
  *
  * https://localhost:5000/account/rateTickets
  *
@@ -502,11 +509,17 @@ router.all('/account/rateTickets', function (req, res, next) {
 	random.forEach(function(value,key){
 		result.push({
 			id:value+'',
-			value:'0.'+value,
+			name:'加息券',
 			status:value === 5 ? 0 : value === 2 ? 1:2 ,
-			expireTimeline:'2018-12-1'+value+' 12:50',
+			usedTimeline: value === 2 ?'2018-12-1'+value+' 12:50':'',
+			endValidTimeline:'2019-12-1'+value+' 12:50',
+            beginValidTimeline:'2017-12-1'+value+' 12:50',
+            rateDuration:'2',
+            rate:'0.5',
 			useRule:"只能用在投资额5000元以上的项目",
-			remark:"是在参加线下逗比全明星赛时候获得的"
+            usedRemark: value === 2 ?"在参加谁有最短头发活动时使用":"",
+            getRemark:"是在参加线下逗比全明星赛时候获得的",
+            maxMoney:'2000.00'
 		});
 		value === 2 && (result[key]['usedTimeline'] = '2017-12-1'+value+' 12:50')
 	});
@@ -515,7 +528,7 @@ router.all('/account/rateTickets', function (req, res, next) {
         code:0,
         text:'ok',
         data:{
-            count:'5',
+            count:'6',
             recordList:result
         }
     });
@@ -599,26 +612,15 @@ router.all('/account/cashTickets', function (req, res, next) {
  *
  * @input.post {string} client 			客户端统计参数
  * @input.post {string} token 			Token
- * @input.post {int=}   [pageNumber=1]	页码
- * @input.post {int=}   [pageSize=10]	页量
- * @input.post {int=} 	status 			投资券状态（0-正常，1-已使用，2-过期。不传或者值为空，按时间顺序显示全部。）
  *
  * @output {json} 提现券信息
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
  *  	text:"{string} 状态描述",
  *  	data:{
- *          count:"{int} 条目总数量",
- *      	recordList:[{
- *  		id:"{string} 投资券id",
- *  		value:"{string} 投资券值",
- *  		status:"{int} 投资券状态（0-正常，1-已使用）",
- *  		usedTimeline:"{string=} 投资券使用时间（仅当status = 1 时返回）",
- *  		expireTimeline:"{string} 投资券过期时间",
- *  		useRule:"{string} 投资券使用规则说明",
- *  		remark:"{string} 投资券来源等备注信息"
- 		}]
- 		}
+ *         usedCount:"{int} 已使用数量",
+ *         unusedCount:"{int} 未使用数量"
+ *		}
  * }
  *
  * @needAuth
@@ -632,26 +634,13 @@ router.all('/account/cashTickets', function (req, res, next) {
 
 router.all('/account/withdrawTickets', function (req, res, next) {
 
-    var random = [1,3,5,8,2,5];
-    var result= [];
-
-    random.forEach(function(value,key){
-        result.push({
-            id:value+'',
-            status:value === 5 ? 0 : value === 2 ? 1:2 ,
-            expireTimeline:'2018-12-1'+value+' 12:50',
-            useRule:'只能用在投资额'+value * 1000+'元以上的项目',
-            remark:"是在参加线下逗比全明星赛时候获得的"
-        });
-        value === 2 && (result[key]['usedTimeline'] = '2017-12-1'+value+' 12:50')
-    });
 
     res.json({
         code:0,
         text:'ok',
         data:{
-            count:'5',
-            recordList:result
+            usedCount:10,
+            unusedCount:10
         }
     });
 });
@@ -915,14 +904,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *              day:"{string} 本月第几天（几号）",
  *              status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
  *              capital:"{string} 此 day 涉及本金",
- *              profit:"{string} 此 day 涉及利息（利润）",
- *              recordList:[{
- *                  id:"{string} 项目id",
- *                  title:"{string} 项目名称",
- *                  timeline:"{string} 还款时间",
- *                  capitalWill:"{string} 应还本金",
- *                  profitWill:"{string} 应还利息"
- *              }]
+ *              profit:"{string} 此 day 涉及利息（利润）"
  *          }]
  *   }
  * }
