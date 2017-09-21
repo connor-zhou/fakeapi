@@ -465,7 +465,7 @@ router.all('/account/resetPassword', function (req, res, next) {
  * @input.post {string} token 			Token
  * @input.post {int=}   [pageNumber=1]	页码
  * @input.post {int=}   [pageSize=10]	页量
- * @input.post {int=} 	status 			加息券状态（0-正常，1-已使用，2-过期。值为空，按时间顺序显示全部。）
+ * @input.post {int} 	status 			加息券状态（0-全部，1-正常（在有效期），2-已使用，3-已过期。）
  *
  * @output {json} 加息券信息
  * {
@@ -495,7 +495,7 @@ router.all('/account/resetPassword', function (req, res, next) {
  * @description
  *
  * 说明：仅status == 1 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
- *
+ * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
  * https://localhost:5000/account/rateTickets
  *
  * https://192.168.1.86:3000/account/rateTickets
@@ -545,7 +545,8 @@ router.all('/account/rateTickets', function (req, res, next) {
  * @input.post {string} token 			Token
  * @input.post {int=}   [pageNumber=1]	页码
  * @input.post {int=}   [pageSize=10]	页量
- * @input.post {int=} 	status 			投资券状态（0-正常，1-已使用，2-过期。不传或者值为空，按时间顺序显示全部。）
+ * @input.post {int} 	status 			投资券状态（0-全部（包括1,2,3），1-正常，2-已使用，3-过期。）
+ * @input.post {string=} money 			用券投资额
  *
  * @output {json} 投资券信息
  * {
@@ -569,6 +570,8 @@ router.all('/account/rateTickets', function (req, res, next) {
  * @needAuth
  *
  * @description
+ *
+ * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
  *
  * https://localhost:5000/account/cashTickets
  *
