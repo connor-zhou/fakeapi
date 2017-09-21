@@ -479,8 +479,8 @@ router.all('/account/resetPassword', function (req, res, next) {
  *  		rate:"{string} 所加利息（不加 %）",
  *  	    rateDuration:"{string} 加息期限（天）",
  *  	    maxMoney:"{string} 额度上限（元）",
- *  		status:"{int} 加息券状态（0-正常，1-已使用，2-已过期）",
- *  		usedTimeline:"{string=} 加息券使用时间（仅当status = 1时返回）",
+ *  		status:"{int} 加息券状态（1-正常，2-已使用，3-已过期）",
+ *  		usedTimeline:"{string=} 加息券使用时间（仅当status = 2 时返回）",
  *  	    getTimeline:"{string} 券获取时间（例：2017-12-12）",
  *  		expireTimeline:"{string} 券过期时间（例：2017-10-12）",
  *  		useRule:"{string} 加息券使用规则说明",
@@ -494,7 +494,7 @@ router.all('/account/resetPassword', function (req, res, next) {
  *
  * @description
  *
- * 说明：仅status == 1 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
+ * 说明：仅status == 2 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
  * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
  * https://localhost:5000/account/rateTickets
  *
@@ -557,7 +557,7 @@ router.all('/account/rateTickets', function (req, res, next) {
  *          recordList:[{
  *  		id:"{string} 投资券id",
  *  		value:"{string} 投资券值",
- *  		status:"{int} 投资券状态（0-正常，1-已使用，2-已过期）",
+ *  		status:"{int} 投资券状态（1-正常，2-已使用，3-已过期）",
  *  		useLimitMoney:"{string} 投资券可用投资额",
  *  		usedTimeline:"{string=} 投资券使用时间（仅当status = 2 时返回）",
  *  		expireTimeline:"{string} 投资券过期时间",
