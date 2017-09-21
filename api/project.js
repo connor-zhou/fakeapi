@@ -537,20 +537,18 @@ router.all('/project/riskInfo',function(req,res,next){
  *  text:"{string} 状态描述",
  *  data: {
  *      count:"{int} 条目总数量",
- *      lists:[{
  *      repayMoney:"{string} 已还款金额 ",
  *      repayDuration:"{string} 已还款期数",
  *      remainRepayMoney:"{string} 未还款金额",
  *      remainRepayDuration:"{string} 未还款期数",
- *      recordList:{
+ *      recordList:[{
  *          no:"{string} 顺序编号",
  *          name:"{string} 投资人（模糊化的用户手机号。例：135****2547）",
  *          money:"{string} 投资金额（默认两位小数。例：2000.00）",
  *          terminal:"{string} 投资来源（wechat，ios，android，website）",
  *          timeline:"{string} 投资时间（例：2017-09-05 12:15）"
- *          }
- *      }]
- *  }
+ *        }]
+ *     }
  * }
  */
 router.all('/project/investmentRecords', function (req, res, next) {
