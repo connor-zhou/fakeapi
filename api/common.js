@@ -74,6 +74,17 @@ var _ = require('lodash');
  *
  * 5、有 “待确定” 字眼的地方，需要和后台确认。
  *
+ * 6、部分错误码：
+ * {
+ *      SUCCESS(0, "success"),
+        TOKEN_INVALID(69633, "用户未登录"),
+        CLIENT_ERROR(20000, "客户端错误"),
+        PARAM_ILLEGAL(30000, "参数非法"),
+        BUSINESS_ERROR(40000, "业务异常"),
+        API_NOT_FOUND(50000, "接口不存在"),
+        SYSTEM_ERROR(60000, "系统异常"),
+ * }
+ *
  *
  * </pre>
  *
