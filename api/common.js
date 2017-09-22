@@ -81,7 +81,7 @@ var _ = require('lodash');
 
 
 /**
- * @fakedoc xtz.用户是否已注册
+ * @fakedoc 用户是否已注册
  *
  * @name common.isRegistered
  * @href /common/isRegistered
