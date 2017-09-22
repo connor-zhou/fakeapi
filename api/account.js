@@ -712,7 +712,7 @@ router.all('/account/repaymentPlan', function (req, res, next) {
  * @input.post {string}  token 		        Token
  * @input.post {string}  projectId 		    项目Id
  * @input.post {string}  money 		        投资金额
- * @input.post {string}  rateTicketId 		加息券id
+ * @input.post {string=}  rateTicketId 		加息券id
  *
  * @description
  *
