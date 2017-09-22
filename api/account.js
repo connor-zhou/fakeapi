@@ -8,7 +8,7 @@ var _ = require('lodash');
  * @name account.register
  * @href /account/register
  *
- *
+ * @input.post {string}  client 		    客户端统计参数
  * @input.post {string} mobile		     	手机号码
  * @input.post {string} password 		 	密码（需base64 编码）
  * @input.post {string} smsCode 		 	短信验证码
