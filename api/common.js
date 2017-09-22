@@ -74,41 +74,43 @@ var _ = require('lodash');
  *
  * 5、有 “待确定” 字眼的地方，需要和后台确认。
  *
+ *
  * </pre>
  *
  */
 
-// /**
-//  * @fakedoc xtz.手机号码是否正确
-//  *
-//  * @name common.isMobile
-//  * @href /common/isMobile
-//  *
-//  * @input.post {string} client 		客户端统计参数（common/client）
-//  * @input.post {string} mobile 		手机号码
-//  *
-//  * @description
-//  *
-//  * https://localhost:5000/common/isMobile
-//  *
-//  * https://92.168.1.86:3000/common/isMobile
-//  *
-//  * @output {json} 手机号码是否正确
-//  * {
-//  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
-//  *  text:"{string} 状态描述"
-//  * }
-//  *
-//  *
-//  */
-// router.all('/common/isMobile', function (req, res, next) {
-// 	var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
-//     var resultValue = {
-//     	code: phone == '13566667777' ? 0 : 0,
-//     	text: 'ok',
-//     }
-//     res.json(resultValue);
-// });
+
+/**
+ * @fakedoc xtz.用户是否已注册
+ *
+ * @name common.isRegistered
+ * @href /common/isRegistered
+ *
+ * @input.post {string} client 		客户端统计参数
+ * @input.post {string} mobile 		手机号码
+ *
+ * @description
+ *
+ * https://localhost:5000/common/isRegistered
+ *
+ * https://92.168.1.86:3000/common/isRegistered
+ *
+ * @output {json} 用户是否已注册
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{string} 状态描述"
+ * }
+ *
+ *
+ */
+router.all('/common/isRegistered', function (req, res, next) {
+	// var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
+    var resultValue = {
+    	code: 0,
+    	text: 'ok'
+    };
+    res.json(resultValue);
+});
 //
 // /**
 //  * @fakedoc xtz.得到可绑定的银行列表

@@ -25,7 +25,7 @@ var _ = require('lodash');
  *
  * @description
  *
- * 也可用来检测某个合法的手机号是否已注册（待确定）。
+ * 错误码：{ "短信验证码错误":0410 }
  *
  * https://localhost:5000/account/register
  *
