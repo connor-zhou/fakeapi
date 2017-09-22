@@ -538,10 +538,6 @@ router.all('/project/riskInfo',function(req,res,next){
  *  text:"{string} 状态描述",
  *  data: {
  *      count:"{int} 条目总数量",
- *      repayMoney:"{string} 已还款金额 ",
- *      repayDuration:"{string} 已还款期数",
- *      remainRepayMoney:"{string} 未还款金额",
- *      remainRepayDuration:"{string} 未还款期数",
  *      recordList:[{
  *          no:"{string} 顺序编号",
  *          name:"{string} 投资人（模糊化的用户手机号。例：135****2547）",
