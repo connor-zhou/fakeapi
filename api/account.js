@@ -25,7 +25,7 @@ var _ = require('lodash');
  *
  * @description
  *
- * 错误码：{ "短信验证码错误":0410 }
+ * 错误码：{ "短信验证码错误":4010 }
  *
  * https://localhost:5000/account/register
  *
