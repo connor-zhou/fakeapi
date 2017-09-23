@@ -13,8 +13,8 @@ var router = express.Router();
  * https://192.168.1.86:3000/project/pageList
  *
  * @input.post {string} client 		    客户端统计参数
- * @input.post {string} category 		项目类型（0-全部，其它类型待确认）
- * @input.post {string} period 		    项目类型（单位：月。0-全部）
+ * @input.post {string} category 		项目类型（0-全部，1-新手专区，2-星理财）
+ * @input.post {int}   period 		    发标时间（0-全部，1-30天之内，2-30至60天之内，3-60至120天之内）
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  * @input.post {string=} sort 	        排序格式（1表示升序，0表示降序。格式："timeline:0",表示按时间降序排列；如果有多种排序，用半角逗号隔开，
@@ -60,9 +60,9 @@ router.all('/project/pageList', function (req, res, next) {
 
     var projects = [];
     var max = 35;
-    var types = ['星企贷', '星保理', '星车宝', '星票宝','星房宝','星股神','星居宝'];
+    var types = ['新手专区', '星理财'];
     while (start < max && limit > 0) {
-        var type = Math.floor(Math.random() * 7);
+        var type = Math.floor(Math.random() * 2);
         projects.push({
             id: start,
             borrowerType:start % 2,
