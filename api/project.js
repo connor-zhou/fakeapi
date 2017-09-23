@@ -142,7 +142,7 @@ router.all('/project/recommendList', function (req, res, next) {
  *      id:"{string} 项目ID",
  *      title:"{string} 项目名称",
  *      borrowerType:"{int} 项目的借款方类别（0-个人，1-企业）",
- *      category:"{int} 项目类型(例：0-星企贷，1-星保理，2-星车宝)",
+ *      category:"{int} 项目类型(例：1-抵押，2-个人信用贷，3-商圈贷，4-质押，5-融资租赁，6-资管计划，7-供应链)",
  *      categoryText:"{string} 项目类型描述",
  *      repaymentMode:"{string} 还款方式",
  *      schedule:"{string} 已投百分比(不需加百分号 %)",

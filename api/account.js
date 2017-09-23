@@ -510,7 +510,7 @@ router.all('/account/rateTickets', function (req, res, next) {
 	var result= [];
 	random.forEach(function(value,key){
 		result.push({
-			id:value+'',
+			id:value+''+Math.floor(Math.random()*15),
 			name:'加息券',
 			status:value === 5 ? 0 : value === 2 ? 1:2 ,
 			usedTimeline: value === 2 ?'2018-12-1'+value+' 12:50':'',
@@ -587,7 +587,7 @@ router.all('/account/cashTickets', function (req, res, next) {
 
     random.forEach(function(value,key){
         result.push({
-            id:value+'',
+            id:value+''+Math.floor(Math.random()*15),
             value:value * 100 +'',
             status:value === 5 ? 0 : value === 2 ? 1:2 ,
             useLimitMoney:value * 1000+'',
@@ -858,20 +858,23 @@ router.all('/account/transactionRecords', function (req, res, next) {
 
 router.all('/account/investmentRecords', function (req, res, next) {
 
-    var random = [1,3,5,8,2,5];
+    var random = [1,3,5,8,2,10,4,6,7,9,11,12,13,34,54,90];
     var catText = ['全部','充值','提现','投资','收益','本金','奖励'];
     var result= [];
 
     random.forEach(function(value,key){
         var cat = Math.floor(Math.random() * 5+1);
         result.push({
-            id:value+'',
-            timeline:'2017-09-1'+value,
-            category:cat,
-            categoryText:catText[cat],
-            remark:catText[cat],
-            cash:value * 10 +'',
-            money:value * 1000 +''
+            id:value+''+Math.floor(Math.random()*15),
+            pId:value+''+Math.floor(Math.random()*15),
+            pTitle:catText[cat],
+            state:value % 3 == 0 ? 0 :value % 2 == 0 ? 1:3,
+            endTimeline:value % 2 == 0 ? '2017-09-01':'',
+            money:value * 30,
+            annualizedRate:10,
+            profitWill:value % 3 == 0 ? '2010.00':'',
+            profit:value * 30+'.00',
+            remainDays:value % 3 == 0 ? 30:0
         });
     });
 
@@ -879,7 +882,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
         code:0,
         text:'ok',
         data:{
-            count:"4",
+            count:"16",
             recordList:result
         }
     });
