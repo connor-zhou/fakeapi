@@ -94,8 +94,11 @@ router.all('/project/pageList', function (req, res, next) {
     var resultValue = {
         code: 0,
         text: 'ok',
-        data: projects
-    }
+        data: {
+            count:35,
+            lists:projects
+        }
+    };
     res.json(resultValue);
 });
 
