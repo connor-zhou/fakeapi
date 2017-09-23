@@ -182,7 +182,7 @@ router.all('/project/detail', function (req, res, next) {
         repaymentMode: Math.floor(Math.random() * 3) == 1 ?  "等额本息" : "一次性还本付息",
         money: '200000',
         schedule: 35,
-        status: [1,2,3][type % 3],
+        status: [0,1,2][type % 3],
         statusName: ["投标中","还款中","已还款"][type % 3],
         annualizedRate : Math.floor(Math.random() * 20) * 0.01,
         duration: duration,
