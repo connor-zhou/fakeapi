@@ -211,7 +211,7 @@ router.all('/account/info', function (req, res, next) {
             rateTicketsCount:'45',
             withdrawTicketsCount:'45',
             isSign:0,
-			isOpenFy:0,
+			isOpenBf:0,
 			isNewUser:1
 		}
 	}
