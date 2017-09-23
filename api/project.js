@@ -583,7 +583,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
     	text: 'ok',
     	data: {
     	    count:'1',
-            lists:records
+            recordList:records
 
         }
     };
