@@ -1171,7 +1171,10 @@ router.all('/account/riskAssessList', function (req, res, next) {
  * @output {json} 风险评估
  * {
  *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
- *  	text:"{string} 状态描述"
+ *  	text:"{string} 状态描述",
+ *      data:{
+ *          result:"{string=} 成功后结果"
+ *      }
  * }
  *
  * @needAuth
@@ -1189,7 +1192,10 @@ router.all('/account/riskAssess/submit', function (req, res, next) {
 
     res.json({
         code:0,
-        text:'ok'
+        text:'ok',
+        data:{
+            result:"稳健型"
+        }
     });
 });
 
