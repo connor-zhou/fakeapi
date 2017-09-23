@@ -18,14 +18,16 @@ var router = express.Router();
  * @input.post {int=} [pageSize=10] 	页容量
  * @input.post {int=} [pageNumber=1] 	页码
  * @input.post {string=} sort 	        排序格式（1表示升序，0表示降序。格式："timeline:0",表示按时间降序排列；如果有多种排序，用半角逗号隔开，
- *                                      如："timeline:0,money:1"，表示先按timeline降序排列，再按money升序排列；不传此字段或为空，按默认时间线降序排。）
+ *                                      如："timeline:0,money:1"，表示先按timeline降序排列，再按money升序排列；不传此字段或为空，按默认时间线降序排。
+ *                                      有四种类型需要排序：money（借款金额），duration（项目期限）,annualizedRate（年利率）,schedule（进度））
  *
  * @output {json} 分页列表
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
  *  text:"{string} 状态描述",
- *  data: [
- * 	  {
+ *  data: {
+ *      count:"{int} 条目总数量",
+ *      recordList:[{
  *      id:"{string} 项目ID",
  *      title:"{string} 项目名称",
  *      borrowerType:"{int} 借款方类型（0-个人，1-企业）",
@@ -48,7 +50,7 @@ var router = express.Router();
  *      isNewUserProject:"{int} 是否是新手项目 (1-是，0-否)",
  *      isRecommend:"{int} 是否重点推荐 (1-是,0-否)"
  * 	  }
- * 	]
+ * 	]}
  * }
  */
 
