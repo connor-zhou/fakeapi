@@ -322,7 +322,7 @@ router.all('/project/borrowerInfo',function(req,res,next){
  *      data: {
  *          type:"{int} 借款方类型（0-企业，1-个人）",
  *          projectInfo:{
- *              name:"{string} 借款人姓名（企业时为法人姓名）",
+ *              name:"{string} 借款人姓名（企业时为法人姓名，例：王**）",
  *              application:"{string} 借款用途",
  *              address:"{string} 借款人居住地（企业时为公司地址）",
  *              chinaId:"{string=} 借款人身份证（仅type == 1 时返回，例：6227****2547）",
@@ -347,7 +347,7 @@ router.all('/project/appendix',function(req,res,next){
         data:{
             type:0,
             projectInfo:{
-              name:"毛泽东",
+              name:"毛**",
               application:"建立中华人民共和国",
               address:"北京",
               company:"中国共产党",
