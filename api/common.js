@@ -111,7 +111,10 @@ var _ = require('lodash');
  * @output {json} 用户是否已注册
  * {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{string} 状态描述"
+ *  text:"{string} 状态描述",
+ *  data:{
+ *      result:"{boolean} true表示已注册，false表示还没"
+ *  }
  * }
  *
  *
@@ -120,7 +123,10 @@ router.all('/common/isRegistered', function (req, res, next) {
 	// var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
     var resultValue = {
     	code: 0,
-    	text: 'ok'
+    	text: 'ok',
+        data:{
+    	    result:false
+        }
     };
     res.json(resultValue);
 });
