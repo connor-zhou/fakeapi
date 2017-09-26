@@ -65,6 +65,8 @@ router.all('/bf/toRegister', function (req, res, next) {
  * @description
  *
  * 得到宝付平台充值的URL
+ *
+ * 移动端只能用快捷支付（method == 0）
  * 
  * https://localhost:5000/bf/toRecharge
  * 
