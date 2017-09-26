@@ -33,7 +33,7 @@ var router = express.Router();
  *      borrowerType:"{int} 借款方类型（0-个人，1-企业）",
  *      category:"{int} 项目类型",
  *      categoryText:"{string} 项目类型描述",
- *      repaymendMode:"{int} 还款方式",
+ *      repaymendMode:"{string} 还款方式",
  *      money:"{string} 融资金额",
  *      minInvest:"{string} 起投金额",
  *      remainInvest:"{string} 可投金额",
