@@ -1212,6 +1212,8 @@ router.all('/account/riskAssess/submit', function (req, res, next) {
  *
  * @description
  *
+ * 返回pdf
+ *
  * https://localhost:5000/account/agreementLoan?client='sdfsaf'&token='adfasdf'&investId='1321'
  *
  * https://192.168.1.86:3000/account/agreementLoan?client='sdfsaf'&token='adfasdf'&investId='1321'
@@ -1226,6 +1228,45 @@ router.all('/account/agreementLoan', function (req, res, next) {
     res.json('');
 });
 
+
+
+/**
+ * @fakedoc 签到
+ *
+ * @name account.signIn
+ * @href /account/signIn
+ *
+ * @input.get {string}  client 		客户端统计参数
+ * @input.get {string}  token 		Token
+ *
+ * @description
+ *
+ * https://localhost:5000/account/signIn
+ *
+ * https://192.168.1.86:3000/account/signIn
+ *
+ *
+ * @output {json} 签到
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *      data:{
+ *          integral:"{string=} 成功后奖励积分"
+ *      }
+ * }
+ */
+
+
+router.all('/account/signIn', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data:{
+            integral:'20'
+        }
+    };
+    res.json(resultValue);
+});
 
 
 
