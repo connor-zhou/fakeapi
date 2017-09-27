@@ -648,7 +648,7 @@ router.all('/project/investmentRecords', function (req, res, next) {
  */
 
 
-router.all('/project/agreementLoan', function (req, res, next) {
+router.all('/project/agreementConsult', function (req, res, next) {
 
    var data ={
         aName:" 甲方姓名",
