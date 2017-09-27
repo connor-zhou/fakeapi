@@ -596,38 +596,100 @@ router.all('/project/investmentRecords', function (req, res, next) {
 });
 
 /**
- * @fakedoc 得到指定项目信息咨询服务协议（借款协议）
+ * @fakedoc 得到指定项目信息咨询服务协议
  *
- * @name project.agreementLoan
- * @href /project/agreementLoan
+ * @name project.agreementConsult
+ * @href /project/agreementConsult
  *
- * @input.post {string}  client 		客户端统计参数
- * @input.post {string=} projectId 		项目Id（仅type == 0 时传入）
- * @input.post {string=} money 		    投资金额（仅type == 0 时传入）
- * @input.post {string=} investId 		投资记录id（仅type == 1 时传入）
- * @input.post {int}     type 		    何时调用（0-确认投资时，1-账户中借款协议）
+ * @input.get {string}  client 		客户端统计参数
+ * @input.get {string}  token 		Token
+ * @input.post {string} projectId 	项目id
+ * @input.post {string} money 		投资金额
  *
  * @description
  *
- * https://localhost:5000/project/agreementLoan?client='sdfsaf'&token='adfasdf'&projectId='1321'&money=223&type=0
+ * https://localhost:5000/project/agreementConsult
  *
- * https://192.168.1.86:3000/project/agreementLoan?client='sdfsaf'&token='adfasdf'&projectId='1321'&money=223&type=0
+ * https://192.168.1.86:3000/project/agreementConsult
  *
  * @output {json} 还款计划
  * {
  *  code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{string} 状态描述"
+ *  text:"{string} 状态描述",
+ *  data:{
+ *      aName:"{string} 甲方姓名",
+ *      aAccountName:"{string} 甲方账户名",
+ *      aChinaId:"{string} 甲方身份证号码",
+ *      aMobile:"{string} 甲方联系电话",
+ *      aAddress:"{string} 甲方地址",
+ *      bName:"{string} 乙方姓名",
+ *      bAccountName:"{string} 乙方账户名",
+ *      bChinaId:"{string} 乙方身份证号码",
+ *      bMobile:"{string} 乙方联系电话",
+ *      bAddress:"{string} 乙方地址",
+ *      money:"{string} 借款金额",
+ *      upperMoney:"{string} 大写的借款金额",
+ *      startYear:"{string} 借款开始年",
+ *      startMonth:"{string} 借款开始月",
+ *      startDay:"{string} 借款开始日",
+ *      endYear:"{string} 借款结束年",
+ *      endMonth:"{string} 借款结束月",
+ *      endDay:"{string} 借款结束日",
+ *      rate:"{string} 借款年利率",
+ *      useType:"{string} 借款用途",
+ *      repaymentMode:"{string} 还款方式",
+ *      safeguardMode:"{string} 安全保障方式",
+ *      repayDay:"{string} 每月还款日",
+ *      theYear:"{string} 生成此协议时间-年",
+ *      theMonth:"{string} 生成此协议时间-月",
+ *      theDay:"{string} 生成此协议时间-日"
+ *  }
  * }
  */
 
 
 router.all('/project/agreementLoan', function (req, res, next) {
+
+   var data ={
+        aName:" 甲方姓名",
+        aAccountName:" 甲方账户名",
+        aChinaId:" 甲方身份证号码",
+        aMobile:" 甲方联系电话",
+        aAddress:" 甲方地址",
+        bName:" 乙方姓名",
+        bAccountName:" 乙方账户名",
+        bChinaId:" 乙方身份证号码",
+        bMobile:" 乙方联系电话",
+        bAddress:" 乙方地址",
+        money:" 借款金额",
+        upperMoney:" 大写的借款金额",
+        startYear:" 借款开始年",
+        startMonth:" 借款开始月",
+        startDay:" 借款开始日",
+        endYear:" ",
+        endMonth:" 借款结束月",
+        endDay:" 借款结束日",
+        rate:" 借款年利率",
+        useType:" 借款用途",
+        repaymentMode:" 还款方式",
+        safeguardMode:"抵押",
+        repayDay:"02",
+        theYear:"2017",
+        theMonth:"9",
+        theDay:"26"
+   };
+
     var resultValue = {
         code: 0,
-        text: 'ok'
+        text: 'ok',
+        data:data
     };
     res.json(resultValue);
 });
+
+
+
+
 
 
 

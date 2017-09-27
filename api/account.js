@@ -1200,5 +1200,34 @@ router.all('/account/riskAssess/submit', function (req, res, next) {
 });
 
 
+/**
+ * @fakedoc 得到指定投资记录的借款协议
+ *
+ * @name account.agreementLoan
+ * @href /account/agreementLoan
+ *
+ * @input.get {string}  client 		客户端统计参数
+ * @input.get {string}  token 		Token
+ * @input.get {string}  investId 	投资记录id
+ *
+ * @description
+ *
+ * https://localhost:5000/account/agreementLoan?client='sdfsaf'&token='adfasdf'&investId='1321'
+ *
+ * https://192.168.1.86:3000/account/agreementLoan?client='sdfsaf'&token='adfasdf'&investId='1321'
+ */
+
+
+router.all('/account/agreementLoan', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok'
+    };
+    res.json('');
+});
+
+
+
+
 
 module.exports = router;
