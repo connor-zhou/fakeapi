@@ -601,10 +601,10 @@ router.all('/project/investmentRecords', function (req, res, next) {
  * @name project.agreementConsult
  * @href /project/agreementConsult
  *
- * @input.get {string}  client 		客户端统计参数
- * @input.get {string}  token 		Token
- * @input.post {string} projectId 	项目id
- * @input.post {string} money 		投资金额
+ * @input.post {string}  client 	客户端统计参数
+ * @input.post {string}  token 		Token
+ * @input.post {string}  projectId 	项目id
+ * @input.post {string}  money 		投资金额
  *
  * @description
  *
