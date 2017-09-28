@@ -1215,6 +1215,8 @@ router.all('/account/riskAssess/submit', function (req, res, next) {
  * @input.get {string}  token 		Token
  * @input.get {string}  investId 	投资记录id
  *
+ * @needAuth
+ *
  * @description
  *
  * 返回pdf
@@ -1243,6 +1245,8 @@ router.all('/account/agreementLoan', function (req, res, next) {
  *
  * @input.get {string}  client 		客户端统计参数
  * @input.get {string}  token 		Token
+ *
+ * @needAuth
  *
  * @description
  *
