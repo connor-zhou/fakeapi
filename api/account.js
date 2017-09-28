@@ -912,7 +912,6 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *          moneyYet:"{string} 本月已回款(元)",
  *          dayList:[{
  *              day:"{string} 本月第几天（几号）",
- *              status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
  *              capitalTotal:"{string} 此 day 总涉及本金",
  *              profitTotal:"{string} 此 day 总涉及利润",
  *              projectList:[{
@@ -920,6 +919,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *                  title:"{string} 项目名称",
  *                  capital:"{string} 项目涉及本金",
  *                  profit:"{string} 项目涉及利润",
+ *                  status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
  *                  timeline:"{string} 还款时间"
  *              }]
  *          }]
@@ -948,6 +948,7 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
             recordList.push({
                 id:value+'',
                 title:'有一个美丽的小女孩',
+                status:Math.floor(Math.random() * 2),
                 timeline:'2017-09-1'+value,
                 capital:value * 1000 +".00",
                 profit:value * 0.3 * 1000 +".00"
@@ -956,12 +957,11 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 
         dayList.push({
             day:value+'',
-            status:Math.floor(Math.random() * 2),
             capitalTotal:'1215.89',
             profitTotal:'4587.11',
             projectList:recordList
         })
-    })
+    });
 
 
     res.json({
