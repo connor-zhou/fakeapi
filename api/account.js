@@ -913,8 +913,15 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *          dayList:[{
  *              day:"{string} 本月第几天（几号）",
  *              status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
- *              capital:"{string} 此 day 涉及本金",
- *              profit:"{string} 此 day 涉及利息（利润）"
+ *              capitalTotal:"{string} 此 day 总涉及本金",
+ *              profitTotal:"{string} 此 day 总涉及利润",
+ *              projectList:[{
+ *                  id:"{string} 项目id",
+ *                  title:"{string} 项目名称",
+ *                  capital:"{string} 项目涉及本金",
+ *                  profit:"{string} 项目涉及利润",
+ *                  timeline:"{string} 还款时间"
+ *              }]
  *          }]
  *   }
  * }
@@ -942,17 +949,17 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
                 id:value+'',
                 title:'有一个美丽的小女孩',
                 timeline:'2017-09-1'+value,
-                capitalWill:value * 1000 +".00",
-                profitWill:value * 0.3 * 1000 +".00"
+                capital:value * 1000 +".00",
+                profit:value * 0.3 * 1000 +".00"
             });
         });
 
         dayList.push({
             day:value+'',
             status:Math.floor(Math.random() * 2),
-            capital:'1215.89',
-            profit:'4587.11',
-            recordList:recordList
+            capitalTotal:'1215.89',
+            profitTotal:'4587.11',
+            projectList:recordList
         })
     })
 
