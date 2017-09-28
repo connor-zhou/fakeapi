@@ -912,8 +912,6 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *          moneyYet:"{string} 本月已回款(元)",
  *          dayList:[{
  *              day:"{string} 本月第几天（几号）",
- *              capitalTotal:"{string} 此 day 总涉及本金",
- *              profitTotal:"{string} 此 day 总涉及利润",
  *              projectList:[{
  *                  id:"{string} 项目id",
  *                  title:"{string} 项目名称",
@@ -957,8 +955,6 @@ router.all('/account/repaymentCalendar', function (req, res, next) {
 
         dayList.push({
             day:value+'',
-            capitalTotal:'1215.89',
-            profitTotal:'4587.11',
             projectList:recordList
         })
     });
