@@ -158,7 +158,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		email:"{string} 电子邮箱（例：15****32@qq.com）",
  *  		capitalTotal:"{string} 账户资产",
  *  		profitTotal:"{string} 账户收益",
- *  		money:"{string} 账户余额",
+ *  		money:"{string} 账户可用余额",
+ *  		moneyFreeze:"{string} 账户已冻结金额",
  *  		profitSum:"{string} 累计收益",
  *  		profitWill:"{string} 待收利息",
  *  		capitalWill:"{string} 待收本金",
@@ -172,7 +173,8 @@ router.all('/account/logout', function (req, res, next) {
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
  *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1-是，0-否)",
- *  		isRiskAssess:"{int} 用户是否做过风险评估(1-是，0-否)"
+ *  		isRiskAssess:"{int} 用户是否做过风险评估(1-是，0-否)",
+ *  	    riskAssessResult:"{string=} 风险评估结果（isRiskAssess == 1 时返回）"
  *  	}
  * }
  *
@@ -206,6 +208,7 @@ router.all('/account/info', function (req, res, next) {
 			profitSum:"9600.00",
             profitWill:"9600.00",
             money:"9600.00",
+            moneyFreeze:"9600.00",
      		investmentSum:"5000.00",
 			integral:"2000",
             reward:"200",
@@ -214,7 +217,8 @@ router.all('/account/info', function (req, res, next) {
             withdrawTicketsCount:'45',
             isSign:0,
 			isOpenBf:0,
-			isNewUser:1
+			isNewUser:1,
+            isRiskAssess:0
 		}
 	}
 	res.json(resultValue);
