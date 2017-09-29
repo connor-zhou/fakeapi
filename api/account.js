@@ -658,7 +658,7 @@ router.all('/account/withdrawTickets', function (req, res, next) {
 
 
 /**
- * @fakedoc 我的指定投资项目记录的还款计划
+ * @fakedoc 我的指定投资记录的还款计划
  *
  * @name account.repaymentPlan
  * @href /account/repaymentPlan
