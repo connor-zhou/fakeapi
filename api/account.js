@@ -658,14 +658,14 @@ router.all('/account/withdrawTickets', function (req, res, next) {
 
 
 /**
- * @fakedoc 我的指定投资项目的还款计划
+ * @fakedoc 我的指定投资项目记录的还款计划
  *
  * @name account.repaymentPlan
  * @href /account/repaymentPlan
  *
  * @input.post {string} client 		    客户端统计参数（common/client）
  * @input.post {string} token 			Token
- * @input.post {string} projectId 		项目Id
+ * @input.post {string} investId 		投资记录Id
  *
  * @description
  *
