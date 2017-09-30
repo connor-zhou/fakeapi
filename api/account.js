@@ -159,7 +159,6 @@ router.all('/account/logout', function (req, res, next) {
  *  		capitalTotal:"{string} 账户资产",
  *  		profitTotal:"{string} 账户收益",
  *  		money:"{string} 账户可用余额",
- *  		moneyFreeze:"{string} 账户已冻结金额",
  *  		profitSum:"{string} 累计收益",
  *  		profitWill:"{string} 待收利息",
  *  		capitalWill:"{string} 待收本金",
@@ -208,7 +207,6 @@ router.all('/account/info', function (req, res, next) {
 			profitSum:"9600.00",
             profitWill:"9600.00",
             money:"9600.00",
-            moneyFreeze:"9600.00",
      		investmentSum:"5000.00",
 			integral:"2000",
             reward:"200",
@@ -218,7 +216,8 @@ router.all('/account/info', function (req, res, next) {
             isSign:0,
 			isOpenBf:0,
 			isNewUser:1,
-            isRiskAssess:0
+            isRiskAssess:1,
+            riskAssessResult:'稳健型'
 		}
 	}
 	res.json(resultValue);
