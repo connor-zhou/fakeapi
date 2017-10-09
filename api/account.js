@@ -170,7 +170,7 @@ router.all('/account/logout', function (req, res, next) {
  *  	    withdrawTicketsCount:"{string} 状态正常（status == 0）的提现券张数",
  *  	    rateTicketsCount:"{string} 状态正常（status == 0）的加息券张数",
  *  	    moneyOldSystem:"{string} 老系统账户余额",
- *  	    isNewSystemUser:"{int} 是否是新系统用户（1-是，0-否）",
+ *  	    isActivate:"{int} 老系统用户是否需要激活（1-是，0-否）",
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
  *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
  *  		isNewUser:"{int} 用户是否是新手(1-是，0-否)",
@@ -221,7 +221,7 @@ router.all('/account/info', function (req, res, next) {
             isRiskAssess:1,
             riskAssessResult:'稳健型',
             moneyOldSystem:'120.00',
-            isNewSystemUser:1
+            isActivate:1
 		}
 	};
 	res.json(resultValue);
