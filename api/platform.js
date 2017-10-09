@@ -9,7 +9,7 @@ var _ = require('lodash');
  * @href /platform/news/pageList
  *
  * @input.post {string}     client 				客户端统计参数
- * @input.post {int}        type 				消息类型（0-媒体报道，1-行业动态）
+ * @input.post {int}        type 				消息类型（0-媒体报道，1-行业动态，2-公告）
  * @input.post {int=}      [pageNumber=1] 	    页码
  * @input.post {int=}      [pageSize=10] 	    页量
  *
@@ -22,7 +22,7 @@ var _ = require('lodash');
  *          count:"{int} 条目总数量",
  *          recordList:[{
  *          id:"{string} 新闻id",
- *          profile:"{string} 新闻缩略图",
+ *          profile:"{string=} 新闻缩略图（type == 2 时不返回）",
  *          title:"{string} 新闻标题",
  *          intro:"{string} 新闻内容简介",
  *          timeline:"{string} 创建时间（例：2015-12-12 12:12:15）"
@@ -77,7 +77,7 @@ router.all('/platform/news/pageList', function (req, res, next) {
  *
  * @input.post {string} client 		客户端统计参数
  * @input.post {string} token		Token
- * @input.post {string} type		新闻类型（0-媒体报道，1-行业动态）
+ * @input.post {string} type		新闻类型（0-媒体报道，1-行业动态，2-公告）
  * @input.post {string} newsId      新闻Id
  *
  * @output {json} 新闻详情
@@ -88,7 +88,7 @@ router.all('/platform/news/pageList', function (req, res, next) {
  *       {
  *          title:"{string}  消息标题",
  *          timeline:"{string} 消息时间",
- *          html:"{string} 系统消息详情html"
+ *          html:"{string} 详情html"
  *       }
  * }
  */
@@ -98,7 +98,7 @@ router.all('/platform/news/detail', function (req, res, next) {
     	code: 0,
     	text: 'ok',
     	data: {
-            title:'测试系统消息',
+            title:'测试新闻详情',
             timeline:'2015-12-20 12:15:45',
             html:'<p>这是一条系统消息测试，如果你看到此条消息，说明数据返回正常，祝愉快</p>'
         }
