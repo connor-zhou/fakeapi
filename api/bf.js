@@ -409,6 +409,51 @@ router.all('/bf/toActivate', function (req, res, next) {
 });
 
 
+/**
+ * @fakedoc 得到用户转账到宝付的URL
+ *
+ * @name bf.toTransfer
+ * @href /bf/toTransfer
+ *
+ * @input.post {string} client 		    客户端统计参数
+ * @input.post {string} token 			Token
+ * @input.post {string} callbackUrl     转账完成后的跳转地址（需 base64 编码）
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ *
+ * https://localhost:5000/bf/toTransfer
+ *
+ * https://192.168.1.86:3000/bf/toTransfer
+ *
+ * @output {json} 得到用户转账url
+ * {
+ *  code:"{int}    状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  text:"{string} 状态描述",
+ *  data:{
+ *      url:"{string} 转账的URL",
+ *      maps:"{map} 参数map"
+ *  }
+ * }
+ */
+router.all('/bf/toTransfer', function (req, res, next) {
+    var realname, chinaId;
+    realname = req.query.realname ? req.query.realname :req.body.realname;
+    chinaId = req.query.chinaId ? req.query.chinaId :req.body.chinaId;
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data: {
+            url:'/bf/callback/toTransfer',
+            maps:[{'key':'value'}]
+        }
+    }
+    res.json(resultValue);
+});
+
+
 
 
 module.exports = router;
