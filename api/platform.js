@@ -76,7 +76,6 @@ router.all('/platform/news/pageList', function (req, res, next) {
  * https://192.168.1.86:3000/platform/news/detail
  *
  * @input.post {string} client 		客户端统计参数
- * @input.post {string} token		Token
  * @input.post {string} type		新闻类型（0-媒体报道，1-行业动态，2-公告）
  * @input.post {string} newsId      新闻Id
  *
