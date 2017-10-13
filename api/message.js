@@ -36,12 +36,12 @@ var _ = require('lodash');
  *
  * @description
  *
- * https://localhost:5000/message/PageList
+ * https://localhost:5000/message/pageList
  *
- * https://192.168.1.86:3000/message/PageList
+ * https://192.168.1.86:3000/message/pageList
  */
 
-router.all('/message/PageList', function (req, res, next) {
+router.all('/message/pageList', function (req, res, next) {
 
     var random = [1,3,5,8,2,5];
     var recordList= [];
