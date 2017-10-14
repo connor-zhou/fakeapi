@@ -117,7 +117,7 @@ router.all('/message/detail', function (req, res, next) {
  * 
  * @input.post {string} client 		客户端统计参数（common/client）
  * @input.post {string} token		Token
- * @input.post {string} msgIds		消息Ids，半角逗号间隔
+ * @input.post {string} msgIds		消息Ids，半角逗号间隔（空值表示将所有设为已读）
  * 
  * @output {json} 标记为已读
  * {
