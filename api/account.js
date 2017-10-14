@@ -898,6 +898,84 @@ router.all('/account/investmentRecords', function (req, res, next) {
 });
 
 
+
+/**
+ * @fakedoc 我的投资记录详情
+ *
+ * @name account.investmentRecordDetail
+ * @href /account/investmentRecord/detail
+ *
+ * @input.post {string}     client 				客户端统计参数
+ * @input.post {string}     token 				Token
+ * @input.post {string}     investId 			投资记录id
+ *
+ *
+ * @output {json} 我的投资记录详情
+ * {
+ *  	code:"{int} 状态代码（0表示成功，69633表示token无效，其它值表示失败）",
+ *  	text:"{string} 状态描述",
+ *  	data:{
+ *         id:"{string} 投资记录id",
+ *         money:"{string} 投资金额",
+ *         profitWill:"{string} 待收收益",
+ *         periodTotal:"{string} 还款总期数",
+ *         periodRemain:"{string} 剩余还款期数",
+ *         rateTotal:"{string} 总年化收益率（若使用加息券，表示用过之后的总利率）",
+ *         projectInfo:{
+ *              pid:"{string} 项目id",
+ *              title:"{string} 项目名称",
+ *              status:"{int} 项目状态(0-投标中，1-还款中，2-已还款)",
+ *              statusText:"{string} 项目状态描述",
+ *              schedule:"{string} 已投百分比(不需加百分号 %) ",
+ *              repaymentMode:"{string} 还款方式",
+ *              borrowerType:"{int} 项目的借款方类别（0-个人，1-企业）",
+ *              category:"{int} 项目类型(1-抵押，2-个人信用贷，3-商圈贷，4-质押，5-融资租赁，6-资管计划，7-供应链)",
+ *              categoryText:"{string} 项目类型描述"
+ *         }
+ *      }
+ * }
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/account/investmentRecord/detail
+ *
+ * https://192.168.1.86:3000/account/investmentRecord/detail
+ */
+
+router.all('/account/investmentRecord/detail', function (req, res, next) {
+
+    var result= {
+             id:"0154",
+             money:"2000.00",
+             profitWill:"4501.45",
+             periodTotal:"12",
+             periodRemain:"7",
+             rateTotal:"12",
+             projectInfo:{
+                pid:"0241",
+                title:"星企贷",
+                status:0,
+                statusText:"投标中",
+                schedule:"15",
+                repaymentMode:"一次性还本付息",
+                borrowerType:0,
+                category:0,
+                categoryText:"抵押"
+             }
+
+    };
+
+    res.json({
+        code:0,
+        text:'ok',
+        data:result
+    });
+});
+
+
+
 /**
  * @fakedoc 我的回款日历
  *
