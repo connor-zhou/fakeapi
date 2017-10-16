@@ -684,7 +684,9 @@ router.all('/account/withdrawTickets', function (req, res, next) {
  *  	timeline:"{string} 还款时间",
  *  	capital:"{string} 计划偿还本金",
  *  	interest:"{string} 应还利息",
- *      days:"{string} 计息天数 "
+ *      days:"{string} 计息天数 ",
+ *      status:"{int} 还款状态（0-已还款，1-待回款，2-逾期）",
+ *      statusText:"{string} 还款状态描述"
  *  }]
  * }
  */
@@ -698,14 +700,17 @@ router.all('/account/repaymentPlan', function (req, res, next) {
             timeline: dt.format('YYYY-MM-DD'),
             capital: '100',
             interest:'2000',
-            days:'20'
+            days:'20',
+            status:limit % 2 == 0 ? 0 :1,
+            statusText:limit % 2 == 0 ? '已还款':'待回款'
+
         });
     }
     var resultValue = {
         code: 0,
         text: 'ok',
         data: records
-    }
+    };
     res.json(resultValue);
 });
 
