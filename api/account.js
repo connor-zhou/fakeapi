@@ -923,9 +923,8 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *         id:"{string} 投资记录id",
  *         money:"{string} 投资金额",
  *         profitWill:"{string} 待收收益",
- *         periodTotal:"{string} 还款总期数",
- *         periodRemain:"{string} 剩余还款期数",
- *         rateTotal:"{string} 总年化收益率（若使用加息券，表示用过之后的总利率）",
+ *         periodTotal:"{string} 项目还款总期数",
+ *         periodRemain:"{string} 项目剩余还款期数",
  *         projectInfo:{
  *              pid:"{string} 项目id",
  *              title:"{string} 项目名称",
@@ -933,6 +932,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *              statusText:"{string} 项目状态描述",
  *              schedule:"{string} 已投百分比(不需加百分号 %) ",
  *              repaymentMode:"{string} 还款方式",
+ *              annualizedRate:"{string} 年化利率（不用加 %）",
  *              borrowerType:"{int} 项目的借款方类别（0-个人，1-企业）",
  *              category:"{int} 项目类型(1-抵押，2-个人信用贷，3-商圈贷，4-质押，5-融资租赁，6-资管计划，7-供应链)",
  *              categoryText:"{string} 项目类型描述"
@@ -957,7 +957,6 @@ router.all('/account/investmentRecord/detail', function (req, res, next) {
              profitWill:"4501.45",
              periodTotal:"12",
              periodRemain:"7",
-             rateTotal:"12",
              projectInfo:{
                 pid:"0241",
                 title:"星企贷",
@@ -966,6 +965,7 @@ router.all('/account/investmentRecord/detail', function (req, res, next) {
                 schedule:"15",
                 repaymentMode:"一次性还本付息",
                 borrowerType:0,
+                annualizedRate:"12",
                 category:0,
                 categoryText:"抵押"
              }
