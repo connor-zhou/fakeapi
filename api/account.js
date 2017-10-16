@@ -766,7 +766,7 @@ router.all('/account/profitCalculation', function (req, res, next) {
  * @input.post {string}  token 				Token
  * @input.post {int=}    [pageNumber=1]		页码
  * @input.post {int=}    [pageSize=10]		页量
- * @input.post {int}  	 category			交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）
+ * @input.post {int}  	 category			交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励，7-其它）
  * @input.post {string}  startTimeline		开始时间（毫秒级时间戳，所有时间段时，传空值)
  * @input.post {string}  endTimeline		结束时间（毫秒级时间戳，所有时间段时，传空值）
  *
@@ -779,7 +779,7 @@ router.all('/account/profitCalculation', function (req, res, next) {
  *          recordList:	[{
  *  		    id:"{string} 交易流水唯一标识",
  *  		    timeline:"{string} 交易发生时间（例：2017-12-04）",
- *  		    category:"{int} 交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励）",
+ *  		    category:"{int} 交易类型（0-全部，1-充值，2-提现，3-投资，4-收益，5-本金，6-奖励，7-其它）",
  *  		    categoryText:"{string} 交易类型描述",
  *  		    remark:"{string} 交易详情",
  *  		    cash:"{string} 交易涉及到金额",
