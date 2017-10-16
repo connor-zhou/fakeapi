@@ -334,7 +334,7 @@ router.all('/project/borrowerInfo',function(req,res,next){
  *              address:"{string} 借款人居住地（企业时为公司地址）",
  *              chinaId:"{string=} 借款人身份证（仅type == 1 时返回，例：6227****2547）",
  *              company:"{string=} 企业名称（仅type == 0 时返回）",
- *              instruction:"{string} 项目说明"
+ *              instruction:"{string} 项目说明 （部分项目返回可能是html形式的字符串）"
  *          },
  *          files:{
  *              photos:"{array} 图片url数组"
