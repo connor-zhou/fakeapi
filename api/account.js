@@ -82,6 +82,7 @@ router.all('/account/register', function (req, res, next) {
  * 
  * https://192.168.1.86:3000/account/login
  */
+
 router.all('/account/login', function (req, res, next) {
 	var mobile = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
 	var password = req.query.password ? req.query.password :(req.body.password ? req.body.password : '000001');
@@ -856,7 +857,8 @@ router.all('/account/transactionRecords', function (req, res, next) {
  *  	        profitWill:"{string=} 待收收益（仅 status == 0 时返回）",
  *  	        profit:"{string} 已收收益",
  *  	        remainDays:"{string=} 剩余天数（仅 status == 0 时返回）",
- *  	        endTimeline:"{string} 项目结束时间（仅 status == 2 时返回，例：2017-12-14）"
+ *  	        endTimeline:"{string} 项目结束时间（仅 status == 2 时返回，例：2017-12-14）",
+ *              agreementType:"{int} 借款协议类型（0-html，1-pdf）"
  		    }]
  *      }
  * }
@@ -888,7 +890,9 @@ router.all('/account/investmentRecords', function (req, res, next) {
             annualizedRate:10,
             profitWill:value % 3 == 0 ? '2010.00':'',
             profit:value * 30+'.00',
-            remainDays:value % 3 == 0 ? 30:0
+            remainDays:value % 3 == 0 ? 30:0,
+            agreementType:0
+
         });
     });
 
