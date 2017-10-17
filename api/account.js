@@ -857,8 +857,7 @@ router.all('/account/transactionRecords', function (req, res, next) {
  *  	        profitWill:"{string=} 待收收益（仅 status == 0 时返回）",
  *  	        profit:"{string} 已收收益",
  *  	        remainDays:"{string=} 剩余天数（仅 status == 0 时返回）",
- *  	        endTimeline:"{string} 项目结束时间（仅 status == 2 时返回，例：2017-12-14）",
- *              agreementType:"{int} 借款协议类型（0-html，1-pdf）"
+ *  	        endTimeline:"{string} 项目结束时间（仅 status == 2 时返回，例：2017-12-14）"
  		    }]
  *      }
  * }
@@ -890,8 +889,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
             annualizedRate:10,
             profitWill:value % 3 == 0 ? '2010.00':'',
             profit:value * 30+'.00',
-            remainDays:value % 3 == 0 ? 30:0,
-            agreementType:0
+            remainDays:value % 3 == 0 ? 30:0
 
         });
     });
@@ -939,7 +937,8 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *              annualizedRate:"{string} 年化利率（不用加 %）",
  *              borrowerType:"{int} 项目的借款方类别（0-个人，1-企业）",
  *              category:"{int} 项目类型(1-抵押，2-个人信用贷，3-商圈贷，4-质押，5-融资租赁，6-资管计划，7-供应链)",
- *              categoryText:"{string} 项目类型描述"
+ *              categoryText:"{string} 项目类型描述",
+ *              agreementType:"{int} 借款协议类型（0-html，1-pdf）"
  *         }
  *      }
  * }
@@ -971,7 +970,8 @@ router.all('/account/investmentRecord/detail', function (req, res, next) {
                 borrowerType:0,
                 annualizedRate:"12",
                 category:0,
-                categoryText:"抵押"
+                categoryText:"抵押",
+                agreementType:0
              }
 
     };
