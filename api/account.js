@@ -924,6 +924,7 @@ router.all('/account/investmentRecords', function (req, res, next) {
  *  	data:{
  *         id:"{string} 投资记录id",
  *         money:"{string} 投资金额",
+ *         profitYet:"{string} 已获收益",
  *         profitWill:"{string} 待收收益",
  *         periodTotal:"{string} 项目还款总期数",
  *         periodRemain:"{string} 项目剩余还款期数",
@@ -958,6 +959,7 @@ router.all('/account/investmentRecord/detail', function (req, res, next) {
              id:"0154",
              money:"2000.00",
              profitWill:"4501.45",
+             profitYet:"4500.00",
              periodTotal:"12",
              periodRemain:"7",
              projectInfo:{
