@@ -171,6 +171,7 @@ router.all('/account/logout', function (req, res, next) {
  *  	    withdrawTicketsCount:"{string} 状态正常（status == 0）的提现券张数",
  *  	    rateTicketsCount:"{string} 状态正常（status == 0）的加息券张数",
  *  	    moneyOldSystem:"{string} 老系统账户余额",
+ *  	    hasUnreadMsg:"{int} 是否有未读消息（1-是，0-否）",
  *  	    isActivate:"{int} 老系统用户是否需要激活（1-是，0-否）",
  *  		isSign:"{int} 是否已签到（1-签了，0-没签）",
  *  		isOpenBf:"{int} 是否开通宝付(1-开通，0-未开通)",
@@ -222,7 +223,8 @@ router.all('/account/info', function (req, res, next) {
             isRiskAssess:1,
             riskAssessResult:'稳健型',
             moneyOldSystem:'120.00',
-            isActivate:1
+            isActivate:1,
+            hasUnreadMsg:1
 		}
 	};
 	res.json(resultValue);
@@ -504,9 +506,13 @@ router.all('/account/resetPassword', function (req, res, next) {
  *
  * @description
  *
- * 仅status == 2 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
+ * 当 status == 0 时，返回需将 status == 1 时的数据居前显示，并按时间降序排。
  *
- * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
+ * 当 status == 1 时，返回按过期时间升序排。
+ *
+ * 仅 status == 2 时需要返回加息券使用时间（usedTimeline）和 已使用券的使用情况说明（usedRemark）。
+ *
+ * 其它status值返回按过期时间降序排。
  *
  * https://localhost:5000/account/rateTickets
  *
@@ -583,7 +589,11 @@ router.all('/account/rateTickets', function (req, res, next) {
  *
  * @description
  *
- * 仅当 status == 1 时，返回按过期时间升序排；其它status值返回按过期时间降序排。
+ * 当 status == 1 时，返回按过期时间升序排；
+ *
+ * 当 status == 0 时，返回需将 status == 1 时的数据居前显示，并按时间降序排。
+ *
+ * 其它status值返回按过期时间降序排。
  *
  * https://localhost:5000/account/cashTickets
  *
