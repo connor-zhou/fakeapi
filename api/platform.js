@@ -269,7 +269,7 @@ router.all('/platform/dealData',function(req,res,next){
  *      data:{
  *          totalMoneySum:"{string} 累计交易总额",
  *          tradeNumberSum:"{string} 累计交易笔数",
- *          remainMoneyLoan:"{string}  借贷余额",
+ *          repayMoneyWill:"{string}  借贷余额（待还金额）",
  *          borrowNumberSum:"{string}  累计借款人数",
  *          loanNumberSum:"{string}  累计出借人数",
  *          borrowNumber:"{string}  当前借款人数",
@@ -292,7 +292,7 @@ router.all('/platform/dealData',function(req,res,next){
     var data ={
              totalMoneySum:"1000",
              tradeNumberSum:"1000",
-             remainMoneyLoan:"1000",
+             repayMoneyWill:"1000",
              borrowNumberSum:"1000",
              loanNumberSum:"1000",
              borrowNumber:"1000",
