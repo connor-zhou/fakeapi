@@ -270,10 +270,10 @@ router.all('/platform/dealData',function(req,res,next){
  *          totalMoneySum:"{string} 累计交易总额",
  *          tradeNumberSum:"{string} 累计交易笔数",
  *          repayMoneyWill:"{string}  借贷余额（待还金额）",
- *          borrowNumberSum:"{string}  累计借款人数",
- *          loanNumberSum:"{string}  累计出借人数",
- *          borrowNumber:"{string}  当前借款人数",
- *          loanNumber:"{string}  当前出借人数",
+ *          borrowerNumberSum:"{string}  累计借款人数",
+ *          loanerNumberSum:"{string}  累计出借人数",
+ *          borrowerNumber:"{string}  当前借款人数",
+ *          loanerNumber:"{string}  当前出借人数",
  *          top10MoneyRate:"{string}  前十大借款人待还金额占比",
  *          top1MoneyRate:"{string}  最大单一借款人待还金额占比",
  *          overtimeMoney:"{string}  逾期金额",
@@ -287,16 +287,16 @@ router.all('/platform/dealData',function(req,res,next){
  *
  * */
 
-router.all('/platform/dealData',function(req,res,next){
+router.all('/platform/info',function(req,res,next){
 
     var data ={
              totalMoneySum:"1000",
              tradeNumberSum:"1000",
              repayMoneyWill:"1000",
-             borrowNumberSum:"1000",
-             loanNumberSum:"1000",
-             borrowNumber:"1000",
-             loanNumber:"1000",
+             borrowerNumberSum:"1000",
+             loanerNumberSum:"1000",
+             borrowerNumber:"1000",
+             loanerNumber:"1000",
              top10MoneyRate:"0.5",
              top1MoneyRate:"0.2",
              overtimeMoney:"1000",
