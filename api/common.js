@@ -85,6 +85,7 @@ var _ = require('lodash');
         BUSINESS_ERROR(40000, "业务异常"),
         API_NOT_FOUND(50000, "接口不存在"),
         SYSTEM_ERROR(60000, "系统异常"),
+        ROCESSING(70000, "交易处理中")（请求宝付相关接口时）
  * }
  *
  *
