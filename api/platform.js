@@ -246,4 +246,77 @@ router.all('/platform/dealData',function(req,res,next){
 
 
 
+/**
+ * @fakedoc  信息披露
+ *
+ * @name platform.info
+ * @href /platform/info
+ *
+ * @input.post {string}   client                  客户端统计参数
+ *
+ * @description
+ *
+ *
+ * https://localhost:5000/platform/info
+ *
+ * https://92.168.1.86:3000/platform/info
+ *
+ *
+ * @output {json} 星投资平台信息披露
+ *{
+ *      code:"{int} 状态代码（0表示成功，其它值表示失败）",
+ *      text:"{string} 状态描述",
+ *      data:{
+ *          totalMoneySum:"{string} 累计交易总额",
+ *          tradeNumberSum:"{string} 累计交易笔数",
+ *          remainMoneyLoan:"{string}  借贷余额",
+ *          borrowNumberSum:"{string}  累计借款人数",
+ *          loanNumberSum:"{string}  累计出借人数",
+ *          borrowNumber:"{string}  当前借款人数",
+ *          loanNumber:"{string}  当前出借人数",
+ *          top10MoneyRate:"{string}  前十大借款人待还金额占比",
+ *          top1MoneyRate:"{string}  最大单一借款人待还金额占比",
+ *          overtimeMoney:"{string}  逾期金额",
+ *          overtimeNumber:"{string}  逾期笔数",
+ *          overtime90Money:"{string}  逾期90天以上金额",
+ *          overtime90Number:"{string}  逾期90天以上笔数",
+ *          helpRepayMoney:"{string}  代偿金额",
+ *          helpRepayNumber:"{string}  代偿笔数"
+ *      }
+ * }
+ *
+ * */
+
+router.all('/platform/dealData',function(req,res,next){
+
+    var data ={
+             totalMoneySum:"1000",
+             tradeNumberSum:"1000",
+             remainMoneyLoan:"1000",
+             borrowNumberSum:"1000",
+             loanNumberSum:"1000",
+             borrowNumber:"1000",
+             loanNumber:"1000",
+             top10MoneyRate:"0.5",
+             top1MoneyRate:"0.2",
+             overtimeMoney:"1000",
+             overtimeNumber:"1000",
+             overtime90Money:"1000",
+             overtime90Number:"1000",
+             helpRepayMoney:"1000",
+             helpRepayNumber:"1000"
+    };
+
+    var resultValue = {
+        code: 0,
+        text:'ok',
+        data:data
+    }
+    res.json(resultValue);
+});
+
+
+
+
+
 module.exports = router;
