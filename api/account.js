@@ -239,8 +239,8 @@ router.all('/account/info', function (req, res, next) {
  *
  * @input.post {string}     client 		客户端统计参数
  * @input.post {string}     token 		Token
- * @input.post {int}        step        更改步骤（1 或 2）
- * @input.post {string=}     email 		新邮箱地址（仅 step == 1 时传入）
+ * @input.post {int}        step        更改步骤（1、2、3）
+ * @input.post {string=}     email 		新邮箱地址（仅 step == 1 或 step == 3 时传入）
  * @input.post {string=}     smsCode    手机验证码（仅 step == 1 时传入）
  * @input.post {string=}     emailCode  邮箱验证码（仅 step == 2 时传入）
  *
@@ -253,6 +253,8 @@ router.all('/account/info', function (req, res, next) {
  * @needAuth
  *
  * @description
+ *
+ * step == 3 仅对app（ios，android）适用。
  *
  * https://localhost:5000/account/alterEmail
  *
