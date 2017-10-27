@@ -791,7 +791,7 @@ router.all('/account/profitCalculation', function (req, res, next) {
  *          count:"{int} 条目总数量",
  *          recordList:	[{
  *  		    id:"{string} 交易流水唯一标识",
- *  		    timeline:"{string} 交易发生时间（例：2017-12-04）",
+ *  		    timeline:"{string} 交易发生时间（例：2017-12-04 01:12:12）",
  *  		    category:"{int} 交易类型（0-全部，1-充值，2-提现，3-投资，4-回款，5-奖励，6-其它）",
  *  		    categoryText:"{string} 交易类型描述",
  *  		    remark:"{string} 交易详情",
@@ -820,7 +820,7 @@ router.all('/account/transactionRecords', function (req, res, next) {
     	var cat = Math.floor(Math.random() * 5+1);
         result.push({
             id:value+'',
-            timeline:'2017-09-01'+value,
+            timeline:'2017-09-01 02:12:13',
             category:cat,
 			categoryText:catText[cat],
             remark:catText[cat],
