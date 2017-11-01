@@ -85,7 +85,8 @@ var _ = require('lodash');
         BUSINESS_ERROR(40000, "业务异常"),
         API_NOT_FOUND(50000, "接口不存在"),
         SYSTEM_ERROR(60000, "系统异常"),
-        ROCESSING(70000, "交易处理中")（请求宝付相关接口时）
+        ROCESSING(70000, "交易处理中")（请求宝付相关接口时）,
+        LOGIN_NEED_IMAGE_CODE(40200, "请输入图形验证码")
  * }
  *
  *
@@ -132,45 +133,6 @@ router.all('/common/isRegistered', function (req, res, next) {
     res.json(resultValue);
 });
 
-
-
-/**
- * @fakedoc 用户错误登录次数
- *
- * @name common.loginErrorCount
- * @href /common/loginErrorCount
- *
- * @input.post {string} client 		客户端统计参数
- * @input.post {string} mobile 		手机号码
- *
- * @description
- *
- * https://localhost:5000/common/loginErrorCount
- *
- * https://192.168.1.86:3000/common/loginErrorCount
- *
- * @output {json} 用户错误登录次数
- * {
- * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
- *  text:"{string} 状态描述",
- *  data:{
- *      count:"{int} 错误次数"
- *  }
- * }
- *
- *
- */
-router.all('/common/loginErrorCount', function (req, res, next) {
-    // var phone = req.query.mobile ? req.query.mobile :(req.body.mobile ? req.body.mobile : '13566667777');
-    var resultValue = {
-        code: 0,
-        text: 'ok',
-        data:{
-           count:10
-        }
-    };
-    res.json(resultValue);
-});
 
 
 //
