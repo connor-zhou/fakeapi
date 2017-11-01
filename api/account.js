@@ -60,6 +60,8 @@ router.all('/account/register', function (req, res, next) {
  *
  * @input.post {string}  client 		客户端统计参数
  * @input.post {string}  aname 			账户名（手机号或者用户名）
+ * @input.post {string=} imageCode 		图形验证码（type == 0 时且登录错误次数3次后传入）
+ * @input.post {string=}  uniqueId 		获取图形验证码时的唯一标识（type == 0 时且登录错误次数3次后传入）
  * @input.post {string=} password 		密码（仅type == 0 时传入，需base64 编码）
  * @input.post {string=} smsCode 		短信验证码（仅type == 1 时传入）
  * @input.post {int}     type 		    登录类型（0-密码登录，1-短信验证码登录）
