@@ -107,7 +107,7 @@ var _ = require('lodash');
  *
  * https://localhost:5000/common/isRegistered
  *
- * https://92.168.1.86:3000/common/isRegistered
+ * https://192.168.1.86:3000/common/isRegistered
  *
  * @output {json} 用户是否已注册
  * {
@@ -147,7 +147,7 @@ router.all('/common/isRegistered', function (req, res, next) {
  *
  * https://localhost:5000/common/loginErrorCount
  *
- * https://92.168.1.86:3000/common/loginErrorCount
+ * https://192.168.1.86:3000/common/loginErrorCount
  *
  * @output {json} 用户错误登录次数
  * {
