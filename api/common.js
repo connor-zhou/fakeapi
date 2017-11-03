@@ -381,6 +381,7 @@ router.all('/common/imageCode',function(req,res,next){
  *
  * @description
  *
+ * 一个验证码在有效期内（2分钟）最多做三次验证，三次后需重新获取。
  *
  * https://localhost:5000/common/sendSmsCode
  *
