@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 /**
- * @fakedoc 可兑换优惠券列表
+ * @fakedoc 优惠券列表
  *
  * @name mall.couponPageList
  * @href /mall/coupon/pageList
@@ -24,15 +24,17 @@ var _ = require('lodash');
  *  text:"{String} 状态描述",
  *  data: {
  *  count:"{int} 总条目数",
- *  recordList:[
- * 	  {
+ *  recordList:[{
  * 	  	id:"{string} 优惠券id",
  *  	value:"{string} 优惠券面值（例：加息券加息 0.5% 只返回 0.5）",
  *  	type:"{int} 优惠券类型（0-现金券，1-加息券，2-提现券）",
- *  	typeText:"{string} 优惠券类型描述",
- *  	money:"{string=} 优惠券使用时投资额度限制（例：加息券表示加息上限金额，现金券表示需满足的投资额度。type == 2 时不返回）"
- *     }
- * 	]}
+ *  	money:"{string=} 优惠券使用时投资额度限制（例：加息券表示加息上限金额，现金券表示需满足的投资额度。type == 2 时不返回）",
+ *      price:"{string} 现在所需星币（现价）",
+ *      oldPrice:"{string} 之前所需星币（原价）",
+ *      count:"{string} 库存数",
+ *      profile:"{string} 此券所用缩略图"
+ *     }]
+ *  }
  *}
  *
  */
@@ -44,8 +46,11 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
 			id:random,
             value:0.5,
             type: 0,
-            typeText: '现金券',
-            money:'1000'
+            money:'1000',
+            price:'1200',
+            oldPrice:'5000',
+            count:'12',
+            profile:''
         });
     });
     var resultValue = {
@@ -55,7 +60,97 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
     		count:6,
 			recordList:events
     	}
-    }
+    };
+    res.json(resultValue);
+});
+
+
+/**
+ * @fakedoc 商品详情
+ *
+ * @name mall.productDetail
+ * @href /mall/product/detail
+ *
+ * @input.post {string}  client 		客户端统计参数
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/product/detail
+ *
+ * https://192.168.1.86:3000/mall/product/detail
+ *
+ * @output {json} 商品详情
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{string} 状态描述",
+ *  data: {
+ * 	  	id:"{string} 商品id",
+ * 	    title:"{string} 商品标题",
+ *  	type:"{int} 优惠券类型（0-现金券，1-加息券，2-提现券）",
+ *      price:"{string} 所需星币（现价）",
+ *      count:"{int} 库存数",
+ *      profile:"{string} 商品缩略图",
+ *      remark:"{string} 商品使用备注",
+ *      limitCount:"{int} 限购张数（若无，返回和库存数保持一致）"
+ *  }
+ *}
+ */
+router.all('/mall/product/detail', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data: {
+            id:1020,
+            title:'现金券',
+            type: 0,
+            price:'1200',
+            count:12,
+            limitCount:2,
+            profile:'',
+            remark:'满100可用'
+        }
+    };
+    res.json(resultValue);
+});
+
+/**
+ * @fakedoc 商品兑换确认
+ *
+ * @name mall.productExchange
+ * @href /mall/product/exchange
+ *
+ * @input.post {string}  client 					客户端统计参数（common/client）
+ * @input.post {string}  token						token
+ * @input.post {String}  productId		 			商品Id
+ * @input.post {String}  [num=1]		 			商品数量
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/product/exchange
+ *
+ * https://192.168.1.86:3000/mall/product/exchange
+ *
+ * @output {json} 确认兑换
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
+ *  text:"{String} 状态描述",
+ *  data:{
+ *      code:"{string=} 订单编号（成功时返回）"
+ *  }
+ * }
+ *
+ *
+ */
+router.all('/mall/product/exchange', function (req, res, next) {
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data:{
+            code:"468725"
+        }
+    };
     res.json(resultValue);
 });
 
