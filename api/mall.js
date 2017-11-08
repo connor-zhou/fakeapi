@@ -137,7 +137,7 @@ router.all('/mall/product/detail', function (req, res, next) {
  * 	code:"{int}    状态代码（0表示成功，其它值表示失败(69633表示未登陆)）",
  *  text:"{String} 状态描述",
  *  data:{
- *      code:"{string=} 订单编号（成功时返回）"
+ *      no:"{string=} 订单编号（成功时返回）"
  *  }
  * }
  *
@@ -148,7 +148,7 @@ router.all('/mall/product/exchange', function (req, res, next) {
         code: 0,
         text: 'ok',
         data:{
-            code:"468725"
+            no:"468725"
         }
     };
     res.json(resultValue);
