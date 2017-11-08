@@ -72,6 +72,7 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
  * @href /mall/product/detail
  *
  * @input.post {string}  client 		客户端统计参数
+ * @input.post {string}  productId 		商品id
  *
  * @description
  *
