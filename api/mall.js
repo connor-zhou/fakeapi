@@ -131,6 +131,8 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
  * @input.post {int=}   [pageSize=10]	页量
  * @input.post {int}    period			记录时间间隔（0-所有时间段，1-近一个月，2-近三个月）
  *
+ * @needAuth
+ *
  * @description
  *
  * https://localhost:5000/mall/integral/myExchangeRecords
@@ -195,6 +197,8 @@ router.all('/mall/integral/myExchangeRecords', function (req, res, next) {
  * @input.post {int=}   [pageNumber=1]	页码
  * @input.post {int=}   [pageSize=10]	页量
  * @input.post {int}    category		明细类型（0-全部，1-获得，2-消费）
+ *
+ * @needAuth
  *
  * @description
  *
