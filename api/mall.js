@@ -90,8 +90,7 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
  *      price:"{string} 所需星币（现价）",
  *      count:"{int} 库存数",
  *      profile:"{string} 商品缩略图",
- *      remark:"{string} 商品使用备注",
- *      limitCount:"{int} 限购张数（若无，返回和库存数保持一致）"
+ *      remark:"{string} 商品使用备注"
  *  }
  *}
  */
@@ -105,7 +104,6 @@ router.all('/mall/product/detail', function (req, res, next) {
             type: 0,
             price:'1200',
             count:12,
-            limitCount:2,
             profile:'',
             remark:'满100可用'
         }
