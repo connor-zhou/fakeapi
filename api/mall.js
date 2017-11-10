@@ -214,7 +214,7 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
 });
 
 /**
- * @fakedoc 我的星币兑换记录
+ * @fakedoc 我的星币兑换记录（我的订单）
  *
  * @name mall.integralMyExchangeRecords
  * @href /mall/integral/myExchangeRecords
@@ -247,7 +247,8 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
  *  		timeline:"{string} 	下单时间",
  *  		count:"{string} 	兑换券的数量",
  *  		no:"{string}   订单编号",
- *  		statusText:"{string}   订单状态"
+ *  		statusText:"{string}   订单状态",
+ *  	    profile:"{string} 券缩略图"
  *    	}]
  *    }
  * }
@@ -265,7 +266,8 @@ router.all('/mall/integral/myExchangeRecords', function (req, res, next) {
             timeline:'15021545464',
             count:'23',
             no:'1545125',
-            statusText:'已完成'
+            statusText:'已完成',
+            profile:''
         });
     });
     var resultValue = {
@@ -338,6 +340,66 @@ router.all('/mall/integral/MyLogs', function (req, res, next) {
     res.json(resultValue);
 });
 
+
+/**
+ * @fakedoc 订单详情
+ *
+ * @name mall.orderDetail
+ * @href /mall/orderDetail
+ *
+ * @input.post {string} client 			客户端统计参数
+ * @input.post {string} token 			Token
+ * @input.post {string}  orderId		订单记录id
+ *
+ * @needAuth
+ *
+ * @description
+ *
+ * https://localhost:5000/mall/orderDetail
+ *
+ * https://192.168.1.86:3000/mall/orderDetail
+ *
+ * @output {json}  订单详情
+ * {
+ * 	code:"{int}    状态代码（0表示成功，其它值表示失败）",
+ *  text:"{String} 状态描述",
+ *  data: {
+ *      id:"{string} 订单id",
+ *  	title:"{string} 订单标题",
+ *      totalPrice:"{string} 订单所用星币数",
+ *      count:"{string} 兑换商品数量",
+ *      profile:"{string} 商品缩略图",
+ *      status:"{int} 订单状态（0-已完成，1-已发货，2-待确认）",
+ *      no:"{string} 订单编号",
+ *      createTimeline:"{string} 订单创建时间",
+ *      sendTimeline:"{string} 发货时间",
+ *      finishTimeline:"{string} 完成时间"
+ *   }
+ * }
+ *
+ */
+router.all('/mall/orderDetail', function (req, res, next) {
+
+    var data = {
+        id:'2323',
+        title:'5元现金券',
+        totalPrice:"20",
+        count:'2',
+        profile:'',
+        status:0,
+        no:'54556545545',
+        createTimeline:'15021512154',
+        sendTimeline:'15021512154',
+        finishTimeline:'15021512154'
+    };
+
+    var resultValue = {
+        code: 0,
+        text: 'ok',
+        data: data
+    };
+    res.json(resultValue);
+});
 
 
 module.exports = router;
