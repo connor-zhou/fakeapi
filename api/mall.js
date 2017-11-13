@@ -250,7 +250,7 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
  *  		timeline:"{string} 	下单时间",
  *  		count:"{string} 	兑换券的数量",
  *  		no:"{string}   订单编号",
- *  		statusText:"{string}   订单状态",
+ *  		statusText:"{string}   订单状态（已完成，已发货，已创建，已取消）",
  *  	    profile:"{string} 券缩略图"
  *    	}]
  *    }
@@ -372,7 +372,7 @@ router.all('/mall/integral/MyLogs', function (req, res, next) {
  *      totalPrice:"{string} 订单所用星币数",
  *      count:"{string} 兑换商品数量",
  *      profile:"{string} 商品缩略图",
- *      status:"{int} 订单状态（0-已完成，1-已发货，2-待确认）",
+ *      status:"{int} 订单状态（0-已完成，1-已发货，2-已创建，3-已取消）",
  *      no:"{string} 订单编号",
  *      createTimeline:"{string} 订单创建时间",
  *      sendTimeline:"{string} 发货时间",
