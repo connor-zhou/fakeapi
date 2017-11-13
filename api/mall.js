@@ -257,6 +257,7 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
  * }
  *
  */
+
 router.all('/mall/integral/myExchangeRecords', function (req, res, next) {
     var events = [],random;
     _.forEach([2,3,4,5,6,8], function (i) {
