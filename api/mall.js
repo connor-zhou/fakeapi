@@ -11,6 +11,9 @@ var _ = require('lodash');
  * @input.post {string}  client 		客户端统计参数
  * @input.post {int=}   [pageNumber=1]	页码
  * @input.post {int=}   [pageSize=10]	页量
+ * @input.post {int}    type	        是否为推荐（热门）列表（0-不是，1-是）
+ *
+ *
  *
  * @description
  *
