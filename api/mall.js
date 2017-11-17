@@ -35,7 +35,8 @@ var _ = require('lodash');
  *      price:"{string} 现在所需星币（现价）",
  *      oldPrice:"{string} 之前所需星币（原价）",
  *      count:"{string} 库存数",
- *      profile:"{string} 此券所用缩略图"
+ *      profile:"{string} 商品缩略图（app，微信）",
+ *      profileWeb:"{string} 商品缩略图（官网）",
  *     }]
  *  }
  *}
@@ -53,7 +54,8 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
             price:'1200',
             oldPrice:'5000',
             count:'12',
-            profile:''
+            profile:'',
+            profileWeb:''
         });
     });
     var resultValue = {
@@ -93,7 +95,8 @@ router.all('/mall/coupon/pageList', function (req, res, next) {
  *  	type:"{int} 优惠券类型（0-现金券，1-加息券，2-提现券）",
  *      price:"{string} 所需星币（现价）",
  *      count:"{int} 库存数",
- *      profile:"{string} 商品缩略图",
+ *      profile:"{string} 商品缩略图（app，微信）",
+ *      profileWeb:"{string} 商品缩略图（官网）",
  *      remark:"{string} 商品使用备注"
  *  }
  *}
@@ -109,6 +112,7 @@ router.all('/mall/product/detail', function (req, res, next) {
             price:'1200',
             count:12,
             profile:'',
+            profileWeb:'',
             remark:'满100可用'
         }
     };
@@ -185,7 +189,8 @@ router.all('/mall/product/exchange', function (req, res, next) {
  *  		name:"{String} 		参与用户（用户掩码手机号。例：188****2211）",
  *  		value:"{string} 	优惠券面值（例：加息券加息 0.5% 只返回 0.5)",
  *  		count:"{string} 	使用张数",
- *  		profile:"{string}   能代表此券的缩略图地址"
+ *          profile:"{string} 商品缩略图（app，微信）",
+ *          profileWeb:"{string} 商品缩略图（官网）",
  *    	}]
  *    }
  * }
@@ -202,7 +207,8 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
             typeText: '现金券',
             name:'132****2587',
 			count:'23',
-			profile:''
+			profile:'',
+			profileWeb:''
         });
     });
     var resultValue = {
@@ -251,7 +257,8 @@ router.all('/mall/integral/exchangeRecords', function (req, res, next) {
  *  		count:"{string} 	兑换券的数量",
  *  		no:"{string}   订单编号",
  *  		statusText:"{string}   订单状态（已完成，已发货，已创建，已取消）",
- *  	    profile:"{string} 券缩略图"
+ *          profile:"{string} 商品缩略图（app，微信）",
+ *          profileWeb:"{string} 商品缩略图（官网）"
  *    	}]
  *    }
  * }
@@ -372,7 +379,8 @@ router.all('/mall/integral/MyLogs', function (req, res, next) {
  *  	title:"{string} 订单标题",
  *      totalPrice:"{string} 订单所用星币数",
  *      count:"{string} 兑换商品数量",
- *      profile:"{string} 商品缩略图",
+ *      profile:"{string} 商品缩略图（app，微信）",
+ *      profileWeb:"{string} 商品缩略图（官网）",
  *      status:"{int} 订单状态（0-已完成，1-已发货，2-已创建，3-已取消）",
  *      no:"{string} 订单编号",
  *      createTimeline:"{string} 订单创建时间",
@@ -390,6 +398,7 @@ router.all('/mall/orderDetail', function (req, res, next) {
         totalPrice:"20",
         count:'2',
         profile:'',
+        profileWeb:'',
         status:0,
         no:'54556545545',
         createTimeline:'15021512154',
