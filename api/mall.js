@@ -36,7 +36,7 @@ var _ = require('lodash');
  *      oldPrice:"{string} 之前所需星币（原价）",
  *      count:"{string} 库存数",
  *      profile:"{string} 商品缩略图（app，微信）",
- *      profileWeb:"{string} 商品缩略图（官网）",
+ *      profileWeb:"{string} 商品缩略图（官网）"
  *     }]
  *  }
  *}
@@ -190,7 +190,7 @@ router.all('/mall/product/exchange', function (req, res, next) {
  *  		value:"{string} 	优惠券面值（例：加息券加息 0.5% 只返回 0.5)",
  *  		count:"{string} 	使用张数",
  *          profile:"{string} 商品缩略图（app，微信）",
- *          profileWeb:"{string} 商品缩略图（官网）",
+ *          profileWeb:"{string} 商品缩略图（官网）"
  *    	}]
  *    }
  * }
