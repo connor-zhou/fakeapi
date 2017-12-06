@@ -525,6 +525,7 @@ router.all('/account/resetPassword', function (req, res, next) {
 
 router.all('/account/rateTickets', function (req, res, next) {
 
+
 	var random = [1,3,5,8,2,5];
 
 	var result= [];
