@@ -61,4 +61,3 @@
     # 生成API文档
     gulp fakedocs
     ```
-    
