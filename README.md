@@ -38,7 +38,7 @@
 + 在jenkins服务器需要安装forever, `cnpm install forever -g`
 + 安装的插件 gitbucket git 
 + build trigger：Build when a change is pushed to GitBucket
-+ GitBucket URL: http://code.asterlake.cn/git/wenqiang/fakeapi
+
 + Execute Shell:
 
     ```
